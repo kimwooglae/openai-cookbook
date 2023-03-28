@@ -20,7 +20,7 @@ The simplest way to use embeddings for search is as follows:
 * Before the search (precompute):
   * Split your text corpus into chunks smaller than the token limit (8,191 tokens for `text-embedding-ada-002`)
   * Embed each chunk of text
-  * Store those embeddings in your own database or in a vector search provider like [Pinecone](https://www.pinecone.io) or [Weaviate](https://weaviate.io)
+  * Store those embeddings in your own database or in a vector search provider like [Pinecone](https://www.pinecone.io), [Weaviate](https://weaviate.io) or [Qdrant](https://qdrant.tech)
 * At the time of the search (live compute):
   * Embed the search query
   * Find the closest embeddings in your database
@@ -28,7 +28,7 @@ The simplest way to use embeddings for search is as follows:
 
 An example of how to use embeddings for search is shown in [Semantic_text_search_using_embeddings.ipynb](examples/Semantic_text_search_using_embeddings.ipynb).
 
-In more advanced search systems, the the cosine similarity of embeddings can be used as one feature among many in ranking search results.
+In more advanced search systems, the cosine similarity of embeddings can be used as one feature among many in ranking search results.
 
 ## Question answering
 
