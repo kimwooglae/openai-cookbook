@@ -1,0 +1,18 @@
+
+Checkbox9.Checkbox9.1Checkboxcheckbox와 label로 구성 되어있는 renderType=”checkboxgroup” 형태와 순수 html의 checkbox로 사용 할 수 있는 renderType=”native” 중 선택하여 사용 할 수 있습니다.단, 순수 html로 렌더링 되는 renderType=”native”의 경우 websquare API를 사용 할 수 없어 가급적 renderType=”checkboxgroup” 로 사용할 것을 권장 합니다.<Check Point>√ 포커스 상태의 테두리(outline)가 명확하게 나타나는가?√ Checkbox에 대응하는 title 또는 label을 제공하고 있는가?√ tagname과 itemTagname이 올바르게 적용 되어있는가?관련 지침 : 2.1.2. 초점 이동, 3.4.1. 레이블 제공, 4.1.1. 마크업 오류 방지9.1.1renderType=”native”레이아웃 구조를 위한 어떠한 태그 없이 순수 <input type=”checkbox”> 태그 하나만 생성하는 형태입니다. 레이블 텍스트는 textbox 컴포넌트를 이용해 직접 생성해야 합니다. Checkbox 컴포넌트에 title 속성을 사용하지 않을 경우 반드시 <label> 태그로 렌더링되는 textbox 컴포넌트와 연계해야 합니다.<Xml source>checkbox와 label을 적용한 형태.
+<xf:select selectedindex="-1" appearance="full" id=" checkbox1" renderType="native"></xf:select>
+<w2:textbox id=" " label="사과" tagname="label" for="checkbox1"></w2:textbox>
+
+Checkbox에 title을 적용한 형태.
+<xf:select selectedindex="-1" appearance="full" id="" renderType="native" title="사과"></xf:select>9.1.2renderType=”checkboxgroup” – 권장checkbox + label 이 결함 된 상태로 label의 for 속성이 자동으로 연결 됩니다. 또, tagname과 itemTagname 속성을 이용하여 mark-up 구조를 변경 할 수 있습니다.<Xml source><xf:select selectedindex="-1" id="" appearance="full" style="" cols="" rows="" renderType="checkboxgroup" tagnam=”ul” itemTagname=”li”>
+    <xf:choices>
+        <xf:item>
+            <xf:label><![CDATA[new row]]></xf:label>
+            <xf:value><![CDATA[]]></xf:value>
+        </xf:item>
+        <xf:item>
+            <xf:label><![CDATA[new row]]></xf:label>
+            <xf:value><![CDATA[]]></xf:value>
+        </xf:item>
+    </xf:choices>
+</xf:select

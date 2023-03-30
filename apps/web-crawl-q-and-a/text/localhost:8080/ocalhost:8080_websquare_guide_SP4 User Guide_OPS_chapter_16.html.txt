@@ -1,0 +1,64 @@
+
+Navigation16.Navigation16.1Accordion표 16-1.컴포넌트 설명요약여러 개의 패널에 컨텐츠를 표시하는 기능을 제공. 기능 및 특징서로 다른 컨텐트를 담은 패널 여러 개를 포함하며, 각 패널의 추가, 삭제, 열기/닫기가 가능한 컴포넌트. 주요 용도서로 다른 컨텐츠를 패널 별로 분리해서 한 화면에 표시할 때 유용.그림 16-1.Accordion16.2Menu표 16-2.컴포넌트 설명요약메뉴를 구성. 기능 및 특징TreeView와 같은 형태의 데이터를 사용.그림 16-2.Menu16.3PageControl표 16-3.컴포넌트 설명요약페이지 이동용 UI를 제공. 기능 및 특징단순히 앞으로 가기 및 뒤로 가기의 기능만 제공.주요 용도전체 페이지 수 및 페이지 당 표시하고 싶은 데이터 수는 직접 구현해야 함.그림 16-3.PageControl16.4PageList표 16-4.컴포넌트 설명요약페이지 수와 페이지를 선택하는 인터페이스를 제공관련 동영상PageList그림 16-4.PageList16.4.1페이지 이동displaySearchbox="true" 속성 설정을 통해 페이지 번호 입력란을 추가할 수 있습니다. 최종 사용자가 페이지 번호 입력 란에 페이지 번호를 입력 후 엔터키를 치거나 입력 상자를 빠져나올 경우 해당 페이지가 바로 출력됩니다.그림 16-5.displaySearchbox="true" Vs. displaySearchbox="false"그림 16-6.YouTube 동영상 (https://youtu.be/iWo8SKPH_-0)16.4.2페이지 이동 버튼 표시페이지 이동 버튼 지정buttonShowType="0": 이전/다음 목록 버튼만 표시 (2개)buttonShowType="1" (기본 값): 이전/다음 페이지 + 이전/다음 목록 버튼 (4개)buttonShowType="2": 이전/다음 페이지 버튼만 표시 (2개)buttonShowType="3": 이전/처음 목록 + 첫/끝 페이지 버튼 (4개)buttonShowType="4": 첫/이전 페이지 + 다음/끝 페이지 버튼 (4개)buttonShowType 속성을 통해 페이지 이동 버튼의 종류를 지정할 수 있습니다.표 16-5.buttonShowType="0"|◀11 12 13 14 15▶|(이전 목록으로 이동)(다음 목록으로 이동)표 16-6.buttonShowType="1"|◀◀11 12 13 14 15▶▶|(이전 목록으로 이동)(이전 페이지로 이동)(다음 페이지로 이동)(다음 목록으로 이동)표 16-7.buttonShowType="2"|◀11 12 13 14 15▶|(이전 페이지로 이동)(다음 페이지로 이동)표 16-8.buttonShowType="3"|◀◀11 12 13 14 15▶▶|(첫 페이지로 이동)(이전 목록으로 이동)(다음 목록으로 이동)(끝 페이지로 이동)표 16-9.buttonShowType="4"|◀◀8 9 10 11 12▶▶|(첫 페이지로 이동)(이전 페이지로 이동)(다음 페이지로 이동)(끝 페이지로 이동)16.4.3예제 (페이지 번호 구현)PageControl 컴포넌트는 단순히 앞으로가기, 뒤로가기의 기능만 제공합니다. 즉, 개발자가 직접 전체 페이지 수, 페이지당 표시하고 싶은 데이터 수 등을 구현해야 합니다.DataCollection의 경우, (1) 데이터를 포함하고 있는 DataCollection에서 원하는 양의 데이터를 가져와, (2) 새로운 DataCollection을 만들고, (3) 그 안에 넣어 GridView 컴포넌트에 바인딩 시켜줘야 합니다.예를 들어,25개의 데이터를 포함하고 있는 DataCollection이 있고, GridView 컴포넌트에 페이지당 5개의 데이터를 표시하고 싶다면, (1) PageControl 컴포넌트 이벤트를 통해 DataCollection에서 데이터 5개를 가져와서, (2) 새로운 DataCollection에 넣어주고, (3) 새로 만든 DataCollection을 GridView와 바인딩해야 합니다.코드 16-1.PageControl<head>
+    <script type="javascript"><![CDATA[ 
+       var dataObject = $p.data.dataList1.getAllJSON();
+      var dataObject1 = [];
+       var i = 0;
+       var columnNum = 19;
+       var row = 5;
+       var start = 0;
+       
+       function init(){
+        //화면이 처음 생성되면 초기화
+        if(dataObject.length % row == 0){
+               var pageConNum = dataObject.length/row;
+        }
+        else{
+            var pageConNum = (dataObject.length/row)+1;
+        }
+           pageControl2.setCount( pageConNum );
+           dataSwitch(1,0);
+       }
+
+       function dataSwitch(current, before){
+        //데이터를 포함하고 있는 DataCollection의 데이터를 원하는 만큼 복사
+           dataObject1 = [];
+
+           if(before == 0){
+               start = 0;
+           }
+           else {
+               start = row*before;
+           }
+           
+               for(i=start; i<(row*current); i++){
+                   dataObject1.push(dataObject[i]);
+               }
+          dataList2.setJSON(dataObject1);
+       }
+
+    
+    scwin.pageControl2_onchange = function(current,before){
+        // 페이지컨트롤 컴포넌트의 버튼이 클릭되면 이벤트 발생
+        if(current != before){
+            dataSwitch(current, before);
+        }
+    };
+    
+    init();
+    ]]></script>
+</head>
+<body>
+    <w2:pageControl ev:onchange="scwin.pageControl2_onchange" rotation="false" pagingType="1" id="pageControl2" class="">
+    </w2:pageControl>
+</body>16.5TreeView표 16-10.컴포넌트 설명요약계층적인 데이터를 트리 형태로 표시기능 및 특징드래그-앤-드롭을 통한 동적 편집 가능일반 데이터를 계층적인 데이터 형태로 변환 가능관련 동영상TreeView16.5.1데이터 입력 (Inner XML / ItemSet)그림 16-7.Innter XML아래와 같이 데이터 입력 방법을 선택한 후, 각 노드의 정보를 설정하고 [OK] 버튼을 클릭하십시오.Inner XML: 데이터를 직접 입력ItemSet: DataList와 바인딩표 16-11.TreeView 설정 방법(1)Inner XMLItemSet(2)아래의 버튼으로 구성한 TreeView를 표시(3)Add Child: 하위에 노드 추가Add Sibling: 같은 수준에 노드 추가Delete: 노드 삭제(4)TreeView 상에 표시된 각 노드의 정보Label: 노드 라벨 (직접 입력)Value: 노드 값 (직접 입력)NodeSet: 바인딩할 DataList의 IDLabel: 노드 라벨 (DataList의 칼럼)Value: 노드 값 (DataList의 칼럼)Depth: 노드 수준 혹은 TreeView 상의 노드의 위치 (DataList의 칼럼)(5) Image: 노드 이미지Icon: 노드 아이콘Selected Image: 노드가 선택된 상태를 표시할 이미지Expanded Image: 노드가 펼쳐진 상태를 표시할 이미지Leaf: 노드 하위의 항목을 표시할 이미지아래 함수를 사용하여 해당 노드는 물론 자녀 노드까지 선택/해제 할 수 있습니다.16.5.2동적 노드 선택 및 해제checkByIndex( index , checkValue , childCheck )index: 노드 인덱스.checkValue: 선택 및 해제 여부childCheck: 자녀 노드의 선택 및 해제 여부코드 16-2.사용 예 (Index가 1인 노드 및 하위 노드를 모두 선택)treeview1.checkByIndex( 1 , true, true);16.5.3노드 정보 확인아래 함수를 사용하여 노드의 자식 포함 여부를 확인할 수 있습니다.코드 16-3.사용 예 (1)treeview1.findNodeByIndex(1).hasChild();코드 16-4.사용 예 (2)treeview1.findNodeByValue('menu02').hasChild();혹은 노드가 자식인지를 확인할 수 있습니다.코드 16-5.사용 예 (1)treeview1.findNodeByIndex(1).isLeaf();16.5.4노드 라벨 포맷customFormatter  속성에 각 노드의 label 값을 포맷하는 함수명을 지정할 수 있습니다. 단, 해당 함수는 별도의 스크립트로 직접 작성해야 합니다.코드 16-6.사용 예treeViewFormatter = function(orgLabel, label, node ) {
+    return node.label+"_"+node.index;
+};
+
+(중략)
+
+<w2:treeview ... customFormatter="treeViewFormatter">16.5.5노드 접기/펼치기표 16-12.노드 접기/펼치기항목설명관련 함수spanAll();: 트리 전체의 접기/펼치기 설정.spanNode();: 자식 노드의 접기/펼치기 설정그림 16-8.YouTube 동영상 (https://youtu.be/UpKNI0UyquQ)16.5.6체크박스16.5.6.1표시하기showCheckbox 속성을 사용하여 TreeView 각 항목 앞에 체크박스를 표시할 수 있습니다. 또한, showCheckbox 속성은 setShowChecBox() 함수를 사용하여 동적으로 설정할 수 있습니다.그림 16-9.showCheckbox="false"그림 16-10.showCheckbox="true"코드 16-7.사용 예// showCheckbox 속성을 "true"로 설정
+treeview1.setShowCheckBox(true);
+
+// showCheckbox 속성을 "false"로 설정
+treeview1.setShowCheckBox(false);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TreeView/showCheckbox_setShowCheckBox_TreeView.xml)그림 16-11.YouTube 동영상 (https://youtu.be/WpGLtdALi3U)16.5.6.2계층 적용하기hierarchy="true" 속성을 추가하면, 부모의 체크박스를 선택할 때 자식 노드를 모두 한번에 선택할 수 있습니다. 또한 자식 일부만 선택될 경우, 부모의 체크박스는 부분 선택으로 표시됩니다.그림 16-12.showCheckBox="true" hierarchy="true"그림 16-13.showCheckBox="true" hierarchy="false"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TreeView/showCheckbox_hierarchy_TreeView.xml)그림 16-14.YouTube 동영상 (https://youtu.be/5lO3ZLmhBHc)

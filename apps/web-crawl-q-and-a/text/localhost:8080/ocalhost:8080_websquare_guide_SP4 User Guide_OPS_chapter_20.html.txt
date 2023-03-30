@@ -1,0 +1,150 @@
+
+팝업20.팝업20.1팝업 프레임 종류 (options.type)$p.openPopup() 함수를 사용하여 아래와 같이 세 종류(type)의 팝업을 생성할 수 있습니다.표 20-1.팝업 종류 (type)옵션설명비고wframePopupWFrame 내에 팝업 화면을 호출.Scope 기능 지원. 권장. iframePopupIFrame 내에 팝업 화면을 호출. 비권장. 외부 도메인과 연동시 사용. 외부 솔루션과 연동 시 사용. browserPopup브라우저가 제공하는 native 윈도우에 팝업 화면을 호출. 팝업 호출을 위해 별도의 프로세스를 생성. URL 주소가 노출됨. 비권장. 별도 창이 필요한 경우 사용. 아래 예제와 같이 type을 wframePopup으로 지정하면 WFrame 팝업을 생성할 수 있습니다.코드 20-1.WFrame 팝업 생성 예제var options = {
+    id : "popup1",
+    type : "wframePopup",
+    popupName : "openPopup1",
+    modal : "true",
+    ……
+};
+$p.openPopup("popup1.xml", options);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/PopUp/openPopup_$p/)그림 20-1.YouTube 동영상 (https://youtu.be/fHg53aOuMgM)20.2모달 팝업 (options.modal)$p.openPopup() 함수를 사용하여 팝업을 생성할 때 options.modal 옵션을 통해 모달 혹은 모달리스 팝업으로 생성할 수 있습니다.코드 20-2.모달 팝업 생성 예제var options = {
+    id: "modal",
+    type: “wframePopup", // "iframePopup", "browserPopup"
+    width: "400px",
+    height: "200px",
+    popupName: "Modal Popup",
+    modal: "true"
+};
+
+$p.openPopup("popUp_content.xml", options);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/PopUp/openPopup__modal_$p/)그림 20-2.YouTube 동영상 (https://youtu.be/vf18BZmGuoQ)20.3프레임 모달 팝업 (options.frameModal)특정 프레임 영역에만 표시되는 팝업을 프레임 모달 팝업이라고 합니다. $p.openPopup() 함수를 통해 팝업 생성 시 options.frameModal 옵션 속성 설정을 통해 팝업을 표시할 프레임을 지정할 수 있습니다.options.frameModal"frame" - 팝업이 호출된 프레임"parent" - 팝업이 호출된 프레임의 부모 프레임"top" - 최상단 화면frameId - 팝업을 표시할 프레임의 ID. ($p.getFrame() 등을 통해 해당 프레임에 직접 접근해서 구함.)코드 20-3.사용 예var frameId = $p.getFrame().getParentFrame().getParentFrame().id;
+
+var options = {
+    id: "modal",
+    type: "wframePopup", // "iframePopup", "browserPopup"
+    width: "400px",
+    height: "200px",
+    top: "100px",
+    left: "200px",
+    popupName: "Frame Modal Popup",
+    modal: "true",
+    frameModal: frameId // "frame" "parent" "top"  framdId
+};
+
+$p.openPopup("14_popUp_02A_src.xml", options);그림 20-3.frameModal : "frame"그림 20-4.frameModal : "parent"그림 20-5.frameModal : "top"그림 20-6.framdModal : frameId예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/PopUp/openPopup_frameModal_$p/)그림 20-7.YouTube 동영상 (https://youtu.be/R2pEQDkH6Yw)20.4부모 – 자식 팝업 함께 닫기WFrame, WindowContainer, TabControl 내에서 이중으로 팝업을 생성할 경우, 모든 자식 팝업을 부모 팝업과 함께 닫을 수 있습니다. 좀 더 자세한 설명은 각 컴포넌트의 해당 항목을 참고하십시오.WFrame – 팝업 생성 및 팝업 닫기TabControl – 부모 – 자식 팝업 닫기WindowContainer – 부모 – 자식 팝업 닫기20.5팝업 간 참조WFrame으로 생성한 팝업은 $p.getPopupWindow 및 $p.parent API를 통해 참조할 수 있습니다.표 20-2.popup1의 scwin.test1(); 실행하기스크립트 위치접근 방법main$p.getPopupWindow("popup1").scwin.test();wframe1$p.parent().scwin.test();20.5.1팝업을 호출한 화면 (부모)표 20-3.참조 방법API설명$p.openPopup(url, options)팝업을 호출. $p.getPopupWindow(popupID)popupID에 해당하는 팝업에 접근.$p.getPopup(popupID)$p.closePopup(popupID)popupID에 해당하는 팝업을 닫음.20.5.2팝업으로 생성된 화면 (자식)표 20-4.참조 방법API설명$p.getParameter(name)파라미터 반환.$p.getPopupParam()팝업 파라미터 반환.$p.isPopup()현재 화면이 팝업인지 검사. $p.getPopupUrl()popupURL 반환.$p.getPopupId()popupID 반환.$p.getParameter메인 화면 및 팝업으로 사용할 수 있는 페이지의 경우, 기존의 $p.getPopupParam() 대신 $p.getParameter()로 API를 사용할 것을 권장합니다.20.5.3파라미터 전달$p.openPopup() 함수로 새로 생성하는 팝업으로 dataObject를 통해 파라미터를 전달할 수 있습니다. 생성된 팝업에서는 $p.getParameter() 함수를 통해 전달받은 파라미터 확인 가능합니다.코드 20-4.$p.openPopup() 함수로 팝업을 생성할 때 파라미터 전달 (예시)requires("uiplugin.popup");
+
+var rowJSON = {
+  "Product Info": {
+    "Origin": "Korea",
+    "Manufacturer": "Inswave",
+    "Type": "Software"
+  },
+  "Region": "Seoul",
+  "Carrier": true
+};
+
+var dataObject = {
+  "type": "json",
+  "name": "param",
+  "data": rowJSON
+};
+
+var options = {
+  id: "popup1",
+  type: "wframePopup",
+  height: "300px",
+  width: "300px",
+  dataObject: dataObject
+};
+
+$p.openPopup("src.xml", options);코드 20-5.팝업창에서 전달받은 파라미터 확인 (예시)var paramData = $p.getParameter("param");
+var data = JSON.stringify(paramData);
+alert(data);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/PopUp/getParameter_$p_openPopup_$p/)그림 20-8.YouTube 동영상 (https://youtu.be/yY6C3uO08sM)20.6이중 팝업20.6.1자식 → 부모$p.parent().$p.parent().input1.getValue();$p.main().input1.getValue();20.6.2부모 → 자식$p.getPopupWindow("popup1").$p.getPopupWindow("popup11").scwin.test();20.6.3형제$p.main().$p.getPopupWindow("popup2").$p.getPopupWindow("popup2-1").scwin.test();20.7dataObject를 통한 파라미터 전달20.8서브미션 상태창 표시20.8.1$p.openPopup()20.8.1.1상태창을 팝업 내부 혹은 외부에 표시options.processMsagFrame="true" 옵션으로 $p.openPopup() 함수를 실행하여 팝업을 생성할 때, 팝업 페이지 로딩 후에 즉시 $p.executeSubmission() 함수를 실행할 경우 (예: 팝업 페이지의 onpageload 이벤트를 사용), 서브미션 상태창을 팝업 내부 혹은 외부에 표시할 수 있습니다.config.xml 파일의 <popup> – <lazyPopup> 항목을 아래와 같이 설정하십시오."true" : 서브미션 상태 창이 팝업 외부에 표시됨. "false" (기본 값) : 서브미션 상태 창이 팝업 내부에 표시됨.코드 20-6.설정 예<WebSquare>
+    <popup>
+        <lazyPopup value="true"/>
+    </popup>
+</WebSquare>예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_config_xml/popup_lazyPopup_config_xml/)그림 20-9.YouTube 동영상 (https://youtu.be/AwDMAuK3H7c)20.8.2TabControl20.8.2.1상태창 표시WFrame으로 생성한 탭의 src 화면이 서브미션을 포함할 경우, 서브미션 실행 시 표시되는 상태창을 WFrame 탭 내부에 표시할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/processMsgFrame_TabControl/)그림 20-10.YouTube 동영상 (https://youtu.be/81GMTGsBQ8U)20.8.2.2상태창 소스 변경Config.xml 파일의 <processMsgFrameURL> 항목 설정을 변경하여 해당 상태창의 소스를 변경할 수도 있습니다.코드 20-7.config.xml 설정 예<WebSquare>
+  ...
+      <processMsgFrameURL value="/message/processMsg.xml"/> 
+  ... 
+</WebSquare>예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/processMsgFrameURL_config_processMsgFrame_TabControl/)그림 20-11.YouTube 동영상 (https://youtu.be/4wbUEkA0uM4)20.8.3WFrame20.8.3.1상태창 표시WFrame의 src 화면이 서브미션을 포함할 경우, 서브미션 실행 시 표시되는 상태창을 WFrame 내부에 표시할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WFrame/processMsgFrame_WFrame/)그림 20-12.YouTube 동영상 (https://youtu.be/_8P0BSOPnok)20.8.3.2상태창 소스 변경Config.xml 파일의 <processMsgFrameURL> 항목 설정을 변경하여 해당 상태창의 소스를 변경할 수도 있습니다.코드 20-8.config.xml 설정 예<WebSquare>
+  ...
+      <processMsgFrameURL value="/message/processMsg.xml"/> 
+  ... 
+</WebSquare>예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WFrame/processMsgFrameURL_config_processMsgFrame_WFrame/)그림 20-13.YouTube 동영상 (https://youtu.be/o62s3Y4INXA)20.8.4WindowContainer20.8.4.1상태창 표시WFrame으로 생성한 윈도우의 src 화면이 서브미션을 포함할 경우, 서브미션 실행 시 표시되는 상태창을 WFrame 탭 내부에 표시할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/processMsgFrame_WindowContainer/)그림 20-14.YouTube 동영상 (https://youtu.be/bXRYOzQY6jk)20.8.4.2상태창 소스 변경Config.xml 파일의 <processMsgFrameURL> 항목 설정을 변경하여 해당 상태창의 소스를 변경할 수도 있습니다.코드 20-9.config.xml 설정 예<WebSquare>
+  ...
+      <processMsgFrameURL value="/message/processMsg.xml"/> 
+  ... 
+</WebSquare>예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/processMsgFrameURL_config_processMsgFrame_WindowContainer/)그림 20-15.YouTube 동영상 (https://youtu.be/QdjUZ_RjPxk)20.9팝업 제어20.9.1전체 화면아래와 같이 fullscreen:true옵션을 사용하여 화면 전체에 팝업을 표시할 수 있습니다.코드 20-10.사용 예$p.openPopup( 'popup.xml', { id:'popup1', fullscreen:true } );해당 속성은 IE에서만 지원. 크롬, 사파리, 오페라 등은 추후 지원 예정.그림 20-16.YouTube 동영상 (https://youtu.be/ZVnDEldLee0)20.9.2팝업창 버튼$p.openPopup으로 팝업을 생성할 경우, 아래의 옵션을 사용하여 팝업창의 크기를 조절하는 버튼을 제어할 수 있습니다.useControl: 버튼의 표시 여부 결정.controls: 표시할 버튼의 종류를 결정. (최대화, 최소화, 복원)코드 20-11.사용 예$p.openPopup("Popup.xml", {
+    ...
+
+    useControl: true,
+    controls: {
+        minimize: true,
+        maximize: true,
+        close: true,
+    },
+    foldOnMinimized: true,
+    foldSize: {
+        width: 100
+    }
+});20.9.3팝업창 최소화관련 옵션options.foldOnMinimized: true 최소화 버튼을 누를 경우 바디를 접음options.foldSize: {width: 300} 접은 바디의 폭코드 20-12.사용 예$p.openPopup("./popup.xml", {
+    ...
+
+    foldOnMinimized: true,
+    foldSize: {
+        width: 500
+    }
+});20.9.4최상단 팝업여러 팝업을 생성하는 경우, 가장 최상단에 표시할 팝업을 지정하고 해당 팝업을 활성화할 수 있습니다.표 20-5.관련 속성속성설명modal모달 기능 사용 여부 지정.useModalStack여러 개의 팝업이 출력될 경우, 제일 마지막에 출력되는 팝업만 활성화.modal="true" 설정을 사용할 경우 유효.alwaysOnTop생성하는 팝업을 항상 제일 위에 표시.코드 20-13.새로 생성하는 팝업을 제일 위에 표시하고 활성화var options = {
+    type: "browserPopup",
+    ...
+    modal: true,
+    useModalStack: true,
+    alwaysOnTop: true
+};
+$p.openPopup("popup_parent.xml", options);20.9.5팝업 확인 및 접근20.9.5.1WFrame 팝업$p.getPopupWindow() 함수를 사용하여, 주어진 ID에 해당하는 type="wframePopup" 팝업 윈도우를 객체로 반환할 수 있습니다.코드 20-14.사용 예// 팝업 윈도우 반환. Return the popup. 
+var window = $p.getPopupWindow("popup1");
+
+// 팝업 내의 "text1" 컴포넌트에 접근. Access "text1" component in the popup. 
+var textValue = window.text1.getValue();
+
+alert(textValue);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/$p/PopUp/getPopupWindow_$p/)그림 20-17.YouTube 동영상 (https://youtu.be/HWMIfBt6MOw)20.9.5.2모든 종류의 팝업getAllPopupList() 함수를 사용하면 type="iframePopup" 및 type="browserPopup" 그리고 type="wframePopup" 팝업을 포함한 현재 열려 있는 모든 팝업 객체를 반환하고 해당 팝업 객체에 접근할 수 있습니다.코드 20-15.사용 예var popWinList = $p.getAllPopupWindowList(true);
+for (var i = 0; i < popWinList.length; i++ ) {
+    console.log(popWinList[i].text1.getValue());
+}예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK에서 보기 (/$p/PopUp/getAllPopupWindowList_$p/)그림 20-18.YouTube 동영상 (https://youtu.be/qYy9EjFJVbA)20.9.6팝업 목록 확인20.9.6.1WFrame 팝업현재 열려 있는 WFrame으로 팝업은 $p.getPopupWindowList() 함수를 통해 확인한 후 각 type="wframePopup" 팝업에 접근할 수 있습니다.코드 20-16.사용 예var popUps = $p.getPopupWindowList();
+var eachValue;
+var allValues = "";
+var i;
+for (i = 0; i < popUps.length; i++) {
+    eachValue = popUps[i].text1.getValue();
+    allValues += eachValue + " ";
+}
+alert(allValues);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/$p/PopUp/getPopupWindowList_$p/)그림 20-19.YouTube 동영상 (https://youtu.be/T6Jz2O14CKo)20.9.6.2모든 종류의 팝업getAllPopupList() 함수를 사용하면 type="iframePopup" 및 type="browserPopup" 그리고 type="wframePopup" 팝업을 포함한 현재 열려 있는 모든 팝업 객체를 반환할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK에서 보기 (/$p/PopUp/getAllPopupList_$p/)그림 20-20.YouTube 동영상 (https://youtu.be/DPxCM7q6kNQ)20.9.7팝업 여부 확인$p.isPopup() 함수를 사용하여 현재 화면 혹은 부모 화면의 팝업 여부를 확인할 수 있습니다. (단, 팝업이 wframePopup 혹은 browserPopup인 경우에 한합니다.)그림 20-21.팝업에 포함된 WFrame에서 자신 및 부모 화면이 팝업인지 여부를 확인코드 20-17.사용 예// Case (1)
+// 현재 화면이 팝업인지 여부를 반환. true/false 반환.
+var ispopup = $p.isPopup();
+
+// Case (2) 
+// WFrame 팝업 혹은 브라우저 팝업 내에 WFrame이 있는 경우, 
+// 부모의 팝업 여부를 자식 WFrame에서 확인. 
+var ispopup = $p.isPopup(true);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/PopUp/isPopUp_$p/)그림 20-22.YouTube 동영상 (https://youtu.be/MbaDvgdtVIQ)20.9.8WFrame 팝업 확인$p.isWFramePopup() 함수를 사용하여 현재 화면 혹은 부모 화면이 WFrame 팝업인지 여부를 확인할 수 있습니다.그림 20-23.팝업에 포함된 WFrame에서 자신 및 부모 화면이 WFrame 팝업인지 여부를 확인코드 20-18.사용 예// Case (1)
+// 현재 화면이 팝업인지 여부를 반환. true/false 반환.
+var isWFrame = $p.isWFramePopup();
+
+// Case (2) 
+// WFrame 팝업 혹은 브라우저 팝업 내에 WFrame이 있는 경우, 
+// 부모의 WFrame 팝업 여부를 자식 WFrame에서 확인. 
+var isWFrame = $p.isWFramePopup(true);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/PopUp/isWFramePopUp_$p/)그림 20-24.YouTube 동영상 (https://youtu.be/8_M6tXdgwgM)20.9.9팝업을 닫을 때 실행할 함수 지정$p.openPopup() 함수를 사용하여 팝업을 생성하고, 해당 팝업을 닫기 (X) 버튼을 클릭하여 닫을 때, 팝업을 닫기 전에 호출할 사용자 정의 함수를 options.closeAction 옵션을 통해 지정할 수 있습니다.코드 20-19.팝업 생성 예requires("uiplugin.popup");
+
+var options = {
+  id: "popup1",
+  type: "wframePopup",
+  closeAction: "scwin.closeAction"
+};
+
+$p.openPopup("popup1.xml", options);코드 20-20.options.closeAction 옵션으로 지정한 함수 정의scwin.closeAction = function(id, info) {
+  if (!info.isCloseButtonClick) {
+    return true;
+  }
+  console.log("scwin.closeAction is about to be run.");
+  return true;
+};
+
+// info.isCloseButtonClick : 팝업의 닫기 버튼을 클릭한 경우 true 값을 반환.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/PopUp/openPopup_closeAction_$p.xml)그림 20-25.YouTube 동영상 (https://youtu.be/kq_mC97YZeI)

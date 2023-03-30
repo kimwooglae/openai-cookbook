@@ -1,0 +1,32 @@
+
+WidgetContainer83.WidgetContainer수정 일자 버전 (SP2)WebSquare5 Studio : 20180117_1349_x86_BWebSquare5 Engine : 5.0_2.2982B.20180223.154326_1.5WidgetContainer는 그 내부에 widget들을 포함하고 있으며 widget들의 상호작용을 관리하는 컴포넌트입니다.WidgetContainer 는 내부적으로 이차원 격자로 이루어져있습니다. 단위 길이는 cols만큼 WidgetContainer 의 가로 길이를 나눈 값이고, 단위 높이는 unitHeightPixel 입니다.WidgetContainer를 사용하면 해당 이차원 격자 구조 내에서 widget들을 옮기거나 크기를 바꿀 수 있습니다.또한, WidgetContainer는 내부의 widget들의 정보를 JSON을 통해 추출하고 원복할 수 있는 기능을 제공함으로써 특정 화면 설정을 저장할 수 있습니다.83.1PropertyPropertyDescriptioncols SP2WidgetContainer의 열의 갯수. WidgetContainer은 자신의 가로 길이를 cols의 갯수만큼 나누어 단위 길이를 결정한다.horizontalMargin SP2widget간의 수평 마진의 픽셀값.id SP2컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.maxUnitHeight SP2widget의 최대 단위 높이.maxUnitWidth SP2widget의 최대 단위 길이.minUnitHeight SP2widget의 최소 단위 높이.minUnitWidth SP2widget의 최소 단위 길이.mode SP2widget간의 충돌에 대한 WidgetContainer의 기본동작을 설정한다.pushpull : 가능한 모든 widget을 위로 끌어 올리며, 충돌이 일어나는 경우 충돌이 일어난 widget들을 아래로 밀어 내린다.switch : 충돌이 일어날 시 충돌이 발생한 widget과 위치전환을 시도한다. 단, 자신보다 작은 widget과만 위치전환이 가능하다.params SP2widget 객체가 저장하고 있는 사용자 정의 데이터.런타임 도중에 setParams를 통해 재정의 될 수 있고, getParams를 통해 가져올 수 있다.또한, 이 값은 getWidgetInfo나 exportWidgets 시 'params'라는 속성으로 추출된다.threshold SP2WidgetContainer의 가로 사이즈가 threshold보다 작아지면, 하나의 칼럼에 위젯들을 나열한다.또한, threshold를 넘었을 경우 move와 resize가 불가능해진다.모바일 편의성을 위한 옵션으로, 설정하지 않았을 경우 widgetContainer의 사이즈가 작아져도 위젯들은 원래의 위치에 렌더된다unitHeightPixel SP2WidgetContainer의 단위 높이의 픽셀값. unitHeightPixel은 height === 1 인 widget의 실제 높이가 된다.verticalMargin SP2widget간의 수직 마진의 픽셀값.widgetMove SP2widget들의 이동 가능 여부.widgetResize SP2widget들의 리사이징 가능 여부.83.2브라우저 캡쳐화면그림 83-1.WidgetContainer default 스타일83.3class 적용과 스타일 변경그림 83-2.ScheduleCalendar default 스타일.w2widget {
+    box-sizing: border-box;
+    border: 1px solid #5d88c3
+}
+.w2widget .w2widget_icon {
+    display: none;
+}
+.w2widget .w2widget_title {
+    height: 20px;
+    background: #5d88c3;
+}
+.w2widget .w2widget_title_text {
+    width: 70% !important;
+    line-height: 20px;
+    font-family: '맑은 고딕', sans-serif;
+    color: #fff;
+}
+.w2widget .w2widget_title_buttons {
+    margin-top: 3px;
+}
+.w2widget .w2widget_title_buttons .w2widget_btnFix,
+.w2widget .w2widget_title_buttons .w2widget_btnMinimize,
+.w2widget .w2widget_title_buttons .w2widget_btnMaximize,
+.w2widget .w2widget_title_buttons .w2widget_btnClose {
+    margin-left: 3px;
+}
+.w2widget .w2widget_content {
+    top: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+}83.4CSS Overriding그림 83-3.ScheduleCalendar default 스타일NoClassDescription1w2widgetwidget 아이템을 감싸는 영역 입니다.2w2widget_titlewidget title 영역 입니다.3w2widget_contentwidget contents 영역 입니다.

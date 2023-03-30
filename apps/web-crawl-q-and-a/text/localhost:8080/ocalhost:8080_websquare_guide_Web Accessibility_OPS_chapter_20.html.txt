@@ -1,0 +1,2 @@
+
+Output20.Output20.1OutputTextbox component와 동일하게 사용이 가능합니다. 현재는 Textbox component 사용을 권장합니다.

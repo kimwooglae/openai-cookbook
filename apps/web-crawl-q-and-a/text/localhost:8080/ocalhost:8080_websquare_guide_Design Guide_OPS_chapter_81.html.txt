@@ -1,0 +1,2 @@
+
+Video81.VideoHTML5 에서 새로 추가된 태그 입니다. 플러그인없이 동영상을 웹으로 보여줄 수 있습니다.81.1PropertyPropertyDescriptioncontrols브라우저가 제공하는 재생도구를 표시합니다.id컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.81.2브라우저 캡쳐화면그림 81-1.0181.3CSS Overriding그림 81-2.02NoClassDescription1inlinewebsquare의 style 편집기에서 해당 style을 직접 수정합니다.81.4주의사항 및 Tiphtml5에 추가 요소로서 웹스퀘어 에서의 컴포넌트 로서는 따로 속성이 없으며 필요할경우 Attribute Add로 버튼으로 속성을 추가해준다.

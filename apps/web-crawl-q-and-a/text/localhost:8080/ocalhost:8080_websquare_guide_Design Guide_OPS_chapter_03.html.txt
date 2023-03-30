@@ -1,0 +1,2 @@
+
+stylesheet.css3.stylesheet.css위에서 언급했던 웹스퀘어 엔진 내에서의 기본적으로 삽입되는 CSS class의 기본 설정이 담겨있는 css 파일입니다. 이 파일은 로컬엔진 사용시 websquare(웹스퀘어 설치 폴더)\plugins\com.inswave.websquare.webapp.engine_1.0.0.xxxxxxxxxxxx\websquare\skin\stylesheet.css에 위치해 있습니다. 프로젝트에서 개빌 및 운영 환경에서는 별도의 위치가 존재하기 때문에, 수정이 필요할 때에는 프로젝트의 Resuorce 관리를 하는 담당자에게 논의를 하여야 합니다.로컬엔진 사용시 파일을 수정하게 되면, 로컬에 있는 모든 웹스퀘어 프로젝트에 영향이 가게 됩니다. 그러므로 부득이한 수정이 아닐 경우에 별도의 CSS 파일을 생성하여 적절한 우선순위를 고려하여 기존 stylesheet.css에서 설정하였던 스타일을 오버라이딩 하는 방법이 권장사항입니다.

@@ -1,0 +1,2 @@
+
+Snippets 불러오기6.Snippets 불러오기Snippets 불러오기는 Snippets View 우측 상단의 Import Snippets 아이콘()을 클릭하여 불러오기를 합니다.Snippets 가 있는 위치를 설정하고 가져올 Snippets 를 선택합니다. 등록이 되어 있지 않은 Snippets 목록만 보여집니다.import 가 완료되면 Snippets View에 자동으로 등록되어 사용할 수 있습니다. import 한 Snippets 은 [최상위 폴더] 에 있기 때문에 경로를 수정하기 위해서는 이동시킬 Snippet 을 선택하고 마우스 우클릭 > 수정 메뉴에서 경로를 수정할 수 있습니다.그림 6-1.8알아두어야 할점새로운 Project를 생성 하거나 기존에 사용하고 있는 Project에 Snippets를 Import 시켰을 경우 Snippets에 사용되는 CSS가 새로 생성된 Project나 기존 Project에 존재해야 합니다.

@@ -1,0 +1,2 @@
+
+Header14.Header14.1Headerhtml5 태그로 Header영역을 지정할 때 사용한다. 접근성과 직접적인 관계는 없습니다.

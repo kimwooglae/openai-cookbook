@@ -1,0 +1,114 @@
+
+
+
+WebSquare.layer 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.layer - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+모달 레이어를 제어하는 기능을 제공.
+
+Type
+
+
+engine
+
+Property Summary
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+
+hideModal(
+									  
+										)
+								
+
+모달 레이어를 숨김
+
+
+
+showModal(
+									  popupComponents
+										)
+								
+
+모달 레이어를 띄우고 componentId를 팝업으로 표시
+
+
+
+Property Detail
+
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+hideModal(
+									  
+										)
+							
+
+모달 레이어를 숨김.
+
+
+
+
+
+showModal(
+									  popupComponents
+										)
+							
+
+모달 레이어를 띄우고 componentId를 팝업으로 표시.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+popupComponentsArrayN팝업으로 표시할 ComponentId 배열
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

@@ -1,0 +1,109 @@
+
+
+
+WebSquare.uiplugin.Workflow 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.Workflow - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+워크플로우. workflow를 정의.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+description
+
+Workflow 설명을 입력
+
+
+
+id
+
+Workflow ID. 
+
+
+
+rejectCallback
+
+작업 처리 도중 에러 발생시 호출할 함수에 대해서 정의
+
+
+
+resolveCallback
+
+처리해야 할 작업이 모두 완료된 다음 호출할 함수에 대해서 정의
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+Property Detail
+
+
+
+
+description
+
+Workflow 설명을 입력.
+
+
+id
+
+Workflow ID. Workflow ID는 전역 객체로 할당됨. 각 Workflow ID를 통해 Script에서 해당 Workflow에 접근 가능.
+
+
+rejectCallback
+
+작업 처리 도중 에러 발생시 호출할 함수에 대해서 정의.
+
+
+resolveCallback
+
+처리해야 할 작업이 모두 완료된 다음 호출할 함수에 대해서 정의.
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

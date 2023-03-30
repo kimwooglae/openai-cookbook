@@ -1,0 +1,87 @@
+
+
+
+WebSquare.uiplugin.dataCollection 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.dataCollection - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+dataCollection을 정의합니다.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+attributeMap
+
+dataCollection attributeMap
+
+
+
+baseNode
+
+dataCollection baseNode
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+Property Detail
+
+
+
+
+attributeMap
+
+dataCollection attributeMap
+
+
+baseNode
+
+dataCollection baseNode
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

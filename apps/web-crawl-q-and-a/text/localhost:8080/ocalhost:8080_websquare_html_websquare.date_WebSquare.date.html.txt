@@ -1,0 +1,725 @@
+
+
+
+WebSquare.date 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.date - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+날짜 및 시간 관리용 API를 제공.
+
+Type
+
+
+engine
+
+Property Summary
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+
+dateAdd(
+									  day1
+									       , 
+									       offset
+										)
+								
+
+날짜에 지정된 수만큼 더합니다
+
+
+
+dateDiff(
+									  day1
+									       , 
+									       day2
+										)
+								
+
+두 날짜 사이의 차이를 반환합니다
+
+
+
+dateTimeAdd(
+									  day1
+									       , 
+									       offset
+									       , 
+									       type
+										)
+								
+
+날짜 및 시간에 지정된 수만큼 더합니다.( date + offset )
+
+
+
+getCurrentServerDate(
+									  pattern
+										)
+								
+
+서버의 현재 시간을 반환합니다.
+
+
+
+getDay(
+									  dateFormatStr
+										)
+								
+
+"yyyyMMdd" 형태의 날짜를 입력받아서 해당 요일을 반환합니다
+
+
+
+getFormattedDate(
+									  dateObj
+									       , 
+									       pattern
+										)
+								
+
+Date객체를 받아서 지정된 format으로 시간을 반환합니다.
+
+
+
+getIOFormatDate(
+									  value
+									       , 
+									       ioFormat
+									       , 
+									       calendarValueType
+										)
+								
+
+날짜 값과 ioFormat 그리고 calendarValueType을 입력 받아서 
+
+
+
+getIOUnFormatDate(
+									  value
+									       , 
+									       ioFormat
+									       , 
+									       calendarValueType
+										)
+								
+
+날짜 값과 ioFormat 그리고 calendarValueType을 입력 받아서 각각의 calendarValueType에 맞는 
+
+
+
+getMaxMinYear(
+									  
+										)
+								
+
+maxYear 와 minYear 프로퍼티를 포함한 오브젝트를 반환합니다
+
+
+
+isValidDate(
+									  obj
+									       , 
+									       sDate
+										)
+								
+
+"yyyyMMdd" 형태의 날짜값을 받아서 유효한 날짜인지를 확인하여 boolean을 반환합니다
+
+
+
+parseDate(
+									  str
+									       , 
+									       format
+										)
+								
+
+날짜 형식 포맷을 Date로 변환합니다
+
+
+
+toLunar(
+									  solar
+										)
+								
+
+"yyyyMMdd" 형태의 양력 날짜를 입력으로 받아 해당하는 음력 날짜의 string을 반환한다
+
+
+
+toSolar(
+									  solar
+										)
+								
+
+"yyyyMMdd" 형태의 음력 날짜를 입력으로 받아 해당하는 양력 날짜의 string을 반환한다
+
+
+
+toTimestampString(
+									  dateObj
+										)
+								
+
+java
+
+
+
+Property Detail
+
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+dateAdd(
+									  day1
+									       , 
+									       offset
+										)
+							
+
+날짜에 지정된 수만큼 더합니다.( date + offset )
+
+
+Parameter
+
+nametyperequireddescription
+
+
+day1StringY지정 날짜
+
+
+offsetNumberY날짜에 더할 숫자
+
+
+
+
+Return
+
+typedescription
+
+
+String지정된 수 많큼 더해진 날짜
+
+
+Sample
+var addDate = WebSquare.date.dateAdd( 20120102, 7 );
+//addDate : 20120109
+
+
+dateDiff(
+									  day1
+									       , 
+									       day2
+										)
+							
+
+두 날짜 사이의 차이를 반환합니다.( to - from )
+
+
+Parameter
+
+nametyperequireddescription
+
+
+day1StringY시작 날짜
+
+
+day2StringY끝 날짜
+
+
+
+
+Return
+
+typedescription
+
+
+String두 날짜의 차이
+
+
+Sample
+var diff = WebSquare.date.dateDiff( "20120120", "20120210" );
+//diff : 21
+
+
+dateTimeAdd(
+									  day1
+									       , 
+									       offset
+									       , 
+									       type
+										)
+							
+
+날짜 및 시간에 지정된 수만큼 더합니다.( date + offset )type에서 설정한 값(day,month,hour,minute,time)에 따라서 증가되는 대상이 달라집니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+day1StringY지정 날짜와 시간
+
+
+offsetNumberY날짜에 더할 숫자
+
+
+typeStringY증가된 값이 적용될 대상(hour, minute )
+
+
+
+
+Return
+
+typedescription
+
+
+String지정된 수 많큼 더해진 날짜
+
+
+Sample
+var addTimeDate = WebSquare.date.dateTimeAdd( 20120102, 7 );
+//addDate : 20120109
+
+
+getCurrentServerDate(
+									  pattern
+										)
+							
+
+서버의 현재 시간을 반환합니다.Java의 SimpleDateFormat의 pattern을 인자로 받아서 시간을 표현합니다.pattern을 입력하지 않는 경우에는 yyyyMMdd 패턴의 결과를 반환합니다.y       Year                        1996; 96M       Month in year               07d       Day in month                10H       Hour in day (0-23)          0m       Minute in hour              30s       Second in minute            55S       Millisecond                 978
+
+
+Parameter
+
+nametyperequireddescription
+
+
+patternStringN날짜 형식( ex) yyyyMMdd )
+
+
+
+
+Return
+
+typedescription
+
+
+String서버 날짜(시간) String
+
+
+Sample
+var dateStr = WebSquare.date.getCurrentServerDate();
+//dateStr : 20111225    (yyyyMMdd)
+var dateStr = WebSquare.date.getCurrentServerDate("yyyyMMddHHmmssSSS")
+//dateStr : 20111225112433707 (yyyyMMddHHmmssSSS)
+
+
+getDay(
+									  dateFormatStr
+										)
+							
+
+"yyyyMMdd" 형태의 날짜를 입력받아서 해당 요일을 반환합니다. (예를 들어 '월요일' 등의 string을 반환)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+dateFormatStrStringY"yyyyMMdd" 형태의 날짜를 나타내는 string
+
+
+
+
+Return
+
+typedescription
+
+
+String'월요일' 등의 요일을 나타내는 string
+
+
+Sample
+var day = WebSquare.date.getDay("20111225");
+day : 일요일
+
+
+getFormattedDate(
+									  dateObj
+									       , 
+									       pattern
+										)
+							
+
+Date객체를 받아서 지정된 format으로 시간을 반환합니다.pattern을 입력하지 않는 경우에는 java의 System.currentTimeMillis()값을 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+dateObjObjectYJavaScript date객체
+
+
+patternStringN패턴
+
+
+
+
+Return
+
+typedescription
+
+
+String지정된 format으로 시간을 반환
+Letter  Date or Time Component      Examples
+y       Year                        1996; 96
+M       Month in year               07
+d       Day in month                10
+H       Hour in day (0-23)          0
+m       Minute in hour              30
+s       Second in minute            55
+S       Millisecond                 978
+
+
+Sample
+var dateObj = new Date();
+var dateStr = WebSquare.date.getFormattedDate ( dateObj, "yyyy.MM" );
+//dateStr : 2011.12
+
+
+getIOFormatDate(
+									  value
+									       , 
+									       ioFormat
+									       , 
+									       calendarValueType
+										)
+							
+
+날짜 값과 ioFormat 그리고 calendarValueType을 입력 받아서 파라미터로 전달 받은 ioFormat에 맞는 순서로 날짜 값을 반환하는 함수.관련 속성으로 inputCalendar컴포넌트의 useYearMonthFormat이 있다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueStringY변환할 날짜 값
+
+
+ioFormatStringY날짜 값에 적용할 ioFormat 값
+
+
+calendarValueTypeStringN현재 날짜 값에 적용되어 있는 calendarValueType 값
+
+
+
+
+Return
+
+typedescription
+
+
+String지정된 ioFormat으로 날짜 값을 반환
+
+
+Sample
+ //inputCalendar 컴포넌트에 다음의 설정 값들이 추가되어 있다. 이 때 getIOFormatDate함수 실행 시 ioFormat에 맞는 날짜 값이 반환된다.
+ //ioFormat = "MMyyyy" calendarValueType = "yearMonth"  
+var ioFormatDate = WebSquare.date.getIOFormatDate ( "201701", "MMyyyy", "yearMonth" );
+//ioFormatDate : 012017
+
+
+getIOUnFormatDate(
+									  value
+									       , 
+									       ioFormat
+									       , 
+									       calendarValueType
+										)
+							
+
+날짜 값과 ioFormat 그리고 calendarValueType을 입력 받아서 각각의 calendarValueType에 맞는 ioFormat 형식으로된 날짜 값을 한국식 표기 방식인 "연" > "월" > "일" > "시간" 순으로 재배열해주는 함수. 관련 속성으로 inputCalendar컴포넌트의 useMonthYearFormat이 있다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueStringY변환할 날짜 값
+
+
+ioFormatStringY현재 날짜 값에 적용되어 있는 ioFormat 값
+
+
+calendarValueTypeStringN현재 날짜 값에 적용되어 있는 calendarValueType 값
+
+
+
+
+Return
+
+typedescription
+
+
+String날짜 값을 한국식 표기 방식인 "연" > "월" > "일" > "시간" 순으로 재배열해서 값을 반환한다.
+
+
+Sample
+ //inputCalendar 컴포넌트에 다음의 설정 값들이 추가되어 있다. 이 때 getIOUnFormatDate 실행 시 한국식 날짜 표기 방식에 맞는 날짜 값이 반환된다.
+ //ioFormat = "MMyyyy" calendarValueType = "yearMonth"  
+var ioFormatDate = WebSquare.date.getIOFormatDate ( "012017", "MMyyyy", "yearMonth" );
+//ioFormatDate : 201701
+
+
+getMaxMinYear(
+									  
+										)
+							
+
+maxYear 와 minYear 프로퍼티를 포함한 오브젝트를 반환합니다. config.xml에 정의된 값이 기본값으로 사용됩니다. (아래 Sample 참조.)
+
+
+
+Return
+
+typedescription
+
+
+ObjectmaxYear, minYear
+
+
+Sample
+//config.xml 에서 아래와 같이 정의된 설정값을 기본값으로 합니다.
+
+
+
+
+
+
+
+var maxMinYear = WebSquare.date.getMaxMinYear();
+//maxMinYear[ "maxYear" ] : 2099 (yyyy)
+//maxMinYear[ "minYear" ] : 1000 (yyyy)
+
+
+isValidDate(
+									  obj
+									       , 
+									       sDate
+										)
+							
+
+"yyyyMMdd" 형태의 날짜값을 받아서 유효한 날짜인지를 확인하여 boolean을 반환합니다. 유효하지 않은 날짜라면 obj에 포커스를 줍니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+objObjectYwebsquare 객체
+
+
+sDateStringY검증 대상 날짜
+
+
+
+
+Return
+
+typedescription
+
+
+Boolean유효한 날짜면 true, 아니면 false
+
+
+Sample
+var validYn = WebSquare.date.isValidDate (input1, input1.getValue());
+validYn : input1.getValue()의 값이 유효하지 않는 날짜이면 false, 유효하면 true.
+
+
+parseDate(
+									  str
+									       , 
+									       format
+										)
+							
+
+날짜 형식 포맷을 Date로 변환합니다. (기본 포맷 : yyyyMMdd)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+strStringY년월일 String
+
+
+formatStringN날짜형식 포맷
+
+
+
+
+Return
+
+typedescription
+
+
+Object날짜 포맷을 Date 객체로 파싱한 js의 date 오브젝트
+
+
+Sample
+var dateObj = WebSquare.date.parseDate ("20120101");
+alert(dateObj.toString());
+        
+//결과 : Sun Jan 1 00:00:00 UTC+0900 2012
+var dateObj = WebSquare.date.parseDate ("01222013112430", "MMddyyyyHHmmss");
+alert(dateObj.toString());
+
+//결과 : Tue Jan 22 2013 11:24:30 GMT+0900 (KST)
+
+
+toLunar(
+									  solar
+										)
+							
+
+"yyyyMMdd" 형태의 양력 날짜를 입력으로 받아 해당하는 음력 날짜의 string을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+solarStringY"yyyyMMdd" 형태의 양력 날짜
+
+
+
+
+Return
+
+typedescription
+
+
+String음력날짜를 나타내는 string
+
+
+Sample
+var lunar = WebSquare.date.toLunar("20111225");
+//lunar : 20111201
+
+
+toSolar(
+									  solar
+										)
+							
+
+"yyyyMMdd" 형태의 음력 날짜를 입력으로 받아 해당하는 양력 날짜의 string을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+solarStringY"yyyyMMdd" 형태의 음력 날짜
+
+
+
+
+Return
+
+typedescription
+
+
+String양력날짜를 나타내는 string
+
+
+Sample
+var solar = WebSquare.date.toLunar("20221025");
+lunar : 20221118
+
+
+toTimestampString(
+									  dateObj
+										)
+							
+
+java.sql.Timestamp에서 사용되는  yyyy-mm-dd hh:mm:ss.fffffffff을 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+dateObjObjectYJavaScript date객체
+
+
+
+
+Return
+
+typedescription
+
+
+Stringyyyy-mm-dd hh:mm:ss.fffffffff 형식의 string
+
+
+Sample
+var dateObj = new Date();
+var dateStr = WebSquare.date.toTimestampString (dateObj);
+        
+//dateStr : 2011-12-25 11:01:47.219000
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

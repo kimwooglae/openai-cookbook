@@ -1,0 +1,6591 @@
+
+
+
+WebSquare.uiplugin.dataList 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.dataList - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+Data통신 및 화면에서 사용 할 다건의 데이터를 저장하는 객체이다.
+  DataCollectoin 하위에 생성되며 데이터의 구조를 정의하는 Column Info 영역과 초기값을 정의하는 Data 영역으로 나뉘어 있다.
+  Column Info 영역(source : <w2:columnInfo>)은 column의 정보가 있으며 id 속성에 column의 이름을 정의한다. 그 밖에 데이터 가공등을 위한 속성들을 정의 할 수 있다.
+  Data 영역(source : <w2:data>)은 column의 초기값을 정의하는 곳이며 use data가 체크되어있어야(source : <w2:data use="true">) 초기값이 적용된다.
+  DataList는 row 마다 사용자 제어에 따른 삽입/수정/삭제 등의 상태값을 가지고 있으며 getter API로 상태별 데이터를 꺼내올 수 있다. 상세 내용은 아래와 같다.
+  status : R / statusValue : 0 -  초기 상태. (변화없음)
+  status : U / statusValue : 1 - 갱신. (update API 호출 시)
+  status : C / statusValue : 2 - 삽입. (insert API 호출 시)
+  status : D / statusValue : 3 - 삭제. (delete API 호출 시)
+  status : V / statusValue : 4 - 삽입 후 삭제. (insert API 후 delete API 호출)
+  status : E / statusValue : 5 - 제거. (remove API 호출 시)
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+attributeMap
+
+DataType이 XML 일 경우만 적용이 되는 기능으로 rootNode에 추가 attribute(속성)을 지정하고자 하는 DataMap의 이름
+
+
+
+baseNode
+
+[default:list] DataType이 XML 일 경우만 적용되며 데이터를 XML로 변환 시 root 노드로 정의 할 XPath를 명시한다
+
+
+
+getMatchedFromAllData
+
+[default:false, true] 
+
+
+
+id
+
+DataList ID.
+
+
+
+idAttribute
+
+DataType이 XML 일 경우만 적용이 되는 기능으로 DataList의 id에 정의 된 값을 id attribute(속성)가 아닌 다른 attribute( 본 속성에 정의 한 값 )로 정의하고자 할 경우 사용된다
+
+
+
+initRowPosition
+
+dataList생성시 rowPosition으로 세팅할 row의 index
+
+
+
+length
+
+컬럼의 데이터 길이
+
+
+
+matchIgnoreCase
+
+[default:false] getMatched류 (getMatchedJSON, getMatchedIndex 등)의 API 호출 시 대소문자를 구별하지 않을지 (true) 구별할지(false)를 설정하는 속성
+
+
+
+removedDataMatch
+
+getModifiedXML, getDeleteXML, getVoidXML, getOnlyDeleteXML API 호출 시 리턴되는 xml의 구조가 remove된 것을 별도의 구조로 할지(false) 아닐지에 대한 옵션
+
+
+
+removeDummyRowStatus
+
+row의 상태값이 C에서 E로 바뀐 데이터 (removeRow API로 삭제 한 데이터)까지 관리할지의 여부
+
+
+
+repeatNode
+
+[default:map] DataType이 XML 일 경우만 적용되며 데이터를 XML로 변환 시 반복이 되는 Data의 노드로 정의 할 XPath를 명시한다
+
+
+
+rowNumData
+
+[default:false] 엔진 내부에서 row의 순서(index+1)를 rowNum 속성(key)으로 할당하여 반환 할지의 여부
+
+
+
+rowStatusNodeName
+
+json 또는 xml형태로 data를 가져올 때 rowStatus 키(노드) 이름을 설정하는 기능
+
+
+
+saveRemovedData
+
+row의 상태값이 E인 데이터 (removeRow API로 삭제 한 데이터)를 관리 할지의 여부
+
+
+
+sortType
+
+dataList sort시 데이터 정렬 기준. sp5에서 데이터 정렬 기준이 변경되었다. dataList가 gridView와 바인딩 된 경우에 영향을 받는 속성. 
+
+
+
+undoRecursiveRow
+
+drilldown컬럼에서 undoRow 함수 실행 시, 대상이 되는 rowIndex와 해당 rowIndex 하위의 모든 rowIndex들도 undoRow 함수가 실행되도록 설정함
+
+
+
+userData1
+
+사용자 정의 데이터 속성
+
+
+
+userData2
+
+사용자 정의 데이터 속성
+
+
+
+userData3
+
+사용자 정의 데이터 속성
+
+
+
+validateAllItemsetData
+
+[default:false, true] dataList가 특정 컴포넌트의 itemset과 연동된 상태에서 filter가 된 경우에도 모든 데이터를 대상으로 validation할지에 대한 여부.
+
+
+
+valueAttribute
+
+DataType이 XML 일 경우만 적용되며 실 데이터를 attribute(속성)에 할당 할 때 사용된다
+
+
+
+Event Summary
+
+
+
+
+onaftercolumnfilterchange
+
+사용자에 의해서 column에 적용된 filter가 변경된 이후에 이벤트가 발생한다
+
+
+
+onbeforecelldatachange
+
+하나의 셀에 대한 값이 변경되기 직전에 발생하며 변경된 값을 dataList에 적용 여부를 결정할 수 있다.
+
+
+
+onbeforecolumnfilterchange
+
+사용자에 의해서 column에 적용된 filter가 바뀌기 직전에 이벤트가 발생한다
+
+
+
+onbeforerowpositionchange
+
+DataList의 rowPosition이 변경되기 직전에 발생하며 rowPosition의 변경 적용 여부를 결정할 수 있다.
+
+
+
+oncelldatachange
+
+하나의 셀에 대한 값이 변경된 경우 발생하며 행이 추가,삭제되거나 dataList의 전체 구조가 변하는 경우(setJSON 등)에는 발생하지 않는다.
+
+
+
+ondataload
+
+DataList의 data가 전체적으로 변경(set)되는 경우 발생하며 data가 셋팅 된 이후 이벤트가 발생한다.
+
+
+
+oninsertrow
+
+DataList에 새로운 행이 추가된 후에 발생하며 한번에 여러 row가 한번에 추가되면 한번만 발생한다.
+
+
+
+onremoverow
+
+DataList의 행이 제거될 때 행이 제거된 후 발생하며 removeRow, removeRows, removeRange, removeAll API 호출 시 발생한다
+
+
+
+onrowpositionchange
+
+DataList의 rowPosition이 변경된 경우 발생한다
+
+
+Method Summary
+
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+dataList의 이벤트를 동적으로 할당한다
+
+
+
+clearFilter(
+									  
+										)
+								
+
+현재 dataList에 적용된 필터링을 모두 해제
+
+
+
+clearSort(
+									  
+										)
+								
+
+Data의 정렬을 취소하며 GridView 컴포넌트의 정렬도 함께 취소된다
+
+
+
+deleteRow(
+									  rowIndex
+										)
+								
+
+rowInex에 해당하는 행이 삭제되지 않으며 상태 값만 삭제(D)로 변경된다
+
+
+
+deleteRows(
+									  rowIndexArr
+										)
+								
+
+다건의 row를 index가 담긴 배열을 통해 한번에 삭제(D)로 변경하고 가지고 있던 data를 2차원 배열로 반환한다
+
+
+
+getAllArray(
+									  
+										)
+								
+
+DataList의 전체 data를 column의 정보와 1차원 배열로 변환 된 실 Data를 JSON에 담아 반환한다
+
+
+
+getAllData(
+									  
+										)
+								
+
+DataList의 전체 data를 1차원 배열로 반환한다.
+
+
+
+getAllFilteredData(
+									  
+										)
+								
+
+filter가 적용된 데이터 전체를 array로 반환한다. 
+
+
+
+getAllFilteredJSON(
+									  
+										)
+								
+
+filter가 적용된 데이터 전체를 JSON이 담긴 배열로 반환한다. 
+
+
+
+getAllFilteredXML(
+									  
+										)
+								
+
+filter가 적용된 데이터 전체를 XML로 반환한다. 
+
+
+
+getAllJSON(
+									  
+										)
+								
+
+DataList의 1row의 값을 JSON으로 변환하여 전체 data를 1차원 배열에 담아 반환한다.
+
+
+
+getAllXML(
+									  
+										)
+								
+
+DataList의 전체 data를 XML로 반환한다.
+
+
+
+getCellAllData(
+									  realRowIndex
+									       , 
+									       colInfo
+										)
+								
+
+필터링 되지 않은 rowIndex를 기준으로 getCellData를 실행한다
+
+
+
+getCellData(
+									  rowIndex
+									       , 
+									       colInfo
+										)
+								
+
+rowIndex와 colInfo( 컬럼의 index 또는 ID )에 해당하는 셀의 데이터를 반환한다
+
+
+
+getColData(
+									  colInfo
+										)
+								
+
+컬럼의 index 또는 ID에 해당하는 열의 데이터(filter나 sort가 적용 되지 않은)를 배열로 반환한다.
+
+
+
+getColumnDistinctDataArray(
+									  column
+										)
+								
+
+지정한 Index 또는 ID에 해당하는 컬럼에서 중복된 데이터를 제거한 후, 오름차순으로 정렬된 data를 배열로 반환
+
+
+
+getColumnID(
+									  colIndex
+										)
+								
+
+DataList에 정의 된 컬럼의 index를 받아 컬럼의 ID를 반환한다
+
+
+
+getColumnIndex(
+									  colID
+										)
+								
+
+DataList에 정의 된 컬럼의 ID를 받아 컬럼의 index를 반환한다
+
+
+
+getColumnInfo(
+									  columnID
+										)
+								
+
+dataList 특정 column의 세부 정보를 조회한다
+
+
+
+getColumnName(
+									  columnInfo
+										)
+								
+
+DataList에 정의 된 컬럼의 index 또는 ID 를 받아 컬럼에 정의 된 name을 반환한다
+
+
+
+getDataRow(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행의 데이터를 컬럼의 ID를 key로 하는 Hash형태로 반환한다
+
+
+
+getDeletedArray(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E,V)인 행들의 정보가 담긴 JSON
+
+
+
+getDeletedData(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E,V)인 행들의 데이터가 담긴 2차원 배열
+
+
+
+getDeletedIndex(
+									  
+										)
+								
+
+삭제 상태(D,V,3,4)인 행의 index를 배열로 반환한다
+
+
+
+getDeletedJSON(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E,V)인 행들의 데이터를 JSON으로 변환하여 배열에 담아 반환한다
+
+
+
+getDeletedXML(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E,V)인 행들의 데이터를 XML로 반환한다
+
+
+
+getFilteredColData(
+									  colInfo
+										)
+								
+
+filter 및 sort가 적용된 열의 데이터를 배열로 반환
+
+
+
+getFilteredRowIndex(
+									  realRowIndex
+										)
+								
+
+필터링된 상태의 행 인덱스를 반환
+
+
+
+getFilterList(
+									  
+										)
+								
+
+필터링된 dataList의 컬럼 별 필터링 상태를 반환
+
+
+
+getFusionChartData(
+									  chartType
+									       , 
+									       labelNode
+									       , 
+									       seriesColumns
+										)
+								
+
+dataList를 fusionChart의 json데이터로 반환한다
+
+
+
+getFusionChartSimpleData(
+									  chartType
+									       , 
+									       labelNode
+									       , 
+									       seriesNode
+									       , 
+									       valueNode
+										)
+								
+
+DataList의 데이터를 fusionChart의 simple모드인 singleSerise, multiSeries 차트의 JSON데이터로 반환한다
+
+
+
+getID(
+									  
+										)
+								
+
+dataList 객체의 id를 반환한다
+
+
+
+getInfo(
+									  
+										)
+								
+
+dataList의 세부 정보를 조회한다
+
+
+
+getInsertedArray(
+									  
+										)
+								
+
+삽입 상태(상태값:C)인 행들의 정보가 담긴 JSON
+
+
+
+getInsertedData(
+									  
+										)
+								
+
+삽입 상태(상태값:C)인 행들의 데이터가 담긴 2차원 배열
+
+
+
+getInsertedIndex(
+									  
+										)
+								
+
+삽입 상태(상태값:C)인 행의 index를 배열에 담아 반환한다
+
+
+
+getInsertedJSON(
+									  
+										)
+								
+
+삽입 상태(상태값:C)인 행들의 데이터를 JSON으로 변환하여 배열에 담아 반환한다
+
+
+
+getInsertedXML(
+									  
+										)
+								
+
+삽입 상태(상태값:C)인 행들의 데이터를 XML로 반환한다
+
+
+
+getMatchedArray(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+stRowIndex부터 lastRowIndex까지의 범위의 행중에서 colInfo에 해당하는 값이 dataValue와 같은 행들의 컬럼 정보 및 data를 담은 JSON을 반환한다
+
+
+
+getMatchedColumnData(
+									  matchCol
+									       , 
+									       dataValue
+									       , 
+									       targetCol
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+stRowIndex부터 lastRowIndex 까지의 범위의 행중에서 matchCol에 해당하는 값이 dataValue와 같은 행들을 찾아서 targetCol에 해당하는 값을 1차원 배열로 반환한다
+
+
+
+getMatchedData(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+stRowIndex부터 lastRowIndex 까지의 범위의 행중에서 colInfo의 값이 dataValue와 같은 행들의 data를 2차원 배열로 반환한다
+
+
+
+getMatchedIndex(
+									  conInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+stRowIndex부터 lastRowIndex 까지의 범위의 행중에서 conInfo의 값이 dataValue와 같은 행들의 index를 반환한다
+
+
+
+getMatchedJSON(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+stRowIndex부터 lastRowIndex까지의 범위의 행중에서 colInfo의 값이 dataValue와 같은 행들의 JSON 데이터를 배열에 담아 반환한다
+
+
+
+getMatchedXML(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+stRowIndex부터 lastRowIndex까지의 범위의 행중에서 colInfo의 값이 dataValue와 같은 행들의 data를 XML로 반환한다
+
+
+
+getModifiedArray(
+									  
+										)
+								
+
+변경 상태(상태값:C,U,D,E)행들의 정보가 담긴 JSON
+
+
+
+getModifiedData(
+									  
+										)
+								
+
+변경 상태(상태값:C,U,D,E)행들의 데이터를 배열로 반환한다
+
+
+
+getModifiedIndex(
+									  
+										)
+								
+
+변경 상태(상태값:C,U,D)행들의 index를 배열로 반환한다
+
+
+
+getModifiedJSON(
+									  options
+										)
+								
+
+데이터가 삽입, 갱신, 삭제, 제거 된 상태(U,C,D,E,1,2,3,5)의 행들의 데이터를 JSON으로 변환하여 1차원 배열에 담아 반환한다
+
+
+
+getModifiedXML(
+									  options
+										)
+								
+
+데이터가 삽입, 갱신, 삭제, 제거 된 상태(U,C,D,E,1,2,3,5)의 행들의 데이터를 XML로 반환한다
+
+
+
+getObjectType(
+									  
+										)
+								
+
+dataCollection의 Type을 반환한다
+
+
+
+getOnlyDeletedArray(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E)행들의 정보를 담은 JSON을 반환한다
+
+
+
+getOnlyDeletedData(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E)행들의 배열 데이터를 배열에 담아 반환한다
+
+
+
+getOnlyDeletedIndex(
+									  
+										)
+								
+
+삭제 상태(상태값:D)행등의 index를 배열로 반환한다
+
+
+
+getOnlyDeletedJSON(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E)행들의 JSON 데이터를 배열에 담아 반환한다
+
+
+
+getOnlyDeletedXML(
+									  
+										)
+								
+
+삭제 상태(상태값:D,E)행들의 데이터를 XML로 반환한다
+
+
+
+getOption(
+									  attr
+										)
+								
+
+속성명으로 dataList에 정의 된 속성의 값을 반환한다
+
+
+
+getOriginalCellData(
+									  rowIndex
+									       , 
+									       colIndex
+										)
+								
+
+rowIndex와 colInfo에 해당하는 셀의 초기 데이터(최초에 설정된 데이터)를 반환한다
+
+
+
+getParentRowIndex(
+									  rowIndex
+										)
+								
+
+drilldown 사용시 rowIndex에 해당하는 행의 부모 행의 rowIndex를 반환합니다
+
+
+
+getRangeArray(
+									  fromIdx
+									       , 
+									       toIdx
+										)
+								
+
+fromIdx부터 toIdx 까지 범위의 행들의 컬럼 정보 및 data를 담은 JSON을 반환한다
+
+
+
+getRangeData(
+									  from
+									       , 
+									       to
+										)
+								
+
+from부터 to 까지의 범위의 행의 data를 1차원 배열로 반환한다
+
+
+
+getRangeJSON(
+									  from
+									       , 
+									       to
+										)
+								
+
+from부터 to 까지의 범위의 행의 JSON data를 담은 1차원 배열
+
+
+
+getRangeXML(
+									  from
+									       , 
+									       to
+										)
+								
+
+from부터 to 까지의 범위의 행의 data를 XML로 반환한다
+
+
+
+getRealRowIndex(
+									  
+										)
+								
+
+실제 Row Index를 반환한다
+
+
+
+getRecursiveRowIndex(
+									  
+										)
+								
+
+depthColumn 사용 시 Row Index 하위의 모든 Row의 인덱스를 배열로 반환한다
+
+
+
+getRowArray(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행들의 정보가 담긴 JSON을 반환한다
+
+
+
+getRowCount(
+									  
+										)
+								
+
+화면에 보여지는 row의 건수를 반환하며 필터가 걸려있거나 GridView에 drilldown이 적용되어 있는 경우 접혀져 있는 데이터의 행의 수는 포함되지 않는다.
+
+
+
+getRowData(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행의 데이터를 배열로 반환한다
+
+
+
+getRowIndexByStatus(
+									  statusStr
+										)
+								
+
+상태값(코드)가 일치하는 행의 index를 배열로 반환한다.
+
+
+
+getRowJSON(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행의 data를 JSON객체로 반환한다
+
+
+
+getRowPosition(
+									  
+										)
+								
+
+바인딩된 DataList의 현재 행 위치(인덱스)를 확인
+
+
+
+getRowStatus(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행의 상태를 코드(문자)로 반환한다
+
+
+
+getRowStatusValue(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행의 상태를 숫자로 반환한다
+
+
+
+getRowXML(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행의 data를 XML로 반환한다
+
+
+
+getScope(
+									  
+										)
+								
+
+컴포넌트가 scope=true인 wframe의 자식 컴포넌트일 때 해당 부모 wframe 객체를 반환하는 함수  
+ scope=true인 wframe의 자식 컴포넌트가 아닐 경우 null을 반환한다
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+컴포넌트가 scope=true인 wframe의 자식 컴포넌트일 때 해당 부모 wframe의 scope객체를 반환하는 함수  
+ scope=true인 wframe의 자식 컴포넌트가 아닐 경우 전역 window객체를 반환한다
+
+
+
+getTotalCol(
+									  
+										)
+								
+
+DataList에 정의 된 컬럼수를 반환한다
+
+
+
+getTotalRow(
+									  
+										)
+								
+
+dataList의 전체 row수를 반환한다.
+
+
+
+getUnmatchedArray(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex까지의 범위중에서 데이터가 dataValue와 다른 행들의 정보를 JSON으로 변환하여 반환한다
+
+
+
+getUnmatchedColumnData(
+									  matchCol
+									       , 
+									       dataValue
+									       , 
+									       targetCol
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+matchCol에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들을 찾아서 targetCol에 해당하는 컬럼의 데이터들를 배열로 반환한다
+
+
+
+getUnmatchedData(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 data를 배열 변환하여 배열에 담아 반환한다
+
+
+
+getUnmatchedIndex(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 index를 배열로 반환한다
+
+
+
+getUnmatchedJSON(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 data를 JSON으로 변환하여 배열에 담아 반환한다
+
+
+
+getUnmatchedXML(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+								
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 데이터를 XML로 반환한다
+
+
+
+getUpdatedArray(
+									  
+										)
+								
+
+갱신 상태(1,U)인 행들의 데이터의 정보는 JSON으로 반환한다.
+
+
+
+getUpdatedData(
+									  
+										)
+								
+
+갱신 상태(1,U)인 행들의 배열 데이터를 배열에 담아 반환한다
+
+
+
+getUpdatedIndex(
+									  
+										)
+								
+
+갱신 상태(1,U)인 행의 index를 배열로 반환한다
+
+
+
+getUpdatedJSON(
+									  
+										)
+								
+
+갱신 상태(1,U)인 행들의 데이터를 JSON으로 변환하여 배열에 담아 반환한다
+
+
+
+getUpdatedXML(
+									  
+										)
+								
+
+갱신 상태(1,U)인 행들의 데이터를 XML로 반환한다
+
+
+
+getVoidArray(
+									  
+										)
+								
+
+삽입 후 삭제 상태(4,V)인 행들의 정보가 담긴 JSON을 반환한다
+
+
+
+getVoidData(
+									  
+										)
+								
+
+삽입 후 삭제 상태(4,V)인 행들을 배열 데이터를 배열에 담에 반환한다
+
+
+
+getVoidIndex(
+									  
+										)
+								
+
+삽입 후 삭제 상태(4,V)인 행의 index를 배열로 반환한다
+
+
+
+getVoidJSON(
+									  
+										)
+								
+
+삽입 후 삭제 상태(4,V)인 행들의 JSON 데이터를 배열에 담아 반환한다
+
+
+
+getVoidXML(
+									  
+										)
+								
+
+삽입후 삭제 상태(4,V)인 행들의 데이터를 XML로 반환한다
+
+
+
+initRowStatus(
+									  
+										)
+								
+
+dataList의 상태를 모두 "R"로 변경한다
+
+
+
+insertData(
+									  rowIndex
+									       , 
+									       dataObj
+										)
+								
+
+rowIndex에 다건의 row를 1차원 Array로 삽입한다
+
+
+
+insertJSON(
+									  rowIndex
+									       , 
+									       dataObj
+										)
+								
+
+rowIndex에 다건의 row를 JSON객체로 삽입한다
+
+
+
+insertRow(
+									  rowIndex
+										)
+								
+
+rowIndex에 1건의 row는 삽입한다
+
+
+
+insertXML(
+									  rowIndex
+									       , 
+									       dataObj
+										)
+								
+
+rowIndex에 다건의 row를 XML 데이터로 삽입한다
+
+
+
+keepRowPosition(
+									  
+										)
+								
+
+JSON Data를 append할 때 이전에 설정된 rowPosition값을 유지할지 여부
+
+
+
+modifyAllStatus(
+									  status
+										)
+								
+
+모든 행의 상태를 변경 한다
+
+
+
+modifyMatchedStatus(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       status
+										)
+								
+
+col에 해당하는 컬럼의 데이터와 dataValue의 값이 일치된 행의 상태를 변경한다
+
+
+
+modifyRangeStatus(
+									  from
+									       , 
+									       to
+									       , 
+									       status
+										)
+								
+
+from부터 to까지의 범위의 행들의 상태를 변경 한다
+
+
+
+modifyRowStatus(
+									  rowIndex
+									       , 
+									       status
+										)
+								
+
+rowIndex에 해당하는 행의 상태를 변경한다
+
+
+
+multisort(
+									  options
+										)
+								
+
+option에 따라서 여러개의 컬럼을 정렬한다.
+
+
+
+redo(
+									  
+										)
+								
+
+데이터를 변경된 시점 최근 한단계로 되돌린다
+
+
+
+reform(
+									  
+										)
+								
+
+DataList의 originalData를 현재의 데이터로 바꿔주고 모든 행의 상태를 초기화(R)한다
+
+
+
+removeAll(
+									  
+										)
+								
+
+DataList의 모든 데이터를 삭제하고 삭제 된 Data를 1차원 배열로 반환한다
+
+
+
+removeColumnFilter(
+									  col
+										)
+								
+
+col에 해당하는 컬럼에 적용된 filter를 삭제한다.
+
+
+
+removeColumnFilterAll(
+									  
+										)
+								
+
+모든 컬럼에 적용된 filter를 삭제한다
+
+
+
+removeRange(
+									  startIdx
+									       , 
+									       endIdx
+										)
+								
+
+startIdx와 endIdx사이의 행을 삭제하고 가지고 있던 data를 1차원 배열로 반환한다
+
+
+
+removeRow(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 행을 삭제하고 가지고 있던 data를 1차원 배열로 반환한다
+
+
+
+removeRows(
+									  rowIndexArr
+										)
+								
+
+다건의 row를 index가 담긴 배열을 통해 한번에 삭제하고 가지고 있던 data를 2차원 배열로 반환한다
+
+
+
+restore(
+									  
+										)
+								
+
+데이터를 이전 한단계로 되돌린다
+
+
+
+rowMoveDown(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 row을 하나 아래로 내려준다
+
+
+
+rowMoveUp(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 row를 하나 위로 올려준다
+
+
+
+setArray(
+									  jsonData
+									       , 
+									       append
+										)
+								
+
+1차원 배열의 데이터를 columnInfo의 컬럼 순서대로 DataList에 set한다
+
+
+
+setBroadcast(
+									  flag
+									       , 
+									       refresh
+										)
+								
+
+dataList 변경시 binding된 컴포넌트에 변경 여부를 알려줄지를 설정
+
+
+
+setCellAllData(
+									  realRowIndex
+									       , 
+									       colIndex
+									       , 
+									       data
+										)
+								
+
+필터링 되지 않은 rowIndex를 기준으로 setCellData를 실행한다
+
+
+
+setCellData(
+									  rowIndex
+									       , 
+									       colIndex
+									       , 
+									       data
+										)
+								
+
+rowIndex와 colIndex에 해당하는 셀에 data를 셋팅한다
+
+
+
+setColumnDefaultValue(
+									  colIndex
+									       , 
+									       defaultValue
+										)
+								
+
+colIndex에 해당하는 열의 기본값을 defaultValue로 설정한다.
+
+
+
+setColumnFilter(
+									  filterOptions
+										)
+								
+
+colIndex에 해당하는 컬럼에 필터링 적용
+
+
+
+setData(
+									  arr
+									       , 
+									       append
+									       , 
+									       columnArr
+									       , 
+									       rowStatus
+										)
+								
+
+1차원 배열 데이터를 set 또는 append 한다
+
+
+
+setIgnoreStatus(
+									  flag
+										)
+								
+
+dataList column의 ignoreStatus 속성을 동적으로 제어한다
+
+
+
+setJSON(
+									  jsonData
+									       , 
+									       append
+										)
+								
+
+JSON Data를 설정(set)하거나 추가(append)
+
+
+
+setMatchIgnoreCase(
+									  flag
+										)
+								
+
+getMatched류 (getMatchedJSON, getMatchedIndex 등)의 API 호출 시 대소문자를 구별하지 않을지 (true) 구별할지(false)를 설정하는 함수
+
+
+
+setRowArray(
+									  rowIndex
+									       , 
+									       dataObj
+									       , 
+									       overwrite
+										)
+								
+
+rowIndex에 해당하는 행에 1건(row)의 배열 데이터를 넣는다.
+
+
+
+setRowData(
+									  rowIndex
+									       , 
+									       rowData
+									       , 
+									       overwrite
+										)
+								
+
+rowIndex에 해당하는 행에 1건(row)의 배역 데이터를 넣는다.
+
+
+
+setRowJSON(
+									  rowIndex
+									       , 
+									       rowData
+									       , 
+									       overwrite
+										)
+								
+
+rowIndex에 해당하는 행에 1건(row)의 JSON 데이터를 넣는다.
+
+
+
+setRowNumData(
+									  flag
+										)
+								
+
+DataList의 get관련 API의 return 데이터의 type이 JSON, XML일 경우 row의 number값을 추가 할지 설정.
+
+
+
+setRowPosition(
+									  position
+									       , 
+									       noEvent
+										)
+								
+
+DataList와 연동된 컴포넌트에서 선택할 행의 위치를 설정합니다.
+
+
+
+setRowXML(
+									  rowIndex
+									       , 
+									       XML
+									       , 
+									       overwrite
+										)
+								
+
+rowIndex에 해당하는 행에 1건(row)의 XML 데이터를 넣는다.
+
+
+
+setXML(
+									  xmlData
+									       , 
+									       append
+										)
+								
+
+XML Data를 설정(set)하거나 추가(append)
+
+
+
+sort(
+									  bodyColumnID
+									       , 
+									       sortType
+										)
+								
+
+단건의 컬럼을 정렬한다. (다건의 경우 multisort API를 이용)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+dataList에 등록 된 이벤트를 발생시킨다
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+dataList의 이벤트를 동적으로 제거한다
+
+
+
+undeleteRow(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 삭제 상태(D,V)를 취소하고 직전 상태값으로 변경한다.
+
+
+
+undoAll(
+									  
+										)
+								
+
+전체 데이터를 초기 설정 된 데이터(originalData)로 바꾸고 행의 상태를 초기화(R) 시킨다.
+
+
+
+undoRow(
+									  rowIndex
+										)
+								
+
+rowIndex에 해당하는 row의 data와 상태값을 직전 data와 상태값으로 변경한다
+
+
+
+Property Detail
+
+
+
+
+attributeMap
+
+DataType이 XML 일 경우만 적용이 되는 기능으로 rootNode에 추가 attribute(속성)을 지정하고자 하는 DataMap의 이름. 본 속성에 명시 된  DataMap의 key와 value가 rootNode의 attribute(속성)이름과 value로 정의 된다.
+
+
+baseNode
+
+[default:list] DataType이 XML 일 경우만 적용되며 데이터를 XML로 변환 시 root 노드로 정의 할 XPath를 명시한다.
+
+
+getMatchedFromAllData
+
+[default:false, true] true: GridView에 useFilter="true" 설정으로 필터링이 적용된 경우에도, 필터링된 데이터가 아니라 전체 데이터를 기준으로 데이터를 비교. false (기본 값): 필터링된 데이터를 기준으로 데이터룔 비교. 관련 함수: getMatchedIndex, getMatchedData, getMatchedArray, getMatchedJSON, getMatchedXML
+
+
+id
+
+DataList ID.전역객체로 할당되며 submission 및 각종 API 사용시 data를 구분하기 위한 key로 사용됨.
+
+
+idAttribute
+
+DataType이 XML 일 경우만 적용이 되는 기능으로 DataList의 id에 정의 된 값을 id attribute(속성)가 아닌 다른 attribute( 본 속성에 정의 한 값 )로 정의하고자 할 경우 사용된다.
+
+
+initRowPosition
+
+dataList생성시 rowPosition으로 세팅할 row의 index.
+
+
+length
+
+컬럼의 데이터 길이.
+
+
+matchIgnoreCase
+
+[default:false] getMatched류 (getMatchedJSON, getMatchedIndex 등)의 API 호출 시 대소문자를 구별하지 않을지 (true) 구별할지(false)를 설정하는 속성.
+
+
+removedDataMatch
+
+getModifiedXML, getDeleteXML, getVoidXML, getOnlyDeleteXML API 호출 시 리턴되는 xml의 구조가 remove된 것을 별도의 구조로 할지(false) 아닐지에 대한 옵션. 과거 엔진이 잘못 동작하여 하위호환을 위해 만든 옵션이므로 true로 설정하고 사용할 것.
+
+
+removeDummyRowStatus
+
+row의 상태값이 C에서 E로 바뀐 데이터 (removeRow API로 삭제 한 데이터)까지 관리할지의 여부. saveRemovedData 속성이 true일 때만 의미가 있으며, removeDummyRowStatus 값이 true인 경우는 insertRow했다가 removeRow한 데이터는 관리하지 않는다.
+
+
+repeatNode
+
+[default:map] DataType이 XML 일 경우만 적용되며 데이터를 XML로 변환 시 반복이 되는 Data의 노드로 정의 할 XPath를 명시한다.
+
+
+rowNumData
+
+[default:false] 엔진 내부에서 row의 순서(index+1)를 rowNum 속성(key)으로 할당하여 반환 할지의 여부.
+
+
+rowStatusNodeName
+
+json 또는 xml형태로 data를 가져올 때 rowStatus 키(노드) 이름을 설정하는 기능. 기본값은 "rowStatus"
+
+
+saveRemovedData
+
+row의 상태값이 E인 데이터 (removeRow API로 삭제 한 데이터)를 관리 할지의 여부.
+
+
+sortType
+
+dataList sort시 데이터 정렬 기준. sp5에서 데이터 정렬 기준이 변경되었다. dataList가 gridView와 바인딩 된 경우에 영향을 받는 속성. numberFirst : sp5 기본값. gridView column dataType 또는 dataList column dataType 둘 중 하나가 number 또는 bigDecimal인 경우 number 기준으로 정렬한다.dataType : sp4 이전 버전의 기본값. gridView의 column dataType을 무시하고 dataList의 column dataType을 기준으로 정렬한다. number : 항상 number 기준으로 정렬text : 항상 text 기준으로 정렬 bigDecimal : number 설정과 동일
+
+
+undoRecursiveRow
+
+drilldown컬럼에서 undoRow 함수 실행 시, 대상이 되는 rowIndex와 해당 rowIndex 하위의 모든 rowIndex들도 undoRow 함수가 실행되도록 설정함.
+
+
+userData1
+
+사용자 정의 데이터 속성. getUserData("userData1") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData1");
+
+
+userData2
+
+사용자 정의 데이터 속성. getUserData("userData2") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData2");
+
+
+userData3
+
+사용자 정의 데이터 속성. getUserData("userData3") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData3");
+
+
+validateAllItemsetData
+
+[default:false, true] dataList가 특정 컴포넌트의 itemset과 연동된 상태에서 filter가 된 경우에도 모든 데이터를 대상으로 validation할지에 대한 여부.(ex) selectbox가 dataList1과 연동되어있고, dataList1의 value값이 [1,2,3,4]인 상황에서 filter를 걸어서 [1,2]만 남은 경우, selectbox1.setValue("3")을 한 경우에 "3" 값이 필터링되기 전에 있던 값이므로 타당한 값이라고 판단하도록 하는 옵션.dataList가 selectbox, autoComplete 컴포넌트의 itemset과 연동된 경우에만 영항을 받습니다.
+
+
+valueAttribute
+
+DataType이 XML 일 경우만 적용되며 실 데이터를 attribute(속성)에 할당 할 때 사용된다.
+
+
+
+
+
+Event Detail
+
+
+
+
+onaftercolumnfilterchange
+
+사용자에 의해서 column에 적용된 filter가 변경된 이후에 이벤트가 발생한다.
+Sample
+<![CDATA[
+    alert("onaftercolumnfilterchange = " + this.getRowCount());
+]]>
+
+
+onbeforecelldatachange
+
+하나의 셀에 대한 값이 변경되기 직전에 발생하며 변경된 값을 dataList에 적용 여부를 결정할 수 있다.이벤트 핸들러에서 return false를 주면 cell값의 변경을 취소하고 이전 데이터로 되돌리며, 그 외에는 변경된 값이 적용된다.
+
+Parameter
+
+nametypedescription
+
+
+infoJSONrowIndex, colID, oldValue, newValue를 포함한 JSON
+   info.oldValue : 이전 value
+   info.newValue : 변경된 value
+   info.rowIndex : 이벤트가 일어난 cell의 row index.
+   info.colID : 이벤트가 일어난 column의 columnID
+
+
+Sample
+<![CDATA[
+    var rowIndex = info.rowIndex;
+    var colID = info.colID;
+    var oldValue = info.oldValue;
+    var newValue = info.newValue;
+
+    //cell의 data 변경을 중지하고 싶은 경우 아래와 같이 return false를 적용한다.
+    //return false; 
+]]>
+
+
+onbeforecolumnfilterchange
+
+사용자에 의해서 column에 적용된 filter가 바뀌기 직전에 이벤트가 발생한다.
+Sample
+<![CDATA[
+    alert("onbeforecolumnfilterchange = " + this.getRowCount());
+]]>
+
+
+onbeforerowpositionchange
+
+DataList의 rowPosition이 변경되기 직전에 발생하며 rowPosition의 변경 적용 여부를 결정할 수 있다.이벤트 핸들러에서 return false를 주면 rowPostion 변경을 취소하고 dataList와 바인딩된 컴포넌트의 포커스 이동이 취소된다. 그 외 return은 rowPostion 변경이 적용된다.
+
+Parameter
+
+nametypedescription
+
+
+infoJSONoldRowIndex, newRowIndex를 포함한 JSON.
+ info.oldRowIndex : 이전 row position. filter가 걸린 경우 filter된 상태를 기준으로 row position 값을 반환한다. 
+ info.newRowIndex : 이동 할 row position. filter가 걸린 경우 filter된 상태를 기준으로 row position 값을 반환한다.
+
+
+Sample
+<![CDATA[
+    var oldRowIndex = info.oldRowIndex;
+    var newRowIndex = info.newRowIndex;
+    var oldRowData = this.getRowData(oldRowIndex);
+
+    //row의 position을 변경하지 않을 경우 아래와 같이 return fasle를 적용한다.
+    //return false;
+]]>
+
+
+oncelldatachange
+
+하나의 셀에 대한 값이 변경된 경우 발생하며 행이 추가,삭제되거나 dataList의 전체 구조가 변하는 경우(setJSON 등)에는 발생하지 않는다.insertJSON, setRowData 류의 API에 의해 복수개의 cell 값이 한번에 값이 변경되는 경우 또한 이벤트가 발생하지 않으며, 대신 oninsertrow이벤트가 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+infoJSON:YrowIndex, colID, oldValue, newValue를 포함한 JSON
+ info.oldValue : 이전 value
+ info.newValue : 변경된 value
+ info.rowIndex : 이벤트가 일어난 cell의 row번호
+ info.colID : 이벤트가 일어난 column의 columnID
+
+
+Sample
+<![CDATA[
+    var rowIndex = info.rowIndex;
+    var colID = info.colID;
+    var oldValue = info.oldValue;
+    var newValue = info.newValue;
+    // logic
+]]>
+
+
+ondataload
+
+DataList의 data가 전체적으로 변경(set)되는 경우 발생하며 data가 셋팅 된 이후 이벤트가 발생한다.setJSON, setXML, setData 류의 API가 해당된다. ( 해당 API를 통해 append 할 경우에도 발생. )단, removeAll 호출 시에는 해당 이벤트는 발생하지 않으며, 대신 onremoverow 이벤트가 발생한다.
+Sample
+<![CDATA[
+    alert ("dataList에 데이터 설정이 완료되었습니다.");
+]]>
+
+
+oninsertrow
+
+DataList에 새로운 행이 추가된 후에 발생하며 한번에 여러 row가 한번에 추가되면 한번만 발생한다.해당 하는 API 종류 - insertRow, insertData, insertJSON, insertXMLsetJSON과 같은 API를 append모드로 호출하는 경우는 해당 이벤트는 발생하지 않으며 ondataload 이벤트가 호출된다. (append모드로 데이터가 추가되는 것은 insertRow와는 다르게 취급된다.)
+
+Parameter
+
+nametypedescription
+
+
+infoJSONinserted된 data의 정보를 담고 있는 JOSN 객체로 insertedDataObj를 포함한 오브젝트를 반환한다. 
+ info.insertedDataObj : 추가된 row들의 index와 data를 담고 있는 JSON으로 row의 indexString은 key에 해당하며 실제 row가 inserted된 index이다. 해당 key에 할당하는 값은 row의 data로 1차원 array이다.
+
+
+Sample
+<![CDATA[
+    var insertedDataObj = info.insertedDataObj;
+    var insertedRowList = [];   // insert된 row 집합 
+    var insertedDataArr = [];   // insert된 data 전체 집합. 
+    for(var insertedRow in insertedDataObj){
+        insertedRowList.push(insertedRow);
+        insertedDataArr.concat(insertedDataObj[insertedRow]);
+    }
+]]>
+
+//insertRow API를 이용하여 1건의 row를 insert 하였을 경우
+dataList1.insertRow(0);
+//oninsertrow 이벤트의 info 객체 예시
+    {
+        "insertedDataObj": {
+            "0": [ "", "", "0", "" ]
+        }
+    }
+
+//insertJSON API를 이용하여 다건의 row를 insert 하였을 경우
+dataList1.insertJSON( 0, [{"name":"아이유","birthday":"19930516"},{"name":"정형돈","birthday":"19780207"}] );
+//oninsertrow 이벤트의 info 객체 예시
+{
+    "insertedDataObj": {
+        "0": [ "아이유", "19930516", "0", "" ],
+        "1": [ "정형돈", "19780207", "0", "" ]
+    }
+}
+
+
+onremoverow
+
+DataList의 행이 제거될 때 행이 제거된 후 발생하며 removeRow, removeRows, removeRange, removeAll API 호출 시 발생한다복수개의 row가 한번에 제거되면 해당 이벤트는 한 번만 발생한다. 단,setJSON류의 API에 의해 data 전체가 변경되는 경우에는 발생하지 않으며, 대신 ondataload 이벤트가 발생한다.deleteRow API와 같이 status만 변경되는 API 호출 시에는 해당 이벤트는 발생하지 않는다.
+
+Parameter
+
+nametypedescription
+
+
+infoJSONremovedDataObj를 포함한 오브젝트를 반환한다. removedDataObj는 {제거된row : 제거된dataArr} 형식을 가집니다. 
+ info.removedDataObj : 제거된 row 및 data를 {deletedRowIndex1 : deletedData1, deletedRowIndex2 : deletedData2, ...} 형식의 object로 반환한다.
+
+
+Sample
+<![CDATA[
+    var removedDataObj = info.removedDataObj;
+    var removedRowList = [];    // remove된 row 집합 
+    var removedDataArr = [];    // remove된 data 전체 집합. 
+    for(var removedRow in removedDataObj){
+        removedRowList.push(removedRow);
+        removedDataArr.concat(removedDataObj[removedRow]);
+    }
+]]>
+
+//removeRow API를 이용하여 1건의 row를 remove 하였을 경우
+dataList1.removeRow(1);
+//onremoverow 이벤트의 info 객체 예시
+{
+    "removedDataObj": {
+        "1": [ "아이유", "19930516", "0", "" ]
+    }
+}
+
+//removeRows API를 이용하여 다건의 row를 remove 하였을 경우
+dataList1.removeRows([1,2]);
+//onremoverow 이벤트의 info 객체 예시
+{
+    "removedDataObj": {
+        "1": [ "아이유", "19930516", "0", "" ],
+        "2": [ "정형돈", "19780207", "0", "" ]
+    }
+}
+
+
+onrowpositionchange
+
+DataList의 rowPosition이 변경된 경우 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+infoJSONoldRowIndex, newRowIndex를 포함한 JSON.
+ info.oldRowIndex : 이전 row position. filter가 걸린 경우 filter된 상태를 기준으로 row position 값.
+ info.newRowIndex : 이동할 row position filter가 걸린 경우 filter된 상태를 기준으로 row position 값.
+
+
+Sample
+<![CDATA[
+    var oldRowIndex = info.oldRowIndex;
+    var newRowIndex = info.newRowIndex;
+]]>
+
+
+
+Method Detail
+
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+dataList의 이벤트를 동적으로 할당한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY동적으로 할당할 이벤트의 이름
+
+
+functionFunctionY동적으로 할당 할 이벤트의 핸들러 함수
+
+
+
+Sample
+//dataList의 id가 dataList1 인 경우
+dataList1.bind("onsetdata", function(e){ alert("date setting");});
+
+//event 함수를 commObj.fn_dcDataChage 으로 정의 한 경우
+dataList1.bind("oncelldatachange", commObj.fn_dcDataChage );
+
+
+clearFilter(
+									  
+										)
+							
+
+현재 dataList에 적용된 필터링을 모두 해제.
+(관련 함수) 
+ setColumnFilter (컬럼 별로 필터링을 설정.)
+
+
+Sample
+// gridView의 'dept' 컬럼을 IT로 필터링.
+// gridView의 'dept' 컬럼이 IT인 행만 표시됨. 
+ dataList1.setColumnFilter( {type:'row', colIndex:'dept', key:"IT", condition:'and'});
+
+// 필터링을 해제. 
+// gridView의 'dept'컬럼의 모든 데이터를 표시.  
+ dataList1.clearFilter();
+
+
+clearSort(
+									  
+										)
+							
+
+Data의 정렬을 취소하며 GridView 컴포넌트의 정렬도 함께 취소된다.
+
+
+Sample
+
+dataList1.clearSort();// 정렬을 취소.
+
+
+deleteRow(
+									  rowIndex
+										)
+							
+
+rowInex에 해당하는 행이 삭제되지 않으며 상태 값만 삭제(D)로 변경된다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY삭제상태로 변경 할 행의 index.
+
+
+
+Sample
+// 첫 번째 row의 rowStatus 값을 delete 상태로 변경. (rowStatus: "D")
+dataList1.deleteRow(0);
+
+
+deleteRows(
+									  rowIndexArr
+										)
+							
+
+다건의 row를 index가 담긴 배열을 통해 한번에 삭제(D)로 변경하고 가지고 있던 data를 2차원 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexArrArrayY삭제할 행들의 번호를 저장하는 배열
+
+
+
+
+Return
+
+typedescription
+
+
+Array삭제한 행들이 가지고 있던 2차원 배열 data
+
+
+Sample
+//부서와 이름이 정의 된 dataList의 경우
+
+//4번째와 5번째의 row를 삭제한다.
+var rsData = dataList1.deleteRows([3,4])
+//return 예시 ) [["홍보","이광수"],["인사","류승룡"]]
+
+
+getAllArray(
+									  
+										)
+							
+
+DataList의 전체 data를 column의 정보와 1차원 배열로 변환 된 실 Data를 JSON에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+JSONcolumn 정보와 data가 담긴 JSON.
+ columnInfo : 컬럼의 정보가 담긴 Array.
+ data : data가 담긴 1차원 배열.
+
+
+Sample
+// id가 name,addr인 2개 컬럼을 정의 한 DataList
+var returnJSONArr = dataList1.getAllArray();
+
+//return 예시 - string으로 변환 ) 
+{
+    "columnInfo":["name","addr"]
+    , "data":["손예진","서울","이광수","서울","류승룡","서울"]
+}
+
+
+getAllData(
+									  
+										)
+							
+
+DataList의 전체 data를 1차원 배열로 반환한다.관련 함수 : getAllFilteredData (filter가 적용된 전체 데이터를 반환)
+
+
+
+Return
+
+typedescription
+
+
+Arraydata가 담긴 1차원 배열
+
+
+Sample
+// id가 name, addr인 2개 컬럼을 정의 한 DataList일 때.
+var returnArr = dataList1.getAllData();
+
+//return 예시 ) ["손예진","서울","이광수","서울","류승룡","서울"]
+
+
+getAllFilteredData(
+									  
+										)
+							
+
+filter가 적용된 데이터 전체를 array로 반환한다. 관련 함수 : getAllData (filter를 무시하고 모든 데이터를 반환)
+
+
+
+Return
+
+typedescription
+
+
+Arrayfilter가 적용된 데이터 전체
+
+
+
+
+
+getAllFilteredJSON(
+									  
+										)
+							
+
+filter가 적용된 데이터 전체를 JSON이 담긴 배열로 반환한다. 관련 함수 : getAllJSON (filter를 무시하고 모든 데이터를 반환)
+
+
+
+Return
+
+typedescription
+
+
+Arrayfilter가 적용된 데이터 전체
+
+
+
+
+
+getAllFilteredXML(
+									  
+										)
+							
+
+filter가 적용된 데이터 전체를 XML로 반환한다. 관련 함수 : getAllXML (filter를 무시하고 모든 데이터를 반환)
+
+
+
+Return
+
+typedescription
+
+
+XMLfilter가 적용된 데이터 전체
+
+
+
+
+
+getAllJSON(
+									  
+										)
+							
+
+DataList의 1row의 값을 JSON으로 변환하여 전체 data를 1차원 배열에 담아 반환한다.관련 함수 : getAllFilteredJSON (filter가 적용된 전체 데이터를 반환)
+
+
+
+Return
+
+typedescription
+
+
+ArrayJSON이 담긴 1차원 배열.
+
+
+Sample
+// id가 name, addr인 2개 컬럼을 정의 한 DataList
+var rsData = dataList1.getAllJSON());
+//reutrn 예시 - string으로 변환 )
+[ {name:"손예진" ,addr:"서울"} , {name:"이광수" ,addr:"서울"} , {name:"류승룡" ,addr:"서울"} ]
+
+
+getAllXML(
+									  
+										)
+							
+
+DataList의 전체 data를 XML로 반환한다.관련 함수 : getAllFilteredXML (filter를 무시하고 모든 데이터를 반환)
+
+
+
+Return
+
+typedescription
+
+
+XML전체 data가 담긴 XML
+
+
+Sample
+// id가 name ,addr인 2개 컬럼을 정의 한 DataList
+var returnXMLStr = dataList1.getAllXML();
+//DataList의 XML관련 속성(baseNode,repeatNode 등)을 지정하지 않은 경우.
+
+//return 예시 - string으로 변환 )
+
+
+서울
+손예진
+R
+
+
+서울
+이광수
+U
+
+
+서울
+류승룡
+R
+
+
+
+
+getCellAllData(
+									  realRowIndex
+									       , 
+									       colInfo
+										)
+							
+
+필터링 되지 않은 rowIndex를 기준으로 getCellData를 실행한다
+
+
+Parameter
+
+nametyperequireddescription
+
+
+realRowIndexNumberY필터링되지 않은 기준의 rowIndex
+
+
+colInfoNumber||StringY셀의 컬럼 index 혹은 컬럼의 ID
+
+
+
+
+Return
+
+typedescription
+
+
+String셀의 데이터
+
+
+Sample
+// 1,2번 행이 filtering되어 감춰진 경우
+var retVal1 = dataList1.getCellData(3,"name"); // dataList에서 5번째 행, name열의 값을 가져온다.
+var retVal2 = dataList1.getCellAllData(3, "name"); // dataList에서 3번째 행, name열의 값을 가져온다.
+
+
+getCellData(
+									  rowIndex
+									       , 
+									       colInfo
+										)
+							
+
+rowIndex와 colInfo( 컬럼의 index 또는 ID )에 해당하는 셀의 데이터를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY셀의 행 index
+
+
+colInfoNumber||StringY셀의 컬럼 index 혹은 컬럼의 ID
+
+
+
+
+Return
+
+typedescription
+
+
+String셀의 데이터
+
+
+Sample
+// 첫 번째 row의 "name" column에 해당하는 cell의 데이터를 반환
+var returnValue = dataList1.getCellData(0, "name");
+
+
+getColData(
+									  colInfo
+										)
+							
+
+컬럼의 index 또는 ID에 해당하는 열의 데이터(filter나 sort가 적용 되지 않은)를 배열로 반환한다.관련 함수 : getFilteredColData (filter나 sort가 적용된 컬럼 데이터를 반환)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colInfoNumber||StringY데이터를 가져올 열 index 혹은 컬럼 ID
+
+
+
+
+Return
+
+typedescription
+
+
+Array열의 데이터가 담긴 1차원 배열
+
+
+Sample
+var returnArr =  dataList1.getColData('name'); // name 컬럼의 데이터 배열.
+//return 예시 ) [ "손예진" , "이광수" , "류승룡" ]
+
+
+getColumnDistinctDataArray(
+									  column
+										)
+							
+
+지정한 Index 또는 ID에 해당하는 컬럼에서 중복된 데이터를 제거한 후, 오름차순으로 정렬된 data를 배열로 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+columnNumber||StringY컬럼의 Index 또는 ID
+
+
+
+
+Return
+
+typedescription
+
+
+Array중복된 데이터를 제거한 컬럼 데이터.
+
+
+
+
+
+getColumnID(
+									  colIndex
+										)
+							
+
+DataList에 정의 된 컬럼의 index를 받아 컬럼의 ID를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colIndexNumberYDataList에 정의 된  컬럼 index.
+
+
+
+
+Return
+
+typedescription
+
+
+String컬럼의 ID
+
+
+Sample
+//DataList 정의 예시
+
+
+
+
+
+
+
+var colID = dataList1.getColumnID(0);
+//return 예시 ) "addr"
+
+
+getColumnIndex(
+									  colID
+										)
+							
+
+DataList에 정의 된 컬럼의 ID를 받아 컬럼의 index를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colIDStringY그리드 컬럼 id
+
+
+
+
+Return
+
+typedescription
+
+
+Number그리드 컬럼의 index
+
+
+Sample
+//DataList 정의 예시
+
+
+
+
+
+
+
+var colIdx = dataList1.getColumnIndex("name");
+//return 예시 ) 1
+
+
+getColumnInfo(
+									  columnID
+										)
+							
+
+dataList 특정 column의 세부 정보를 조회한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+columnIDStringY조회하고자 하는 column의 id
+
+
+
+
+Return
+
+typedescription
+
+
+JSON해당 컬럼의 attribute를 표현한 json객체
+
+
+Sample
+
+dataList1.getColumnInfo("column2");
+
+
+getColumnName(
+									  columnInfo
+										)
+							
+
+DataList에 정의 된 컬럼의 index 또는 ID 를 받아 컬럼에 정의 된 name을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+columnInfoString||NumberY컬럼의 ID 또는 index
+
+
+
+
+Return
+
+typedescription
+
+
+String컬럼의 name
+
+
+Sample
+//DataList 정의 예시
+
+
+
+
+
+
+
+var colName = dataList1.getColumnName("name");
+//return 예시 ) "이름"
+
+
+getDataRow(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행의 데이터를 컬럼의 ID를 key로 하는 Hash형태로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY데이터를 가져올 행 index.
+
+
+
+
+Return
+
+typedescription
+
+
+ObjectrowIndex에 해당하는 행의 Hash형태의 객체.
+
+
+Sample
+//DataList 정의 예시
+
+
+
+
+
+
+
+서울
+손예진
+
+
+서울
+류승룡
+
+
+
+
+var rowData = dataList1.getDataRow(1);
+var tmpName = rowData.name;     //return 예시 ) "류승룡" 
+var tmpAddr = rowData.addr;     //return 예시 ) "서울"
+
+//row의 data를 전체적으로 확인하고 싶을 때.   
+for(var tmpKeyNm in rowData){
+    $p.log(  tmpKeyNm +  ' : ' + rowData[tmpKeyNm] );
+}
+//출력 예시 )
+name : 류승룡
+addr : 서울
+
+
+getDeletedArray(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E,V)인 행들의 정보가 담긴 JSON.
+
+
+
+Return
+
+typedescription
+
+
+JSON삭제 상태인 행들의 정보가 담긴 JSON.
+ columnInfo : 컬럼의 ID가 담긴 배열.
+ data : columnInfo에 담긴 ID 순서대로 cell의 데이터가 담긴 1차원 배열.
+
+
+Sample
+var rsData = dataList1.getDeletedArray();
+//return 예시 )
+{
+    "columnInfo": [ "addr", "name" ],
+    "data": [ "서울", "송강호", "서울", "전지현" ]
+}
+
+
+getDeletedData(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E,V)인 행들의 데이터가 담긴 2차원 배열.
+
+
+
+Return
+
+typedescription
+
+
+Array삭제 상태인 행들의 2차원 데이터 배열.
+
+
+Sample
+var rsData = dataList1.getDeletedArray();
+//return 예시 )
+[[ "서울" , "송강호" ],[ "서울" , "전지현" ]]
+
+
+getDeletedIndex(
+									  
+										)
+							
+
+삭제 상태(D,V,3,4)인 행의 index를 배열로 반환한다. (remove API로 삭제 된 E상태의 행은 반환되지 않는다)
+
+
+
+Return
+
+typedescription
+
+
+Array삭제 상태(D,V,3,4)인 행의 index가 담긴 1차원 배열
+
+
+Sample
+var returnArr = dataList1.getDeletedIndex();
+//reutrn 예시 ) [0, 2]
+
+
+getDeletedJSON(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E,V)인 행들의 데이터를 JSON으로 변환하여 배열에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삭제 상태인 행들의 JSON 데이터가 담긴 1차원 배열.
+
+
+Sample
+var rsData = dataList1.getDeletedJSON();
+//return 예시)
+[
+    { "addr": "" , "name": "", "rowStatus": "V" }
+    , { "addr": "서울시", "name": "손예진", "rowStatus": "D" }
+    , { "addr": "서울시", "name": "송강호", "rowStatus": "E" }
+]
+
+
+getDeletedXML(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E,V)인 행들의 데이터를 XML로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+XML삭제 상태인 행들의 XML.
+
+
+Sample
+var rsData = dataList1.getDeletedXML();
+//return 예시 )
+
+
+
+
+V
+
+
+서울시
+손예진
+D
+
+
+서울시
+송강호
+E
+
+
+
+
+getFilteredColData(
+									  colInfo
+										)
+							
+
+filter 및 sort가 적용된 열의 데이터를 배열로 반환.
+(관련 함수)
+ getColData (filter나 sort가 적용되지 않은 열의 전체 데이터를 반환)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colInfoNumber||StringY데이터를 가져올 열 index 혹은 컬럼 ID
+
+
+
+
+Return
+
+typedescription
+
+
+Array열의 데이터가 담긴 1차원 배열 (filter 및 sort가 적용된 데이터)
+
+
+Sample
+var returnArr = dataList1.getFilteredColData('name'); // name 컬럼의 데이터 배열.
+// (반환 예) [ "손예진" , "이광수"] ("류승룡" 은 filter가 적용되어 반환되지 않음.)
+
+
+getFilteredRowIndex(
+									  realRowIndex
+										)
+							
+
+필터링된 상태의 행 인덱스를 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+realRowIndexNumberY필터링되지 않은 상태의 행 인덱스.
+
+
+
+
+Return
+
+typedescription
+
+
+Number필터링된 된 상태의 행 인덱스
+
+
+
+
+
+getFilterList(
+									  
+										)
+							
+
+필터링된 dataList의 컬럼 별 필터링 상태를 반환. 
+(관련 함수) 
+ setColumnFilter (현재 필터링 상태를 저장하고, 필터링을 해제한 후, 다시 이전 필터링 상태로 돌아갈 때 유용)
+
+
+
+Return
+
+typedescription
+
+
+ArraydataList에 적용된 필터들을 배열로 저장한 객체
+
+
+Sample
+ var currentFilter = dataList1.getFilterList(); // 현재 필터링 상태를 저장.
+ dataList1.clearFilter(); // 필터링을 해제.
+ for(var i = 0; i < currentFilter.length; i++) 
+    {dataList1.setColumnFilter(currentFilter[i]);} // 이전 필터링 상태로 돌아감. 
+ 
+ // 혹은, GridView가 
+ // useFilterList="true" 및 useFilterListSync = "true" 설정을 사용할 경우, 
+ // 이전 필터링 상태로 돌아가려면 아래 예제 사용. 
+
+ for(var i = 0; i < currentFilter.length; i++) 
+    {dataList1.setColumnFilter (
+        {type: currentFilter[i].type, 
+        colIndex: currentFilter[i].colIndex, 
+        key: currentFilter[i].key, 
+        condition: currentFilter[i].condition, 
+        exactMatch: true});}
+
+
+
+getFusionChartData(
+									  chartType
+									       , 
+									       labelNode
+									       , 
+									       seriesColumns
+										)
+							
+
+dataList를 fusionChart의 json데이터로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+chartTypeStringYfusionChart의 차트타입
+
+
+labelNodeStringYfusionChart의 lable 데이터로 사용할 DataCollection의 column의 ID값
+
+
+seriesColumnsStringYfusionChart의 series 데이터로 사용할 DataCollection column 정보로 배열형식의 문자열
+
+
+
+
+Return
+
+typedescription
+
+
+JSONfusionChart_Data 변환된 fusionChart data(json)
+
+
+Sample
+//아래와 같이 DataList가 정의 된 경우
+
+
+
+
+
+
+
+
+
+소설
+한국소설
+100
+200
+
+
+소설
+영미소설
+100
+400
+
+
+시/에세이
+에세이
+400
+100
+
+
+시/에세이
+시
+200
+500
+
+
+
+
+var rsData = dc_chart.getFusionChartData("MSColumn2D","category2","[['row3_1','row3_2']]");
+//return 예시)
+{
+    "categories": [
+        { "category": [  
+            { "label": "한국소설" }, { "label": "영미소설" }, { "label": "에세이" }, { "label": "시" } ] }
+        ],
+    "dataset": [
+        {
+            "data": [ { "value": "100" }, { "value": "100" }, { "value": "400" }, { "value": "200" } ],
+            "seriesname": "row3_1" 
+        },
+        {
+            "data": [ { "value": "200" }, { "value": "400" }, { "value": "100" }, { "value": "500" } ],
+            "seriesname": "row3_2"
+        }
+    ]
+}
+
+
+getFusionChartSimpleData(
+									  chartType
+									       , 
+									       labelNode
+									       , 
+									       seriesNode
+									       , 
+									       valueNode
+										)
+							
+
+DataList의 데이터를 fusionChart의 simple모드인 singleSerise, multiSeries 차트의 JSON데이터로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+chartTypeStringYfusionChart의 차트유형
+
+
+labelNodeStringYfusionChart의 lable 데이터로 사용할 DataList column의 ID값
+
+
+seriesNodeStringYfusionChart의 series 데이터로 사용할 DataList column의 ID값
+
+
+valueNodeStringYfusionChart의 value 데이터로 사용할 DataList column의 ID값
+
+
+
+
+Return
+
+typedescription
+
+
+JSONfusionChart_Data JSON으로 변환 된 fusionChart data로 singleSerise와 multiSeries 데이터 형태가 다르다. sample 예시 참조.
+
+
+Sample
+//아래와 같이 DataList가 정의 되어 있는 경우
+
+
+
+
+
+
+
+
+상반기
+2013
+390
+
+
+하반기
+2013
+440
+
+
+상반기
+2014
+420
+
+
+하반기
+2014
+450
+
+
+
+
+//singleSerise chart인 경우
+var tmpChartData = dc_chart.getFusionChartSimpleData("column2D","label","series","value");
+//return 예시 )
+ {
+    "data": [
+        { "label": "2013", "value": "390" },
+        { "label": "2013", "value": "440" },
+        { "label": "2014", "value": "420" },
+        { "label": "2014", "value": "450" }
+    ]
+}
+
+multiSeries chart
+var tmpChartData2 = dc_chart.getFusionChartSimpleData("MSColumn2D","label","series","value");
+//return 예시 )
+{
+    "categories": [
+        {
+            "category": [ { "label": "2013" }, { "label": "2014" } ]
+        }
+    ],
+    "dataset": [
+        {
+            "data": [ { "value": "390" }, { "value": "420" } ],
+            "seriesname": "상반기"
+        },
+        {
+            "data": [ { "value": "440" }, { "value": "450" } ],
+            "seriesname": "하반기"
+        }
+    ]
+}
+
+
+getID(
+									  
+										)
+							
+
+dataList 객체의 id를 반환한다. 객체의 id 속성과 동일한 값을 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+StringdataList 객체의 id를 반환한다.
+
+
+
+
+
+getInfo(
+									  
+										)
+							
+
+dataList의 세부 정보를 조회한다.
+
+
+
+Return
+
+typedescription
+
+
+JSON{dataListInfo : dataList의 attribute값, columnInfo : 각 colummn의 attribute들을 모아둔 object} 형태의 json객체
+
+
+Sample
+
+dataList1.getInfo();
+
+
+getInsertedArray(
+									  
+										)
+							
+
+삽입 상태(상태값:C)인 행들의 정보가 담긴 JSON.
+
+
+
+Return
+
+typedescription
+
+
+JSON삽입 상태인 행들의 정보가 담긴 JSON.
+ columnInfo : 컬럼의 ID가 담긴 배열.
+ data : columnInfo에 담긴 ID 순서대로 cell의 데이터가 담긴 1차원 배열.
+
+
+Sample
+var rsData = dataList1.getInsertedArray();
+//return 예시 )
+{
+    "columnInfo": [ "addr", "name" ],
+    "data": [ "서울", "신규회원" ]
+}
+
+
+getInsertedData(
+									  
+										)
+							
+
+삽입 상태(상태값:C)인 행들의 데이터가 담긴 2차원 배열.
+
+
+
+Return
+
+typedescription
+
+
+Array삽입 상태인 행들의 2차원 데이터 배열.
+
+
+Sample
+var rsData = dataList1.getInsertedData();
+//return 예시 )
+[ [ "서울" , "신규회원1" ] , [ "서울" , "신규회원2" ] ]
+
+
+getInsertedIndex(
+									  
+										)
+							
+
+삽입 상태(상태값:C)인 행의 index를 배열에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삽입 상태인 행 index가 담긴 배열
+
+
+Sample
+var rsData = dataList1.getInsertedIndex();
+//return 예시 ) [ 0 , 2 ]
+
+
+getInsertedJSON(
+									  
+										)
+							
+
+삽입 상태(상태값:C)인 행들의 데이터를 JSON으로 변환하여 배열에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삽입 상태인 행들의 JSON 데이터가 담긴 1차원 배열.
+
+
+Sample
+var rsData = dataList1.getInsertedJSON());
+//return 예시)
+[
+    { "addr": "서울시" , "name": "손예진", "rowStatus": "C" }
+    , { "addr": "서울시", "name": "익명1", "rowStatus": "C" }
+]
+
+
+getInsertedXML(
+									  
+										)
+							
+
+삽입 상태(상태값:C)인 행들의 데이터를 XML로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+XML삽입 상태인 행들의 XML.
+
+
+Sample
+var rsData = dataList1.getInsertedXML();
+//return 예시 )
+
+
+미공개
+익명1
+C
+
+
+서울시
+이광수
+C
+
+
+
+
+getMatchedArray(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+stRowIndex부터 lastRowIndex까지의 범위의 행중에서 colInfo에 해당하는 값이 dataValue와 같은 행들의 컬럼 정보 및 data를 담은 JSON을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colInfoNumber||StringY데이터를 검사할 컬럼 index 혹은 컬럼 ID
+
+
+dataValueStringYcolInfo 해당하는 열의 값과 비교할 data
+
+
+exactMatchBooleanN[default:true, false] 정확히 일치하는지 여부
+
+
+stRowIndexNumberN데이터를 가져오는 것을 시작할 행 index
+
+
+lastRowIndexNumberN데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+JOSN범위안의 data를 정보를 가진 JSON.
+ columnInfo  컬럼의 ID가 담긴 1차원 배열.
+ data    검색 결과의 데이터가 담긴 1차원 배열.
+
+
+Sample
+var tmpRsData = dataList1.getMatchedArray("dept","인사");
+//return 예시 )
+{
+    "columnInfo":["dept","name"]
+    ,"data":["인사","손예진","인사","류승룡"]
+}
+
+
+getMatchedColumnData(
+									  matchCol
+									       , 
+									       dataValue
+									       , 
+									       targetCol
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+stRowIndex부터 lastRowIndex 까지의 범위의 행중에서 matchCol에 해당하는 값이 dataValue와 같은 행들을 찾아서 targetCol에 해당하는 값을 1차원 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+matchColNumber||StringY데이터를 검색 할 컬럼 index 또는 컬럼 ID
+
+
+dataValueStringYmatchCol에 해당하는 값과 비교 할 data
+
+
+targetColNumber||StringY꺼내올 데이터의 컬럼 index 또는 컬럼 ID.
+
+
+exactMatchBooleanN[default:true, false]정확히 일치하는지 여부
+
+
+stRowIndexNumberN데이터를 가져오는 것을 시작할 행 index
+
+
+lastRowIndexNumberN데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+ArraytargetCol에 해당하는 data가 담긴 1차원 배열
+
+
+Sample
+var tmpRsData =dataList1.getMatchedColumnData("dept","인사","name");
+//return 예시 )["손예진" , "류승룡"]
+
+
+getMatchedData(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+stRowIndex부터 lastRowIndex 까지의 범위의 행중에서 colInfo의 값이 dataValue와 같은 행들의 data를 2차원 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colInfoNumber||StringY데이터를 검사할 컬럼 index 또는 컬럼 ID
+
+
+dataValueStringYcolIndex해당하는 열의 값과 비교할 data
+
+
+exactMatchBooleanN정확히 일치하는지 여부
+
+
+stRowIndexNumberN데이터를 가져오는 것을 시작할 행 index
+
+
+lastRowIndexNumberN데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array검색 된 row의 배열 데이터가 담긴 배열.(2차원 배열)
+
+
+Sample
+var tmpRsData = dataList1.getMatchedData("dept","인사");
+//return 예시 ) [["인사","손예진"],["인사","류승룡"]]
+
+
+getMatchedIndex(
+									  conInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+stRowIndex부터 lastRowIndex 까지의 범위의 행중에서 conInfo의 값이 dataValue와 같은 행들의 index를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+conInfoNumber||StringY데이터를 검사할 컬럼 index 혹은 컬럼 ID
+
+
+dataValueStringYconInfo 해당하는 열의 값과 비교할 data
+
+
+exactMatchBooleanN[default:true, false]정확히 일치하는지 여부
+
+
+stRowIndexNumberN데이터를 가져오는 것을 시작할 행 index
+
+
+lastRowIndexNumberN데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array범위안에 일치하는 index를 담은 1차원 배열
+
+
+Sample
+var tmpRsData = dataList1.getMatchedIndex("dept","인사");
+//return 예시 ) [0,3]
+
+
+getMatchedJSON(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+stRowIndex부터 lastRowIndex까지의 범위의 행중에서 colInfo의 값이 dataValue와 같은 행들의 JSON 데이터를 배열에 담아 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colInfoNumber||StringY데이터를 검색할 열 index 또는 id
+
+
+dataValueStringYcolInfo 해당하는 열의 값과 비교할 data
+
+
+exactMatchBooleanN[default:true, false]정확히 일치하는지 여부
+
+
+stRowIndexNumberN시작 행의 index
+
+
+lastRowIndexNumberN끝 행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array범위안의 JSON 데이터를 가지고 있는 1차원 배열
+
+
+Sample
+//dataList1의 dept 컬럼의 Data가 "인사"인 row의 data를 JSON Array으로 반환
+var tmpRsData = dataList1.getMatchedJSON("dept","인사");
+
+//return 예시 ) [{"dept":"인사","name":"손예진","rowStatus":"R"},{"dept":"인사","name":"류승룡","rowStatus":"R"}]
+
+
+getMatchedXML(
+									  colInfo
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+stRowIndex부터 lastRowIndex까지의 범위의 행중에서 colInfo의 값이 dataValue와 같은 행들의 data를 XML로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colInfoNumber||StringY데이터를 검사할 컬럼 index 혹은 컬럼 ID
+
+
+dataValueStringYcolInfo 해당하는 열의 값과 비교할 data
+
+
+exactMatchBooleanN[default:true, false]정확히 일치하는지 여부
+
+
+stRowIndexNumberN데이터를 가져오는 것을 시작할 행 index
+
+
+lastRowIndexNumberN데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+XML범위안의 XML 데이터
+
+
+Sample
+var tmpRsData = dataList1.getMatchedXML("dept","인사");
+//return 예시 )
+
+
+인사
+손예진
+R
+
+
+인사
+류승룡
+R
+
+
+
+
+getModifiedArray(
+									  
+										)
+							
+
+변경 상태(상태값:C,U,D,E)행들의 정보가 담긴 JSON.
+
+
+
+Return
+
+typedescription
+
+
+JSON변경 상태 행들의 정보가 담긴 JSON
+  columnInfo : 컬럼의 ID가 담긴 배열.
+  data : columnInfo에 담긴 ID 순서대로 cell의 데이터가 담긴 1차원 배열.
+
+
+Sample
+var tmpRsData = dataList1.getModifiedArray()
+//return 예시 )
+{
+    "columnInfo": [ "dept", "name" ]
+    , "data": [ "부서미지정", "행추가", "인사", "수정함", "홍보", "송강호", "IT", "전지현" ]
+}
+
+
+getModifiedData(
+									  
+										)
+							
+
+변경 상태(상태값:C,U,D,E)행들의 데이터를 배열로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array변경 상태 행들의 데이터가 담긴 2차원 배열
+
+
+Sample
+var tmpRsData = dataList1.getModifiedData();
+//return 예시 ) [["","행추가"],["인사","행수정"],["홍보","송강호"],["IT","전지현"]]
+
+
+getModifiedIndex(
+									  
+										)
+							
+
+변경 상태(상태값:C,U,D)행들의 index를 배열로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array변경 상태 행들의 index가 담긴 1차원배열
+
+
+Sample
+var tmpRsData = dataList1.getModifiedIndex();
+//return 예시 ) [1,2,3]
+
+
+getModifiedJSON(
+									  options
+										)
+							
+
+데이터가 삽입, 갱신, 삭제, 제거 된 상태(U,C,D,E,1,2,3,5)의 행들의 데이터를 JSON으로 변환하여 1차원 배열에 담아 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionsJSONN데이터 변경(삽입, 갱신, 삭제, 제거) 행들의 데이터의 반환 순서를 설정한다.
+ options.DB : [default:false, true]서버에서 데이타를 관리 하기 위해 제거된 행(E)을 먼저 반환을 한다.
+ options.saveRemovedData : [default:true, false]제거된 행(E)을 제외하고 반환을 하려면 false로 설정한다.
+
+
+
+
+Return
+
+typedescription
+
+
+Array삽입, 갱신, 삭제된 행들의 JSON 데이터가 담긴 1차원 Array
+
+
+Sample
+var returnJSON1 = dataList1.getModifiedJSON();
+//return 예시 )
+[
+    { "dept": "", "name": "", "rowStatus": "C" },
+    { "dept": "인사", "name": "손예진", "rowStatus": "D" },
+    { "dept": "인사", "name": "수정", "rowStatus": "U" },
+    { "dept": "홍보", "name": "송강호", "rowStatus": "E" }
+]
+
+var returnJSON2 = dataList1.getModifiedJSON({saveRemovedData:false});
+//return 예시 )
+[
+    { "dept": "", "name": "", "rowStatus": "C" },
+    { "dept": "인사", "name": "손예진", "rowStatus": "D" },
+    { "dept": "인사", "name": "수정", "rowStatus": "U" }
+]
+
+
+getModifiedXML(
+									  options
+										)
+							
+
+데이터가 삽입, 갱신, 삭제, 제거 된 상태(U,C,D,E,1,2,3,5)의 행들의 데이터를 XML로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionsJSONN데이터 변경(삽입, 갱신, 삭제, 제거) 행들의 반환될 데이터를 설정한다.
+ options.saveRemovedData : default:true, false]제거된 행(E)을 제외하고 반환을 하려면 false로 설정한다.
+
+
+
+
+Return
+
+typedescription
+
+
+Xml삽입, 갱신, 삭제된 행들의 XML 데이터
+
+
+Sample
+var returnXML1 = dataList1.getModifiedXML();
+//return 예시 )
+
+
+
+
+C
+
+
+인사
+손예진
+D
+
+
+인사
+수정
+U
+
+
+홍보
+송강호
+E
+
+
+
+var returnXML2 = dataList1.getModifiedXML({saveRemovedData:false});
+//return 예시 )
+
+
+
+
+C
+
+
+인사
+손예진
+D
+
+
+인사
+수정
+U
+
+
+
+
+getObjectType(
+									  
+										)
+							
+
+dataCollection의 Type을 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+String[dataMap, dataList, linkedDataList] dataCollection의 타입을 반환한다.
+
+
+Sample
+var dcType = dataList1.getObjectType();
+return 예시 ) "dataList"
+
+
+getOnlyDeletedArray(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E)행들의 정보를 담은 JSON을 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+JSON삭제 상태 행들의 정보를 담은 JSON.
+ columnInfo : 컬럼의 ID가 담긴 배열.
+ data : columnInfo에 담긴 ID 순서대로 cell의 데이터가 담긴 1차원 배열.
+
+
+Sample
+var tmpRsData = dataList1.getOnlyDeletedArray();
+//return 예시 )
+{
+    "columnInfo": [ "addr", "name" ],
+    "data": [ "서울", "송강호", "서울", "전지현" ]
+}
+
+
+getOnlyDeletedData(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E)행들의 배열 데이터를 배열에 담아 반환한다.(2차원 배열)
+
+
+
+Return
+
+typedescription
+
+
+Array삭제 상태행들의 배열 데이터를 담은 배열.
+
+
+Sample
+var tmpRsData = dataList1.getOnlyDeletedData();
+//return 예시 ) [["홍보","송강호"],["IT","전지현"]]
+
+
+getOnlyDeletedIndex(
+									  
+										)
+							
+
+삭제 상태(상태값:D)행등의 index를 배열로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삭제 상태인 행들의 index를 담은 배열
+
+
+Sample
+var tmpRsData = dataList1.getOnlyDeletedIndex();
+//return 예시 ) [3]
+
+
+getOnlyDeletedJSON(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E)행들의 JSON 데이터를 배열에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삭제 상태인 행들의 JSON 데이터를 담은 배열.
+
+
+Sample
+var tmpRsData = dataList1.getOnlyDeletedJSON();
+//return 예시 ) 
+[
+    {"dept":"홍보","name":"송강호","rowStatus":"D"}
+    ,{"dept":"IT","name":"전지현","rowStatus":"E"}
+]
+
+
+getOnlyDeletedXML(
+									  
+										)
+							
+
+삭제 상태(상태값:D,E)행들의 데이터를 XML로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+XML삭제 상태인 행들의 XML 데이터
+
+
+Sample
+var tmpRsData = dataList1.getOnlyDeletedXML()
+
+//return 예시 )
+
+
+홍보
+송강호
+D
+
+
+IT
+전지현
+E
+
+
+
+
+getOption(
+									  attr
+										)
+							
+
+속성명으로 dataList에 정의 된 속성의 값을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+attrStringY속성명.
+
+
+
+
+Return
+
+typedescription
+
+
+StringdataList에 정의 된 속성의 값.
+
+
+Sample
+//DataList 정의 예시
+
+
+
+
+
+
+
+var tmpAttr = dataList1.getOption("baseNode");
+//return 예시 ) "list"
+
+
+getOriginalCellData(
+									  rowIndex
+									       , 
+									       colIndex
+										)
+							
+
+rowIndex와 colInfo에 해당하는 셀의 초기 데이터(최초에 설정된 데이터)를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY셀의 초기 행 index
+
+
+colIndexString||NumberY컬럼의 ID 또는 컬럼의 index
+
+
+
+
+Return
+
+typedescription
+
+
+String셀의 초기 데이터
+
+
+Sample
+
+var tmpRsData = dataList1.getOriginalCellData(0, "name");
+
+
+getParentRowIndex(
+									  rowIndex
+										)
+							
+
+drilldown 사용시 rowIndex에 해당하는 행의 부모 행의 rowIndex를 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY부모를 찾으려는 행의 번호
+
+
+
+
+Return
+
+typedescription
+
+
+Number부모 Row의 Index를 반환한다
+
+
+
+
+
+getRangeArray(
+									  fromIdx
+									       , 
+									       toIdx
+										)
+							
+
+fromIdx부터 toIdx 까지 범위의 행들의 컬럼 정보 및 data를 담은 JSON을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+fromIdxNumberY데이터를 가져오는 범위의 시작 행 index
+
+
+toIdxNumberY데이터를 가져오는 범위의 끝 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+JSON범위안의 data를 정보를 가진 JSON.
+ columnInfo  컬럼의 ID가 담긴 1차원 배열.
+ data    검색 결과의 데이터가 담긴 1차원 배열.
+
+
+Sample
+//row의 index가 0번째 ~ 2번째인 row의 data 꺼내오기
+var tmpRsData = dataList1.getRangeArray(0,2);
+
+//return 예시 )
+{
+    "columnInfo":["dept","name"]
+    ,"data":["인사","손예진","홍보","송강호","IT","전지현"]
+}
+
+
+getRangeData(
+									  from
+									       , 
+									       to
+										)
+							
+
+from부터 to 까지의 범위의 행의 data를 1차원 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+fromNumberY데이터를 가져오는 것을 시작할 행 index
+
+
+toNumberY데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array범위안의 data를 가지고 있는 배열
+
+
+Sample
+var tmpRsData = dataList1.getRangeData(0,2);
+
+//return 예시 ) ["인사","손예진","홍보","송강호","IT","전지현"]
+
+
+getRangeJSON(
+									  from
+									       , 
+									       to
+										)
+							
+
+from부터 to 까지의 범위의 행의 JSON data를 담은 1차원 배열.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+fromNumberY데이터를 가져오는 범위의 시작 행 index
+
+
+toNumberY데이터를 가져오는 범위의 끝 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array범위에 해당하는 행의 JSON객체를 담은 배열
+
+
+Sample
+//1번째 row부터 3번째 row Data를 JSON으로 반환하여 array로 반환
+var tmpRsData = dataList1.getRangeJSON(0,2);
+
+//return 예시 )
+[
+    {"dept":"인사","name":"손예진","rowStatus":"R"}
+    ,{"dept":"홍보","name":"송강호","rowStatus":"R"}
+    ,{"dept":"IT","name":"전지현","rowStatus":"R"}
+]
+
+
+getRangeXML(
+									  from
+									       , 
+									       to
+										)
+							
+
+from부터 to 까지의 범위의 행의 data를 XML로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+fromNumberY데이터를 가져오는 범위의 시작 행 index
+
+
+toNumberY데이터를 가져오는 범위의 끝 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+XML범위에 해당하는 행의 XML 데이터
+
+
+Sample
+var tmpRsData = dataList1.getRangeXML(0,2);
+
+//return 예시 )
+
+
+인사
+손예진
+R
+
+
+홍보
+송강호
+R
+
+
+IT
+전지현
+R
+
+
+
+
+getRealRowIndex(
+									  
+										)
+							
+
+실제 Row Index를 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Number실제 Row Index
+
+
+
+
+
+getRecursiveRowIndex(
+									  
+										)
+							
+
+depthColumn 사용 시 Row Index 하위의 모든 Row의 인덱스를 배열로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+ArrayRow Index 하위의 모든 Row의 인덱스 배열
+
+
+
+
+
+getRowArray(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행들의 정보가 담긴 JSON을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY데이터를 가져올 행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+JSON행들의 정보가 담긴 JSON. 
+ columnInfo  컬럼의 ID가 담긴 1차원 배열.
+ data    검색 결과의 데이터가 담긴 1차원 배열.
+
+
+Sample
+//0번째 row의 data객체
+var tmpRsData = dataList1.getRowArray(0);
+
+//return 예시 )
+{
+    "columnInfo":["dept","name"]
+    ,"data":["인사","손예진"]
+}
+
+
+getRowCount(
+									  
+										)
+							
+
+화면에 보여지는 row의 건수를 반환하며 필터가 걸려있거나 GridView에 drilldown이 적용되어 있는 경우 접혀져 있는 데이터의 행의 수는 포함되지 않는다.전체 데이터의 row건수는 getTotalRow API를 사용한다.
+
+
+
+Return
+
+typedescription
+
+
+Numberrow의 건수
+
+
+Sample
+
+var tmpRowCount = dataList1.getRowCount();
+
+
+getRowData(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행의 데이터를 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY데이터를 가져올 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+ArrayrowIndex에 해당하는 행의 데이터의 배열
+
+
+Sample
+//DataList에 이름과 생년월일 컬럼이 정의 된 경우
+
+var rsData = dataList1.getRowData( 0 );
+//return 예시 ) ["아이유", "19930516"]
+
+
+getRowIndexByStatus(
+									  statusStr
+										)
+							
+
+상태값(코드)가 일치하는 행의 index를 배열로 반환한다.단, 상태코드가 E인 경우는 반환되지 않는다.(removeRow와 같은 API를 호출 한 경우가 이에 해당된다.)상태코드가 여러개의 경우 "CU"와 같이 상태코드를 붙여 파라메터로 넘기면 된다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+statusStrStringY[C,U,D,V,R]상태코드 문자열로 대문자로 표현.
+
+
+
+
+Return
+
+typedescription
+
+
+ArraystatusStr과 상태가 일치하는 행의 index가 담긴 배열.
+
+
+Sample
+//dataList1에서 삽입, 갱신, 삭제 상태인 행들의 rowIndex 배열
+var returnArr = dataList1.getRowIndexByStatus('CUD');
+
+//return 예시 ) [1,3]
+
+
+getRowJSON(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행의 data를 JSON객체로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY데이터를 가져올 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+JSON해당 행의 JSON객체 데이터
+
+
+Sample
+//name과 birthday 컬럼이 정의 된 dataList의 경우
+
+var returnData = dataList1.getRowJSON(0);
+//return 예시 ) {"name":"아이유","birthday":"19930516","rowStatus":"R"}
+
+
+getRowPosition(
+									  
+										)
+							
+
+바인딩된 DataList의 현재 행 위치(인덱스)를 확인.
+
+
+
+Return
+
+typedescription
+
+
+Number:YrowPosition값
+
+
+Sample
+ // gridView1이 dataList1과 바인딩되어 있는 상태에서 gridView의 (3,2) cell을 클릭한 경우
+ dataList1.getRowPosition(); 
+ // 위 예제의 실행 결과는 3.
+
+ // treeview2가 dataList2와 바인딩된 상태에서 index5값이 5인 node를 클릭한 경우 (node.index === 5)
+ dataList1.getRowPosition(); 
+ // 위 예제의 실행 결과는 5.
+
+
+getRowStatus(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행의 상태를 코드(문자)로 반환한다. (초기상태:"R", 갱신:"U", 삽입:"C", 삭제:"D", 삽입 후 삭제:"V")
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+String행의 상태코드 (초기상태:"R", 갱신:"U", 삽입:"C", 삭제:"D", 삽입 후 삭제:"V")
+
+
+Sample
+var returnValue = dataList1.getRowStatus(0); // 첫 번째 행의 rowStatus 값(문자)를 반환한다.
+//return 예시 ) "R"
+
+
+getRowStatusValue(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행의 상태를 숫자로 반환한다. (초기상태:0, 갱신:1, 삽입:2, 삭제:3, 삽입 후 삭제:4)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Number행의 상태 숫자값 (초기상태:0, 갱신:1, 삽입:2, 삭제:3, 삽입 후 삭제:4)
+
+
+Sample
+var returnValue = dataList1.getRowStatusValue(0); // 첫 번째 행의 rowStatus 값(숫자)를 반환한다.
+//return 예시 ) 0
+
+
+getRowXML(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행의 data를 XML로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+XML행의 XML 데이터
+
+
+Sample
+var rsData = dataList1.getRowXML(0);
+
+//return 예시 )
+
+정형돈
+19780207
+R
+
+
+
+getScope(
+									  
+										)
+							
+
+컴포넌트가 scope=true인 wframe의 자식 컴포넌트일 때 해당 부모 wframe 객체를 반환하는 함수  
+ scope=true인 wframe의 자식 컴포넌트가 아닐 경우 null을 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Objectwframe 객체 또는 null
+
+
+Sample
+ // 메인페이지에 wframe1이 있고 wframe1안에 wframe11이 있고 그 안에 dataList1이 있는 경우
+ dataList1.getScope(); // wframe11 객체를 반환한다.
+
+
+getScopeWindow(
+									  
+										)
+							
+
+컴포넌트가 scope=true인 wframe의 자식 컴포넌트일 때 해당 부모 wframe의 scope객체를 반환하는 함수  
+ scope=true인 wframe의 자식 컴포넌트가 아닐 경우 전역 window객체를 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Objectwframe객체의 scope객체 또는 전역window객체
+
+
+Sample
+ // 메인페이지에 wframe1이 있고 wframe1안에 wframe11이 있고 그 안에 dataList1이 있는 경우
+ var scope = dataList1.getScopeWindow();
+ scope.wframe11 === dataList1.getScope(); // true
+
+
+getTotalCol(
+									  
+										)
+							
+
+DataList에 정의 된 컬럼수를 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+NumberDataList의 컬럼수
+
+
+
+
+
+getTotalRow(
+									  
+										)
+							
+
+dataList의 전체 row수를 반환한다.필터가 걸려 있거나, drilldown이 적용되어 접혀있는 row가 있더라도 모두 포함한 수를 반환한다.필터 적용이 되어있는 row의 건수는 getRowCount API를 사용한다.
+
+
+
+Return
+
+typedescription
+
+
+Number전체 row수
+
+
+
+
+
+getUnmatchedArray(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex까지의 범위중에서 데이터가 dataValue와 다른 행들의 정보를 JSON으로 변환하여 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colNumberY컬럼 index 또는 id
+
+
+dataValueStringY비교 data
+
+
+exactMatchBooleanY[true, false]정확히 일치하는지 여부
+
+
+stRowIndexNumberY시작할 행 index
+
+
+lastRowIndexNumberY끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+JSON범위안에 일치하는 index를 가지고 있는 JSONArray
+ columnInfo : 컬럼의 ID가 담긴 배열.
+ data : columnInfo에 담긴 ID 순서대로 cell의 데이터가 담긴 1차원 배열.
+
+
+Sample
+//name과 birthday 컬럼이 정의 된 dataList의 경우
+
+//row의 index가 0부터 10까지의 데이터 중에서 birthday의 값중에 "198" 문자열이 없는 데이터를 반환
+var rsData = dataList1.getUnmatchedArray( 'birthday', '198', false, 0, 10 ));
+//return 예시 )
+{
+    "columnInfo":["name","birthday"]
+    ,"data":["아이유","19930516","정형돈","19780207","유승호","19930817","김현아","19920606"]
+}
+
+
+getUnmatchedColumnData(
+									  matchCol
+									       , 
+									       dataValue
+									       , 
+									       targetCol
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+matchCol에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들을 찾아서 targetCol에 해당하는 컬럼의 데이터들를 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+matchColNumber||StringY데이터를 검사할 컬럼 index 또는 id
+
+
+dataValueStringYmatchCol에 해당하는 컬럼의 데이터와 비교할 문자열
+
+
+targetColNumber||StringY데이터를 가져올 컬럼 index 또는 id
+
+
+exactMatchBooleanY[true,false]정확히 일치하는지 여부
+
+
+stRowIndexNumberY데이터를 가져오는 것을 시작할 행 index
+
+
+lastRowIndexNumberY데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+ArraytargetCol에 해당하는 컬럼의 데이터를 가지고 있는 1차원 배열
+
+
+Sample
+//row의 index가 0부터 10까지의 데이터 중에서 birthday의 값중에 "198" 문자열이 없는 행의 name 데이터를 반환
+var rsData = dataList1.getUnmatchedColumnData("birthday","198","name",false,0,10)
+//return 예시) ["아이유","정형돈","유승호","김현아"]
+
+
+getUnmatchedData(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 data를 배열 변환하여 배열에 담아 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colNumber||StringY데이터를 검사할 컬럼 index 또는 id
+
+
+dataValueStringYcol해당하는 열의 값과 비교할 data
+
+
+exactMatchBooleanY정확히 일치하는지 여부
+
+
+stRowIndexNumberY데이터를 가져오는 것을 시작할 행 index
+
+
+lastRowIndexNumberY데이터를 가져오는 것을 끝낼 행 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array범위안에 일치하는 배열 데이터를 가진 배열로(2차원 배열)
+
+
+Sample
+//name과 birthday컬럼이 정의 된 DataList의 경우
+
+//row의 index가 0부터 10까지의 데이터 중에서 birthday의 값중에 "198" 문자열이 없는 행의 데이터를 배열로 변환하여 배열에 담아 return.
+var rsData = dataList1.getUnmatchedData("birthday","198",false,0,10)
+//return 예시 ) [["아이유","19930516"],["정형돈","19780207"],["유승호","19930817"],["김현아","19920606"]]
+
+
+getUnmatchedIndex(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 index를 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colNumber||StringY데이터를 검사할 컬럼의 index 또는 id
+
+
+dataValueStringYcol에 해당하는 열의 값과 비교할 data
+
+
+exactMatchBooleanY[true,false]정확히 일치하는지 여부
+
+
+stRowIndexNumberY시작할 행의 index
+
+
+lastRowIndexNumberY끝낼 행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array범위안에 일치하는 index를 가지고 있는 배열
+
+
+Sample
+//row의 index가 0부터 10까지의 데이터 중에서 birthday의 값중에 "198" 문자열이 없는 행의 index가 담긴 배열 반환
+var returnArr = dataList1.getUnmatchedIndex("birthday","198",false,0,10)
+//return 예시 )[0,1,2,5]
+
+
+getUnmatchedJSON(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 data를 JSON으로 변환하여 배열에 담아 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colNumber||StringY데이터를 검색할 컬럼의 index 또는 id
+
+
+dataValueStringYcol에 해당하는 컬럼의 데이터와 비교할 data
+
+
+exactMatchBooleanY[default:true, false]정확히 일치하는지 여부
+
+
+stRowIndexNumberY시작 행의 index
+
+
+lastRowIndexNumberY끝 행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array조건에 일치하는 row에 해당하는 JSON Data를 가지고 있는 1차원 배열
+
+
+Sample
+//dataList1의 index가 0번째 10까지의 데이터 중 birthday의 값중에 "198" 문자열이 없는 행의 JSON데이터를 배열로 반환
+var returnData = dataList1.getUnmatchedJSON("birthday","198",false,0,10))
+
+//return 예시 )
+[
+    {"name":"아이유","birthday":"19930516","rowStatus":"R"}
+    ,{"name":"정형돈","birthday":"19780207","rowStatus":"R"}
+    ,{"name":"유승호","birthday":"19930817","rowStatus":"R"}
+    ,{"name":"김현아","birthday":"19920606","rowStatus":"R"}
+]
+
+
+getUnmatchedXML(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       exactMatch
+									       , 
+									       stRowIndex
+									       , 
+									       lastRowIndex
+										)
+							
+
+col에 해당하는 컬럼의 rowIndex가 stRowIndex부터 lastRowIndex 까지의 범위중에서 데이터가 dataValue와 다른 행들의 데이터를 XML로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colNumber||StringY데이터를 검사할 컬럼의 index 또는 id
+
+
+dataValueStringYcol에 해당하는 컬럼의 값과 비교할 data
+
+
+exactMatchBooleanY[true,false]정확히 일치하는지 여부
+
+
+stRowIndexNumberY시작 행의 index
+
+
+lastRowIndexNumberY마지막 행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+XML범위안에 일치하는 XML 데이터
+
+
+Sample
+//dataList1의 index가 0번째 10까지의 데이터 중 birthday의 값중에 "198" 문자열이 없는 행의 데이터를 XML로 반환
+var returnData = dataList1.getUnmatchedXML("birthday","198",false,0,10);
+//return 예시 )
+
+
+아이유
+19930516
+R
+
+
+정형돈
+19780207
+R
+
+
+유승호
+19930817
+R
+
+
+김현아
+19920606
+R
+
+
+
+
+getUpdatedArray(
+									  
+										)
+							
+
+갱신 상태(1,U)인 행들의 데이터의 정보는 JSON으로 반환한다.반환값의 columnInfo는 컬럼의 id가 담긴 배열을, data는 columnInfo에 명시된 컬럼의 순서대로 해당하는 데이터를 담은 배열이다.
+
+
+
+Return
+
+typedescription
+
+
+JSON갱신 상태인 행들의 정보가 담긴 JSON 데이터
+ columnInfo : 컬럼의 ID가 담긴 배열.
+ data : columnInfo에 담긴 ID 순서대로 cell의 데이터가 담긴 1차원 배열.
+
+
+Sample
+//dept와 name이 정의 된 DataList의 경우
+
+//갱신 상태(U)의 데이터 반환 (총2건)  
+var rsData = dataList1.getUpdatedArray());
+//return 예시 )
+{
+    "columnInfo":["dept","name"]
+    ,"data":["인사","수정","홍보","수정2"]
+}
+
+
+getUpdatedData(
+									  
+										)
+							
+
+갱신 상태(1,U)인 행들의 배열 데이터를 배열에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array갱신 상태(1,U)인 행들의 배열 데이터 (2차원 배열)
+
+
+Sample
+//dept와 name이 정의 된 DataList의 경우
+
+//갱신 상태(U)의 데이터 반환 (총2건)  
+var rsData = dataList1.getUpdatedData();
+//return 예시 ) [["인사","수정"],["홍보","수정2"]]
+
+
+getUpdatedIndex(
+									  
+										)
+							
+
+갱신 상태(1,U)인 행의 index를 배열로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array갱신 상태(1,U)인 행의 index를 담은 배열
+
+
+Sample
+//갱신 상태(U)의 index 반환 (총2건)
+var rsData = dataList1.getUpdatedIndex();
+//return 예시 ) [3,4]
+
+
+getUpdatedJSON(
+									  
+										)
+							
+
+갱신 상태(1,U)인 행들의 데이터를 JSON으로 변환하여 배열에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array갱신 상태(1,U)인 행들의 JSON 데이터가 담긴 배열
+
+
+Sample
+var rsData = dataList1.getUpdatedJSON();
+//return 예시 ) 
+[
+    {"dept":"인사","name":"수정","rowStatus":"U"}
+    ,{"dept":"홍보","name":"수정2","rowStatus":"U"}
+]
+
+
+getUpdatedXML(
+									  
+										)
+							
+
+갱신 상태(1,U)인 행들의 데이터를 XML로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+XML갱신 상태(1,U)인 행들의 XML 데이터
+
+
+Sample
+//dept와 name이 컬럼이 정의 된 dataList의 경우
+
+var rsData = dataList1.getUpdatedXML()
+//return 예시 )
+
+
+인사
+수정
+U
+
+
+홍보
+수정2
+U
+
+
+
+
+getVoidArray(
+									  
+										)
+							
+
+삽입 후 삭제 상태(4,V)인 행들의 정보가 담긴 JSON을 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+JSON삽입 후 삭제 상태(4,V)인 행들의 정보가 담긴 JSON
+ columnInfo : 컬럼의 ID가 담긴 배열.
+ data : columnInfo에 담긴 ID 순서대로 cell의 데이터가 담긴 1차원 배열.
+
+
+Sample
+var returnJsonArr = dataList1.getVoidArray();
+//return 예시 )
+{
+    "columnInfo":["dept","name"]
+    ,"data":["",""]
+}
+
+
+getVoidData(
+									  
+										)
+							
+
+삽입 후 삭제 상태(4,V)인 행들을 배열 데이터를 배열에 담에 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삽입 후 삭제 상태인 행들의 배열 데이터가 담긴 배열 (2차원 배열)
+
+
+Sample
+var  raData = dataList1.getVoidData();
+//return 예시 - 총 2건 ) [ ["0","",""],["0","",""] ]
+
+
+getVoidIndex(
+									  
+										)
+							
+
+삽입 후 삭제 상태(4,V)인 행의 index를 배열로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삽입 후 삭제 상태(4,V)인 행의 index를 담은 배열
+
+
+Sample
+var returnArr = dataList1.getVoidIndex();
+//return 예시 - 총 2건 ) [0,1]
+
+
+getVoidJSON(
+									  
+										)
+							
+
+삽입 후 삭제 상태(4,V)인 행들의 JSON 데이터를 배열에 담아 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삽입 후 삭제 상태(4,V)인 행들의 JSON 데이터가 담긴 배열
+
+
+Sample
+var returnJsonStr = dataList1.getVoidJSON();
+//return 예시 - 총 2건 )
+[
+    {"dept":"","name":"","rowStatus":"V"}
+    ,{"dept":"","name":"","rowStatus":"V"}
+]
+
+
+getVoidXML(
+									  
+										)
+							
+
+삽입후 삭제 상태(4,V)인 행들의 데이터를 XML로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+XML삽입 후 삭제 상태(4,V)인 행들의 XML 데이터
+
+
+Sample
+var returnXMLStr = dataList1.getVoidXML();
+//return 예시 - 총 2건 )
+
+
+
+
+V
+
+
+
+
+V
+
+
+
+
+initRowStatus(
+									  
+										)
+							
+
+dataList의 상태를 모두 "R"로 변경한다. modifyAllStatus("R")과 비교시 onrowstatuschange이벤트를 발생하지 않는점을 제외하고 동작이 같다.
+
+
+Sample
+ dataList1.initRowStatus(); // dataList의 상태가 모두 "R"로 변경된다. onrowstatuschange 이벤트는 발생하지 않는다.
+
+
+insertData(
+									  rowIndex
+									       , 
+									       dataObj
+										)
+							
+
+rowIndex에 다건의 row를 1차원 Array로 삽입한다. 삽입 후 DataList의 oninsertrow 이벤트가 발생된다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrow의 index
+
+
+dataObjArrayY데이터를 담고 있는 1차원 Array
+
+
+
+Sample
+//DataList에 name, birthday id를 가진 컬럼이 정의 된 경우
+
+//0번째 index에 2건의 row을 삽입.
+dataList1.insertData( 0, ["아이유", "19930516" ,"정형돈" ,"19780207"] );
+
+
+insertJSON(
+									  rowIndex
+									       , 
+									       dataObj
+										)
+							
+
+rowIndex에 다건의 row를 JSON객체로 삽입한다. 삽입 후 DataList의 oninsertrow 이벤트가 발생된다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrow의 index
+
+
+dataObjArrayYrow에 해당하는 JSON객체는 담고 있는 1차원 array
+
+
+
+Sample
+//DataList에 name, birthday id를 가진 컬럼이 정의 된 경우
+
+//dataList에 insert 할 데이터 정의
+var tmpData = [{"name":"아이유","birthday":"19930516"},{"name":"정형돈","birthday":"19780207"}];
+
+//0번째 index에 2건의 row을 삽입.
+dataList1.insertJSON( 0, tmpData );
+
+
+insertRow(
+									  rowIndex
+										)
+							
+
+rowIndex에 1건의 row는 삽입한다. 삽입 된 후 DataList의 oninsertrow 이벤트가 발생한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY삽입할 행의 index
+
+
+
+Sample
+// 첫번째 행에 새로운 행을 삽입한다.
+dataList1.insertRow(0);
+
+
+insertXML(
+									  rowIndex
+									       , 
+									       dataObj
+										)
+							
+
+rowIndex에 다건의 row를 XML 데이터로 삽입한다. 삽입 후 DataList의 oninsertrow 이벤트가 발생된다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrow의 index
+
+
+dataObjXMLY데이터를 담고 있는 XML
+
+
+
+Sample
+//DataList에 name, birthday id를 가진 컬럼이 정의 된 경우
+
+//XML String
+var xmlStr = "아이유19930516";
+//XML 데이터 생성
+var dataObj = WebSquare.xml.parse(xmlStr);
+
+//0번째 index에 1건의 row을 삽입.
+insertXML(0, dataObj)
+
+
+keepRowPosition(
+									  
+										)
+							
+
+JSON Data를 append할 때 이전에 설정된 rowPosition값을 유지할지 여부
+
+
+
+
+
+modifyAllStatus(
+									  status
+										)
+							
+
+모든 행의 상태를 변경 한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+statusStringY변경할 상태값 (초기상태:"R", 갱신:"U", 삽입:"C", 삭제:"D", 삽입 후 삭제:"V"). status값 변경으로 데이터를 조작할 수 없는 것이 원칙이므로 "E"는 인자값으로 사용할 수 없음.
+
+
+
+Sample
+dataList1.modifyAllStatus('D'); // 모든 행을 삭제 상태로 변경한다.
+
+
+modifyMatchedStatus(
+									  col
+									       , 
+									       dataValue
+									       , 
+									       status
+										)
+							
+
+col에 해당하는 컬럼의 데이터와 dataValue의 값이 일치된 행의 상태를 변경한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colNumber||StringY검사할 컬럼의 index 또는 id
+
+
+dataValueStringY비교값
+
+
+statusStringY변경할 상태값. status값 변경으로 데이터를 조작할 수 없는 것이 원칙이므로 "E"는 인자값으로 사용할 수 없음.
+
+
+
+Sample
+// dept 컬럼의 데이터가 'IT'인 행들의 상태를 갱신 상태(U)로 변경한다.
+dataList1.modifyMatchedStatus('dept', 'IT', 'U');
+
+
+modifyRangeStatus(
+									  from
+									       , 
+									       to
+									       , 
+									       status
+										)
+							
+
+from부터 to까지의 범위의 행들의 상태를 변경 한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+fromNumberY변경할 범위의 시작 행의 index
+
+
+toNumberY변경할 범위의  끝의 index
+
+
+statusStringY변경할 상태값 (초기상태:"R", 갱신:"U", 삽입:"C", 삭제:"D", 삽입 후 삭제:"V"). status값 변경으로 데이터를 조작할 수 없는 것이 원칙이므로 "E"는 인자값으로 사용할 수 없음.
+
+
+
+Sample
+dataList1.modifyRangeStatus(1 , 3, 'D'); // 두번째, 세번째 행을 삭제 상태로 변경한다.
+
+
+modifyRowStatus(
+									  rowIndex
+									       , 
+									       status
+										)
+							
+
+rowIndex에 해당하는 행의 상태를 변경한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY상태를 변경할 행의 index
+
+
+statusStringY변경할 상태값. status값 변경으로 데이터를 조작할 수 없는 것이 원칙이므로 "E"는 인자값으로 사용할 수 없음.
+
+
+
+Sample
+dataList1.modifyRowStatus(0, 'D'); // 첫번째 행을 삭제 상태로 변경한다.
+
+
+multisort(
+									  options
+										)
+							
+
+option에 따라서 여러개의 컬럼을 정렬한다.컬럼의 dataType 속성을 기준으로 정렬되므로 숫자형태인 경우 dataType속성을 number로 정의해야한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionsJSONY정렬에 대한 옵션을 가지고 있는 JSON
+ options.sortIndex : 정렬해 줄 컬럼의 id 혹은 index. 여러 열을 나열시에 빈칸(space)을 구분자로 한다.
+ options.sortOrder : 정렬방법 (1:오름차순 -1:내림차순). 여러 열에 대한 정렬방법을 나열시에 빈칸(space)을 구분자로 한다.
+
+
+
+Sample
+//name 컬럼을 내림차순으로 첫번째 정렬 후 dept 컬럼을 오름차순으로 정렬
+var options = {};
+options.sortIndex = "name dept";
+options.sortOrder = "-1 1";
+
+dataList1.multisort( options );
+
+
+redo(
+									  
+										)
+							
+
+데이터를 변경된 시점 최근 한단계로 되돌린다.
+
+
+Sample
+// 데이터를 변경된 시점 최근 한단계로 되돌린다.
+dataList1.redo();
+
+
+reform(
+									  
+										)
+							
+
+DataList의 originalData를 현재의 데이터로 바꿔주고 모든 행의 상태를 초기화(R)한다.
+
+
+Sample
+dataList1.reform(); // 모든 행의 상태가 초기상태 (0, R)로 변경된다.
+
+
+removeAll(
+									  
+										)
+							
+
+DataList의 모든 데이터를 삭제하고 삭제 된 Data를 1차원 배열로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Array삭제한 행들의 데이터가 담긴 1차원 배열
+
+
+Sample
+//이름과 부서가 정의 된 DataList의 경우
+
+var returnArr = dataList1.removeAll();
+//return 예시 - 총 5건 삭제 )["인사", "손예진", "홍보", "송강호", "IT", "전지현", "인사", "류승룡", "홍보", "이광수"]
+
+
+removeColumnFilter(
+									  col
+										)
+							
+
+col에 해당하는 컬럼에 적용된 filter를 삭제한다.주의 - 여러 컬럼에 setColumnFilter를 사용한 경우, 해제되지 않는 filter의 operationType(AND, OR 조건)에 따른 결과를 유의하여야 한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colNumber||StringYfilter를 삭제할 컬럼의 index 또는 id
+
+
+
+Sample
+dataList1.removeColumnFilter( 'dept' ); // dept 컬럼에 적용된 필터링을 해제한다.
+
+
+removeColumnFilterAll(
+									  
+										)
+							
+
+모든 컬럼에 적용된 filter를 삭제한다.
+
+
+Sample
+dataList1.removeColumnFilterAll(); // 전체 필터링을 해제한다.
+
+
+removeRange(
+									  startIdx
+									       , 
+									       endIdx
+										)
+							
+
+startIdx와 endIdx사이의 행을 삭제하고 가지고 있던 data를 1차원 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+startIdxNumberY데이터를 삭제할 범위의 시작 행
+
+
+endIdxNumberY데이터를 삭제할 범위의 끝 행
+
+
+
+
+Return
+
+typedescription
+
+
+Array삭제된 범위 사이의 데이터 2차원 배열
+
+
+Sample
+//부서와 이름 컬럼이 정의 된 DataList의 경우
+
+//1번째와 2번째 row 삭제 
+var returnArr = dataList1.removeRange(0, 1);
+//return 예시 ) [["IT","전지현"],["홍보","송강호"]]
+
+
+removeRow(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 행을 삭제하고 가지고 있던 data를 1차원 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY삭제할 행의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Array삭제한 행이 가지고 있던 data 배열
+
+
+Sample
+// 첫 번째 행을 삭제한다.
+var returnArr = dataList1.removeRow(0);
+//return 예시 ) ["IT","전지현"]
+
+
+removeRows(
+									  rowIndexArr
+										)
+							
+
+다건의 row를 index가 담긴 배열을 통해 한번에 삭제하고 가지고 있던 data를 2차원 배열로 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexArrArrayY삭제할 행들의 번호를 저장하는 배열
+
+
+
+
+Return
+
+typedescription
+
+
+Array삭제한 행들이 가지고 있던 2차원 배열 data
+
+
+Sample
+//부서와 이름이 정의 된 dataList의 경우
+
+//4번째와 5번째의 row를 삭제한다.
+var rsData = dataList1.removeRows([3,4])
+//return 예시 ) [["홍보","이광수"],["인사","류승룡"]]
+
+
+restore(
+									  
+										)
+							
+
+데이터를 이전 한단계로 되돌린다.
+
+
+Sample
+// 데이터 변경 시점을 이전단계로 되돌린다.
+dataList1.restore();
+
+
+rowMoveDown(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 row을 하나 아래로 내려준다. dataList가 drillDown grid에 바인된 경우 비권장.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrow의 index
+
+
+
+Sample
+//두 번째 row를 한 칸 아래로 이동 ( 두번째 row와 세번째 row의 위치가 바뀜 )
+dataList1.rowMoveDown(1);
+
+
+rowMoveUp(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 row를 하나 위로 올려준다. dataList가 drillDown grid에 바인된 경우 비권장.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrow의 index
+
+
+
+Sample
+//두 번째 row를 한 칸 위로 이동 ( 첫번째 row와 두번째 row의 위치가 바뀜 )
+dataList1.rowMoveUp(1);
+
+
+setArray(
+									  jsonData
+									       , 
+									       append
+										)
+							
+
+1차원 배열의 데이터를 columnInfo의 컬럼 순서대로 DataList에 set한다.(행의 상태는 초기상태인 "R"로 변경된다.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+jsonDataJSONY컬럼 정보와 1차원 배열 데이터를 담고 있는 JSON
+   columnInfo : 데이터를 셋팅할 컬럼의 순서
+   data : columnInfo에 따른 컬럼의 데이터로 전체 데이터를 1차원 배열에 담는다
+
+
+appendStringN[default:false, true]append 여부
+
+
+
+Sample
+//DataList에 name, dept, phone의 순서대로 컬럼이 정의 된 경우
+
+//dataList에 총 3건(row)의 데이터를 name과 dept의 컬럼에만 data를 기존 데이터를 삭제하고 set. 
+var tmpColInfoArr = ["dept","name"];
+var tmpDataArr = ["IT","손예진","홍보","이광수","인사","전지현"]; //data의 순서를 tmpColInfoArr의 컬럼 순서로 맞춘다
+dataList1.setArray( {"columnInfo":tmpColInfoArr, "data":tmpDataArr} );
+
+
+setBroadcast(
+									  flag
+									       , 
+									       refresh
+										)
+							
+
+dataList 변경시 binding된 컴포넌트에 변경 여부를 알려줄지를 설정
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY[true, false]설정 여부
+
+
+refreshBooleanY[true, false]refresh 여부
+
+
+
+Sample
+ dataList1.setBroadcast(false);         // broadcast flag를 false로 설정한다. false로 설정된 이후에는 dataList가 변경되더라도 binding된 컴포넌트들이 갱신되지 않는다.
+ dataList1.setBroadcast(true);          // true로 설정되면 dataList가 변경될 때 binding된 컴포넌트들이 갱신된다. 단 refresh 인자를 true로 설정하지 않을 경우 즉시 컴포넌트들을 갱신하지는 않는다. 
+ dataList1.setBroadcast(true, true);    // dataList와 binding된 컴포넌트들을 즉시 갱신함과 동시에 broadcast flag를 true로 설정한다.
+
+
+setCellAllData(
+									  realRowIndex
+									       , 
+									       colIndex
+									       , 
+									       data
+										)
+							
+
+필터링 되지 않은 rowIndex를 기준으로 setCellData를 실행한다. 그 후 필터 상태를 갱신한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+realRowIndexNumberY필터링되지 않은 기준의 rowIndex
+
+
+colIndexNumber||StringY컬럼 index 또는 id
+
+
+dataStringY셀에 넣어줄 데이터
+
+
+
+Sample
+// 1,2번 행이 filtering되어 감춰진 경우
+dataList1.setCellData(3,"name", "100"); // dataList에서 5번째 행, name열에 100이라는 값을 설정한다. 
+dataList1.setCellAllData(3, "name", "100"); // dataList에서 3번째 행, name열에 100이라는 값을 설정한다. 그 후 필터 상태를 갱신하여 UI를 다시 그린다.
+
+
+setCellData(
+									  rowIndex
+									       , 
+									       colIndex
+									       , 
+									       data
+										)
+							
+
+rowIndex와 colIndex에 해당하는 셀에 data를 셋팅한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY행 index
+
+
+colIndexNumber||StringY컬럼 index 또는 id
+
+
+dataStringY셀에 넣어줄 데이터
+
+
+
+Sample
+//1번째 row의 name 컬럼에 값을 셋팅
+dataList1.setCellData(0, "name", "전지현");
+
+
+setColumnDefaultValue(
+									  colIndex
+									       , 
+									       defaultValue
+										)
+							
+
+colIndex에 해당하는 열의 기본값을 defaultValue로 설정한다.insertRow API 또는 초기 data를 set할 때 컬럼에 값이 할당되지 않을 때 dafaultValue의 값을 할당한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colIndexNumber||StringY열의 index 또는 id
+
+
+defaultValueStringY열에 설정할 기본값
+
+
+
+Sample
+//name 컬럼의 기본값을 "필수입력"으로 설정.
+dataList1.setColumnDefaultValue('name', '필수입력');
+
+//위와 같이 API를 호출 한 뒤 아래와 같이 insertRow API를 호출하면 name의 컬럼에 "필수입력"의 값이 설정된다.
+dataList1.insertRow(0);
+
+
+setColumnFilter(
+									  filterOptions
+										)
+							
+
+colIndex에 해당하는 컬럼에 필터링 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+filterOptionsJSONY필터링 옵션. 
+ filterOptions.type :[row, func, regExp] 필터 타입. ("row": 데이터를 기준으로 indexOf로 검색. "regExp":  정규표현식. "func": 사용자 정의 함수.)
+ filterOptions.colIndex : 필터를 적용할 컬럼의 인덱스 혹은 ID.
+ filterOptions.key : 필터의 적용 Data로 type에 정의 한 값에 따라 달라짐. ("row": 비교할 string 값. "regExp":  regExp 객체. "func": 사용자 정의 함수.)
+ filterOptions.condition :[and, or] 이전 필터 데이터와의 병합 조건. 초기에는 "and"로 정의를 해야함.
+ filterOptions.exactMatch :[true, false] row filter에서 equal 조건 검색 수행. ("true": equal 조건 검색. "false" (기본 값): like 조건 검색.)
+ filterOptions.param : key의 값이 "func"일 때 함수로 넘길 파라미터.
+
+
+
+Sample
+// (필터 적용 예시 - dataList와 gridView가 연동된 경우)
+   
+// (1) type : "row" (key로 넘어온 문자열에 대해 indexOf를 이용하여 필터를 적용.) 
+
+        // (예제) GridView의 dept 컬럼의 값이 "IT"를 포함된 행만 표시. (like 검색)
+
+                dataList1.setColumnFilter( 
+                        {type:'row', colIndex:'dept', key:"IT", condition:'and'}
+                    );
+
+        // (예제) GridView의 dept 컬럼의 값이 "IT"인 데이터만 표시. (equal 검색)
+
+                dataList1.setColumnFilter( 
+                        {type:'row', colIndex:'dept', key:"IT", condition:'and', exactMatch:true}
+                    );
+
+        // (예제) dept 컬럼의 값이 "IT" 혹은 "홍보"인 데이터만 표시.  (condition을 or로 변경.)
+                dataList1.setColumnFilter( 
+                        {type:'row', colIndex:'dept', key:"홍보", condition:'or'}
+                    );
+
+//위의 방법은 효율이 좋지 않으므로 아래와 같이 사용자정의 필터 또는 정규표현식을 이용하여 한번에 적용할 것을 권장.
+
+// (2) type : "func" (개발자가 직접 데이터의 필터를 적용.)
+
+        // (예제) 사용자 정의 필터 - cellData가 "IT"와 "인사"를 적용
+        // cellData는 웹스퀘어 엔진에서 넘겨주는 cell의 데이터로 colIndex에 설정한 컬럼의 데이터.
+        // tmpParam은 setColumnFilter API를 호출 할 때 파라메터로 넘겨주는 param의 값.
+        // rowIdx는 웹스퀘어 엔진에서 넘겨주는 row의 index 값.
+
+            var fn_tmpDeptFilter = function(cellData, tmpParam, rowIdx){
+                if(cellData.indexOf("IT") > -1){
+                    return true;
+                }else if(cellData.indexOf("인사") > -1){
+                    return true;
+                }
+                return false;   //return이 true인 경우 적용하고 false인 경우 skip한다.
+            }   
+
+        // (예제) dept컬럼의 데이터가 "IT"이거나 "인사"인 데이터만 표시.
+        // function에 별도의 parameter는 추가하지 않음.
+
+            dataList1.setColumnFilter( 
+                {type:'func', colIndex:'dept', key:fn_tmpDeptFilter, condition:'and'}
+            );
+ 
+// (3) type : "regExp" (정규 표현식을 이용하여 필터를 적용.) 
+
+        // (예제) dept 컬럼의 값이 "IT" 혹은 "홍보"인 데이터만 표시.
+
+                dataList1.setColumnFilter( 
+                    {type:'regExp', colIndex:'dept', key:/IT|홍보/gi, condition:'and'}
+                );
+
+
+
+setData(
+									  arr
+									       , 
+									       append
+									       , 
+									       columnArr
+									       , 
+									       rowStatus
+										)
+							
+
+1차원 배열 데이터를 set 또는 append 한다. (행의 상태는 초기상태인 "R"로 변경된다. 데이터의 순서를 지정해주는 columnArr를 사용할 경우, append는 항상 넣어줘야한다.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+arrArray||StringY1차원 배열 또는 배열 형태의 문자열(소스 안쪽에서 array로 변환)
+
+
+appendBooleanN[default:false, true]append 여부
+
+
+columnArrArray||StringN데이터를 셋팅할 컬럼의 id가 담긴 배열 또는 배열 형태의 문자열(소스 안쪽에서 array로 변환)
+
+
+rowStatusArrayN셋팅할 데이터의 rowStatus들을 담은 1차원 배열
+
+
+
+Sample
+//DataList에 name, dept 컬럼이 정의 된 경우
+
+//2건(row)의 데이터 set.
+dataList1.setData(["송지효","홍보","김상중","준법감시"]);
+ 
+//2건(row)의 데이터 중 name 컬럼의 데이터를 set하고 name을 제외한 나머지 컬럼은 빈 값("")을 set.
+dataList1.setData(["송지효","김상중"],false,["name"]);
+ 
+//2건(row)의 데이터 중 name 컬럼의 데이터만 set하고 2건의 rowStatus를 변경.
+dataList1.setData(["송지효","김상중"],false,["name"],["U", "D"]);
+
+//server에서 배열 형태의 문자열을 받은 경우 (java에서 db의 값을 꺼내 값과 값을 "%||%"로 append하여 생성한다)  
+var tmpStr = "송지효%||%홍보%||%김상중%||%준법감시";
+var tmpArr = tmpStr.split("%||%");
+dataList1.setData(tmpArr);
+
+//server에서 배열 형태의 문자열을 받은 경우 다음과 같은 형태일 때 문자열을 배열로 자동변환해준다.
+var tmpStr = "[\"송지효\",\"홍보\",\"김상중\",\"준법감시\"]";
+dataList1.setData(tmpStr);
+
+
+setIgnoreStatus(
+									  flag
+										)
+							
+
+dataList column의 ignoreStatus 속성을 동적으로 제어한다. ignoreStatus가 true이면 해당 column의 값이 변경되어도 status가 변하지 않는다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY[true, false]설정 여부
+
+
+
+Sample
+ dataList1.setIgnoreStatus("col1", true); // API 실행 이후 col1 컬럼값이 변경되어도 status 상태가 변경되지 않음.
+ dataList1.setIgnoreStatus("col1", false); // API 실행 이후 col1 컬럼값이 변경되면 status 상태가 변경됨.
+ dataList1.setIgnoreStatus("col1"); // 무효. 아무런 동작을 하지 않음.
+
+
+setJSON(
+									  jsonData
+									       , 
+									       append
+										)
+							
+
+JSON Data를 설정(set)하거나 추가(append). (행의 상태는 초기상태인 "R"로 변경됨.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+jsonDataArrayYJSON 데이터를 담고 있는 배열
+
+
+appendStringN추가(append) 여부.
+"false" (기본 값) : DataList의 데이터를 주어진 데이터로 새로 설정(set).
+"true" : 기존 DataList의 데이터에 추가(append).
+
+
+
+Sample
+//JSON 형태의 2건의 list data를 set.
+var tmpArr = [{"name":"손예진","dept":"인사"},{"name":"전지현","dept":"IT"}];
+dataList1.setJSON( tmpArr );
+
+
+setMatchIgnoreCase(
+									  flag
+										)
+							
+
+getMatched류 (getMatchedJSON, getMatchedIndex 등)의 API 호출 시 대소문자를 구별하지 않을지 (true) 구별할지(false)를 설정하는 함수
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY대소문자 구별 : false , 대소문자 무시 : true
+
+
+
+Sample
+dataList1.setMatchIgnoreCase(true);
+dataList1.getMatchedIndex("ab");
+// 실행결과 :  dataList1의 data중 ab 또는 Ab 또는 aB 또는 AB가 포함된 데이터들의 index를 반환한다.
+
+
+setRowArray(
+									  rowIndex
+									       , 
+									       dataObj
+									       , 
+									       overwrite
+										)
+							
+
+rowIndex에 해당하는 행에 1건(row)의 배열 데이터를 넣는다.overwrite가 false인 경우에 행을 생성한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrowData를 넣어줄 행 index
+
+
+dataObjJSONY행에 넣을 데이터의 정보를 가진 JSON
+   dataObj.columnInfo : 데이터를 넣을 컬럼의 id를 가진 1차원 배열
+   dataObj.data : columnInfo에 넣은 컬럼 순서대로 데이터를 담은 1차원 배열 (1건의 row만 처리 됨)
+
+
+overwriteBooleanN[default:false, true]덮어쓰기의 여부로 true인 경우 rowIndex에 해당하는 row에 덮어쓰고 false인 경우 rowIndex에 row가 insert된다.
+
+
+
+Sample
+//name, dept, addr 컬럼을 가진 dataList가 정의 된 경우
+
+//row 데이터 및 정보 생성
+var dataObj = {};
+dataObj.columnInfo = ["name","dept"];
+dataObj.data = ["차승원", "홍보"];
+
+//1번째 row에 name과 dept 컬럼의 데이터만 set.
+dataList1.setRowArray(0, dataObj);  //overwirte의 값이 없으므로 1번째에 insert 된다.
+
+
+setRowData(
+									  rowIndex
+									       , 
+									       rowData
+									       , 
+									       overwrite
+										)
+							
+
+rowIndex에 해당하는 행에 1건(row)의 배역 데이터를 넣는다.overwrite가 false인 경우에 행을 생성한다.gridView와 바인딩된 경우 함수 실행 후에 스크롤 위치가 유지된다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrowData를 넣어줄 행 index
+
+
+rowDataArrayYDataList에 정의 된 컬럼의 순서대로 데이터가 담긴 1차원 배열
+
+
+overwriteBooleanN[default:false, true]덮어쓰기의 여부로 true인 경우 rowIndex에 해당하는 row에 덮어쓰고 false인 경우 rowIndex에 row가 insert된다.
+
+
+
+Sample
+//DataList에 name, dept 컬럼이 정의 된 경우
+
+//1번째 row의 데이터를 아래의 데이터로 변경한다.
+dataList1.setRowData(0,["조진웅","보안감시"],true);
+
+
+setRowJSON(
+									  rowIndex
+									       , 
+									       rowData
+									       , 
+									       overwrite
+										)
+							
+
+rowIndex에 해당하는 행에 1건(row)의 JSON 데이터를 넣는다.overwrite가 false인 경우에 행을 생성한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrowData를 넣어줄 행 index
+
+
+rowDataJSONY행에 넣을 JSON객체 데이터
+
+
+overwriteBooleanN[default:false, true]덮어쓰기의 여부로 true인 경우 rowIndex에 해당하는 row에 덮어쓰고 false인 경우 rowIndex에 row가 insert된다.
+
+
+
+Sample
+//DataList에 name,dept 컬럼이 정의 된 경우
+ 
+//1번째 row에 name컬럼의 값만 있는 JSON 데이터 set
+dataList1.setRowJSON(0, {"name":"여진구"} );
+
+
+setRowNumData(
+									  flag
+										)
+							
+
+DataList의 get관련 API의 return 데이터의 type이 JSON, XML일 경우 row의 number값을 추가 할지 설정.해당 값은 GridView의 rowNumVisible 속성을 true로 설정하면 나오는 값과 동일하며 "rowNum"이라는 컬럼(key)명에 할당된다.Data의 get관련 API 예시 - getAllJSON, getRowJSON, getAllXML, getRowXML 등
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY[true, false]설정 여부
+
+
+
+Sample
+//DataList에 name, dept가 정의 된 경우
+
+//별도의 설정 없이 getRowJSON API를 실행
+dataList1.getRowJSON(0);
+//return 예시 ) {"dept":"인사","name":"손예진","rowStatus":"R"}
+
+//rowNum 필드 추가 후 getRowJSON API를 실행
+dataList1.setRowNumData(true);
+dataList1.getRowJSON(0);
+//return 예시 ) {"dept":"인사","name":"손예진","rowStatus":"R","rowNum":1}
+
+
+setRowPosition(
+									  position
+									       , 
+									       noEvent
+										)
+							
+
+DataList와 연동된 컴포넌트에서 선택할 행의 위치를 설정합니다.단, ref 속성을 통해 연동되는 Input과 같은 단일 컴포넌트와 바인딩된 경우에만 사용하십시오. GridView와 바인딩된 경우, 셀 선택은 GridView의 setFocusedCell을 사용해야 합니다.참고로, GridView의 setFocusedCell를 통해 셀을 선택할 경우 화면 상의 포커스도 함께 이동합니다.GridView 화면 상의 포커스 이동 없이 DataList의 값만 선택하고 싶다면 본 API를 사용하십시오.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNumberN선택 할(focused)row index
+
+
+noEventBooleanNonrowpositionchange이벤트를 설정해 줄것인지에 대한 여부
+
+
+
+Sample
+//DataCollection에 아래와 같이 DataList를 정의 한 경우
+
+
+
+
+
+
+
+손예진
+인사
+
+
+송강호
+홍보
+
+
+전지현
+IT
+
+
+류승룡
+인사
+
+
+
+
+
+//body 영역에 아래와 같이 Input 컴포넌트의 ref 속성를 "data:dataList1.name" 이 정의.
+
+
+//초기 로딩 시에는 input에 값이 없음
+
+//dataList의 1번째 row에 position적용 
+dataList1.setRowPosition(0);
+//input의 display 예시 ) 손예진
+
+//dataList의 3번째 row에 position적용 
+dataList1.setRowPosition(2);
+//input의 display 예시 ) 전지현
+
+
+setRowXML(
+									  rowIndex
+									       , 
+									       XML
+									       , 
+									       overwrite
+										)
+							
+
+rowIndex에 해당하는 행에 1건(row)의 XML 데이터를 넣는다.overwrite가 false인 경우에 행을 생성한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYrowData를 넣어줄 행 index
+
+
+XMLXML elementYrowData 행에 넣을 XML 데이터
+
+
+overwriteBooleanN[default:false, true]덮어쓰기의 여부로 true인 경우 rowIndex에 해당하는 row에 덮어쓰고 false인 경우 rowIndex에 row가 insert된다.
+
+
+
+Sample
+//XML 데이터 문자열 조합
+var tmpXMLStr = "전지현IT";
+
+//XML 데이터 생성
+var xmlDoc = WebSquare.xml.parse(tmpXMLStr);
+
+//dataList의 1번째 행에 1건의 XML 데이터 set.
+dataList1.setRowXML(0, xmlDoc);
+
+
+setXML(
+									  xmlData
+									       , 
+									       append
+										)
+							
+
+XML Data를 설정(set)하거나 추가(append). (행의 상태는 초기상태인 "R"로 변경됨.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+xmlDataXMLYXML 데이터
+
+
+appendStringN추가(append) 여부.
+"false" (기본 값) : DataList의 데이터를 주어진 데이터로 새로 설정(set).
+"true" : 기존 DataList의 데이터에 추가(append).
+
+
+
+Sample
+// XML 문자열 생성
+var tmpXMLStr = "";
+tmpXMLStr += "";
+tmpXMLStr += "전지현IT";
+tmpXMLStr += "류승룡인사";
+tmpXMLStr += "";
+
+// XML 데이터 생성
+var tmpXML = WebSquare.xml.parse(tmpXMLStr);
+
+// XML 형태의 2건의 list data를 set.
+dataList1.setXML (tmpXML);
+
+
+sort(
+									  bodyColumnID
+									       , 
+									       sortType
+										)
+							
+
+단건의 컬럼을 정렬한다. (다건의 경우 multisort API를 이용) 본 API는 dataType에 상관없이 text로 간주하여 정렬이 된다. (number 타입의 경우 multisort API를 이용)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+bodyColumnIDStringY컬럼의 id
+
+
+sortTypeNumberY[0,1,2]정렬 옵션 0이면 오름차순 1이면 내림차순 2이면 정렬을 취소
+
+
+
+Sample
+//name컬럼의 값을 기준으로 오름차순으로 정렬한다.
+dataList1.sort('name', 0);
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+dataList에 등록 된 이벤트를 발생시킨다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트명
+
+
+arrayObjectN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+//dataList1에 oncelldatachange이벤트를 발생시킨다.
+dataList1.trigger("oncelldatachange");
+
+//dataList1에 oncelldatachange이벤트를 발생시키고 핸들러 함수에 아래와 같은 인자(paramJSON)를 전달하여 호출한다. 
+var paramJSON = {rowIndex:5,colID:"col1",oldValue:10,newValue:20};
+dataList1.trigger("oncelldatachange", [ paramJSON ]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+dataList의 이벤트를 동적으로 제거한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트의 이름. 생략할 경우 해당 컴포넌트의 모든 이벤트를 제거한다.
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. 생략할 경우 해당 이벤트 type으로 등록된 모든 핸들러 함수를 제거한다.
+
+
+
+Sample
+//dataList1에 등록된 oncelldatachange이벤트에 등록한 핸들러 중에 func1 이벤트 핸들러를 제거
+dataList1.unbind("oncelldatachange", func1);
+
+//dataList1에 등록된 모든 이벤트를 제거
+dataList1.unbind();
+
+
+undeleteRow(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 삭제 상태(D,V)를 취소하고 직전 상태값으로 변경한다.removeRow와 같은 API로 삭제(상태값이 E)한 row는 취소가 되지 않는다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberY삭제를 취소할 행 index
+
+
+
+Sample
+//1번째 row의 delete 상태를 취소.(직전 상태값으로 변경된다)
+dataList1.undeleteRow(0);
+
+
+undoAll(
+									  
+										)
+							
+
+전체 데이터를 초기 설정 된 데이터(originalData)로 바꾸고 행의 상태를 초기화(R) 시킨다."초기 설정 된 데이터"란 setJSON, setXML 등과 같은 API들을 통해 설정 된 데이터가 이에 속한다.
+
+
+Sample
+//모든 갱신되거나 삭제된 데이터를 되돌리고 초기 설정 데이터(originalData)로 변경한다.
+dataList1.undoAll();
+
+
+undoRow(
+									  rowIndex
+										)
+							
+
+rowIndex에 해당하는 row의 data와 상태값을 직전 data와 상태값으로 변경한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+rowIndexNumberYdata를 변경할 행의 index
+
+
+
+Sample
+// 첫 번째 row의 data를 복구
+dataList1.undoRow(0); 
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

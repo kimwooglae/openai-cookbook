@@ -1,0 +1,285 @@
+
+
+
+WebSquare.uiplugin.applet 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.applet - 5.0_5.4617M.20220324.084547
+
+
+
+
+
+애플릿. Applet 사용을 지원.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+accesskey
+
+객체의 단축 접속키 (key)
+
+
+
+align
+
+텍스트 정렬
+
+
+
+altHTML
+
+객체의 로딩이 실패하면 수행할 대체 HTML
+
+
+
+archive
+
+객체의 archive 기능을 위한 문자열
+
+
+
+class
+
+객체에 적용할 class.
+
+
+
+code
+
+Java class를 포함하는 파일의 주소
+
+
+
+codebase
+
+객체의 주소 (URL)
+
+
+
+datafld
+
+oncellchange 이벤트에 의한 데이터 필드
+
+
+
+datasrc
+
+데이터에 연결된 src
+
+
+
+groupid
+
+객체의 groupid 속성
+
+
+
+hidefocus
+
+객체가 포커싱 인식 여부
+
+
+
+hspace
+
+객체의 수평마진 (단위: 픽셀)
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+lang
+
+사용된 언어 코드
+
+
+
+language
+
+작성된 스크립트 언어
+
+
+
+name
+
+객체의 Name 속성
+
+
+
+src
+
+객체의 로딩 주소 (URL)
+
+
+
+title
+
+HTML의 title 속성과 동일
+
+
+
+unselectable
+
+Element의 선택 비활성 유무 
+
+
+
+vspace
+
+객체의 수직마진 (단위: 픽셀)
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+Property Detail
+
+
+
+
+accesskey
+
+객체의 단축 접속키 (key)<applet> 태그의 accesskey 속성과 동일.
+
+
+align
+
+텍스트 정렬	<applet> 태그의 align 속성과 동일.
+
+
+altHTML
+
+객체의 로딩이 실패하면 수행할 대체 HTML	<applet> 태그의 altHTML 속성과 동일.
+
+
+archive
+
+객체의 archive 기능을 위한 문자열<applet> 태그의 archive 속성과 동일.
+
+
+class
+
+객체에 적용할 class.<applet> 태그의 class 속성과 동일.
+
+
+code
+
+Java class를 포함하는 파일의 주소<applet> 태그의 code 속성과 동일.
+
+
+codebase
+
+객체의 주소 (URL)<applet> 태그의 codebase 속성과 동일.
+
+
+datafld
+
+oncellchange 이벤트에 의한 데이터 필드<applet> 태그의 datafld 속성과 동일.
+
+
+datasrc
+
+데이터에 연결된 src<applet> 태그의 datasrc 속성과 동일.
+
+
+groupid
+
+객체의 groupid 속성<applet> 태그의 groupid 속성과 동일.
+
+
+hidefocus
+
+객체가 포커싱 인식 여부<applet> 태그의 hidefocus 속성과 동일.
+
+
+hspace
+
+객체의 수평마진 (단위: 픽셀)<applet> 태그의 hspace 속성과 동일.
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+lang
+
+사용된 언어 코드<applet> 태그의 lang 속성과 동일.
+
+
+language
+
+작성된 스크립트 언어<applet> 태그의 language 속성과 동일.
+
+
+name
+
+객체의 Name 속성<applet> 태그의 name 속성과 동일.
+
+
+src
+
+객체의 로딩 주소 (URL)<applet> 태그의 src 속성과 동일.
+
+
+title
+
+HTML의 title 속성과 동일. 마우스 오버 시, title로 저장한 값이 툴팁으로 표시됨. 일반적으로 웹접근성 지원용으로 설정.
+
+
+unselectable
+
+Element의 선택 비활성 유무 <applet> 태그의 unselectable 속성과 동일.
+
+
+vspace
+
+객체의 수직마진 (단위: 픽셀)<applet> 태그의 vspace 속성과 동일.
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

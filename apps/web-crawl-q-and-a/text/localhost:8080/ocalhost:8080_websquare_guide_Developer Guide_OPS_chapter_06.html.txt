@@ -1,0 +1,22 @@
+
+모바일 웹 개발 가이드6.모바일 웹 개발 가이드6.1개요본 문서는 웹스케어를 사용하여 모바일 개발 시 주의사항에 대한 가이드입니다. 유념하실 것은 웹스케어는 데스크탑용 브라우저를 위한 AJAX프레임워크로, 모바일 용으로 최적화 되어 있지는 않다는 점을 인지하시기 바랍니다.6.2주의사항6.2.1여러가지 해상도 대응은 viewport나 css3의 @media를 사용모바일 기기의 해상도가 다양하므로 @media속성을 이용해 최적화된 css를 구성하여 각 기기에 맞는 화면을 꾸밀 수 있다..dynamicScreen { 
+ font-family: Arial, Helvetica, sans-serif; 
+ height: 250px; 
+ color: black; 
+} 
+ 
+@media all and (max-width: 320px) { 
+/* 아이폰/아이팟터치/안드로이드의 초기 스크린 해상도 설정 */ 
+ .dynamicScreen {background-color: orange;width:320px; } 
+} 
+ 
+@media all and (max-width: 768px) { 
+ /* 아이패드의 초기 해상도 설정 */ 
+ .dynamicScreen {background-color: blue;} 
+} 
+ 
+@media all and (min-width: 769px) { 
+ /* 아이패드보다 큰 스크린 사이즈와 해상도를 갖는 모든 기기에서의 해상도 설정*/ 
+ .dynamicScreen {background-color: green;} 
+}meta태그의 viewport를 이용해서 기기의 최대가로크기를 정하거나 줌레벨, 사용자 확대축소 방지여부등을 설정 가능하다. meta태그는 websquare.html(jsp)에 넣어야 한다.<meta name=”viewport” content=”width=device-width”/> 
+<meta name=”viewport” content=”initial-sacle=1,user-scalable=no”/>6.2.2마우스나 키보드 사용을 전제하지 말 것각종 모바일 기기에 따라 키보드나 마우스 같은 장치 유무가 다르기 때문에 마우스나 키보드 사용을 전제해서는 안 된다.6.2.3스크롤 사용시 주의 사항모바일에서 body를 제외하고, overflow:hidden으로 사용하는 것을 권장 함.스크롤이 필요한 경우 scrollView 컴포넌트를 사용하여 스크롤을 사용할 수 있다6.2.4이벤트 사용시 주의스마트 폰 들이 기본적으로 터치 기반이므로 double click 등의 이벤트를 사용하지 말아야 한다.마우스 이벤트의 경우 기기마다 다른 동작을 하므로 주의 하여야 한다.6.2.5파일 첨부 제한iPhone의 경우 보안을 위해 허용된 디렉터리의 파일만 첨부 가능.6.2.6플러그인 기술 사용금지기기에 따라 flash나 silverlight등의 플러그인 사용이 제한되므로 플러그인 사용을 하지 말아야 한다.6.2.7모바일 화면 구성 시 iframe 사용 금지기기에 따라 iframe으로 화면을 구성 하게 되면, focus, blur 관련 동작이 일반 브라우저와 다르게 동작하여 input간 focus가 정상적으로 동작 하는 않는 문제를 발생 시킬 수 있다.6.2.8팝업 사용시 주의 사항모바일의 경우 팝업을 띄우게 되면, 새 창(window.open)이 띄며 화면전환이 이루어 지므로 권장 하지 않는다.layer 형태의 팝업 및 link를 사용 하는 것을 권장 함.6.2.9사용금지 컴포넌트ifamexslckEditorchart (iPhone에서만 동작.)uploadmuliuploadflashappletactivemultiselectslideHidetabContainerwindowContainer6.2.10테스트 된 모바일 OS 및 브라우저iphone os3.1/4.0(safari)android – galaxyS(2.1-update1, 2.2, 2.3 ), nexusOne(2.2) => 기본내장브라우저6.3모바일 개발시 사용가능 컴포넌트아래의 기준으로 (1) 권장, (2) 사용 가능, (3) 비권장, (4) 사용 금지 컴포넌트로 분류할 수 있습니다.기준권장사용 가능비권장사용 금지모든 플랫폼 지원 여부지원미지원 (일부)기능 지원 범위모두 지원대부분일부 지원N/A터치 화면 사용성높음보통낮음N/A개발자 코딩에 따른 오작동 가능성낮음보통높음N/A컴포넌트의 복잡성보통높음N/A표 6-1.컴포넌트 분류순서컴포넌트권장사용가능비권장사용금지1ActiveX●2Applet●3AutoComplete●4Calendar●5Chart●6CheckBox●7DatePicker●8Editor●9Flash●10FlipToggle●11FloatingLayer●12Generator●13GridView●14Group●15IFrame●16InputCalendar●17InputBox●18Image●19Menu●20MultiSelect●21MultiUpload●22Output●23PageControl●24PageList●25Secret●26Popup●27Radio●28Repeat●29ScrollView●30SearchBox●31SelectBox●32Slider●33SlideHide●34Spinner●35Switch●36TabContainer●37TabControl●38Trigger●39TextArea●40TextBox●41TreeView●42Upload●43XHTML●44XSL●45WindowContianer●46WFrame●6.3.1권장모바일 웹 개발에 권장되는 컴포넌트는 아래와 같습니다.CheckBoxDatePickerFlipToggleGroupInputBoxImageOutputPageControlSecretRadioScrollViewSliderSpinnerTriggerTextAreaTextBoxWFrame6.3.2사용 가능표 6-2.사용 가능 컴포넌트No.사용가능플랫폼비고Android(2.1, .2)Android(2.3)Android(3.1)Android(4.0)IOS1Calendar2Generator3GridView4PageList5SerachBox닫기 버튼 미동작닫기 버튼 미동작6SelectBox7Switch (터치 페이지 전환)6.3.3비권장표 6-3.비권장 컴포넌트No.컴포넌트플랫폼비고Android(2.1, .2)Android(2.3)Android(3.1)Android(4.0)IOS1AutoCompletekey 입력시 조회 되지 않음key 입력시 조회 되지 않음key 입력시 조회 되지 않음그 외 기능 정상동장key 입력시 조회 되지 않음목록 선택 되지 않음2FloatingLayertreeview와 z-Index 문제treeview와 z-Index 문제3IFrame4Menu5Popup브라우저팝업사용6Repeat7TabControl데스크탑 브라우저에 최적화된 컴포넌트8TreeView펼치기 기능 미동작펼치기 기능 미동작9XHTML6.3.4사용 금지표 6-4.사용 금지 컴포넌트No.컴포넌트플랫폼비고Android(2.1, .2)Android(2.3)Android(3.1)Android(4.0)IOS1ActiveXIE 전용2Applet3ChartFF4.0 베타이상에서 지원FF4.0 베타이상에서 지원4Editor데스크탑 브라우저에 최적화된 컴포넌트5Flash6InputCalendar달력 아이콘 클릭 안됨selectbox(native) 디자인컴포넌트를 조합하여 구현해야 함.7MultiSelect다중선택되지 않음8MultiUpload9SlideHide복합 컴포넌트 추가시 동작 하지 않음복합 컴포넌트 추가시 동작 하지 않음데스크탑 브라우저에 최적화된 컴포넌트10TabContainer탭선택시 동작하지 않음데스크탑 브라우저에 최적화된 컴포넌트11Upload12XSL갤럭시S(2.1)만 정상동작동작 하지 않음13WindowContianer탭선택이 되지 않음IFrame이 정상동작하지 않음탭선택이 되지 않음IFrame이 정상동작하지 않음미동작데스크탑 브라우저에 최적화된 컴포넌트6.4모바일 접근성6.4.1FlipToggle6.4.1.1accessibilityaccessibility 속성 설정을 통해 iOS의 VoiceOver 및 Android의 TalkBack 기능을 지원할 수 있습니다.accessibility="true"로 설정할 경우, 버튼을 HTML의 <a> 태그로 감싸고, aria-valuenow 및 aria-valuetext 같은 HTML 속성을 추가합니다.accessibility 속성 설정을 통해 iOS의 VoiceOver 및 Android의 TalkBack 기능을 지원할 수 있습니다.6.4.2ScrollViewaccessibility 속성 설정을 통해 iOS의 VoiceOver 및 Android의 TalkBack 기능을 지원할 수 있습니다.6.4.3Switch6.4.3.1accessibilityaccessibility 속성 설정을 통해 iOS의 VoiceOver 및 Android의 TalkBack 기능을 지원할 수 있습니다.slide="false"인 경우에만 동작합니다.

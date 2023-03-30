@@ -1,0 +1,24 @@
+
+메뉴와 메뉴 건너뛰기 구성36.메뉴와 메뉴 건너뛰기 구성현재 웹스퀘어에서 제공하고 있는 메뉴 컴포넌트는 웹접근성 지원하지 않으므로, 메뉴 화면은 group 컴포넌트, anchor 컴포넌트를 조합해 구성합니다. 아래는 메뉴 화면을 구현한 XML 소스의 일부이며 스타일과 관련된 자바스크립트는 포함되지 않았습니다.WebSquare XML 예<w2:anchor id="anchor1" style="" href="#content" outerDiv="false">
+    <xf:label>본문 바로가기</xf:label>
+</w2:anchor>
+<xf:group id="content" class="" style="">
+<xf:group class="" id="group2" style="" tagname="ul">
+    <xf:group class="" id="group4" style="" tagname="li">
+        <w2:textbox id="textbox2" label="메뉴1" style="" tagname="a">
+            <w2:attributes>
+                <w2:href>#</w2:href>
+            </w2:attributes>
+        </w2:textbox>
+        <xf:group id="group6" style="" tagname="ul">
+            <xf:group id="group5" style="" class="" tagname="li">
+                <w2:textbox id="textbox3" label="메뉴1" tagname="a">
+                    <w2:attributes>
+                        <w2:href>#</w2:href>
+                    </w2:attributes>
+                </w2:textbox>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+</xf:group>
+</xf:group>

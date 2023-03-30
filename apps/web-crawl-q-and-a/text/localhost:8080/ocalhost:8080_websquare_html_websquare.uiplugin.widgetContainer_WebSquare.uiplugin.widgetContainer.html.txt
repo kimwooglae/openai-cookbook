@@ -1,0 +1,2836 @@
+
+
+
+WebSquare.uiplugin.widgetContainer 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.widgetContainer - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+위젯 컨테이너. 위젯 생성 및 관리. 
+ 내부에 위젯을 포함하며 위젯들 간의 상호작용을 관리. 
+ 드래그-앤-드롭을 통한 위젯 재배치 및 리사이징이 가능. 
+ WidgetContainer는 내부적으로 이차원 격자로 구성됨. 
+ 단위 길이는 WindowContainer의 가로 길이를 cols 속성으로 지정한 값 만큼 나눈 결과. 
+ 단위 높이는 unitHeightPixel.
+ 이차원 격자 구조 내에서 위젯 이동 및 리사이징이 가능. 
+ 내부 위젯들의 정보를 JSON을 통해 추출하고 원복할 수 있음. 즉, 특정 화면 설정을 저장하는 것이 가능.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+accessibility
+
+[default:false] 웹 접근성 모드 지원
+
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. CSS 파일이나 style 블럭에 정의한 여러 개의 class를 공백으로 구분하여 적용 가능.
+
+
+
+cols
+
+[default:1] widgetContainer의 열의 갯수
+
+
+
+horizontalMargin
+
+위젯 간의 수평 마진
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+maxUnitHeight
+
+widget의 최대 단위 높이
+
+
+
+maxUnitHeight
+
+widget의 최대 단위 높이
+
+
+
+maxUnitWidth
+
+widget의 최대 단위 길이
+
+
+
+minUnitHeight
+
+widget의 최소 단위 높이
+
+
+
+minUnitWidth
+
+[default:1] widget의 최소 단위 길이
+
+
+
+mode
+
+[default:pushpull] widget간의 충돌에 대한 widgetContainer의 기본동작을 설정한다.
+
+
+
+params
+
+widget 객체가 저장하고 있는 사용자 정의 데이터.
+
+
+
+preventMaximizeByTitle
+
+[default:false] widget의 title을 더블클릭 했을 때, widget의 최대화를 사용할 지 여부
+
+
+
+processMsgFrame
+
+비동기 통신 중 processMsg를 widget WFrame에 내부에 표시
+
+
+
+threshold
+
+widgetContainer의 가로 사이즈가 threshold보다 작아지면, 하나의 칼럼에 위젯들을 나열한다.
+
+
+
+unitHeightPixel
+
+[default:25] widgetContainer의 단위 높이의 픽셀값
+
+
+
+verticalMargin
+
+위젯 간의 수직 마진
+
+
+
+widgetMove
+
+[default:true] widget들의 이동 가능 여부
+
+
+
+widgetResize
+
+[default:true] widget들의 리사이징 가능 여부
+
+
+
+Event Summary
+
+
+
+
+onafterwidgetclose
+
+closeWidget을 통해 widget을 닫은 후에 발생하는 이벤트
+
+
+
+onbeforewidgetclose
+
+closeWidget을 통해 widget을 닫기 전에 발생하는 이벤트로, 이 이벤트에 대한 핸들러가 false를 반환하면 close가 취소된다
+
+
+
+onclickcustombtn
+
+사용자 정의 버튼을 클릭할 때 발생하는 이벤트
+
+
+
+onload
+
+WidgetContainer에 포함된 모든 위젯의 로딩이 완료된 후에 발생
+
+
+
+onwidgetfix
+
+setFixed를 통해 widget을 고정한 후에 발생하는 이벤트
+
+
+
+onwidgetload
+
+WidgetContainer에 포함된 각 위젯의 로딩이 완료된 시점에 발생
+
+
+
+onwidgetmaximize
+
+toggleMaximized를 통해 widget을 최대화한 후에 발생하는 이벤트
+
+
+
+onwidgetminimize
+
+toggleminimized를 통해 widget을 최소화한 후에 발생하는 이벤트
+
+
+
+onwidgetmove
+
+API 혹은 사용자 입력을 통한 위젯 이동시 발생
+
+
+
+onwidgetresize
+
+API 혹은 사용자 입력을 통한 위젯 리사이징시 발생
+
+
+
+onwidgetrestore
+
+minimized 또는 maximized 된 widget이 복원됐을 때 발생하는 이벤트
+
+
+Method Summary
+
+
+
+
+addClass(
+									  className
+										)
+								
+
+컴포넌트에 CSS class를 추가
+
+
+
+addWidgets(
+									  option
+										)
+								
+
+widget의 options 객체, 또는 options 객체의 배열을 받아 새로운 widget을 추가한다.
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+								
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+enableWidgetMove(
+									  isMovable
+										)
+								
+
+위젯컨테이너의 위젯이동 여부를 설정합니다
+
+
+
+enableWidgetResize(
+									  isResizable
+										)
+								
+
+위젯컨테이너의 위젯리사이즈 여부를 설정합니다
+
+
+
+enableWidgetTitle(
+									  showTitle
+										)
+								
+
+위젯컨테이너 내부의 모든 위젯의 타이틀바를 제어합니다
+
+
+
+exportWidget(
+									  widgetId
+										)
+								
+
+widgetContainer가 현재 가지고 있는 여러 개의 위젯 중 주어진 ID에 해당하는 위젯 객체만 반환.
+
+
+
+exportWidgets(
+									  
+										)
+								
+
+widgetContainer가 현재 가지고 있는 widget들의 정보를 객체의 배열(JSON)로 반환한다
+
+
+
+focus(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트에 포커스를 줌
+
+
+
+getDisabled(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환
+
+
+
+getGenerator(
+									  
+										)
+								
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환
+
+
+
+getID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 ID를 반환
+
+
+
+getInitStyle(
+									  CSS
+										)
+								
+
+컴포넌트의 초기 스타일을 반환
+
+
+
+getOpacity(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getOriginalID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getPluginName(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환
+
+
+
+getPosition(
+									  positionName
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getReadOnly(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환
+
+
+
+getScope(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getSize(
+									  sizeName
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getStyle(
+									  propertyName
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환
+
+
+
+getStyleValue(
+									  style
+										)
+								
+
+[deprecated]
+
+
+
+getTitle(
+									  
+										)
+								
+
+컴포넌트의 title 속성 값을 반환
+
+
+
+getUdcHome(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUdcRoot(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUserData(
+									  key
+										)
+								
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환
+
+
+
+getWidgetById(
+									  id
+										)
+								
+
+widget의 id를 받아 해당 widget 객체를 반환한다
+
+
+
+getWidgetByTitle(
+									  id
+										)
+								
+
+widget의 title을 받아 해당 widget 객체를 반환한다. 해당 widget을 찾지 못할 시 null을 반환한다.
+
+
+
+hasClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인
+
+
+
+hide(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)
+
+
+
+importWidget(
+									  id
+									       , 
+									       jsonObj
+										)
+								
+
+현재 존재하는 한 개의 위젯에 대한 정보를 JSON으로 받아 이를 다시 WidgetContainer에 추가. 
+
+
+
+importWidgets(
+									  jsonArr
+									       , 
+									       clearFlag
+										)
+								
+
+여러 개의 현재 존재하지 않는 위젯 객체들을 배열(JSON)을 받아 widgetContainer에 삽입.
+
+
+
+isValidPos(
+									  x
+									       , 
+									       y
+									       , 
+									       unitWidth
+									       , 
+									       unitHeight
+										)
+								
+
+넘겨받은 위치정보를 이용해 해당 영역이 유효한지 여부를 반환한다.
+
+
+
+moveWidget(
+									  widgetId
+									       , 
+									       newX
+									       , 
+									       newY
+										)
+								
+
+해당 widget id를 가진 widget의 좌표를 (newX, newY)로 이동시킨다.
+
+
+
+redraw(
+									  
+										)
+								
+
+widgetContainer 내부의 widget들을 그 상태에 따라 적절히 렌더링한다.
+
+
+
+removeClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)
+
+
+
+removeTitleClass(
+									  id
+									       , 
+									       className
+										)
+								
+
+titleClass 속성에 따라 정의된 타이틀 영역에서 지정된 클래스를 제거.
+
+
+
+removeWidgets(
+									  widgetIds
+										)
+								
+
+widget의 id, id의 배열을 받아 해당 widget들을 삭제한다.
+
+
+
+resizeWidget(
+									  widgetId
+									       , 
+									       newWidth
+									       , 
+									       newHeight
+									       , 
+									       options
+										)
+								
+
+해당 widget id를 가진 widget의 크기를 (newWidth, newHeight)로 변경한다.
+
+
+
+setCols(
+									  cols
+										)
+								
+
+격자 형태의 WidgetContainer가 포함할 컬럼 수를 설정
+
+
+
+setDisabled(
+									  disabled
+										)
+								
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정
+
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+								
+
+지정한 이벤트를 중단함
+
+
+
+setInitStyle(
+									  property
+										)
+								
+
+컴포넌트의 초기 스타일을 복구한다
+
+
+
+setOpacity(
+									  value
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정
+
+
+
+setReadOnly(
+									  readOnly
+										)
+								
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정
+
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 설정
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정
+
+
+
+setTitleClass(
+									  id
+									       , 
+									       className
+										)
+								
+
+titleClass 속성에 따라 정의된 타이틀 영역에 클래스를 추가.
+
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+show(
+									  displayType
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)
+
+
+
+toggleClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+컴포넌트에서 특정 이벤트를 발생시킴
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+컴포넌트에서 이벤트를 제거
+
+
+
+visible(
+									  flag
+										)
+								
+
+[deprecated] 
+
+
+
+Property Detail
+
+
+
+
+accessibility
+
+[default:false] 웹 접근성 모드 지원
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. CSS 파일이나 style 블럭에 정의한 여러 개의 class를 공백으로 구분하여 적용 가능.Engine 내부에서 각 컴포넌트 별로 지정된 class를 적용하나, class 속성을 이용하여 컴포넌트의 CSS를 제어 가능.
+
+
+cols
+
+[default:1] widgetContainer의 열의 갯수. widgetContainer은 자신의 가로 길이를 cols의 갯수만큼 나누어 단위 길이를 결정한다.
+
+
+horizontalMargin
+
+위젯 간의 수평 마진. (단위: 픽셀)[default: 0]
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+maxUnitHeight
+
+widget의 최대 단위 높이.
+
+
+maxUnitHeight
+
+widget의 최대 단위 높이.
+
+
+maxUnitWidth
+
+widget의 최대 단위 길이.
+
+
+minUnitHeight
+
+widget의 최소 단위 높이.
+
+
+minUnitWidth
+
+[default:1] widget의 최소 단위 길이.
+
+
+mode
+
+[default:pushpull] widget간의 충돌에 대한 widgetContainer의 기본동작을 설정한다.pushpull : 가능한 모든 widget을 위로 끌어 올리며, 충돌이 일어나는 경우 충돌이 일어난 widget들을 아래로 밀어 내린다.switch : 충돌이 일어날 시 충돌이 발생한 widget과 위치전환을 시도한다. 단, 자신보다 작은 widget과만 위치전환이 가능하다.
+
+
+params
+
+widget 객체가 저장하고 있는 사용자 정의 데이터.런타임 도중에 setParams를 통해 재정의 될 수 있고, getParams를 통해 가져올 수 있다.또한, 이 값은 getWidgetInfo나 exportWidgets 시 'params'라는 속성으로 추출된다.
+
+
+preventMaximizeByTitle
+
+[default:false] widget의 title을 더블클릭 했을 때, widget의 최대화를 사용할 지 여부.
+
+
+processMsgFrame
+
+비동기 통신 중 processMsg를 widget WFrame에 내부에 표시. [default: false,true] 
+(옵션 설명)
+ "false" (기본 값) : 전체 화면에 표시.
+ "true" : Widget WFrame 내부에 표시.
+
+
+threshold
+
+widgetContainer의 가로 사이즈가 threshold보다 작아지면, 하나의 칼럼에 위젯들을 나열한다.또한, threshold를 넘었을 경우 move와 resize가 불가능해진다.모바일 편의성을 위한 옵션으로, 설정하지 않았을 경우 widgetContainer의 사이즈가 작아져도 위젯들은 원래의 위치에 렌더된다.
+
+
+unitHeightPixel
+
+[default:25] widgetContainer의 단위 높이의 픽셀값. unitHeightPixel은 height === 1 인 widget의 실제 높이가 된다.
+
+
+verticalMargin
+
+위젯 간의 수직 마진. (단위: 픽셀)[default: 0]
+
+
+widgetMove
+
+[default:true] widget들의 이동 가능 여부.
+
+
+widgetResize
+
+[default:true] widget들의 리사이징 가능 여부.
+
+
+
+
+
+Event Detail
+
+
+
+
+onafterwidgetclose
+
+closeWidget을 통해 widget을 닫은 후에 발생하는 이벤트.
+
+Parameter
+
+nametypedescription
+
+
+idStringcloseWidget을 실행한 widget의 id
+
+
+Sample
+<![CDATA[
+    alert("[onafterwidgetclose] " + id);
+]]>
+
+
+onbeforewidgetclose
+
+closeWidget을 통해 widget을 닫기 전에 발생하는 이벤트로, 이 이벤트에 대한 핸들러가 false를 반환하면 close가 취소된다.
+
+Parameter
+
+nametypedescription
+
+
+idStringcloseWidget을 시도한 widget의 id
+
+
+Sample
+<![CDATA[
+    alert("[onbeforewidgetclose] " + id);
+]]>
+
+
+onclickcustombtn
+
+사용자 정의 버튼을 클릭할 때 발생하는 이벤트.
+
+Parameter
+
+nametypedescription
+
+
+idString해당 위젯 ID.
+
+
+btnIdString해당 버튼 ID.
+
+
+Sample
+<![CDATA[
+    alert("[onclickcustombtn widgetId:] " + id);
+    alert("[onclickcustombtn btnId:] " + btnId);
+]]>
+
+
+onload
+
+WidgetContainer에 포함된 모든 위젯의 로딩이 완료된 후에 발생. 포함된 각 위쳇에 대한 onwidgetload 이벤트가 모두 발생한 후 마지막에 발생.
+Sample
+
+
+
+onwidgetfix
+
+setFixed를 통해 widget을 고정한 후에 발생하는 이벤트.
+
+Parameter
+
+nametypedescription
+
+
+idStringsetFixed을 실행한 widget의 id
+
+
+Sample
+<![CDATA[
+    alert("[onwidgetfix] " + id);
+]]>
+
+
+onwidgetload
+
+WidgetContainer에 포함된 각 위젯의 로딩이 완료된 시점에 발생.
+
+Parameter
+
+nametypedescription
+
+
+idString해당 위젯 ID.
+
+
+Sample
+
+
+
+onwidgetmaximize
+
+toggleMaximized를 통해 widget을 최대화한 후에 발생하는 이벤트.
+
+Parameter
+
+nametypedescription
+
+
+idStringtoggleMaximized을 실행한 widget의 id
+
+
+Sample
+<![CDATA[
+    alert("[onwidgetmaximize] " + id);
+]]>
+
+
+onwidgetminimize
+
+toggleminimized를 통해 widget을 최소화한 후에 발생하는 이벤트.
+
+Parameter
+
+nametypedescription
+
+
+idStringtoggleMinimized을 실행한 widget의 id
+
+
+Sample
+<![CDATA[
+    alert("[onwidgetminimized] " + id);
+]]>
+
+
+onwidgetmove
+
+API 혹은 사용자 입력을 통한 위젯 이동시 발생.
+
+Parameter
+
+nametypedescription
+
+
+idString해당 위젯 ID
+
+
+newRectObject이동 후 위젯의 위치 정보 객체
+    newRect.x               이동 후 위젯의 x값
+    newRect.y               이동 후 위젯의 y값
+    newRect.unitWidth       이동 후 위젯의 unitWidth값
+    newRect.unitHeight      이동 후 위젯의 unitHeight값
+
+
+oldRectObject이동 전 위젯의 위치 정보 객체
+    oldRect.x               이동 전 위젯의 x값
+    oldRect.y               이동 전 위젯의 y값
+    oldRect.unitWidth       이동 전 위젯의 unitWidth값
+    oldRect.unitHeight      이동 전 위젯의 unitHeight값
+
+
+Sample
+<![CDATA[
+    alert("[onbeforewidgetclose newPos:] " + id, newRect.x, newRrect.y, newRrect.unitWidth, newRrect.unitHeight);
+    alert("[onbeforewidgetclose oldPos:] " + id, oldRect.x, oldRrect.y, oldRrect.unitWidth, oldRrect.unitHeight);
+]]>
+
+
+onwidgetresize
+
+API 혹은 사용자 입력을 통한 위젯 리사이징시 발생.
+
+Parameter
+
+nametypedescription
+
+
+idString해당 위젯 ID
+
+
+newRectObject리사이징 후 위젯의 위치 정보 객체
+    newRect.x               리사이징 후 위젯의 x값
+    newRect.y               리사이징 후 위젯의 y값
+    newRect.unitWidth       리사이징 후 위젯의 unitWidth값
+    newRect.unitHeight      리사이징 후 위젯의 unitHeight값
+
+
+oldRectObject리사이징 전 위젯의 위치 정보 객체
+    oldRect.x               리사이징 전 위젯의 x값
+    oldRect.y               리사이징 전 위젯의 y값
+    oldRect.unitWidth       리사이징 전 위젯의 unitWidth값
+    oldRect.unitHeight      리사이징 전 위젯의 unitHeight값
+
+
+Sample
+<![CDATA[
+    alert("[onbeforewidgetclose newPos:] " + id, newRect.x, newRrect.y, newRrect.unitWidth, newRrect.unitHeight);
+    alert("[onbeforewidgetclose oldPos:] " + id, oldRect.x, oldRrect.y, oldRrect.unitWidth, oldRrect.unitHeight);
+]]>
+
+
+onwidgetrestore
+
+minimized 또는 maximized 된 widget이 복원됐을 때 발생하는 이벤트.
+
+Parameter
+
+nametypedescription
+
+
+idString복원된 widget의 id.
+
+
+Sample
+<![CDATA[
+    alert("[onwidgetrestore] " + id);
+]]>
+
+
+
+Method Detail
+
+
+
+
+addClass(
+									  className
+										)
+							
+
+컴포넌트에 CSS class를 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가할 class의 이름
+
+
+
+Sample
+// (예제)
+// input1 컴포넌트에 oddClass라는 class를 추가    
+input1.addClass("oddClass");
+
+
+addWidgets(
+									  option
+										)
+							
+
+widget의 options 객체, 또는 options 객체의 배열을 받아 새로운 widget을 추가한다.widget 생성 도중 오류가 발생할 시, 모든 생성을 취소하고 rollback을 시도한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionObjectYwidget생성을 위한 옵션
+  options.x : [default:0] widgetContainer 좌표계 상의 x 값
+  options.y : [default:0] widgetContainer 좌표계 상의 y 값
+  options.unitWidth : [default:1] widgetContainer 좌표계 상의 unitWidth 값
+  options.unitHeight : [default:1] widgetContainer 좌표계 상의 unitHeight 값
+  options.id : [default:""] 위젯의 id
+  options.title : [default:""] 위젯의 타이틀
+ options.hasTitleBar : [default:true] widget의 타이틀바 렌더 여부
+  options.src : [default:""] widget 내부의 wframe 영역에 불러들일 소스 xml
+ options.scope : [default:false] widget 내부 wframe의 scope 속성
+  options.className : [default:""] widget에 적용될 className
+  options.params : [default:undefined] widget 객체에 저장할 사용자 정의 데이터.
+ options.fixed : [default:false] 위젯의 고정 여부. 런타임 도중 API 또는 버튼을 통해 토글할 수 있다.
+ options.resized : [default:false] 위젯의 리사이징 여부. 런타임 도중 API를 통해 토글할 수 있다.
+ options.minimized : [default:false] 위젯의 최대화 여부. 런타임 도중 API 또는 버튼을 통해 토글할 수 있다.
+  options.maximizeFormatter : [default:null] 위젯의 최대화 설정을 반환할 함수 또는 함수의 이름
+   options.buttonFormatter : [default:null] 위젯의 우상단 버튼들의 설정을 반환할 함수 또는 함수의 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Array:Yadded 생성된 widget 객체 배열
+
+
+Sample
+//단일 widget을 생성
+var options = {id : "widget1",
+               title : "widget1",
+               titleClass : "w2widget_blue",
+               src : null,
+               scope : true,
+               x : 0,
+               y : 1,
+               unitWidth : 1,
+               unitHeight : 1};
+var newWidget = widgetContainer1.addWidgets(options);
+//여러 widget을 동시에 생성
+var optionsArr = [];
+    optionsArr[0] = {id : "widget0",
+               title : "widget0",
+               src : "widget.xml",
+               scope : true,
+               x : 0,
+               y : 0,
+               unitWidth : 1,
+               unitHeight : 1};
+var newWidgets = widgetContainer1.addWidgets(optionsArr);
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY할당할 이벤트
+
+
+functionFunctionY이벤트에 대한 핸들러 함수.
+
+
+
+Sample
+// (예제 1)
+// input1의 onclick 이벤트에 대한 핸들러 함수를 직접 정의하여 할당. 
+input1.bind("onclick", function(e){ alert(input1.getValue();}));
+
+// (예제 2)
+// 미리 commObj.ev_click 함수를 정의.
+var commObj = {};
+commObj.ev_click = function(e){
+    alert("click :: "+this.id);
+};
+
+// input1 컴포넌트에 onclick 이벤트와 정의한 핸들러 함수를 동적으로 할당. 
+input1.bind("onclick", commObj.ev_click );
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+							
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 기본적으로 addClass를 통해 추가된 class만 변경 가능. 웹스퀘어 컴포넌트의 class 속성에 직접 정의된 class를 삭제하려면 config.xml 파일에 아래 설정을 추가해야 함. 
+// config.xml에 아래 설정을 추가. 
+<removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+oldClassNameStringY변경할 class
+
+
+newClassNameStringY새로 사용할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+// config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// class를 변경 가능. 
+// (tmpInputClass class를 tmpInputWarninClass로 변경.)
+input1.changeClass("tmpInputClass","tmpInputWarninClass");
+
+
+enableWidgetMove(
+									  isMovable
+										)
+							
+
+위젯컨테이너의 위젯이동 여부를 설정합니다
+
+
+Parameter
+
+nametyperequireddescription
+
+
+isMovableBooleanY이동가능하게 할지의 여부
+
+
+
+
+
+
+enableWidgetResize(
+									  isResizable
+										)
+							
+
+위젯컨테이너의 위젯리사이즈 여부를 설정합니다
+
+
+Parameter
+
+nametyperequireddescription
+
+
+isResizableBooleanY리사이징 가능하게 할지의 여부
+
+
+
+
+
+
+enableWidgetTitle(
+									  showTitle
+										)
+							
+
+위젯컨테이너 내부의 모든 위젯의 타이틀바를 제어합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+showTitleBooleanY타이틀을 보여줄지 숨길지의 여부
+
+
+
+Sample
+//widget container의 모든 위젯의 title을 숨김
+widgetContainer1.enableWidgetTitle(false);
+
+
+exportWidget(
+									  widgetId
+										)
+							
+
+widgetContainer가 현재 가지고 있는 여러 개의 위젯 중 주어진 ID에 해당하는 위젯 객체만 반환.ID에 해당하는 정보가 없을 경우 null을 반환.관련 함수: exportWidgets는 widgetContainer가 현재 갖고 있는 모든 위젯의 정보를 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widgetIdStringY위젯 ID
+
+
+
+
+Return
+
+typedescription
+
+
+Object위젯 객체
+
+
+Sample
+// exportWidget()를 이용해 특정 widget 정보를 jsonObj에 저장함.
+var jsonObj = widgetContainer1.exportWidget('widget1');
+var jsonObj2 = widgetContainer1.exportWidget('widgetContainer1_widget1');
+// 저장한 JSON을 출력.
+console.log(jsonObj);
+console.log(jsonObj2);
+
+
+exportWidgets(
+									  
+										)
+							
+
+widgetContainer가 현재 가지고 있는 widget들의 정보를 객체의 배열(JSON)로 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Object[]widget 객체의 배열
+
+
+Sample
+//exportWidgets()를 이용해 현재 widget들의 정보를 jsonArr에 저장함.
+var jsonArr = widgetContainer1.exportWidgets();
+//저장한 JSON을 출력.
+console.log(jsonArr);
+
+
+focus(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트에 포커스를 줌. (웹스퀘어 컴포넌트 공통.)
+
+
+
+
+
+getDisabled(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Booleandisabled 속성 값
+
+
+Sample
+// 컴포넌트의 disabled 속성 값 확인 예제
+var returnValue = componentId.getDisabled();
+// (반환 값 예시) false
+
+
+getGenerator(
+									  
+										)
+							
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Object부모 Generator 객체
+
+
+Sample
+//부모 Generator가 자식으로 Trigger를 생성한 예제
+  
+
+// 아래 예제의 경우 trigger1을 클릭하면 generator1 객체가 console에 표시됨. 
+ scwin.trigger1.onclick = function(){ console.log(this.getGenerator());} 
+
+
+
+getID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 ID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트 ID
+
+
+Sample
+// 동적으로 웹스퀘어 컴포넌트를 받을 경우, 아래와 같이 ID 확인 가능.
+function fn_validCheck(tmpObj){
+    var compID = tmpObj.getID();
+}
+// 위의 예제 에서 tmpObj가 "input1" ID를 가지고 있는 경우,
+// (반환 값) "input1"
+
+
+getInitStyle(
+									  CSS
+										)
+							
+
+컴포넌트의 초기 스타일을 반환. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다.(웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+CSSStringN속성 (지정하지 않으면 모든 정보 출력)
+
+
+
+
+
+
+getOpacity(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS의 opacity 속성 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+IntegerOpacity 값
+
+
+Sample
+// inputBox 컴포넌트에 opacity CSS를 적용.
+
+        
+// inputBox 컴포넌트의 opacity 값을 반환. 
+var returnValue = input1.getOpacity(); 
+// returnValue는 0 ~ 1 사이의 실수.
+// (반환 값) "0.2"
+
+
+getOriginalID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)originalID는 Scope 기능을 사용할 경우 존재. scope="true"인 WFrame를 사용할 경우, WFrame 내부의 컴포넌트 ID는 원래 사용자가 정의한 값(originalID) 앞에 prefix(wframeID + "_")가 추가되는 방식으로 변경됨.  originalID는 이 때, prefix가 추가되기 전 ID를 의미.
+
+
+
+Return
+
+typedescription
+
+
+String컴포넌트의 originalID
+
+
+Sample
+// WFrame을 사용하는 다중 화면 구조 예시
+
+// WFrame을 포함한 메인 화면 (main.xml) 
+ 
+
+// 메인 화면 WFrame에 연결되는 소스 화면 (text.xml)
+
+
+// text.xml 화면의 내부 스크립트에서 ID 및 originalID 확인하는 예제.
+// getID 실행 
+textbox1.getID(); // 실행 결과는 "wframe1_textbox1"
+ 
+// getOriginalID 실행 
+textbox1.getOriginalID(); // 실행 결과는 "textbox1"
+
+
+getPluginName(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트의 이름 (pluginName)
+
+
+Sample
+// 아래와 같이 공통 함수에서 동적으로 웹스퀘어 객체를 받는 경우, 컴포넌트 종류에 따른 분기 처리가 가능.
+var commObj = {};
+
+commObj.fn_makeReqData = function(tmpObj){
+    var tmpID = tmpObj.getID(); // 컴포넌트 ID
+    var tmpCompType = tmpObj.getPluginName();   // 컴포넌트 이름
+
+    if(tmpCompType == "input"){
+        //..로직..
+    }else if(tmpCompType == "gridView"){
+        //..로직 ..
+    }else{
+        //..로직..
+    }
+};
+
+
+getPosition(
+									  positionName
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 위치 값이 %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNameStringY[left, top] 위치 종류
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 위치 값
+
+
+Sample
+// 아래와 같이 input 컴포넌트에 CSS 속성 margin이 적용된 경우,
+
+
+// (예제) 위의 inputBox 컴포넌트의 top 값을 확인     
+var returnValue = input1.getPosition("top"); 
+
+// 픽셀 단위의 위치 값이 반환됨.
+
+// (반환 값) 10
+
+
+getReadOnly(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Boolean현재 설정되어있는 readOnly 속성
+
+
+Sample
+// 컴포넌트의 readOnly 속성 값 확인 예제
+var returnValue = componentId.getReadOnly();
+// (반환 값 예시) false
+
+
+getScope(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, null을 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체 또는 null
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+textbox1.getScope(); 
+// (반환 값) wframe11 객체
+
+
+getScopeWindow(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, 전역 window 객체를 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체의 scope 객체 또는 전역 window 객체
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+var scope = textbox1.getScopeWindow();
+scope.wframe11 === textbox1.getScope(); // true
+
+
+getSize(
+									  sizeName
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sizeNameStringY크기 값의 종류. sizeName 별 계산 방법은 아래 표를 참고. 
+height : element.clientHeight
+innerHeight : element.clientHeight + padding
+outerHeight : element.clientHeight + padding + border
+outerMarginHeight : element.clientHeight + padding + border + margin
+width : element.clientWidth
+innerWidth : element.clientWidth + padding
+outerWidth : element.clientWidth + padding + border
+outerMarginWidth : element.clientWidth + padding + border + margin
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 크기 값
+
+
+Sample
+var returnValue = componentId.getSize("width");
+// (반환 예) 100 
+// 픽셀 단위의 크기 값이 반환됨. 
+// %로 설정된 경우, 픽셀로 변환된 값이 반환됨.
+
+
+getStyle(
+									  propertyName
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY반환할 CSS 속성
+
+
+
+
+Return
+
+typedescription
+
+
+StringCSS 속성 값
+
+
+Sample
+//아래와 같이 input 컴포넌트가 정의 된 경우
+
+
+// (예제) 위의 inputBox 컴포넌트의 width 값을 확인   
+var returnValue = input1.getStyle("width");
+
+// (반환 값) "144px"
+
+
+getStyleValue(
+									  style
+										)
+							
+
+[deprecated]getStyle 사용 권장.웹스퀘어 컴포넌트에 적용된 해당 CSS 속성 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+styleStringY반환하려는 CSS 속성.
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstyle 해당 CSS 속성 값 (색을 반환하는 경우, HexCode로 반환됨.)
+
+
+
+
+
+getTitle(
+									  
+										)
+							
+
+컴포넌트의 title 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Stringtitle 속성 값.
+
+
+Sample
+// 아래와 같이 input 컴포넌트의 title 속성이 "이름 입력"으로 정의된 경우
+
+
+var tmpTitle = input1.getTitle();
+// (반환 값 예시) "이름 입력"
+
+
+getUdcHome(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)파일명은 마지막 .xml까지 포함. .xml을 제외한 경로는 getUdcRoot를 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome(); 
+// (실행 결과) /a/b/udc.xml
+
+
+getUdcRoot(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)파일명을 포함하지 않음. 파일명을 포함한 경로는 getUdcHome을 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome();    
+// (실행 결과) /a/b/
+
+
+getUserData(
+									  key
+										)
+							
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY데이터의 key
+
+
+
+
+Return
+
+typedescription
+
+
+Stringkey에 해당하는 value
+
+
+Sample
+// Input 컴포넌트에 사용자 속성(setTest)을 설정하는 예제
+
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("setTest");
+// (반환 값) "Hello"
+
+//setUserData를 통해 'valueTest'(key)와 'WebSquare'(data)로 설정하는 예제. 
+input1.setUserData("valueTest","WebSquare");
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("WebSquare");
+// (반환 값) "WebSquare"
+
+
+getWidgetById(
+									  id
+										)
+							
+
+widget의 id를 받아 해당 widget 객체를 반환한다. 해당 widget을 찾지 못할 시 null을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringYwidget의 id
+
+
+
+
+Return
+
+typedescription
+
+
+Object해당 id를 가진 widget 객체
+
+
+Sample
+//변수 widget에 id가 'widget0'인 widget 객체가 저장됨.
+var widget = widgetContainer1.getWidgetById('widget0');
+//해당 id를 가진 widget을 찾을 수 없으면 null을 반환.
+widgetContainer1.getWidgetById('NoSuchId') === null;  // true;
+
+
+getWidgetByTitle(
+									  id
+										)
+							
+
+widget의 title을 받아 해당 widget 객체를 반환한다. 해당 widget을 찾지 못할 시 null을 반환한다.중복되는 widget이 있을 시 처음으로 찾은 widget만을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringYwidget의 id
+
+
+
+
+Return
+
+typedescription
+
+
+Object해당 id를 가진 widget 객체
+
+
+Sample
+//변수 widget에 title이 'widget0'인 widget 객체가 저장됨.
+var widget = widgetContainer1.getWidgetByTitle('widget0');
+//해당 title을 가진 widget을 찾을 수 없으면 null을 반환.
+widgetContainer1.getWidgetByTitle('NoSuchTitle') === null;  // true;
+
+
+hasClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY검색할 class 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Booleanclass의 포함 여부
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+        
+var returnValue = input1.hasClass("tmpInputClass");
+// (반환 값) true
+
+
+hide(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)display:none; 및 visibility:hidden; CSS를 적용.
+
+
+Sample
+// (예제) 컴포넌트를 숨김
+componentId.hide();
+
+
+importWidget(
+									  id
+									       , 
+									       jsonObj
+										)
+							
+
+현재 존재하는 한 개의 위젯에 대한 정보를 JSON으로 받아 이를 다시 WidgetContainer에 추가. 내부적으로 해당 ID의 위젯을 지우고 다시 그림. 단, ID는 기존 ID를 유지. 관련 함수: importWidgets은 현재 존재하지 않는 여러 개의 위젯을 WidgetContainer에 추가.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringY위젯 아이디
+
+
+jsonObjObjectY위젯 객체의 배열
+
+
+
+
+Return
+
+typedescription
+
+
+Boolean조작 성공 여부
+
+
+
+
+
+importWidgets(
+									  jsonArr
+									       , 
+									       clearFlag
+										)
+							
+
+여러 개의 현재 존재하지 않는 위젯 객체들을 배열(JSON)을 받아 widgetContainer에 삽입.clearFlag가 true인 경우 기존의 위젯을 모두 지우고 새로운 위젯 객체를 추가.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+jsonArrObject[]Y위젯 객체의 배열
+
+
+clearFlagBooleanY기존 위젯들을 삭제할지 여부
+
+
+
+
+Return
+
+typedescription
+
+
+Object[]import된 위젯 객체의 배열
+
+
+Sample
+// exportWidgets()를 이용해 현재 widget들의 jsonArr를 저장함.
+var jsonArr = widgetContainer1.exportWidgets();
+// 기존 widget들을 지우고 jsonArr의 widget들을 표시함.
+widgetContainer1.importWidgets(jsonArr, true);
+
+
+isValidPos(
+									  x
+									       , 
+									       y
+									       , 
+									       unitWidth
+									       , 
+									       unitHeight
+										)
+							
+
+넘겨받은 위치정보를 이용해 해당 영역이 유효한지 여부를 반환한다.단, widget간의 충돌 체크는 하지 않으며, 오직 boundary 제한과 min/max 제한만을 체크한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+xNumberYwidget의 x값
+
+
+yNumberYwidget의 y값
+
+
+unitWidthNumberYwidget의 unitWidth값
+
+
+unitHeightNumberYwidget의 unitHeight값
+
+
+
+
+Return
+
+typedescription
+
+
+Boolean해당 위치의 유효 여부
+
+
+Sample
+//x === -1 이기 때문에 유효하지 않은 위치이므로 result === false.
+var result = isValidPos(-1, 3, 2, 3);
+
+
+moveWidget(
+									  widgetId
+									       , 
+									       newX
+									       , 
+									       newY
+										)
+							
+
+해당 widget id를 가진 widget의 좌표를 (newX, newY)로 이동시킨다.newX, newY 중 유효한 값이 할당되지 않은 인자의 경우 widget의 기존값을 유지한다.widget을 조작하기 전 마지막으로 성공했던 상태로 rollback한 후 처리를 시작한다.모드에 따라 충돌 해소를 시도한 후 성공했다면 commit을, 실패했다면 rollback을 실행한다.move에 성공했을 시에는 true를, 실패했을 시에는 false를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widgetIdStringY조작할 widget의 id
+
+
+newXNumberNwidget의 새 x좌표
+
+
+newYNumberNwidget의 새 y좌표
+
+
+
+
+Return
+
+typedescription
+
+
+Boolean조작의 성공 여부
+
+
+Sample
+//widget0을 (2,2)로 이동
+widgetContainer1.moveWidget('widget0', 2, 2);
+
+
+redraw(
+									  
+										)
+							
+
+widgetContainer 내부의 widget들을 그 상태에 따라 적절히 렌더링한다.API를 사용할 경우 처리가 끝난 후 불리며, drag&drop을 사용할 경우 widget들의 실시간 위치상태에 변화가 생기는 경우에 불린다.oneColumn, maximize, minimize, ghost 등등 모든 렌더링 작업은 이 함수에서 _renderWithRect를 호출함으로써 이뤄진다.
+
+
+
+
+
+removeClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)기본적으로 addClass를 통해 추가된 class만 삭제 가능. 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가해야 함. 
+ // config.xml 파일에 아래 설정 추가 
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY삭제 할 class명
+
+
+
+Sample
+// inputBox의 속성으로 class가 직접 정의된 경우,
+
+
+// config.xml 파일에 아래 항목을 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// removeClass를 통해 삭제 가능. 
+input1.removeClass("tmpInputClass");
+
+
+removeTitleClass(
+									  id
+									       , 
+									       className
+										)
+							
+
+titleClass 속성에 따라 정의된 타이틀 영역에서 지정된 클래스를 제거.관련 속성: titleClass
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringY위젯 아이디
+
+
+classNameStringY위젯에서 삭제할 class명
+
+
+
+Sample
+ 위젯("widget1")의 title 영역에 적용된 클래스("w2widget_disable")를 동적으로 삭제
+ widgetContinerID.removeTitleClass("widget1","w2widget_disable");
+
+
+removeWidgets(
+									  widgetIds
+										)
+							
+
+widget의 id, id의 배열을 받아 해당 widget들을 삭제한다.실제 삭제를 위해 내부에서 _removeWidgets를 부른다. 삭제 성공 시 삭제된 widget들의 id의 배열을 반환한다.인자로 widget 객체, widget 객체의 배열을 넘겨받아도 정상작동 하지만 권장사항은 id 또는 id의 배열이다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widgetIdsString | String[]Y삭제할 widget들의 id의 배열
+
+
+
+
+Return
+
+typedescription
+
+
+String[]삭제된 widget들의 id의 배열
+
+
+Sample
+var ids = ['widget0', 'widget1', 'widget2'];
+//id가 widget0, widget1, widget2인 widget들 삭제
+widgetContainer1.removeWidgets(ids);
+widgetContainer1.getWidgetById('widget0') === null  // true;
+
+
+resizeWidget(
+									  widgetId
+									       , 
+									       newWidth
+									       , 
+									       newHeight
+									       , 
+									       options
+										)
+							
+
+해당 widget id를 가진 widget의 크기를 (newWidth, newHeight)로 변경한다.newWidth, newHeight 중 유효한 값이 할당되지 않은 인자의 경우 widget의 기존값을 유지한다.widget을 조작하기 전 마지막으로 성공했던 상태로 rollback한 후 처리를 시작한다.모드에 따라 충돌 해소를 시도한 후 성공했다면 commit을, 실패했다면 rollback을 실행한다.resize에 성공했을 시에는 true를, 실패했을 시에는 false를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widgetIdStringY조작할 widget의 id
+
+
+newWidthNumberNwidget의 새 unitWidth값
+
+
+newHeightNumberNwidget의 새 unitHeight값
+
+
+optionsObject | Object[]Y기타 옵션
+
+
+
+
+Return
+
+typedescription
+
+
+Boolean조작의 성공 여부
+
+
+Sample
+// widget1을 (2,2)의 크기로 변경하되 resizeWidget 값이 false인 경우에도 위젯 크기를 강제로 변경 가능.
+widgetContainer1.resizeWidget("widget1", 2, 2, {"force" : true});
+
+
+setCols(
+									  cols
+										)
+							
+
+격자 형태의 WidgetContainer가 포함할 컬럼 수를 설정. 단, 컬럼 수는 현재 위젯들의 너비와 같거나 더 큰 값이어야 함.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+colsStringYwidgetContainer의 새롭게 설정할 cols
+
+
+
+Sample
+//위젯들의 너비는 1, 2, 3, 혹은 4인 경우에만 아래가 동작. 현재 위젯의 너비가 4보다 클 경우 아래 예제는 동작하지 않음.
+widgetContainer1.setCols(4);
+
+
+setDisabled(
+									  disabled
+										)
+							
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disabledBooleanYdisabled 상태. 
+true: disabled 속성 활성화
+false: disabled 속성 비활성화
+
+
+
+Sample
+// 컴포넌트의 disabled 속성을 활성화.
+componentId.setDisabled(true);
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+							
+
+지정한 이벤트를 중단함. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+evListStringN중단할 이벤트 목록. (null을 지정할 경우 해당 컴포넌트의 모든 사용자 이벤트가 중단되거나 중단 해제됨.)
+
+
+flagBooleanY이벤트 중단 여부. 
+true: 중단
+false: 중단 해제.
+
+
+
+Sample
+// (예제 1)
+// onclick 이벤트를 중단. 
+input1.setEventPause("onclick", true); 
+
+// (예제 2)
+// onfocus 및 onblur 이벤트의 중단을 해제.
+input1.setEventPause("onfocus,onblur", false); 
+
+// (예제 3)
+// input1에 등록된 모든 사용자 이벤트를 중단.
+input1.setEventPause(null, true);
+
+
+setInitStyle(
+									  property
+										)
+							
+
+컴포넌트의 초기 스타일을 복구한다. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다 (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyStringNCSS 속성 (지정하지 않으면 모든 속성의 초기 값으로 복구.)
+
+
+
+Sample
+// (예제)
+group1.setInitStyle();
+
+
+setOpacity(
+									  value
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS 속성인 opacity(불투명도)를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYOpacity 값 (0과 1 사이의 실수)
+
+
+
+Sample
+// (예제) 불투명도를 0.45로 설정
+componentId.setOpacity(0.45);
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberY설정할 left 위치 값 또는 null.
+
+
+topNumberY설정할 top 위치 값 또는 null.
+
+
+modeStringN위치 설정 방법. [default: absolute, delta] 
+absolute: 입력된 값을 위치로 설정.
+delta: 현재 위치에 입력된 left 및 top 값을 추가.
+
+
+
+Sample
+// (예제) 컴포넌트의 top만 100px로 설정.
+componentId.setPosition(null, 100);
+
+
+setReadOnly(
+									  readOnly
+										)
+							
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+readOnlyBooleanYreadOnly 속성 활성화 여부. ( "true" : 활성화, "false" : 비활성화)
+
+
+
+Sample
+// 컴포넌트의 readOnly 속성을 true로 설정하는 예.
+componentId.setReadOnly(true);
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widthNumberY새로 설정할 컴포넌트의 width 값 또는 null
+
+
+heightNumberY새로 설정할 컴포넌트의 height 값 또는 null
+
+
+
+Sample
+// (예제) 컴포넌트의 height만 100px로 설정.
+componentId.setSize(null,100);
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY설정할 CSS 속성
+
+
+valueStringY해당 CSS 속성에 적용할 값
+
+
+
+Sample
+// (예제 1) 컴포넌트의 width를 200px로 설정
+componentId.setStyle("width", "200px");
+
+// (예제 2) 배경색을 olive로 변경
+componentId.setStyle("background-color","olive");
+
+
+setTitleClass(
+									  id
+									       , 
+									       className
+										)
+							
+
+titleClass 속성에 따라 정의된 타이틀 영역에 클래스를 추가.관련 속성: titleClass
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringY위젯 아이디
+
+
+classNameStringY위젯에 적용할 class명
+
+
+
+Sample
+ 위젯("widget1")의 title 영역에 새로운 클래스("w2widget_disable")를 동적으로 적용
+ widgetContinerID.setTitleClass("widget1","w2widget_disable");
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 컴포넌트에 설정 가능한 key를 입력해야 함. 설정 가능한 key가 아닌 경우, 해당 내용이 로그에 출력됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY설정할 데이터의 key
+
+
+valueStringY설정한 데이터의 value
+
+
+
+Sample
+// 컴포넌트에 'data'라는 key로 'WebSquare'라는 value를 설정하는 예제.
+
+componentId.setUserData("data", "WebSquare");
+
+// 컴포넌트에 설정이 불가능한 key를 임력할 경우, key 설정이 불가능. 
+ 
+componentId.setUserData("title", "WebSquare");
+// 아래와 같이 로그가 출력됨. 
+// !!!WARNING - [title] can't be defined as UserData.
+
+
+show(
+									  displayType
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)CSS display 속성을 주어진 값으로 설정하고 "visibility: show;"를 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+displayTypeStringN적용할 CSS display 속성의 값.   
+block : display: block;을 적용. (기본 값)
+inline : display: inline;을 적용.
+none : display: none;을 적용.
+"" : show 수행 이전의 display 속성 값으로 복구.
+
+
+
+Sample
+// (예제) display: block; CSS를 설정.
+componentId.show();  
+
+// (예제) 위제 설정한 display 속성 값을 취소하고 원래의 display 값을 복구.
+componentId.show("");
+
+
+toggleClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)웹스퀘어 컴포넌트가 파라미터로 주어진 class를 포함한 경우, 해당 class를 제거. 웹스퀘어 컴포넌트에 파라미터로 주어진 class가 없는 경우, 해당 class를 추가. 기본적으로 addClass를 통해 추가된 class만 삭제 가능. 웹스퀘어 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가. 
+ // config.xml 파일에 아래 설정 추가
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가/삭제할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+//config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// tmpInputClass class를 삭제.
+input1.toggleClass("tmpInputClass");
+
+// (위에서 삭제된) tmpInputClass class를 다시 추가.
+input1.toggleClass("tmpInputClass");
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+컴포넌트에서 특정 이벤트를 발생시킴. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트
+
+
+arrayArrayN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+// (예제 1)
+// input1 컴포넌트에 onclick 이벤트를 발생시킴.
+input1.trigger("onclick");
+
+// (예제 2)
+// input1에 onviewchange 이벤트를 발생시키고 핸들러 함수에 (1,2) 인자를 전달하여 호출.
+input1.trigger("onviewchange", [1,2]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+컴포넌트에서 이벤트를 제거. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트. (생략할 경우 해당 컴포넌트의 모든 이벤트를 제거.)
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. (생략할 경우 해당 위에 지정한 이벤트에 등록된 모든 핸들러 함수를 제거.)
+
+
+
+Sample
+// (예제 1)
+// input1에 등록된 모든 이벤트를 제거.
+input1.unbind();
+
+// (예제 2)
+// input1의 onviewchange 이벤트에 대한 모든 핸들러 함수를 제거.
+input1.unbind("onviewchange");
+
+// (예제 3)
+// input1의 onviewchange 이벤트에 대한 func1 이벤트 핸들러 함수를 제거.
+input1.unbind("onviewchange", func1);
+
+
+visible(
+									  flag
+										)
+							
+
+[deprecated] show/hide 혹은 setStyle 사용을 권장.엔진 내부적으로 CSS visibility 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY설정할 CSS visibility 속성 값 
+true : visibility: visible;
+false : visibility: hidden;
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

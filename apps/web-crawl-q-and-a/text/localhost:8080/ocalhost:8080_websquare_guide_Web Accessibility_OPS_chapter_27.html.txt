@@ -1,0 +1,2 @@
+
+Span27.Span27.1SpanText를 출력하는 컴포넌트로 HTML span Tag과 동일한 기능을 제공하며 span Tag로 표현된다. Textbox와 비슷한 기능을 가지고 있으며 tagname속성은 포함되어있지 않다. 접근성과 상관없이 사용할 수 있습니다.

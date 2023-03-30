@@ -1,0 +1,13 @@
+
+AliasDataCollection23.AliasDataCollection23.1정의WFrame을 사용할 경우, 모든 동작은 Scope 내에서 실행됩니다. 즉, WFrame 내에서 GridView를 사용할 경우 바인딩 되는 DataCollection 역시 동일한 WFrame 내에 존재해야 합니다. 단, 실제 업무 환경에서는 메인 화면에 존재하는 DataCollection을 여러 화면의 GridView가 참조하는 경우가 많습니다. 이 같은 요구를 해결하기 위한 것이 Alias DataCollection입니다.각 WFrame 내에 AliasDataCollection을 정의한 후, 실제 바인딩되는 메인 (혹은 부모) 화면의 DataCollection과 연결하여 이 같은 업무 환경을 지원할 수 있습니다.DataCollection이 제공하는 모든 API를 AliasDataCollection에서 동일하게 사용할 수 있습니다다.그림 23-1.YouTube 동영상 (https://youtu.be/0Hp5G0cT1tk)그림 23-2.Alias DataCollection제약사항부모 화면에 있는 DataCollection 참조만 지원합니다. 자식 및 형제 참조는 지원하지 않습니다.23.2주요 API23.2.1속성표 23-1.주요 속성속성설명idWFrame 내에서 사용할 객체 IDscope부모 페이지에 존재하는 (링크 대상) DataCollection의 ID상대 경로 지원 (예: scope="../dataList1")절대 경로 지원 (예: scope="/wframe1/dataList1"/)23.2.2함수표 23-2.주요 함수함수설명getObjscope에 지정된 객체를 반환사용 예: var parentDataList = aliasDataList1.getObj();setScope참조할 DataCollection을 동적으로 변경. DataCollection 변경시 페이지에 바인딩된 컴포넌트도 자동 갱신됨. 사용 예: aliasDataList1.setScope("/dataList1");그 외 참조하는 DataCollection에서 제공하는 API 모두 사용 가능.사용 예: aliasDataList1.getRowCount();23.3제약 사항AliasDataCollection은 아래와 같은 제약사항을 갖습니다.부모 페이지만 참조할 수 있습니다.동일한 유형만 링크할 수 있습니다. (예를 들어, aliasDataList는 DataList만 참조 가능합니다.)aliasDataList는 다른 화면의 aliasDataList를 참조할 수 없습니다.Scope에 지정된 객체가 존재하지 않는 경우, 빈 DataCollection이 생성됩니다. 이 경우 setScope를 이용하여 참조할 DataCollection을 다시 지정하십시오.23.4생성다음은 strictMode를 설정하고 WFrame을 사용하여 화면을 구성한 예입니다. WFrame 내부의 GridView는 Alias DataList를 통해 메인 화면의 GridView와 바인딩된 DataList를 참조합니다.그림 23-3.AliasDataCollection 작성 예23.4.1Studio에서 생성다음은 메인 화면의 DataList를 참조하는 Alias DataList를 작성하여 이를 WFrame 내부의 GridView와 바인딩하는 방법을 설명한 것입니다.DataCollection 탭을 선택합니다.Add - AliasDataList를 클릭합니다.그림 23-4.Alias DataList 추가AliasDataList의 id와 scope 속성을 아래와 같이 지정합니다.id: ID 지정. (예: ds_dataList1)scope: 부모 화면에 있는 참조 대상 DataCollection을 지정. 절대 경로 및 상대 경로 모두 지원. (예) 상대 경로: scope="../dataList_parent"(예) 절대 경로: scope="main/dataList_main2"Design 탭으로 이동합니다. WFrame 화면의 GridView를 선택합니다.dataList 속성을 위의 제 3단계에서 설정한 AliasDataCollection으로 선택합니다. (해당 Alias DataCollection은 "data:aliasDataCollection의_ID" 형태로 표시됩니다.그림 23-5.GridView의 dataList 속성을 통해 바인딩23.4.2동적 생성 (Script)DataCollection 생성과 동일한 방법으로 script를 이용하여 aliasDataCollection을 생성할 수 있습니다. 단, option에 scope 속성을 추가해야 합니다.코드 23-1.aliasDataList 생성 예제$p.data.create({
+    "id" : "dynamicAliasDataList1",
+    "type" : "aliasDataList",
+    "option" : {
+        "scope" : "../dataList1"
+    }
+});DataCollection 바인딩 하는 방법과 동일한 방식으로 컴포넌트에 바인딩할 수 있습니다.코드 23-2.aliasDataList 바인딩 예제<w2:gridView dataList="data:aliasDataList1" ... />
+<xf:select1>
+    <xf:choices>
+        <xf:itemset nodeset="data:aliasDataList1"/>
+    </xf:choices>
+</xf:select1>

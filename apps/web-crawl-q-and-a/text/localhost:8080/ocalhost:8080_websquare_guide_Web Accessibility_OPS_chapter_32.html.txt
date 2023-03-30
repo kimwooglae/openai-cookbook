@@ -1,0 +1,14 @@
+
+Textbox32.Textbox32.1Textbox텍스트를 화면에 나타내어주는 컴포넌트로서 tagname 속성에 따라 div, h1, h2, …, h6, label 태그로 렌더링 됩니다. 주로 정적인 텍스트 데이터를 나타내는데 사용되며 사용자로부터 정보를 입력을 받는 컴포넌트와 연관된 항목명을 나타내기 위해 사용될 경우에는 tagname 속성에 “label”을, for 속성에는 해당하는 컴포넌트의 id를 기술합니다. 또, html5를 사용하면 본문 언어와 다른 언어를 나타낼 경우 lang 속성을 사용합니다. 아래는 사용자로부터 주민번호를 입력 받는 예제입니다. (for 속성을 사용하는 경우 tagname=”label” 은 default 값으로 생략하여도 무방합니다.)<Check Point>√ tagname 속성을 사용했을 경우 “HTML 태그 사용 가이드”를 준수하였는가?√ tagname=”label” 로 사용했다면 for 속성을 올바로 기술하였는가?√ 만약 컨텐츠의 언어가 본 언어와 다를 경우 적합한 lang 속성을 기술하였는가?관련 지침 : 사용 방식에 따른 점검mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+KO;mso-bidi-language:AR-SA"><Xml source>
+Tagname을 사용해서 a링크로 사용한 경우
+<w2:textbox label="링크" style="" id="" tagname="a">
+    <w2:attributes>
+        <w2:href>naver.com</w2:href>
+    </w2:attributes>
+</w2:textbox>
+
+Tagname을 사용해서 label로 사용한 경우
+<w2:textbox label="폼연결" style="" id="" for="input1" tagname="label"></w2:textbox>
+<xf:input id="input1" style="width: 144px;height: 21px;"></xf:input>
+

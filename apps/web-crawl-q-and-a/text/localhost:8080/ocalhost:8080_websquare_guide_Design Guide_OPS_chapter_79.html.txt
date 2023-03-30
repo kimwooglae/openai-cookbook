@@ -1,0 +1,112 @@
+
+Trigger79.Trigger수정 기준 버전 (SP2)WebSquare5 Studio : 20180117_1349_x86_BWebSquare5 Engine : 5.0_2.2982B.20180223.154326_1.5Trigger는 type에 따라 이미지 형태의 버튼과 button 형태로 사용할 수 있으며,HTML에서<input>태그의 type=button과 유사한 인터페이스를 제공하는 컨트롤로 특정 Action과 컨트롤을 연계할 때 주로 사용되는 컴포넌트 입니다.- button : input Tag의 type="button"으로 구성 된다.- image : table Tag로 이루어져있고 left, center, right에 각각에 CSS 적용이 가능하다.(image 링크)- anchor : 최상위 anchor Tag로 이루어져있고 button의 text는 span Tag로 구성된다.79.1PropertyPropertyDescriptioncenterOffImageClasstype속성의 값이 "image"일 경우만 적용되며 중앙 td에 적용될 class명을 정의한다.class에는 image의 url을 명시하며 일반적으로 width값은 제외한다.centerOnImageClasstype속성의 값이 "image"일 경우만 적용되며 마우스 over 시 중앙 td에 적용될 class명을 정의한다.class에는 image의 url을 명시하며 일반적으로 width값은 제외한다.classHTML의 class속성과 동일한 기능을 제공하며 css파일 또는 style블럭에 정의 한 class를 1개 또는 공백(space)를 이용하여 다중 적용이 가능하다.id컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.disabled[default:false, true]HTML의 disabled속성과 동일한 기능을 제공하며 컴포넌트를 비활성화 시킨다.leftOffImageClasstype속성의 값이 "image"일 경우만 적용되며 왼쪽 td에 적용될 class명을 정의한다. class에는 image의 url과 width 속성은 필수로 정의한다.leftOnImageClasstype속성의 값이 "image"일 경우만 적용되며 마우스 over 시 왼쪽 td에 적용될 class명을 정의한다.class에는 image의 url과 width 속성은 필수로 정의한다.nextTabID SP2tab으로 이동시 이동할 컴포넌트 IDrightOffImageClasstype속성의 값이 "image"일 경우만 적용되며 오른쪽 td에 적용될 class명을 정의한다. class에는 image의 url과 width 속성은 필수로 정의한다.rightOnImageClasstype속성의 값이 "image"일 경우만 적용되며 오른쪽 td에 적용될 class명을 정의한다. class에는 image의 url과 width 속성은 필수로 정의한다.styleInputBox의 style 속성tabIndexTab Key를 이용 한 컴포넌트의 포커스 순서로 HTML의 tabindex속성과 동일한 기능을 제공한다toolTip웹스퀘어에서 만든 toolTip으로 컴포넌트의 추가정보를 명시한다. 마우스 over시 표현된다.type[default:button, image, anchor]Trigger 표현 방법을 정의하며 각 타입별 HTML 표현 방식은 아래와 같다.button : HTML input Tag로 표현되며 type="button"으로 구성 된다.image : 최상위 table Tag로 이루어져있고 left, center, right에 각각에 class적용이 가능하다.anchor : 최상위 anchor Tag로 이루어져있고 button의 text는 span Tag로 구성된다.79.2브라우저 캡쳐화면그림 79-1.0179.3form의 <input type="button" />Trigger 컴포넌트를 그린 뒤 Property에서 type을 button으로 설정합니다. 브라우저에서 파싱된 결과를 확인해 보면 input type=”button” 으로 나오며, 또한 입력한 label 값은 value=”저장”으로 파싱된 결과를 볼 수 있습니다.그림 79-2.type을 button으로 설정그림 79-3.0279.4class 적용과 스타일 변경공통 trigger에 Label만 바꿔서 사용하는 경우그림 79-4.9Component view에서 trigger를 선택하여 컴포넌트를 그려줍니다. Property view에 class명을 입력하고, type을 image로 주겠습니다.centerOffImageClass 마우스 아웃시 중앙의 이미지 클래스를 정의하며, leftOffImageClass 마우스 아웃시 왼쪽의 이미지 클래스를 정의하고 rightOffImageClass 마우스 아웃시 오른쪽 이미지 클래스를 정의합니다.반대로 centerOnImageClass, leftOnImageClass, rightOnImageClass는 마우스가 on 되었을 때 가운데, 왼쪽, 오른쪽 이미지 클래스를 정의합니다.그림 79-5.default과 class 적용 trigger.btncommon_left_on{
+    width:5px;
+    background-image:url(/DesignGuide/images/btncommon_left_on.gif);
+    background-repeat:no-repeat;
+}
+.btncommon_left{
+    width:5px;
+    background-image:url(/DesignGuide/images/btncommon_left.gif);
+    background-repeat:no-repeat;
+}
+.btncommon_right_on{
+    width:5px;
+    background-image:url(/DesignGuide/images/btncommon_right_on.gif);
+    background-repeat:no-repeat;
+}
+.btncommon_right{
+    width:5px;
+    background-image:url(/DesignGuide/images/btncommon_right.gif);
+    background-repeat:no-repeat;
+}
+.btncommon_center{
+    background-image:url(/DesignGuide/images/btncommon_center.gif);
+    background-repeat:repeat-x;
+    color:#13283d;
+    font-size:12px;
+    font-family:'맑은 고딕';
+    padding-bottom:3px;    
+}
+.btncommon_center_on{
+    background-image:url(/DesignGuide/images/btncommon_center_on.gif);
+    background-repeat:repeat-x;
+    color:#ffffff;
+    font-size:12px;
+    font-family:'맑은 고딕';
+    font-weight:bold;
+    padding-bottom:3px;
+}위와 같이 타입을 이미지로 설정할 경우 table로 파싱이 됩니다.배치성 테이블 형태로 (<summary>, <caption> 태그 제외됨) 사용 하여도 웹접근성에 문제가 되진 않지만 좀 더 명확한 웹접근성 준수를 위해 Property창에 class에서 새로운 class명을 주어 input 스타일을 변경해 주는 방법을 권장합니다.아래 4) 단일 클래스 trigger인 경우 Ⅱ (type=button) 예제로 다시 설명드리겠습니다.그림 79-6.브라우저에서 table 파싱된 화면단일 이미지의 trigger인 경우그림 79-7.12Component view 에서 trigger를 선택하고 직접 Property view에 속성값을 입력해줍니다. (type=image)leftOfIimageClass, leftOnImageClass에만 class 적용시 단일이미지 처리가 가능합니다. 또한 css문서에 trigger의 width, height를 정의해야 합니다.그림 79-8.13.btnsearch{    
+    background-image:url(/DesignGuide/images/btn_search.gif);    
+    background-repeat:no-repeat;
+    width:66px;
+    height:21px;
+}
+.btnsearch_on{    
+    background-image:url(/DesignGuide/images/btn_search_on.gif);    
+    background-repeat:no-repeat;
+    width:66px;
+    height:21px;
+}단일 클래스의 trigger인 경우stylesheet.css에서 trigger와 관련된 부분을 복사하여 신규 css파일에 추가 후 속성을 변경합니다.아래 stylesheet.css는 웹스퀘어에서 기본으로 제공하는 css이며, 컴포넌트별 스타일이 적용되어 있는 소스 입니다..w2trigger_col_left{
+background-repeat:no-repeat;
+background-position:rightcenter;
+}
+.w2trigger_col_center{
+padding-top:2px;
+background-repeat:repeat-x;
+background-position:centercenter;
+}Component view에서 trigger를 선택합니다. Property view에 Class명(예: btn_add)을 입력합니다.단일 클래스이면서 단일 이미지를 사용하는 tigger인 경우에는 아래 소스를 꼭 추가해주세요..btnsmallsearch(클래스명) .w2trigger_label{width:0px;}그림 79-9.단일 클래스인 경우 스타일 적용 이미지코드 79-1.trigger.css (작업자 신규 스타일시트).btn_add .w2trigger_col_left{
+    width:5px;
+    background-image:url(/DesignGuide/images/smallbtn_left.gif);
+    background-repeat:no-repeat;
+}
+.btn_add .w2trigger_col_center{
+    background-image:url(/DesignGuide/images/smallbtn_center.gif);
+    background-repeat:repeat-x;
+    color:#13283d;
+    font-weight:bold;
+    font-size:11px;
+    font-family:'맑은 고딕';
+    padding-bottom:3px;
+}
+.btn_add .w2trigger_col_right{
+    width:5px;
+    background-image:url(/DesignGuide/images/smallbtn_right.gif);
+    background-repeat:no-repeat;
+}
+.btn_add .w2trigger_over .w2trigger_left{
+    width:5px;
+    background-image:url(/DesignGuide/images/smallbtn_left_on.gif);
+    background-repeat:no-repeat;
+}
+.btn_add .w2trigger_over .w2trigger_center{
+    background-image:url(/DesignGuide/images/smallbtn_center_on.gif);
+    background-repeat:repeat-x;
+    color:#ffffff;
+    font-size:11px;
+    font-family:'맑은 고딕';
+    font-weight:bold;
+    padding-bottom:3px;
+}
+.btn_add .w2trigger_over .w2trigger_right{
+    width:5px;
+    background-image:url(/DesignGuide/images/smallbtn_right_on.gif);
+    background-repeat:no-repeat;
+}단일 클래스의 trigger인 경우 II (Trigger 사용시 button type으로 사용하는 것을 권장합니다.)(권장 방법)그림 79-10.15기타 (trigger를 이용한 동적 라벨 길이의 변동시 처리 방법)trigger 컴포넌트를 그려줍니다. 그려준 컴포넌트를 선택하고 오른쪽 마우스 버튼을 눌려 Group으로 감싸기를 선택해 줍니다. 감싸진 그룹을 다시 한번 선택하고 다시 또 Group으로 감싸기를 합니다.새로운 group 생성시 인라인스타일을 제거해 주시고, 새로운 css를 인라인 스타일로 넣어보겠습니다.그림 79-11.16style view에서 보면 position:absolute; top:533px; left:0px; 현재 group에 대해 임의적인 위치를 준 것이기에 제외하셔도 되겠습니다. 컴포넌트를 감싸고 있는 group에 width:100%로 줍니다.그림 79-12.17type을 image로 선택할 경우 블럭요소(table)여서 float:left;를 사용하여 컴포넌트 2개 를 붙여줍니다.type을 button으로 선택할 경우 인라인요소(input)이기 때문에 float태그 없이도 같은 라인(한 줄)에 처리가 됩니다.그림 79-13.텍스트 길이만큼 유동적으로 늘어나는 버튼79.5disabled 일때의 css 처리Property 창에서 disabled 속성을 true 또는 false를 줄 수 있습니다.Disabled를 true로 줄 경우 버튼은 비활성화 상태로 표시 되어 클릭이 되지 않으며, disabled=””로 파싱 됩니다.그리고 브라우저에서 파싱된 class를 보면 “w2trigger_disabled”로 나오는 것을 보실 수 있습니다.disabled 일 때 “w2trigger_disabled” 클래스명에 아래와 같이 스타일을 주시면 됩니다.그림 79-14.disabled 파싱된 개발자 도구 화면btn_add .w2trigger_disabled .w2trigger_left{
+    width:5px;
+    background-image:url(/DesignGuide/images/smallbtn_left_disa.gif);
+    background-repeat:no-repeat;
+}
+.btn_add .w2trigger_disabled .w2trigger_center{
+    background-image:url(/DesignGuide/images/smallbtn_center_disa.gif);
+    background-repeat:repeat-x;
+    color:#bfd3f2;
+    font-weight:bold;
+    font-size:12px;
+    font-family:'맑은 고딕';
+    padding-bottom:3px;
+}
+.btn_add .w2trigger_disabled .w2trigger_right{    
+    width:5px;
+    background-image:url(/DesignGuide/images/smallbtn_right_disa.gif);
+    background-repeat:no-repeat;
+}79.6CSS Overriding그림 79-15.03NoClassDescription1w2triggerw2trigger은 웹스퀘어 엔진에서 정의된 클래스입니다, 브라우저가 파싱할때 자동으로 부여됩니다.type이 "buttom" 이거나 공백일 경우 생성됩니다.2w2trigger_table웹스퀘어 엔진에서 정의된 클래스로서 type이 "image"일경우 생성됩니다.3w2trigger_anchor웹스퀘어 엔진에서 정의된 클래스로서 type이 "anchor"일경우 생성됩니다.3inlinewebsquare의 style 편집기에서 해당 style을 직접 수정합니다.79.7주의사항 및 Tiptype 속성을 이미지로 설정할 경우 table로 파싱이 됩니다.type 속성을 이미지로 설정할 경우 배치성 테이블 형태로 (<summary>, <caption> 태그 제외됨) 사용 하여도 웹접근성에 문제가 되진 않지만명확한 웹접근성 준수를 위해 Property창의 class 속성에서 새로운 class명을 주어 input 스타일을 변경해 주는 방법을 권장합니다.

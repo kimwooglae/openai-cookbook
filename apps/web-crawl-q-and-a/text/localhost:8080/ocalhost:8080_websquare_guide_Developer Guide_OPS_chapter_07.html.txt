@@ -1,0 +1,1030 @@
+
+서버 프레임워크 연동 가이드7.서버 프레임워크 연동 가이드7.1일반 원칙웹스퀘어는 웹표준 RIA 솔루션으로써 데이터 연계는 기본적으로 웹브라우저와 웹서버 간의 HTTP Protocol을 기반으로한 통신방식을 준수합니다.7.1.1표준 웹을 준수하는 데이터 구조와 통신 방식HTTP Protocol에서 제공하는 Text Data 기반의 통신방식을 지원하며, Ajax 기반의 통신 모듈을 제공합니다.지원되는 통신 Data 구조는 일반적인 HTTP Protocol상에서 범용적으로 사용되는 XML, JSON, Plain Text, Request Parameter(key/value) 등의 구조를 기본적으로 모두 사용할 수 있으나, 가장 권장되는 것은 XML 구조입니다.이하 XML 구조를 기준으로 설명합니다.웹스퀘어가 강제하는 고정된 Format은 없으며, 임의의 표준 포맷을 정의하여 사용할 수 있습니다. (Well-Formed XML의 조건만 만족하면 됩니다.)서버의 데이터 인터페이스 모듈 역시 고정된 모듈을 제공하고 있지 않으며, 정해진 표준 데이터 포맷을 처리할 수 있으면 어떤 형태로든 직접 구현하여 사용할 수 있습니다. (단, 기본적으로 HTTP Protocol 기반으로 연계할 수 있는 Web Application의 구조를 가져야 합니다.)일반적으로 권장되는 데이터 연계와 관련된 시스템 구성은 J2EE기반의 Web Applicaton Server하에서 Web Applicaton Framework을 구성하여 웹스퀘어의 통신객체(Submission)와 표준포맷의 데이터를 교환하는 방식이 될 수 있습니다.7.1.2웹스퀘어와 서버 간 데이터 변환웹스퀘어 화면에서 일반적으로 사용되는 XML, JSON 등의 데이터 구조에 대하여 서버사이드에서 일반적으로 사용되는 데이터 구조체로의 데이터 변환 처리를 통하여 효과적인 데이터 연계 구조를 구성할 수 있습니다.웹스퀘어 화면 데이터 구조 : 표준 웹브라우저에서 표준 JavaScript로 접근가능한 데이터 Object - XML, JSON서버사이드의 데이터 구조 : J2EE기반 Web Application을 기준으로 볼 때, 일반적으로 데이터 구조체로 사용되는 Java Object - Collection(Map/List), VO(Java Beans)상기에 기술한 웹스퀘어와 서버간의 데이터 변환을 수행하는 모듈이 서버단의 Web Application 구조에 포함되어 데이터 연계 시 변환처리를 수행하는 과정이 필요합니다.일반적인 MVC 기반의 Web Application Framework의 구조를 예시로,- Controller 영역에서 웹스퀘어 Submission으로부터 전달된 화면의 Request XML Data를 서버사이드의 Java Object 데이터 구조체로 변환- View 영역에서 웹스퀘어 Submission으로 전달할 Response Java Object 데이터를 정해진 표준 포맷의 XML Data로 변환7.1.3웹스퀘어 Adapter일반적으로 널리 사용되는 MVC 기반의 OpenSource Web Application Framework과의 연동을 위하여 데이터 변환을 지원하는 WebSquare Add-on 모듈을 제공하며, 웹스퀘어 엔진 배포본에 포함되어 있습니다. (websquare_adapter_[version number].jar)이 웹스퀘어 어댑터는 필수사항은 아니며, 필요에 따라 선택적으로 사용할 수 있습니다.이하에 대표적인 범용 OpenSource Web Application Framework에 대하여 웹스퀘어 어댑터를 적용하여 데이터 변환 처리를 하기위한 내용을 설명합니다.웹스퀘어 Adapter에서 사용되는 XML 표준 포맷<map id="">
+    <userid>honggildong</userid>
+    <username>홍길동</username>
+    <address>서울...</address>
+    <age>17</age>
+ 
+    <list id="phoneList">
+        <map id="0">
+            <title>집전화</title>
+            <phoneNo>02-000-0000</phoneNo>
+        </map>
+        <map id="1">
+            <title>핸드폰</title>
+            <phoneNo>010-111-1111</phoneNo>
+        </map>
+    </list>
+</map>7.2전자정부 프레임워크 연동7.2.1배포7.2.1.1WAR 배포[Export] - [WAR file]을 선택합니다.setenv.bat 파일을 생성한 후, 환경변수를 설정합니다.WAR 파일을 webapps 디렉토리에 넣고, 톰캣을 기동합니다.7.2.1.2Exploded 배포C:\eGovFrameDev-3.5.1-32bit\workspace\sht\src\main\webapp 디렉토리의 하위 디렉토리를 WAS 의 webapp 디렉터리에 넣습니다.C:\eGovFrameDev-3.5.1-32bit\workspace\sht\target\classes 디렉토리의 하위 디렉토리를 WEB-INF 의 classes에 넣고 톰캣을 기동합니다.7.2.2어플리케이션 설정7.2.2.1인코딩web.xml 파일에 아래와 같이 encoding filter를 추가합니다.7.2.2.2Auto DeployServer.xml 파일의 설정을 변경합니다.unpackWARs: WAR 파일 자동 언팩 (true/false)autoDeploy: 자동 배포 (true/false)7.2.3DataSource 설정Globals.properties에 각 DB에 맞는 JDBC 설정을 입력합니다.context-datasource.xml 파일에 각 DB에 맞는 JDBC 설정을 입력합니다.7.2.4로컬 개발 환경 설정표준프레임워크 적용 후 아래와 같이 로컬 개발 환경을 설정하십시오.7.2.4.1WAS추가된 WAS를 더블클릭 합니다.Open launch configuration을 클릭 합니다.VM Arguments에 다음 옵션을 추가합니다. (setenv 파일의 JAVA_OPTS에 해당.)코드 7-1.옵션 추가DWEBSQUARE_HOME=“websquare5_home 디렉토리경로”7.2.4.2Web.xmlweb.xml 파일에 다음 내용을 추가합니다.코드 7-2.설정 추가<servlet>
+    <servlet-name>websquareDispatcher</servlet-name>
+    <servlet-class>websquare.http.DefaultRequestDispatcher</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>websquareDispatcher</servlet-name>
+    <url-pattern>*.wq</url-pattern>
+  </servlet-mapping>7.2.4.3Spring config7.2.4.3.1WebSquareAdapter 사용WebSquareAdapter를 사용할 경우 Application 설정에 다음 내용을 추가합니다.<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" 
+         p:order="0"/>
+
+<bean class="com.inswave.adapter.CustomRequestMappingHandlerAdapter" 
+         p:order="1">
+    <property name="webBindingInitializer">
+        <bean class="egovframework.com.cmm.web.EgovBindingInitializer" />
+    </property>
+    <property name="customArgumentResolvers">
+        <list>
+            <bean class="com.inswave.adapter.WebSquareArgumentResolver">
+                <property name="uiAdapter">
+                    <ref bean="wqAdapter" />
+                </property>
+            </bean>
+        </list>
+    </property>
+</bean>
+
+<bean id='wqAdapter' class="com.inswave.adapter.WqAdapter" />
+<bean id='wqView' class="com.inswave.adapter.WqAdapterViewByMap" />
+
+<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="2" />WebSquareAdapter를 사용할 경우 Application 설정에서 다음 내용을 수정합니다.<!--     <mvc:annotation-driven/> --> <!– 주석처리 또는 삭제.-->7.2.4.3.2MessageConverter 사용MessageConverter - Jackson을 사용할 경우 Application 설정에 다음 내용을 추가합니다.<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"    
+         p:order="0"/>
+
+<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" 
+         p:order="1">
+    <property name="messageConverters">
+          <list>
+              <ref bean="mappingJackson2HttpMessageConverter" />
+          </list>
+    </property>
+</bean>
+
+<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter“
+          id="mappingJackson2HttpMessageConverter">
+    <property name="supportedMediaTypes">
+        <list>
+            <value>application/json</value>
+        </list>
+    </property>
+</bean>MessageConverter - Jackson을 사용할 경우 Application 설정에서 다음 내용을 수정합니다.<!--     <mvc:annotation-driven/> --> <!– 주석처리 또는 삭제.-->7.2.4.4Context ROOTContext root를 설정합니다.7.2.4.4.1주의WebSquare의 Context root를 Web Project Settings의 Context root와 아래와 같이 다르게 설정할 경우, 프리뷰가 정상 동작하지 않습니다.다른 설정을 사용 Web Project Settings = /shtWebsquare Context RootProject Settings = /sht2톰캣의 Context root를 설정합니다.7.2.4.5MavenC:\eGovFrameDev-3.5.1-32bit\maven\settings.xml 파일을 열고 localRepository 값을 설정합니다.아래 표시한 항목을 선택 해제합니다.User Settings의 값을 변경한 settings.xml의 파일로 설정합니다.웹스퀘어5 엔진과 xbean.jar는 localPath로 추가합니다.7.2.4.6Adpater 추가Adapter는 Spring 3.1.x이하 버전과 3.1.x이상 버전이 모두 포함되어있습니다.표 7-1.Adapter3.0.xCustomWqArgumentResolver3.1.xWebSquareArgumentResolver7.2.4.7DB PersistenceMap 타입을 사용하기 위해 미리 정의된 egovMap을 사용합니다.꼭 필요한 경우가 아니면 parameterClass는 명시하지 않고 resultClass는 입력합니다.WebSquareAdapter를 사용할 경우, Controller에서 ModelAndView를 리턴합니다.그림 7-1.<Controller> - WebSquareAdapterMessageConverter를 사용할 경우, Controller에서 Map을 리턴합니다. (본 방법은 Jackson-databind, Jackson-core, Jackson-annotations 라이브러리를 필요로 합니다.)그림 7-2.<Controller> - MessageConverterDAO에서 입력된 Persistence의 id를 입력합니다.그림 7-3.<DAO>Service를 상속 받고 구현합니다.그림 7-4.Service Impl추상메소드를 선언합니다.그림 7-5.Service7.2.5화면 구동eGovFrameDev-XXX 형식의 ZIP 파일을 C: 드라이브에서 압축해제 합니다.아래와 같은 구조로 압축이 풀리는지 확인합니다.Maria_db.bat 파일을 실행합니다.eclipse.exe 파일을 실행합니다.Maria_db.bat 파일을 실행합니다.WTP Server를 실행합니다.http://localhost:8080/sht 를 주소창에 입력 합니다.아래와 같은 화면이 표시되면, 상단의 고객지원 탭을 클릭합니다.고객지원 탭의 웹스퀘어5 SP2를 클릭합니다.우측 하단의 글쓰기 버튼을 클릭합니다.내용 입력 후 작성 버튼을 클릭합니다.작성한 글 확인 및 첨부파일 다운로드와 답변을 달 수 있습니다.작성한 글을 제목을 기준으로 검색할 수 있습니다. (현재는 제목으로만 검색이 가능합니다.)7.2.6websquare.xml 로그각 로그 속성에 대한 설명은 아래와 같습니다.표 7-2.로그 속성항목설명consoletrue로 설정하면 stdout으로도 로그 내용이 출력description로그 설명 작성dir로그 파일을 저장할 경로filename로그 파일명 levelOFF, SEVERE (highest value), WARNING, INFO, CONFIG, FINE, FINER, FINEST (lowest value), ALLlineNumber로그 기록 라인 번호 저장 여부 (시스템 리소스를 많이 사용하기 때문에 운영시에는 반드시 false로 설정 해야함)namewebsquare - 웹스퀘어 로그명, exception - 예외사항 로그명retentionPeriod로그 저장 기간 (단위: 일)thread 쓰레드 번호 저장 여부 (시스템 리소스를 많이 사용하기 때문에 운영시에는 반드시 false로 설정 해야함)Websquare.xml 파일에 아래 내용을 입력합니다.<log>
+      <target console="false" description="기본 로그" dir="C:\eGovFrameDev-3.5.1-32bit\resource\websquare_home\log" 
+    filename="websquare" level="ALL" lineNumber="false" name="websquare" retentionPeriod="3" thread="false" />
+      <target console="false" description="에러 로그" dir="C:\eGovFrameDev-3.5.1-32bit\resource\websquare_home\log" 
+    filename="exception" level="ALL" lineNumber="false" name="exception" retentionPeriod="3" thread="false" />
+</log>웹스퀘어5 Demo를 클릭하면 새로운 탭에서 화면이 호출됩니다.7.2.7웹스퀘어5 데모대량데이터 조회를 클릭합니다.아래와 같이 설정합니다. (10만 건 &  100)FIND 버튼을 클릭합니다.그리드의 스크롤을 최하단까지 내리면 5만건씩 추가됩니다.7.3SpringBoot Jackson 연동7.3.1개발 환경 구성SpringBoot 프로젝트 구성시 SpringStartProject로 생성합니다. (참고 URL: http://www.adeveloperdiary.com/java/spring-boot/create-spring-boot-application-step-step/)WebSquare Studio Plug-in을 설치합니다.SpringBoot 1.5.2를 기준으로 작성한 환경정보는 아래와 같습니다.표 7-3.환경정보 (SpringBoot 1.5.2를 기준)항목설명비고OSWindows7, Vista 이상JDKSpringBoot 내장 JDKIDEEclipse 4.4(Luna) 이상구현도구에 포함# WebSquare Studio는 Mozilla에서 배포한 Xulrunner Plug-in을 사용합니다. 해당 배포 버젼 Plug-in이 64-bit 시스템에서 자주 충돌을 일으키는 것으로 보고되어 32-bit IDE 사용을 권장합니다.7.3.2SpringBoot와 WebSquare 연계아래는 개발 환경이 이미 구축되어 있다고 가정 하에 기본적인 Spring Start Project 로 생성된 프로젝트를 기준으로 한 내용입니다. 또한 연계를 위해 SpringBoot의 messageConverters를 사용했습니다.websquare_home 설정 및 Java Options 등록은 방법은 WebSquare5 Studio를 참고하십시오.SpringBoot에서 websquare_home을 아래와 같이 설정하십시오.그림 7-6.websquare_home 설정websquare_home 설정 및 Java Options 등록은 방법은 WebSquare5 Studio를 참고하십시오.WebSquare 엔진을 설치하십시오.그림 7-7.WebSquare 엔진의 압축을 해제한 디렉토리 구조WebSquare 리소스(B) 를 eGovFrame Project > src > main > resources > static 하위로 복사합니다.그림 7-8.websquare 복사{Project}/pom.xml  파일을 편집 하여 WebSquare 실행에 필요한 lib  폴더 하위 Library 를 등록합니다.코드 7-3.pom.xml<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.inswave</groupId>
+    <artifactId>WebSquareSpringBoot</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>WebSquareSpringBoot</name>
+    <description>Demo project for Spring Boot</description>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.8.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- WebSquare Engine Dependency Library =========================== -->
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-excelant</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>ST4</artifactId>
+            <version>4.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>xmlbeans</groupId>
+            <artifactId>xbean_xpath</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>1.4.01</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans-qname</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans-xmlpublic</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+ <!--        <dependency>
+            <groupId>websquare</groupId>
+            <artifactId>websquare</artifactId>
+            <version>5.0_2.2743B</version>
+        </dependency>  -->
+         
+        <dependency>
+            <groupId>websquare</groupId>
+            <artifactId>websquare</artifactId>
+            <version>5.0_2.2743B.20170823.183931_1.5</version>
+            <scope>system</scope>
+            <systemPath>C:\STS\apache-maven-3.5.2\repository\websquare\websquare\5.0_2.2743B\websquare_5.0_2.2743B.20170823.183931_1.5.jar</systemPath>
+        </dependency>
+  
+        <!-- jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.9.0</version>
+        </dependency>
+     
+        <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.9.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>WebSquare Servlet을 등록합니다. SpringBoot에서 Servlet 등록 시 @configuration 어노테이션으로 해당 Servlet을 java 클래스로 작성해야 합니다.코드 7-4.ServletRegistrationConfig.javapackage com.inswave.sample;
+ 
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+ 
+@Configuration
+public class ServletRegistrationConfig
+{
+    @Bean
+    public ServletRegistrationBean getServletRegistrationBean()
+    {
+        ServletRegistrationBean websquareDispatcher = new ServletRegistrationBean(new websquare.http.DefaultRequestDispatcher());
+        websquareDispatcher.addUrlMappings("*.wq");
+        return websquareDispatcher;
+    }
+}JackSon 연계시에는 Jackson 라이브러리만 pom.xml로 선언하십시오. @ResponseBody를 통해 파라미터를 받을 수 있습니다.Controller Class를 아래와 같이 구현하십시오.코드 7-5.TestController.java... 중략 ...
+// JSON타입으로 200응답을 받기위해서는 consumes = MediaType.APPLICATION_JSON_VALUE해당 선언이 필요함.
+// 만약 해당 선언이 없다면 HTTP Error 400 - Bad Request로 응답을 받는 현상이 있음.
+@RequestMapping(value="/testJsonVO", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody DataBean<UserBean> testJsonVO() {
+        DataBean<UserBean> data = new DataBean<UserBean>();
+        List<UserBean> userList = new ArrayList<UserBean>();
+        HeaderBean header = new HeaderBean();
+        header.setResultCode("001");
+        header.setResultMessage("성공했습니다.");
+         
+        UserBean user1 = new UserBean();
+        user1.setId("001");
+        user1.setName("홍길동");
+        user1.setTel("010-4232-7431");
+        userList.add(user1);
+        UserBean user2 = new UserBean();
+        user2.setId("002");
+        user2.setName("허균");
+        user2.setTel("010-4421-5421");
+        userList.add(user2);
+        data.setHeader(header);
+        data.setData(userList);
+        return data;
+    }
+... 중략 ...아래 URL을 호출하여 화면이 정상적으로 표시되는지 확인합니다.호출 URL: localhost:8080/websquare/websquare.html?w2xPath=/sample1.xml샘플 파일 다운로드7.4Spring 연동전자정부 프레임워크는 Spring 기반으로 적성되었습니다. Spring 프레임워크 연동은 전자정부 프레임워크 연동과 매우 유사합니다. Spring 프레임워크 연동은 7.2 전자정부 프레임워크 연동 부분을 참조하십시오.7.5스트러츠 연동스트러츠 연계는 데이터의 구조체로서 ActionForm(Java Beans구조)을 사용하는 Struts 1 버전을 기준으로 설명합니다.7.5.1개요스트러츠 프레임워크는 MVC 기반의 Web Application Framework로서, 웹스퀘어와의 연계를 위해서는 다음과 같은 연계 작업이 필요합니다.RequestProcessor class를 구현하여 Controller단의 request data 변환 및 View단의 response data 변환을 처리할 수 있도록 합니다.스트러츠에서 데이터의 구조체로 사용되는 VO인 ActionForm에 데이터가 연계되도록 Annotation 방식으로 Action Class에 지정합니다.7.5.2구성7.5.2.1RequestProcessor 구현package sample.struts.processor;
+ 
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.Iterator;
+import java.util.Map;
+ 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+ 
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.RequestProcessor;
+import org.apache.struts.config.FormBeanConfig;
+import org.apache.struts.config.ForwardConfig;
+import org.apache.struts.util.PropertyMessageResources;
+ 
+import sample.struts.form.ErrorForm;
+import websquare.system.adapter.RequestAdapter;
+import websquare.system.adapter.ResponseAdapter;
+import websquare.system.adapter.annotation.BEAN_DEF;
+import websquare.system.adapter.vo.BeanDefinitionCreatorFactory;
+ 
+/**
+ * Struts의 controller의 기능을 확장
+ *
+ * @author Inswave
+ *
+ */
+public class WQRequestProcessor extends RequestProcessor {
+ 
+    /**
+     * Action Form을 판단하여 request data mapping을 수행한다.
+     *
+     */
+    protected ActionForm processActionForm(HttpServletRequest request, HttpServletResponse response, ActionMapping mapping) {
+ 
+        String reqContentType = request.getContentType();
+ 
+        // xml data, 즉, WebSquare Request가 요청되었을 시 Action Form 매핑을 수행한다.
+        if(reqContentType != null && (reqContentType.indexOf("application/xml") >= 0 || reqContentType.indexOf("application/json") >= 0)) {
+ 
+            ActionForm instance = null;
+ 
+            String name = mapping.getName();
+            request.setAttribute("WQ_MAPPING_NAME", name);
+            FormBeanConfig config = moduleConfig.findFormBeanConfig(name);
+            if (config == null) {
+                //log.warn("No FormBeanConfig found under '" + name + "'");
+                return null;
+            }
+ 
+            String actionClassName = mapping.getType();
+            String formClassName = config.getType();
+ 
+            try {
+                Method actionMethod = getActionMethod(actionClassName);
+                Annotation annotation = actionMethod.getAnnotation(BEAN_DEF.class);
+                Map beanDef = BeanDefinitionCreatorFactory.getInstance("annotation").create(annotation);
+                beanDef.put("root", formClassName);
+                instance = (ActionForm)new RequestAdapter().convert(request, beanDef);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+ 
+            if (instance == null) {
+                return null;
+            }
+ 
+            if ("request".equals(mapping.getScope())) {
+                request.setAttribute(mapping.getAttribute(), instance);
+            } else {
+                HttpSession session = request.getSession();
+                session.setAttribute(mapping.getAttribute(), instance);
+            }
+            return instance;
+ 
+        } else {
+            return super.processActionForm(request, response, mapping);
+        }
+    }
+ 
+ 
+    protected void processForwardConfig(HttpServletRequest request,
+            HttpServletResponse response, ForwardConfig forward)
+            throws IOException, ServletException {
+ 
+        String reqContentType = request.getContentType();
+        if(reqContentType != null && (reqContentType.indexOf("application/xml") >= 0 || reqContentType.indexOf("application/json") >= 0)) {
+ 
+            String forwardName = forward.getName();
+ 
+            if(forwardName == null) throw new ServletException("Undefined Forward Name");
+ 
+            String name = (String)request.getAttribute("WQ_MAPPING_NAME");
+            if(name == null) {
+                throw new ServletException("No mapping name...");
+            }
+ 
+            ActionForm form = (ActionForm)request.getAttribute(name);
+            if(form == null) {
+                throw new ServletException("No mapping ActionForm...");
+            }
+ 
+            // Model단에서 오류 메시지를 전송하는 경우 Error Action Form을 전송한다.
+            ActionErrors errors = (ActionErrors)request.getAttribute("errors");
+            if(errors != null && errors.size() > 0) {
+ 
+                PropertyMessageResources mresources = (PropertyMessageResources)request.getAttribute("org.apache.struts.action.MESSAGE");
+ 
+                ActionError error = null;
+                String messageKey = null;
+                String messageValue = null;
+                for (Iterator iterator = errors.get(); iterator.hasNext();) {
+                    error = (ActionError)iterator.next();
+                    messageKey = error.getKey();
+                    messageValue = mresources.getMessage(messageKey, error.getValues());
+                    if(messageValue == null || messageValue.trim().equals("")) messageValue = messageKey;
+ 
+                    break;
+                }
+ 
+                ErrorForm errorForm = new ErrorForm();
+                errorForm.setCode(messageKey);
+                errorForm.setMessage(messageValue);
+ 
+                try {
+                    new ResponseAdapter().convertAndSend(request, response, errorForm);
+                } catch (Exception e) {
+                    throw new ServletException(e);
+                }
+ 
+                return;
+            }
+ 
+            try {
+                new ResponseAdapter().convertAndSend(request, response, form);
+            } catch (Exception e) {
+                throw new ServletException(e);
+            }
+ 
+        } else {
+            super.processForwardConfig(request, response, forward);
+        }
+    }
+ 
+    private Method getActionMethod(String className) throws SecurityException, NoSuchMethodException, ClassNotFoundException {
+        Class actionClass = Class.forName(className);
+        Method actionMethod = actionClass.getMethod("execute", ActionMapping.class, ActionForm.class, HttpServletRequest.class, HttpServletResponse.class);
+        return actionMethod;
+    }
+}7.5.2.2Action Class 구현package sample.struts.action;
+ 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+ 
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+ 
+import sample.struts.form.TestForm;
+import websquare.system.adapter.annotation.BEAN_DEF;
+ 
+public class TestAction extends Action {
+ 
+    @BEAN_DEF (beans={ "test=sample.struts.form.TestForm" })
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        ActionErrors errors = new ActionErrors();
+ 
+        try {
+ 
+        TestForm tform = (TestForm) form;
+ 
+        String userid = tform.getUserid();
+ 
+        // 업무 구현
+ 
+        tform.setUsername("홍길동");
+ 
+        } catch (Exception e) {
+            // error message는 struts의 message properties를 그대로 사용한다.
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.access.message"));
+            System.err.println("execute():" + e.toString());
+ 
+ 
+        }
+ 
+        request.setAttribute("errors", errors);
+        return (mapping.findForward("wqXml"));
+    }
+}7.5.2.3Action Form Class 구현package sample.struts.form;
+ 
+import org.apache.struts.action.ActionForm;
+ 
+@SuppressWarnings("serial")
+public class TestForm extends ActionForm {
+ 
+    String userid;
+    String username;
+ 
+    public String getUserid() {
+        return userid;
+    }
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+}7.5.2.4struts-config.xml 설정<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+ 
+<struts-config>
+ 
+    <controller
+        contentType="application/xml; charset=UTF-8"
+        debug="3"
+        locale="true"
+        nocache="false" 
+        processorClass="sample.struts.processor.WQRequestProcessor"/>
+ 
+    <form-beans>
+        <form-bean name="testForm" type="sample.struts.form.TestForm"  />
+    </form-beans>
+ 
+    <action-mappings>
+ 
+         <action
+            scope="request"
+            path="/struts/test"
+            name="testForm"
+            type="sample.struts.action.TestAction">
+        </action>
+ 
+ 
+    </action-mappings>
+ 
+</struts-config>7.5.2.5WebSquare XML 구현<xf:submission id="test" ref="request/map" target="response"
+    action="/struts/test.do" method="post"
+    mediatype="application/xml" encoding="UTF-8" instance=""
+    replace="instance" errorHandler="" customHandler=""
+    mode="asynchronous" processMsg="">
+    <script type="javascript" ev:event="xforms-submit-done"><![CDATA[
+            alert(WebSquare.ModelUtil.getInstanceValue("response/map/username"));
+         ]]></script>
+</xf:submission>var go = function() {
+    WebSquare.ModelUtil.setInstanceValue("request/map/userid", "honggildong");
+    WebSquare.ModelUtil.executeSubmission("test");
+};
+</javascript>7.6WebSquare JSON 어댑터 연동7.6.1Data Adapter 개요WebSquare 는 서버와의 Data 연동을 위하여 Submission 이라는 통신 객체를 생성하고 , HTTP Ajax 방식에 기반한 표준 포맷의 데이터를 송수신 합니다. 본 가이드는 서버사이드에서 WebSquare 화면과 데이터 연동을 하는데 있어 서버측에서 사용하는 Java Object 형태의 데이터와 통신 데이터 사이의 변환을 처리하기 위하여 제공되는 WebSquare Data Adapter 의 사용법을 다룹니다.7.6.2역할 및 기능WebSquare Data Adapter는 J2EE 표준 규약을 준수하는 Web Application Server에서 동작하는 Java Library 형태로 제공되며, HTTP 통신상의 HttpServletRequest, HttpServletResponse 객체를 핸들링하는 형태로 제공되며, 클라이언트와 연계되는 통신 데이터를 변환하는 역할을 합니다.그림 7-9.캡처클라이언트 데이터(클라이언트-서버 간의 통신)는 HTTP기반의 Ajax 통신에서 표준방식으로 사용되는 xml과 json 타입의 텍스트 기반 데이터 Format을 지원합니다.서버사이드에서 사용되는 데이터의 형태는 Java Object 형태의 Map/List 객체 타입과 POJO형태인 Java Beans(VO) 타입을 지원합니다.7.6.3적용 방법7.6.3.1기본 API7.6.3.1.1websquare.system.adapter.RequestAdapterHttpServletRequest에 포함되어 전달된 request data(XML or JSON String)를 추출하여 서버사이드에서 사용할 Java Object(Map or VO) 타입으로 변환처리를 수행합니다.설정을 통하여 통신데이터(XML, JSON)와 서버사이드의 데이터 type(Map/List, VO)을 정의할 수 있으며, 통신데이터의 경우 설정을 하지 않으면 기본적으로 request의 Content-Type(media-type)에 따라 동작합니다.코드 7-6.RequastAdapter 사용 예import javax.servlet.http.HttpServletRequest;
+import websquare.system.adapter.RequestAdapter;
+
+... 중략 ...
+    RequestAdapter reqAdapter = new RequestAdapter();
+    obj = reqAdapter.convert(request);
+... 중략 ...7.6.3.1.2websquare.system.adapter.ResponseAdapter서버사이드에서 출력할 데이터를 Java Object(Map or VO) 타입에서 String(XM or JSON) 타입으로 변환처리를 수행합니다.RequestAdapter와 동일하게, 설정을 통하여 통신데이터(XML, JSON)와 서버사이드의 데이터 type(Map/List, VO)을 정의할 수 있으며, 통신데이터의 경우 설정을 하지 않으면 기본적으로 request의 Content-Type(media-type)에 따라 동작합니다.convert method를 통하여 변환된 String data를 return 받을 수 있으며, convertAndSend method를 사용하면, HttpServletResponse의 OutputStream으로 직접 write를 합니다. (설정을 통하여 GZipStream으로의 압출 전송도 지원합니다.)코드 7-7.ResponseAdapter 사용 예import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HeepServletResponse;
+import websquare.system.adapter.ResponseAdapter;
+
+... 중략 ...
+    ResponseAdapter resAdapter = new ResponseAdapter();
+
+    //String type return
+    String outString = resAdapter.convert(request, response, obj); 
+    
+    //response OutputStream 으로 wriete
+    resAdapter.convertAndSend(request, response, obj); 
+... 중략 ...7.6.3.2Servelt7.6.3.2.1websquare.system.adapter.servlet.DefaultAdapterServletDefaultAdapterServlet을 통하여 Request/Response 데이터 변환을 수행합니다.WebS Context의 설정파일인 web.xml에 등록하여 활성화합니다.변환된 데이터를 전달하여 업무 클래스로 분기하는 것은 Adapter Servlet Controller를 구현하여야 합니다.Adapter Servlet Controller는 Adapter Servlet으로부터 넘어온 input data를 받아 업무클래스를 호출하고, 업무클래스로부터 넘어온 output data를 다시 Adapter Servlet으로 넘겨주는 역할을 합니다. 업무 클래스를 판단/분기하고 실행하는 처리는 Adapter Servlet Controller의 영역에 해당하며, IAdapterServeletController interface를 implements하여 구현합니다.구현한 Adapter Servlet Controller는 설정파일에 등록하여 Adapter Servlet이 인식할 수 있도록 합니다.Adapter Servlet Controller를 동록하는 방법은 두가지가 있다. (web.xml에 등록하는 방식을 권장함.)WebSquare의 설정파일인 websquare.xml에 등록할 수 있으며, 모든 WebSquare Adapter Servlet에 적용됩니다.Web Application Server의 context 설정파일인 web.xml에 WebSquare Adapter Servlet을 등록 시에 해당 Servlet의 init parameter로 Controller를 등록할 수 있다. 이렇게 등록된 경우에는 각 Servlet 단위로 Controller를 별개로 배치할 수 있으며, 이 설정은 websquare.xml의 설정보다 우선권을 갖습니다.그림 7-10.캡처2코드 7-8.DefaultAdapterServlet 등록 예 (web.xml)<servlet>
+    <servlet-name>AdapterServlet</servelt-name>
+    <servlet-class>websquare.system.adapter.servlet.DefaultAdapterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet_name>AdapterServlet</servlet-name>
+    <url-pattern>/servlet/websquare/adapterServlet</url-pattern>
+</servlet-mapping>코드 7-9.Adapter Servlet Controller 작성 예package sample.servlet.controller;
+
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import sample.model.MapConverterSampleModel;
+import websquare.system.adapter.servlet.IAdapterServletController;
+
+public class SampleAdapterServletController implements IAdapterServletController {
+    public SampleAdapterServletController() {}
+
+    @Override
+    public Object control(HttpServletRequest request, 
+                    HttpServletResponse response, Object input) throws Exception {
+
+        Map inputMap = (Map)input;
+        Map outputMap = null;
+
+        String submissionid = (String)inputMap.get("submissionid");
+
+        //submission ID에 따라 업무 클래스 분기 처리...
+
+        if(submissionid.equals("goSelect")){
+            outuptMap = (Map)new MapConverterSampleModel().select(inputMap);
+        } else if(submissionid.equals("goModified")){
+            outputMap = (Map)new MapConverterSampleModel().modified(inputMap);
+        } else {
+            throw new ServletException("Undefined service model...");
+        }
+    }
+}코드 7-10.Adapter Servlet Controller 등록 예 #1(websquare.xml)<adapter>
+    <servlet>
+        <controller value="Sample.servlet.controller.SampleAdapterServletController"/>
+    </servlet>
+</adapter>코드 7-11.Adapter Servlet Controller 등록 예 #2(web.xml)<servlet>
+    <servlet-name>AdapterServlet</servlet-name>
+    <servlet-class>websquare.system.adapter.servlet.DefaultAdapterServlet</servlet-class>
+    <init-param>
+        <param-name>controller</param-name>
+        <param-values>sample.servlet.controller.SampleAdapterServletController</param-value>
+    </init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AdapterServlet</servlet-name>
+    <url-pattern>/servlet/websquare/adapterServlet</url-pattern>
+</servlet-mapping>7.6.3.3Filter7.6.3.3.1websquare.system.adapter.filter.AdapterFilterFilter는 J2EE 표준 스펙에서 제공되는 기능으로, 특정 URL 호출에서 대하여 메인프로세스에 대한 Request 전처리, Response 후처리의 기능을 제공합니다.AdapterFilter를 적용하면 특정 URL의 호출에 대하여 Request 메인프로세스(Servlet실행) 이전에 Data 변환을 수행하여 전달하여 주고, Response 프로세스 수행 후 Data 변환 후 Client로 데이터를 전송합니다.제공되는 AdapterFilter를 Web Context 설정(web.xml)에 적용하여, URL 패턴에 따라 적용된 범위를 설정할 수 있으며 Web Application 구조에 종속되지 않고 전후처리기의 개념으로 별도의 모듈로 적용할 수 있습니다.AdapterFilter를 통하여 Request 데이터를 전달받는 Servlet은 이미 변환된 Java Object 타입의 데이터를 전달받게 되며, 이 데이터는 HttpServletRequest 의 attribute로 전달된다. Response 데이터도 마찬가지로 HttpServletRequest의 attribute로 Java Object 를 전달하면 AdapterFilter에서 변환처리를 수행하여 client 로 전달합니다.주의: J2EE 표준 스펙에서 Filter는 다중으로 적용가능하며, 여러 Filter를 다중으로 설정할 경우, WebSquare AdapterFilter를 가장 앞서서 수행하도록 설정하여야 합니다. (Request Data Stream 추출에 대한 최우선처리가 되어야 함)그림 7-11.캡처3코드 7-12.Web Context 설정(web.xml)에 AdapterFilter 설정 예<!-- Adapter Filter -->
+<filter>
+    <filter-name>AdapterFilter</filter-name>
+    <filter-class>websquare.system.adapter.filter.AdapterFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>AdapterFilter</filter-name>
+    <url-pattern>*/</url-pattern><!-- 모든 url pattern에 filter 적용 -->
+</filter-mapping>코드 7-13.AdapterFilter를 통한 Servlet에서의 데이터 송수신 예시package sample.filter;
+
+import java.io.IOException;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import sample.model.MapConverterSampleModel;
+
+public class SampleFilterSelectServlet extends HttpServlet{
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+                    throws ServletException, IOException {
+            // input data 추출 (AdapterFilter 통과 후)
+            Map inputMap = (Map)request.getAttribute("WQ_VALUE_DATE");
+            Map outputMap;
+            try {
+                    // business class 수행
+                    outputMap = (Map)new MapConverterSampleModel().select(inputMap);
+            } catch(Exception e){
+                    throw new ServletException(e);
+            }
+            //output data 전달 (AdapterFilter 통과 전)
+            request.setAttribute("WQ_VALUE_DATA", outputMap);
+    }
+}7.6.4지원 데이터 FormatRequest/Response Adapter는 내부적으로 Request/Response Converter를 통하여 데이터 변환을 수행합니다. 기본 Request/Response Converter는 다음과 같은 규칙으로 데이터의 변환을 수행합니다.Client Side(통신 Data Format)Server SideXMLJSONMap/ListVO(Beans)최상위 데이터 Type"map" nodeJson ObjectMapVO개별 데이터(key, value)<key value-"value"/>key: valuemap.put(key, value)객체의 member field(getter/setter로 연동)반복 데이터 최상위 Type"list" nodeJson ArrayListList반복 데이터 Row Type"map" nodeJson ObjectMapVO주의: VO(Beans) 형태로 데이터를 연동하는 경우의 데이터 Type 제약사항각 VO Class 내의 Member Field에는 대응되는 getter, setter method가 반드시 존재하여야 하며, Member Field의 Type과 setter method의 parameter Type, getter method의 return Type은 반드시 일치하여야 합니다.사용할 수 있는 Member Field 의 Class Type은 아래와 같다. 이 외의 Type은 기본적으로 지원되지 않습니다.- String- int, Integer- float, Float- double, Double- BigDeciaml- java.util.Date이 외는 기본적으로 String으로 casting된 형태로 적용되므로, 원치 않는 동작이 발생할 수 있습니다.boolean Type의 Member Field의 경우 getter method의 prefix는 'is'로 시작합니다. 그 외 Type(Boolean Type 포함)의 getter method의 prefix는 'get'이다. setter method는 모두 'set' prefix를 갖습니다. (Eclipse 의 generate getter/setter의 규칙과 동일)private boolean useSession;
+public boolean getUseSession() (X) -> boolean type이므로 is prefix로 정의하여야 합니다.
+public booleanisUseSession() (O)
+예외) Member Field의 이름 자체가 소문자 'is' prefix를 가진 경우, getter method는 Member Field 와 동일한 이름을 가지며, setter method 는 'ls'를 제거하고, 'set' prefix를 붙인다. (Member Field 명이 'is'가 없는 것과 동일한 형태가 된다.)
+private boolean isSession;
+public boolean islsSesstion() (X)
+public boolean isSession() (O) -> getter method 의 이름도 동일하게 isSession이 되어야 합니다.
+Public void setlsSession(boolean session) (X)
+Public void seSession(boolean session) (O) -> 'is'를 제거
+private boolean lsSession;
+public boolean isSession() (X)
+public boolean islsSession() (O) -> Member Field 가 대문자 'ls'로 시작하면, 원래의 규칙을 따른다.Type에 따라 혼동이 발생할 수 있으므로, 되도록이면 Member Field명 자체에 'is' prefix를 쓰지 않는 형태로 사용하기를 권장함.Data Type 의 경우 String 형태의 문자열 데이터를 지정된 data format에 따라 변환하는 방식으로 제공하며, format은 설정을 통하여 변경할 수 있다. Format은 Java Date Format의 기준을 따른다.(default: 'yyyMMdd', 7장 Configuration 참고)7.6.4.1Client Side(통신 Data Format)7.6.4.1.1XML코드 7-14.XML Data Format 예<map id=''>
+    <userid>hong</userid>
+    <username>홍길동</username>
+    <list id='infoList'>
+        <map id='0'>
+            <zip>우편번호0</zip>
+            <title>배송지0</title>
+            <address>서울0</address>
+            <telno>011-1111-0</telno>
+            <number>0</number>
+        </map>
+        <map id='1'>
+            <zip>우편번호1</zip>
+            <title>배송지1</title>
+            <address>서울1</address>
+            <telno>011-1111-1</telno>
+            <number>1</number>
+        </map>
+        <map id='2'>
+            <zip>우편번호2</zip>
+            <title>배송지2</title>
+            <address>서울2</address>
+            <telno>011-1111-2</telno>
+            <number>2</number>
+        </map>
+    </list>
+</map>7.6.4.1.2JSON코드 7-15.JSON Data Format 예{
+    "userid":"hong",
+    "username":"홍길동",
+    "infoList":[
+        { 
+            "zip":"우편번호0" ,
+            "title":"배송지0" ,
+            "address":"서울0" ,
+            "telno":"011-1111-0" ,
+            "number":"0" 
+        } ,
+        { 
+            "zip":"우편번호1" ,
+            "title":"배송지1" ,
+            "address":"서울1" ,
+            "telno":"011-1111-1" ,
+            "number":"1" 
+        } ,
+        { 
+            "zip":"우편번호2" ,
+            "title":"배송지2" ,
+            "address":"서울2" ,
+            "telno":"011-1111-2" ,
+            "number":"2" 
+        } 
+    ]
+}7.6.4.2Server Side7.6.4.2.1Map코드 7-16.Map/List Data 매핑 예Map outMap = new HashMap();
+
+outMap.put("userid", "hong");
+outMap.put(:username", "홍길동");
+
+List infoList = new ArrayList();
+Map tmp = null;
+for(int i=0; i<3; i++){
+    tmp = new HashMap();
+    
+    tmp.put("number", ""+i);
+    tmp.put("title", "배송지"+i);
+    tmp.put("telno", "010-1111-"+i);
+    tmp.put("zip", +"우편번호"+i);
+    tmp.put("address", "+서울"+i);
+
+    infoList.add(tmp);
+
+}
+
+outMap.put("infoList", infoList);7.6.4.2.2VO (Beans)코드 7-17.VO Data 매핑 예SelectBean sbean = new SelectBean();
+
+sbean.setUserid("hong");
+sbean.setUsername("홍길동");
+
+// info list put
+
+List infoList = new ArrayList();
+InfoBean infoBean = null;
+
+for(int i=0; i<3; i++){
+    infoBean = new InfoBean();
+
+    infoBean.setNumber(i);
+    infoBean.setTitle("배송지" + i);
+    infoBean.setTelno("011-1111-" + i);
+    infoBean.setZip("우편번호" + i);
+    infoBean.setAddress("서울" + i);
+
+    infoList.add(infoBean);
+
+}
+
+sbean.setInfoList(infoList);코드 7-18.SelectBean 예시package sample.beans;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SelectBean extends BaseBean {
+    
+    private String userid:
+    private String username;
+
+    private List infoList = new ArrayList();
+    
+    public String getUserid(){
+        return userid;
+    }
+
+    public List getInfoList() {
+        return infoList;
+    }
+
+    public void setInfoList(List infoList){
+        this.infoList = infoList;
+    }
+
+    public void setUserid(String userid){
+        this.userid = userid;
+    }
+    
+    public String getUsername(){
+        return username;
+    }
+    
+    public void setUsername(String username){
+        this.username - username;
+    }
+}코드 7-19.InfoBea 예시package sample.beans; 
+public class InfoBean extends BaseBean { 
+    private int number; 
+    private String title; 
+    private String telno; 
+    private String zip; 
+    private String address; 
+
+    public int getNumber() { 
+        return number; 
+    } 
+
+    public void setNumber(int number) { 
+        this.number = number; 
+    } 
+
+    public String getTitle() { 
+        return title; 
+    } 
+
+    public void setTitle(String title) { 
+        this.title = title; 
+    } 
+
+    public String getTelno() { 
+        return telno; 
+    } 
+
+    public void setTelno(String telno) { 
+        this.telno = telno; 
+    } 
+
+    public String getZip() { 
+        return zip;
+    }
+
+    public void setZip(Strintg zip){
+        this.zip = zip;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+}7.6.5VO(Beans) Class Type 지정VO의 경우 데이터 변환 시에 해당 VO 객체에 대한 Class Type을 명시적으로 지정해 주어야만 VO 객체를 생성하여 값을 처리할 수 있습니다.Request 시에 xml/json format의 데이터를 VO 객체로 변환하기 위하여 VO Class의 type에 대한 정의를 Converter로 전달해 주어야 정상적으로 VO 객체를 생성하게 되며, 아래 3가지 방법이 제공됩니다. response VO 객체의 경우도 VO Class type을 인식해야 정상적으로 xml/json format로 변환되므로 request 용도의 VO, response용도의 VO 모두 class type을 지정합니다.VO 객체의 변환은 XML의 map, node, JSON의 json object에 해당됩니다. 즉, XML의 map node, JSON의 json object에 대하여 변환된 VO 클래스를 지정하며, 반복데이터인 XML의 list node, JSON의 json array의 변환타입은 각 list node, json array의 VO 객체의 타입이 아닌 내부에 반복데이터로 존재할 row 레벨의 map node, json object에 해당하는 VO 객체의 타입을 의미합니다.7.6.5.1클라이언트에서 VO Class Type 전달클라이언트에서 서버로 전송될 데이터 내에 VO 클래스의 정의를 포함하여 서버로 전송합니다."BEAN_DEF"라는 key로 XML의 map node, JSON의 json object에 해당하는 VO 클래스의 type을 지정합니다. "root"는 최상위 VO 객체의 type을 지정하는 key에 해당합니다.코드 7-20.XML 데이터의 VO 타입 지정 예시<request>
+    <map id="">
+        <map id = "BEAN_DEF">
+        <root value="sample.beans.SelectBean" />
+        <infoList value="sample.beans.InfoBean" />
+        <codeList value="sample.beans.CodeBean" />
+        </map>
+    <userid value=""/>
+    <username value=""/>
+    </map>
+</request>코드 7-21.JSON 데이터의 VO 타입 지정 예시var requestData = {
+    userid : inputUserID.getValue(),
+    username : inputUserName.getValue(),
+    BEAN_DEF : {
+        root : "sample.bean.SelectBean",
+        infoList : "sample.beans.InfoBean",
+        codeList : "sample.beans.CodeBean"
+    }
+};7.6.5.2서버에서 Map 객체의 형태로 VO Class Type 전달서버에서 ReqeustAdapter 호출 시 convert method의 parameter로 Map 객체로 정의한 VO Class 정의를 전달합니다."root"는 최상위 VO 객체의 type을 지정하는 key에 해당합니다.코드 7-22.Map 객체의 형태로 VO 타입 지정 예시Map beanDef = new HashMap(){
+    {
+        put("root", "sample.beans.SelectBean");
+        put("infoList", "sample.beans.InfoBean");
+        put("codeList", "sample.beans.CodeBean");
+    }
+};
+
+RequestAdapter reqAdapter = new RequestAdapter();
+obj = reqAdapter.convert(request, beanDef);7.6.5.3서버에서 Annotation으로 VO Class Type 정의Annotation을 사용하기 위해서는 JDK1.5 이상의 환경이어야 합니다.Annotation의 정의를 위하여 WebSquare의 websquare.system.adapter.annotation.BEAN_DEF Annotation interface가 제공됩니다.MVC Web Application Framework 구조의 경우 데이터 변환을 수행할 Controller 영여겡서 수행할 Model 클래스에 Annotation 을 정의하고 접근 가능한 구조여야 합니다.(예: Spring 의 Controller 객체, Struts의 Action 객체 등)코드 7-23.Annotation 형태로 VO 타입 지정 예시Annotation annotation = param.getMethodAnnotation(BEAN_DEF.class)
+RequestAdapter reqAdapter = new RequestAdapter();
+obj = reqAdapter.convert(request, (BEAN_DEF)annotation);코드 7-24.Annotation을 지정하는 Controller Class의 Method 예시@BEAN_DEF (beans={ "root=sample.beans.ModifiedBean", "infoList=sample.beans.InfoBean",
+"codeList=sample.beans.CodeBean"})
+
+pubic ModelAndView goSelect( BaseBean ibean ) throws Exception {7.6.6Custom Converter 생성WebSquare Adapter의 구조에서 Request/Response Converter를 통하여 데이터 변환이 수행되며, 별도로 COnverter 를 명시적으로 지정하지 않으면, 기본 Converter가 사용됩니다.기본 Converter에서 제공되는 Data Format이 아닌 별도의 Data Format을 적용할 목적으로 Custom Converter를 구현하여 적용할 수 있는 구조가 제공됩니다.단, Custom Converter를 적용할 경우 데이터 변환에 대한 일체의 작업은 직접 구현해야 합니다.7.6.6.1Custom Converter 적용 방법7.6.6.1.1Custom RequestConverterIRequestConverter interface를 구현상속 받아 임의의 RequestConverter를 구현합니다.WebSquare의 서버 설정 파일인 websquare.xml 상에 구현한 converter를 설정합니다.설정 파일에 등록하지 않고 RequestAdapter의 convert method를 호출 시 parameter로 전달하여 동적으로 호출하는 형태로도 사용 가능합니다.코드 7-25.Customer RequestConverter 구현 예시package sample.customconverter; 
+
+import java.util.Map; 
+import javax.servlet.http.HttpServletRequest; 
+import websquare.system.adapter.IRequestConverter; 
+
+/** 
+* Sample Request Converter 
+* 
+* XML/JSON request를 Map Object로 변환하는 예제 
+* 
+* @author inswave 
+* 
+*/ 
+public class SampleRequestConverter implements IRequestConverter { 
+    /** 
+    * request로 전달되어온 xml이나 json String type의 data를 Server에서 사용할 Map Object로 변환. 
+    * method 내부에 데이터 변환을 구현하는 데에 따른 제약은 없으며, 
+    * 실제 Project의 데이터 포맷 기준에 맞게 변환부를 구현하여야 합니다. 
+    * 다만, return 되는 Object는 Server의 업무 Class에서 사용할 데이터의 형태로 변환되어야 합니다. 
+    * 이 Sample에서는 Java Map Object로 변환하는 예시를 보여주며, RequestAdapter의 convert method를 호출하여 반환되는 데이터를 의미합니다. 
+    * 
+    * @param request 
+    * HttpServletRequest 
+    * @param plainData 
+    * request data (xml or json String)
+    * @param beanDef 
+    * VO(Beans) 형태로의 데이터 변환 시 VO 객체의 Class type을 정의한 object (Map or 
+    * Annotation) 
+    * @return 변환된 데이터 Object (Map/VO) 
+    * @throws Exception 
+    */ 
+    @Override 
+    public Object convert(HttpServletRequest request, String plainData, 
+        Object beanDef) throws Exception { 
+            Map imap = null; 
+            // plainData -> imap 변환 구현…. 
+            return imap; 
+    } 
+}코드 7-26.Custom RequestConverter 설정 예시<adapter>
+    <request>
+        <customConverter value="sample.customconverter.SampleRequestConverter" />
+    </request>
+</adapter>코드 7-27.동적 호출 예시RequestAdapter reqAdapter = new RequestAdapter();
+Object reqQbj = reqAdapter.convert(request, new SampleRequestConverter());7.6.6.1.2Custom ResonseConverterIResponseConverter interface를 구현상속 받아 임의의 ResponseCOnverter를 구현합니다.WebSquare의 서버 설정 파일인 websquare.xml 상에 구현한 converter를 설정합니다.설정 파일에 등록하지 않고 ResponseAdapter의 convert, convertAndSend method를 호출 시 parameter로 전달하여 동적으로 호출하는 형태로도 사용 가능합니다.코드 7-28.Custom ResponseCOnverter 구현 예시package sample.customconverter; 
+
+import java.io.OutputStream; 
+import java.util.Map; 
+import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletResponse; 
+import websquare.system.adapter.IResponseConverter; 
+
+/** 
+* Sample Response Converter 
+* 
+* Map Object를 XML/JSON resonse로 변환하는 예제 
+* 
+* @author inswave 
+* 
+*/ 
+public class SampleResponseConverter implements IResponseConverter { 
+    public SampleResponseConverter() { 
+
+    } 
+
+    /** 
+    * server에서 client로 전달할 데이터를 Java Object에서 xml이나 json String으로 변환. 
+    * method 내부에 데이터 변환을 구현하는 데에 따른 제약은 없으며, 실제 Project의 데이터 포맷 기준에 맞게 변환부를 구현하여야 합니다. 
+    * 이 Sample에서는 Map Object를 변환하는 예시를 보여주며, 
+    * ResponseAdapter의 convert나 convertAndSend method를 호출하여 반환되는 데이터를 의미합니다. 
+    * 
+    * @param request 
+    * HttpServletRequest 
+    * @param response 
+    * HttpServletResponse 
+    * @param os
+    * OutputStream, ResponseAdapter에서 convertAndSend method를 호출 시 
+    * client로의 OutputStream이 생성되어 전달되며, 해당 os를 통하여 write처리를 합니다. 
+    * @param obj 
+    * xml/json으로 변환할 Server Java Object (Map or VO) 
+    * @return xml or json String, 단, ResponseAdapter에서 convert를 호출한 경우는 os 
+    * parameter가 전달되지 않고 return값을 전달하여야 하며, convertAndSend를 호출한 경우는 
+    * os parameter가 전달되며, 데이터는 os를 통하여 write하고, return값은 전달하지 않는다. 
+    * @throws Exception 
+    */ 
+    @Override 
+    public String convert(HttpServletRequest request, 
+            HttpServletResponse response, OutputStream os, Object obj) 
+            throws Exception { 
+
+        Map omap = (Map) obj; 
+        // omap -> xml or json 
+        String String str = ……; 
+        If(os == null) { 
+            return str; // return xml or json string… 
+        } else { 
+            os.write(……); // write to OutputStream… 
+        } 
+    } 
+}코드 7-29.Custom ResponseConverter 설정 예시<adapter>
+    <response>
+        <customConverter value="sample.customconverter.SampleResponseConverter" />
+    </response>
+</adapter>코드 7-30.동적 호출 예시ResponseAdapter resAdapter = new ResponseAdapter();
+resAdapter.convertAndSend(request, response, new SampleResponseConverter(), resObj);7.6.7ConfigurationWebSquare Data Adapter의 대부분의 기능은 설정파일 상에서 설정이 가능하다, 단, 여기에서 의미 하는 설정은 기본 Converter의 동작에 대한 설정에 해당하며, Custom Converter를 구현한 경우에는 데이터 변환 관련 설정들은 적용이 되지 않습니다.설정은 WebSquare의 서버 설정 파일인 websquare.xml에 적용합니다. 적용하지 않은 경우 default값으로 동작합니다.- adapter/request/parameterKey : Form Parameter로 전송 시 parameter key(default: xmlValue)
+- adapter/request/attributeKey : Filter 통과 시 HttpServletRequest attribute key 
+  (defalut: WQ_VALUE_DATA)
+- adapter/request/convertType: 데이터 변환 포맷 정의server: map/bean (default: map)client: xml/json/없음 (default: 없음)-> 설정하지 않으면 request 의 Content-Type에 따라 동작합니다.(application/xml, application/json)- adapter/response/convertType: 데이터 변환 포맷 정의server: map/bean (default: map)client: xml/json/없음 (default: 없음)-> 설정하지 않으면 request의 Content-Type에 따라 동작합니다.(application/xml, application/json)- adapter/response/charset: response data의 character set(default: UTF-8)
+- adapater/response/customConverter: custom response converter 지정( default: 없음)
+   -> 설정하지 않으면 기본 Converter로 동작합니다.
+- adapter/response/compress: Response 데이터 압축 여부 (default: false, 압축하지 않음)
+- adapter/response/immediateToStream: convertAndSend method 호출 시 output String을 생성하면서 바로 OutputStream에 write 할 것인지 여부. IResponseConverter의 convert method의 argument로 OutputStream을 넘겨준 경우에 해당함. (default: true)
+- adapter/xml/mapNode: xml map node명 (default: map)
+- adapter/xml/listNode: xml list node명 (default: list)
+- adapter/xml/valueNode: xml value attribute명 (default: value)use 속성: use=false인 경우 node의 text 값을 value로 사용합니다. (default: false)- adapter/xml/convertAttributeToNode: request xml의 attribute를 node data로 치환 여부(default: true)
+- adapter/xml/attributePrefix: request xml의 attribute를 node data로 치환할 경우 node명의 prefix(default: 없음)
+- adapter/xml/attributePostfix: request xml의 attribute를 node data로 치환할 경우 node명의 postfix(default: 없음)
+- adapter/xml/encoding: xml response xml 생성 시 encoding 처리 여부 (default: true)
+- adapter/xml/useIndent: response xml 생성 시 indentation 처리 여부 (default: false)
+- adapter/servlet/controller: Adapter 를 servlet 형태로 적용할 경우, Adapter Servlet에서 호출할 Adapter Servlet Controller 클래스를 지정합니다.
+- Adapter/bean/dateFormat: VO 에서 Date 타입의 멤버변수에 대하여 date format을 지정request: Java Date Format (default: 'yyyyMMdd')response: Java Date Format (default: 'yyyyMMdd')코드 7-31.설정 예시<adapter> 
+    <request> 
+        <parameterKey value="xmlValue" /><!-- Form Parameter로 전송 시 HttpServletRequest parameter key --> 
+        <attributeKey value="WQ_VALUE_DATA" /><!-- Filter 통과 시 HttpServletRequest attribute key --> 
+        <convertType server="" client="" /><!-- server:map/bean, client:xml/json --> 
+        <charset value="UTF-8" /> 
+        <customConverter value="" /><!-- sample.customconverter.SampleRequestConverter --> 
+    </request> 
+    <response> 
+        <convertType server="" client="" /><!-- server:map/bean, client:xml/json --> 
+        <charset value="UTF-8" /> 
+        <customConverter value="" /> <!-- sample.customconverter.SampleResponseConverter --> 
+            <compress value="false" /> <!-- response 압축 여부 (gzip output stream) -->
+            <immediateToStream value="true" /> <!-- convertAndSend 호출 시 output String을 생성하면서 바로 OutputStream에 write 할 것인지 여부. true/false --> 
+    </response> 
+    <xml> 
+        <mapNode value="map" /> 
+        <listNode value="list" /> 
+        <valueNode value="value" use=”false” /> 
+        <convertAttributeToNode value="true" /> <!-- xml의 map node의 attribute를 node레벨로 치환할 것인지 여부 --> 
+        <attributePrefix value="" /> 
+        <attributePostfix value="" /> 
+        <encoding value="true" /> 
+        <useIndent value="false" /> 
+    </xml> 
+    <servlet> 
+        <controller value="sample.servlet.controller.SampleAdapterServletController" /> 
+    </servlet> 
+    <bean> 
+        <dateFormat request="yyyyMMdd" response="yyyyMMdd" /> 
+    </bean> 
+</adapter>

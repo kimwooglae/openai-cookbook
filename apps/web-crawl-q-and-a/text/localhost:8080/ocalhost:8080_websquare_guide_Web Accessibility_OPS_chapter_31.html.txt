@@ -1,0 +1,7 @@
+
+Textarea31.Textarea31.1Textarea<textarea></textarea> 태그를 나타내기 위해 사용하는 컴포넌트이며, 용도에 적합한 title 속성을 사용하거나 <label> 태그로 렌더링 되는 textbox 컴포넌트와 함께 연계하여 사용합니다.<Check Point>√ textarea의 id값과 textbox를 사용한 label의 for값이 서로 동일하게 연결이 되어있는가?√ Label을 사용 못하는 디자인일 때 textarea에 title 속성을 제공하였는가?관련 지침 : 2.1.2. 초점 이동, 3.4.1. 레이블 제공<Xml source>Textarea에 Label을 적용한 형태
+<w2:textbox id="textbox1" label=”메모” tagname=”label” for="textarea1"></w2:textbox>
+<xf:textarea style="width: 300px;height: 100px;" id="textarea1"></xf:textarea>
+
+Textarea에 TItle을 적용한 형태
+<xf:textarea style="width: 300px;height: 100px;" id="textarea1" title="메모입력"></xf:textarea>

@@ -1,0 +1,2390 @@
+
+
+
+WebSquare.uiplugin.scheduleCalendar 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.scheduleCalendar - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+스케줄 칼렌다. 일정을 칼렌다 형태로 표시. 
+ 3가지 형태로 표시 가능.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. 
+
+
+
+cssRenderOrder
+
+CSS 파일 렌더링 순서를 조정. [default: false, true]
+
+
+
+dataList
+
+ScheduleCalendar와 바인딩할 DataList를 지정. [default: ""]
+
+
+
+defaultDate
+
+컴포넌트 로딩 후 초기 화면에 설정되는 날짜. [default:""]
+
+
+
+defaultView
+
+초기 화면에 표시되는 일정 단위
+
+
+
+editable
+
+일정을 변경할 수 있는 기능을 설정. [default: false, true] 
+
+
+
+endColumn
+
+일정의 '종료 날짜' 값으로 사용할 dataList의 column id
+
+
+
+eventLimit
+
+이벤트가 여러 개 등록된 경우, "+ 2개" 문구로 화면에 보이는 이벤트 개수를 제한
+
+
+
+eventOrderColumn
+
+일정을 정렬할 때 기준 값으로 설정될 dataList의 column id
+
+
+
+headerLeftBtn
+
+[default:true, false]좌측 상단에 세 개의 버튼("<", ">", "오늘")을 표시. 
+ "<" 버튼을 클릭할 경우, 이전 월/주/일을 표시. 
+ ">" 버튼을 클릭할 경우, 이후 월/주/일을 표시. 
+ "오늘" 버튼을 클릭할 경우, 현재 월/주/일을 표시.</xmp></xmp>
+
+
+
+headerRightBtn
+
+우측 상단에 세 개의 스케줄 단위 버튼("월", "주", "일")을 표시. [default:true, false]
+ "월" - 스케줄을 월 단위로 변경. 
+ "주" - 스케줄을 주 단위로 변경. 
+ "일" - 스케줄을 주 단위로 변경.</xmp></xmp>
+
+
+
+headerTitle
+
+헤더의 중앙 타이틀을 보이도록 설정
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+idColumn
+
+일정의 고유 ID로 사용할 dataList의 column id
+
+
+
+includeScheduleEnd
+
+fullCalendar 내부 정책으로 스케줄의 마지막 일자가 화면에 표시되지 않는 현상을 해결하기 위한 속성. [default:false] 
+
+
+
+ioFormat
+
+start ,end column에 입력된 날짜 포멧을 설정
+
+
+
+lang
+
+ScheduleCalanedar에서 사용할 언어
+
+
+
+locale
+
+3.6 이상 버전의 scheduleCalanedar에서 사용될 언어를 설정. [default:ko, en] 
+
+
+
+nextDayThreshold
+
+스케줄의 마지막 일자에 스케줄을 렌더링하는 기준 시간. (HH:mm:ss) [Default: "09:00:00"] 
+
+
+
+selectable
+
+여러 날짜의 선택 가능 여부. [default: false, true]
+
+
+
+startColumn
+
+일정의 '종료 날짜' 값으로 사용할 dataList의 column id
+
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. [default: ""]  
+
+
+
+themeColumn
+
+일정의 theme을 지정할 dataList의 column id. [default:""]
+
+
+
+timeFormat
+
+일정에 출력되는 시간 표시 형식.
+
+
+
+titleColumn
+
+일정의 title 값
+
+
+
+titleFormatter
+
+사용자가 정의한 값을 title 속성으로 사용
+
+
+
+tooltipDisplay
+
+사용자가 선택한 값에 대한 툴팁 표시 여부
+
+
+
+version
+
+ScheduleCalendar에서 사용할 버전을 설정
+
+
+
+viewIcon
+
+화면에 사용될 헤더 아이콘 일정 종류 및 순서를 정의
+
+
+
+Event Summary
+
+
+
+
+onaddschedule
+
+addSchedule() 혹은 selectable 속성을 이용하여 스케줄을 추가할 때 발생.
+
+
+
+onclick
+
+마우스로 날짜를 클릭했을 때 발생.
+
+
+
+onmoveschedule
+
+마우스 드래그-앤-드랍을 이용하여 스케줄을 이동하거나 리사이징할 때 발생.
+
+
+Method Summary
+
+
+
+
+addClass(
+									  className
+										)
+								
+
+컴포넌트에 CSS class를 추가
+
+
+
+addSchedule(
+									  schedule
+										)
+								
+
+일정을 추가. 
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+								
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+changeView(
+									  view
+										)
+								
+
+scheduleCalendar의 view를 변경
+
+
+
+focus(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트에 포커스를 줌
+
+
+
+getDataListInfo(
+									  
+										)
+								
+
+컴포넌트와 바인딩된 DataList를 반환
+
+
+
+getDisabled(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환
+
+
+
+getGenerator(
+									  
+										)
+								
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환
+
+
+
+getID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 ID를 반환
+
+
+
+getInitStyle(
+									  CSS
+										)
+								
+
+컴포넌트의 초기 스타일을 반환
+
+
+
+getOpacity(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getOriginalID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getPluginName(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환
+
+
+
+getPosition(
+									  positionName
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getReadOnly(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환
+
+
+
+getScheduleIndex(
+									  id
+										)
+								
+
+일정 ID에 해당하는 dataList rowIndex를 반환
+
+
+
+getScheduleInfo(
+									  id
+										)
+								
+
+일정 정보를 반환
+
+
+
+getScope(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getSize(
+									  sizeName
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getStyle(
+									  propertyName
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환
+
+
+
+getStyleValue(
+									  style
+										)
+								
+
+[deprecated]
+
+
+
+getTitle(
+									  
+										)
+								
+
+컴포넌트의 title 속성 값을 반환
+
+
+
+getUdcHome(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUdcRoot(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUserData(
+									  key
+										)
+								
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환
+
+
+
+getView(
+									  
+										)
+								
+
+ScheduleCalendar의 현재 view 정보를 조회
+
+
+
+gotoCalendar(
+									  dateStr
+										)
+								
+
+특정 날짜로 이동
+
+
+
+hasClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인
+
+
+
+hide(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)
+
+
+
+removeClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)
+
+
+
+removeschedule(
+									  id
+										)
+								
+
+일정을 삭제. 
+
+
+
+setDayNameStyle(
+									  options
+										)
+								
+
+칼렌더의 요일 컬럼에 적용할 스타일을 지정
+
+
+
+setDisabled(
+									  disabled
+										)
+								
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정
+
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+								
+
+지정한 이벤트를 중단함
+
+
+
+setHeaderBtn(
+									  Options
+										)
+								
+
+칼렌더 좌우 상단에 버튼 및 타이틀 설정
+
+
+
+setInitStyle(
+									  property
+										)
+								
+
+컴포넌트의 초기 스타일을 복구한다
+
+
+
+setOpacity(
+									  value
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정
+
+
+
+setReadOnly(
+									  readOnly
+										)
+								
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정
+
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 설정
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정
+
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+show(
+									  displayType
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)
+
+
+
+toggleClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+컴포넌트에서 특정 이벤트를 발생시킴
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+컴포넌트에서 이벤트를 제거
+
+
+
+visible(
+									  flag
+										)
+								
+
+[deprecated] 
+
+
+
+Property Detail
+
+
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. CSS 파일이나 style 블럭에 정의한 여러 개의 class를 공백으로 구분하여 적용 가능.Engine 내부에서 각 컴포넌트 별로 지정된 class를 적용하나, class 속성을 이용하여 컴포넌트의 CSS를 제어 가능.
+
+
+cssRenderOrder
+
+CSS 파일 렌더링 순서를 조정. [default: false, true]document head에 link 태그로 랜더링할 때 stylesheet_ext.css 파일에 해당하는 link 태그 바로 다음에 렌더링함.
+
+
+dataList
+
+ScheduleCalendar와 바인딩할 DataList를 지정. [default: ""]생성한 dataList ID를 설정. 그 외에 idColumn 속성 및 startColumn 속성 등에는 생성한 dataList의 "컬럼ID" 값을 설정해야 함.
+(관련 속성)
+ idColumn
+ startColumn
+(필요한 DataList의 컬럼 종류) (컬럼 ID는 변경 가능)
+ (1) "idCol" 
+ (2) "startCol" 
+ (3) "endCol" 
+ (4) "titleCol" 
+(예제)
+// 생성한 dataList의 ID가 "dataList1"이고, 
+// "idCol", "startCol", "endCol", "titleCol" 컬럼이 추가된 경우, 
+// 아래와 같이 설정해야 함. 
+ dataList = "dataList1" 
+ idColumn = "idCol" 
+ startColumn = "startCol" 
+ endColumn = "endCol" 
+ titleColumn = "titleCol"
+
+
+defaultDate
+
+컴포넌트 로딩 후 초기 화면에 설정되는 날짜. [default:""]ioFormat와 포맷이 일치해야 함.
+(관련 속성)
+ ioFormat
+
+
+defaultView
+
+초기 화면에 표시되는 일정 단위. [default: month] 
+(옵션 설명)
+ "month"
+ "basicWeek" 
+ "basicDay" 
+ "agendaWeek" 
+ "agendaDay"
+
+
+editable
+
+일정을 변경할 수 있는 기능을 설정. [default: false, true] 이미 존재하는 일정을 마우스 드래그-앤-드랍을 통해 일정의 시작일 및 종료일을 설정 가능.
+
+
+endColumn
+
+일정의 '종료 날짜' 값으로 사용할 dataList의 column id. [default: ""]
+
+
+eventLimit
+
+이벤트가 여러 개 등록된 경우, "+ 2개" 문구로 화면에 보이는 이벤트 개수를 제한. [default: true, false]
+
+
+eventOrderColumn
+
+일정을 정렬할 때 기준 값으로 설정될 dataList의 column id. [default: ""]
+
+
+headerLeftBtn
+
+[default:true, false]좌측 상단에 세 개의 버튼("<", ">", "오늘")을 표시. 
+ "<" 버튼을 클릭할 경우, 이전 월/주/일을 표시. 
+ ">" 버튼을 클릭할 경우, 이후 월/주/일을 표시. 
+ "오늘" 버튼을 클릭할 경우, 현재 월/주/일을 표시.
+(옵션 설정)
+ "true" (기본 값) : 버튼을 표시.
+ "false" : 버튼을 표시하지 않음.
+
+
+headerRightBtn
+
+우측 상단에 세 개의 스케줄 단위 버튼("월", "주", "일")을 표시. [default:true, false]
+ "월" - 스케줄을 월 단위로 변경. 
+ "주" - 스케줄을 주 단위로 변경. 
+ "일" - 스케줄을 주 단위로 변경.
+(옵션 설정)
+ "true" (기본 값): 버튼을 표시.
+ "false" : 버튼을 표시하지 않음.
+
+
+headerTitle
+
+헤더의 중앙 타이틀을 보이도록 설정. [default: true, false]
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+idColumn
+
+일정의 고유 ID로 사용할 dataList의 column id. [default: ""]
+
+
+includeScheduleEnd
+
+fullCalendar 내부 정책으로 스케줄의 마지막 일자가 화면에 표시되지 않는 현상을 해결하기 위한 속성. [default:false] yyyyMMdd 형식(예: 20190720)에 적용.
+
+
+ioFormat
+
+start ,end column에 입력된 날짜 포멧을 설정. [default: yyyyMMdd, MMddyyyy, ddMMyyyy]
+
+
+lang
+
+ScheduleCalanedar에서 사용할 언어. [default: ko, en]
+
+
+locale
+
+3.6 이상 버전의 scheduleCalanedar에서 사용될 언어를 설정. [default:ko, en] 2.3 버전에서는 lang 속성 사용.
+
+
+nextDayThreshold
+
+스케줄의 마지막 일자에 스케줄을 렌더링하는 기준 시간. (HH:mm:ss) [Default: "09:00:00"] 지정한 시간 이후에 끝나는 스케줄은 마지막 날짜에도 스케줄이 표시되며, 지정한 시간 이전에 끝나는 스케줄은 마지막 날짜에 스케줄이 표시되지 않음. yyyyMMddHHmmss 형식(예: 20190720084500) 에 적용.
+(예시) 
+ nextDayThreshold="09:00:00" 
+ 위와 같이 설정할 경우, 
+  (1) 스케줄의 끝나는 시간이 (09시 이후인) 10시일 경우에는, 마지막 날짜에 스케줄이 표시됨. 
+  (2) 스케줄의 끝나는 시간이 (09시 이전인) 07시일 경우에는, 마지막 날짜에 스케줄이 표시되지 않음.
+
+
+selectable
+
+여러 날짜의 선택 가능 여부. [default: false, true]여러 날짜를 마우스로 드래그해서 다중 선택 후, 일정을 입력 가능. (프롬프트 창 발생)
+
+
+startColumn
+
+일정의 '종료 날짜' 값으로 사용할 dataList의 column id. [default: ""]
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. [default: ""]  HTML의 tabindex 속성과 동일.
+
+
+themeColumn
+
+일정의 theme을 지정할 dataList의 column id. [default:""]themeColumn의 내용은 JSON 형식으로 작성해야하며, rendering, class, color, backgroundColor, borderColor, textColor를 지정 가능.
+ rendering: [ "" | "background" | "inverse-background" ] 일정의 렌더링 방법을 지정한다. ( 기본값 : "" )
+ class : 일정에 적용할 class를 배열 혹은 문자열로 지정할 수 있다.
+ color : 일정에 적용할 색상을 지정할 수 있다. (red, #FF0000, rgb(0,0,0,0) 형식을 지원하며, color를 설정하면 backgroundColor, borderColor가 동시에 적용된다.)
+ backgroundColor : 일정에 적용할 배경색을 지정할 수 있다. (red, #ff0000, rgb(0, 0, 0, 0) 형식을 지원한다.)
+ borderColor: 일정에 적용할 테두리색을 지정할 수 있다. (red, #ff0000, rgb(0, 0, 0, 0) 형식을 지원한다.)
+ textColor: 일정에 적용할 글자색을 지정할 수 있다. (red, #ff0000, rgb(0, 0, 0, 0) 형식을 지원한다.)
+(예제)
+ dataList: data:dataList1, themeColumn: themeColumn이고
+ themeColumn의 값이 { "color":"yellow", "textColor":"#000000" } 일 때, 
+ ScheduleClaendar에 생성된 해당 일정은 배경색과 테두리색이 노랑색으로, 글자색은 검정색으로 표시됨.
+
+
+timeFormat
+
+일정에 출력되는 시간 표시 형식.기본적으로 "오후 2시 12분" 형식으로 표시됨.
+(예시) 
+ (1) timeFormat="HH:mm" - "14:12" 형식으로 표시됨. (HH : 24시간 포맷)
+ (2) timeFormat="hh" - "02" 형식으로 표시됨. (hh : 12시간 포맷)
+ 자세한 내용은 https://fullcalendar.io/docs/v3/timeFormat 참고.
+
+
+titleColumn
+
+일정의 title 값. [default: ""]
+
+
+titleFormatter
+
+사용자가 정의한 값을 title 속성으로 사용
+
+
+tooltipDisplay
+
+사용자가 선택한 값에 대한 툴팁 표시 여부. [default:false, true] 
+(옵션 설명)
+ "true" : 툴팁 표시. 
+ "false" (기본 값) : 툴팁 표시하지 않음.
+
+
+version
+
+ScheduleCalendar에서 사용할 버전을 설정. [default: 2.3, 3.6]
+(옵션 설정)
+ "2.3" (기본 값) : fullCalendar 2.3.2 버젼이 로딩됨. 
+ "3.6" : 3.6.2 버젼이 로딩됨.
+
+
+viewIcon
+
+화면에 사용될 헤더 아이콘 일정 종류 및 순서를 정의. [default: ""] 
+(사용 예)
+ month,basicWeek,basicDay를 사용할 경우
+ 
+ 
+ month,agendaWeek,agendaDay를 사용할 경우
+ 
+ 
+ basicDay,month를 사용할 경우
+ 
+
+
+
+
+
+Event Detail
+
+
+
+
+onaddschedule
+
+addSchedule() 혹은 selectable 속성을 이용하여 스케줄을 추가할 때 발생.추가된 스케줄 정보를 JSON 형식으로 반환.
+
+Parameter
+
+nametypedescription
+
+
+rowIndex,JSONnewObj를 포함한 JSON을 반환.
+  retObj.rowIndex : 바인드된 dataList에서 현재 스케줄이 들어있는 행 번호.
+  retObj.newObj : 바인드된 dataList에 추가된 스케줄 정보.
+
+
+Sample
+//첫 번째 스케줄을 추가 했을 때
+scwin.scheduleCalendar_onaddschedule = function(retObj) {
+console.log("행 번호: " + retObj.rowIndex);
+//결과 : 0
+console.log("스케줄 정보: " + retObj.newObj); 
+//결과 : 바인드된 dataList의 rowIndex행에 해당하는 JSON정보 반환
+};
+
+
+onclick
+
+마우스로 날짜를 클릭했을 때 발생.클릭 시 포커스된 날짜 값이 반환됨.
+
+Parameter
+
+nametypedescription
+
+
+retObjJSONstart, end를 포함한 JSON을 반환.
+  retObj.start : 이벤트가 발생한 일정의 시작일. 형식은 date 객체.  
+  retObj.end : 이벤트가 발생한 일정의 종료일. 하나만 선택된 경우에는 선택된 다음 날짜가 지정됨.
+
+
+Sample
+scwin.scheduleCalendar_onclick = function(retObj) {
+console.log("start = [" + retObj.start + "], end = [" + WebSquare.date.getFormattedDate(retObj.end, "yyyy-MM-dd") + "]");
+};
+
+
+onmoveschedule
+
+마우스 드래그-앤-드랍을 이용하여 스케줄을 이동하거나 리사이징할 때 발생.이동 전후의 스케줄 정보를 JSON 형식으로 반환.
+
+Parameter
+
+nametypedescription
+
+
+rowIndex,JSONoldObj, newObj를 포함한 JSON을 반환.
+  retObj.rowIndex : 바인드된 dataList에서 현재 스케줄이 들어있는 행 번호.
+  retObj.oldObj : 이동 전의 스케줄 정보.
+  retObj.newObj : 이동 후의 스케줄 정보.
+
+
+Sample
+//첫 번째 스케줄을 추가 했을 때
+scwin.scheduleCalendar_onaddschedule = function(retObj) {
+console.log("행 번호: " + retObj.rowIndex);
+//결과 : 0
+console.log("이동 전 스케줄 정보: " + retObj.oldObj);
+console.log("이동 후 스케줄 정보: " + retObj.newObj);
+//결과 : 이동시키기 전 후의 스케줄 정보를 반환
+};
+
+
+
+Method Detail
+
+
+
+
+addClass(
+									  className
+										)
+							
+
+컴포넌트에 CSS class를 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가할 class의 이름
+
+
+
+Sample
+// (예제)
+// input1 컴포넌트에 oddClass라는 class를 추가    
+input1.addClass("oddClass");
+
+
+addSchedule(
+									  schedule
+										)
+							
+
+일정을 추가. dataList와 연동 시에는 dataList의 컬럼 ID에 맞는 object를 생성해서 파라미터로 전달 가능.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+scheduleObjectY추가할 일정 정보
+
+
+
+Sample
+// dataList(columnID : "colTitle", "colEnd", "colId", "colStart")와 연동된 경우, 아래를 실행.
+scheduleCalendar1.addSchedule({"colTitle": "추가 타이틀 2222","colEnd": "20171222","colId": "ADD_id_223","colStart": "20171222"});
+
+//dataList와 연동되어 있지 않는 경우, 아래를 실행. 
+scheduleCalendar1.addSchedule({"title": "추가 타이틀 2222","end": "20171222","id": "ADD_id_223","start": "20171222"});
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY할당할 이벤트
+
+
+functionFunctionY이벤트에 대한 핸들러 함수.
+
+
+
+Sample
+// (예제 1)
+// input1의 onclick 이벤트에 대한 핸들러 함수를 직접 정의하여 할당. 
+input1.bind("onclick", function(e){ alert(input1.getValue();}));
+
+// (예제 2)
+// 미리 commObj.ev_click 함수를 정의.
+var commObj = {};
+commObj.ev_click = function(e){
+    alert("click :: "+this.id);
+};
+
+// input1 컴포넌트에 onclick 이벤트와 정의한 핸들러 함수를 동적으로 할당. 
+input1.bind("onclick", commObj.ev_click );
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+							
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 기본적으로 addClass를 통해 추가된 class만 변경 가능. 웹스퀘어 컴포넌트의 class 속성에 직접 정의된 class를 삭제하려면 config.xml 파일에 아래 설정을 추가해야 함. 
+// config.xml에 아래 설정을 추가. 
+<removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+oldClassNameStringY변경할 class
+
+
+newClassNameStringY새로 사용할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+// config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// class를 변경 가능. 
+// (tmpInputClass class를 tmpInputWarninClass로 변경.)
+input1.changeClass("tmpInputClass","tmpInputWarninClass");
+
+
+changeView(
+									  view
+										)
+							
+
+scheduleCalendar의 view를 변경.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+viewStringY새로 사용할 View의 종류
+ month
+ basicWeek
+ basicDay
+ agendaWeek
+ agendaDay
+
+
+
+Sample
+// (예제)
+sheculeCalendar1.changeView("basicWeek");
+
+
+focus(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트에 포커스를 줌. (웹스퀘어 컴포넌트 공통.)
+
+
+
+
+
+getDataListInfo(
+									  
+										)
+							
+
+컴포넌트와 바인딩된 DataList를 반환.
+
+
+
+Return
+
+typedescription
+
+
+Objectnodeset, label, value id를 객체로 반환
+
+
+Sample
+// 사용 예
+scheduleCalendar1.getDataListInfo();
+
+
+getDisabled(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Booleandisabled 속성 값
+
+
+Sample
+// 컴포넌트의 disabled 속성 값 확인 예제
+var returnValue = componentId.getDisabled();
+// (반환 값 예시) false
+
+
+getGenerator(
+									  
+										)
+							
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Object부모 Generator 객체
+
+
+Sample
+//부모 Generator가 자식으로 Trigger를 생성한 예제
+  
+
+// 아래 예제의 경우 trigger1을 클릭하면 generator1 객체가 console에 표시됨. 
+ scwin.trigger1.onclick = function(){ console.log(this.getGenerator());} 
+
+
+
+getID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 ID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트 ID
+
+
+Sample
+// 동적으로 웹스퀘어 컴포넌트를 받을 경우, 아래와 같이 ID 확인 가능.
+function fn_validCheck(tmpObj){
+    var compID = tmpObj.getID();
+}
+// 위의 예제 에서 tmpObj가 "input1" ID를 가지고 있는 경우,
+// (반환 값) "input1"
+
+
+getInitStyle(
+									  CSS
+										)
+							
+
+컴포넌트의 초기 스타일을 반환. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다.(웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+CSSStringN속성 (지정하지 않으면 모든 정보 출력)
+
+
+
+
+
+
+getOpacity(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS의 opacity 속성 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+IntegerOpacity 값
+
+
+Sample
+// inputBox 컴포넌트에 opacity CSS를 적용.
+
+        
+// inputBox 컴포넌트의 opacity 값을 반환. 
+var returnValue = input1.getOpacity(); 
+// returnValue는 0 ~ 1 사이의 실수.
+// (반환 값) "0.2"
+
+
+getOriginalID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)originalID는 Scope 기능을 사용할 경우 존재. scope="true"인 WFrame를 사용할 경우, WFrame 내부의 컴포넌트 ID는 원래 사용자가 정의한 값(originalID) 앞에 prefix(wframeID + "_")가 추가되는 방식으로 변경됨.  originalID는 이 때, prefix가 추가되기 전 ID를 의미.
+
+
+
+Return
+
+typedescription
+
+
+String컴포넌트의 originalID
+
+
+Sample
+// WFrame을 사용하는 다중 화면 구조 예시
+
+// WFrame을 포함한 메인 화면 (main.xml) 
+ 
+
+// 메인 화면 WFrame에 연결되는 소스 화면 (text.xml)
+
+
+// text.xml 화면의 내부 스크립트에서 ID 및 originalID 확인하는 예제.
+// getID 실행 
+textbox1.getID(); // 실행 결과는 "wframe1_textbox1"
+ 
+// getOriginalID 실행 
+textbox1.getOriginalID(); // 실행 결과는 "textbox1"
+
+
+getPluginName(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트의 이름 (pluginName)
+
+
+Sample
+// 아래와 같이 공통 함수에서 동적으로 웹스퀘어 객체를 받는 경우, 컴포넌트 종류에 따른 분기 처리가 가능.
+var commObj = {};
+
+commObj.fn_makeReqData = function(tmpObj){
+    var tmpID = tmpObj.getID(); // 컴포넌트 ID
+    var tmpCompType = tmpObj.getPluginName();   // 컴포넌트 이름
+
+    if(tmpCompType == "input"){
+        //..로직..
+    }else if(tmpCompType == "gridView"){
+        //..로직 ..
+    }else{
+        //..로직..
+    }
+};
+
+
+getPosition(
+									  positionName
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 위치 값이 %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNameStringY[left, top] 위치 종류
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 위치 값
+
+
+Sample
+// 아래와 같이 input 컴포넌트에 CSS 속성 margin이 적용된 경우,
+
+
+// (예제) 위의 inputBox 컴포넌트의 top 값을 확인     
+var returnValue = input1.getPosition("top"); 
+
+// 픽셀 단위의 위치 값이 반환됨.
+
+// (반환 값) 10
+
+
+getReadOnly(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Boolean현재 설정되어있는 readOnly 속성
+
+
+Sample
+// 컴포넌트의 readOnly 속성 값 확인 예제
+var returnValue = componentId.getReadOnly();
+// (반환 값 예시) false
+
+
+getScheduleIndex(
+									  id
+										)
+							
+
+일정 ID에 해당하는 dataList rowIndex를 반환
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringY일정 ID
+
+
+
+
+Return
+
+typedescription
+
+
+Object:YrowIndex id에 해당하는 dataList rowIndex
+
+
+
+
+
+getScheduleInfo(
+									  id
+										)
+							
+
+일정 정보를 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringY일정 ID
+
+
+
+
+Return
+
+typedescription
+
+
+Object:Yevent 일정 (id, title, start, end, dataList rowIndex 정보를 포함한 객체)
+
+
+
+
+
+getScope(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, null을 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체 또는 null
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+textbox1.getScope(); 
+// (반환 값) wframe11 객체
+
+
+getScopeWindow(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, 전역 window 객체를 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체의 scope 객체 또는 전역 window 객체
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+var scope = textbox1.getScopeWindow();
+scope.wframe11 === textbox1.getScope(); // true
+
+
+getSize(
+									  sizeName
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sizeNameStringY크기 값의 종류. sizeName 별 계산 방법은 아래 표를 참고. 
+height : element.clientHeight
+innerHeight : element.clientHeight + padding
+outerHeight : element.clientHeight + padding + border
+outerMarginHeight : element.clientHeight + padding + border + margin
+width : element.clientWidth
+innerWidth : element.clientWidth + padding
+outerWidth : element.clientWidth + padding + border
+outerMarginWidth : element.clientWidth + padding + border + margin
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 크기 값
+
+
+Sample
+var returnValue = componentId.getSize("width");
+// (반환 예) 100 
+// 픽셀 단위의 크기 값이 반환됨. 
+// %로 설정된 경우, 픽셀로 변환된 값이 반환됨.
+
+
+getStyle(
+									  propertyName
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY반환할 CSS 속성
+
+
+
+
+Return
+
+typedescription
+
+
+StringCSS 속성 값
+
+
+Sample
+//아래와 같이 input 컴포넌트가 정의 된 경우
+
+
+// (예제) 위의 inputBox 컴포넌트의 width 값을 확인   
+var returnValue = input1.getStyle("width");
+
+// (반환 값) "144px"
+
+
+getStyleValue(
+									  style
+										)
+							
+
+[deprecated]getStyle 사용 권장.웹스퀘어 컴포넌트에 적용된 해당 CSS 속성 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+styleStringY반환하려는 CSS 속성.
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstyle 해당 CSS 속성 값 (색을 반환하는 경우, HexCode로 반환됨.)
+
+
+
+
+
+getTitle(
+									  
+										)
+							
+
+컴포넌트의 title 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Stringtitle 속성 값.
+
+
+Sample
+// 아래와 같이 input 컴포넌트의 title 속성이 "이름 입력"으로 정의된 경우
+
+
+var tmpTitle = input1.getTitle();
+// (반환 값 예시) "이름 입력"
+
+
+getUdcHome(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)파일명은 마지막 .xml까지 포함. .xml을 제외한 경로는 getUdcRoot를 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome(); 
+// (실행 결과) /a/b/udc.xml
+
+
+getUdcRoot(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)파일명을 포함하지 않음. 파일명을 포함한 경로는 getUdcHome을 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome();    
+// (실행 결과) /a/b/
+
+
+getUserData(
+									  key
+										)
+							
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY데이터의 key
+
+
+
+
+Return
+
+typedescription
+
+
+Stringkey에 해당하는 value
+
+
+Sample
+// Input 컴포넌트에 사용자 속성(setTest)을 설정하는 예제
+
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("setTest");
+// (반환 값) "Hello"
+
+//setUserData를 통해 'valueTest'(key)와 'WebSquare'(data)로 설정하는 예제. 
+input1.setUserData("valueTest","WebSquare");
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("WebSquare");
+// (반환 값) "WebSquare"
+
+
+getView(
+									  
+										)
+							
+
+ScheduleCalendar의 현재 view 정보를 조회.
+
+
+Sample
+sheculeCalendar1.getView();
+// { name: "", title: "", intervalStart: "", intervalEnd: "" }
+
+
+gotoCalendar(
+									  dateStr
+										)
+							
+
+특정 날짜로 이동.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+dateStrStringY이동할 날짜
+
+
+
+Sample
+// (예제)
+schedule1.gotoCalendar("20171013");
+
+
+hasClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY검색할 class 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Booleanclass의 포함 여부
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+        
+var returnValue = input1.hasClass("tmpInputClass");
+// (반환 값) true
+
+
+hide(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)display:none; 및 visibility:hidden; CSS를 적용.
+
+
+Sample
+// (예제) 컴포넌트를 숨김
+componentId.hide();
+
+
+removeClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)기본적으로 addClass를 통해 추가된 class만 삭제 가능. 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가해야 함. 
+ // config.xml 파일에 아래 설정 추가 
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY삭제 할 class명
+
+
+
+Sample
+// inputBox의 속성으로 class가 직접 정의된 경우,
+
+
+// config.xml 파일에 아래 항목을 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// removeClass를 통해 삭제 가능. 
+input1.removeClass("tmpInputClass");
+
+
+removeschedule(
+									  id
+										)
+							
+
+일정을 삭제. dataCollection에 id 컬럼이 없는 경우, id 값은 title 값으로 대체됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringY일정 ID
+
+
+
+
+
+
+setDayNameStyle(
+									  options
+										)
+							
+
+칼렌더의 요일 컬럼에 적용할 스타일을 지정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionsObjectY스타일 정보
+ options.header 헤더 스타일
+ options.body 바디 스타일
+
+
+
+Sample
+            var options = {
+                sun : {
+                    header : {
+                        "color":"#ff0000"
+                    },
+                    body : {
+                        background : { "background-color":"#ff0000","opacity":"0.2" },
+                        num: { "color" : "#0000ff" }
+                    }
+                }
+            };
+            scheduleCalendar1.setDayNameStyle(options);
+
+
+setDisabled(
+									  disabled
+										)
+							
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disabledBooleanYdisabled 상태. 
+true: disabled 속성 활성화
+false: disabled 속성 비활성화
+
+
+
+Sample
+// 컴포넌트의 disabled 속성을 활성화.
+componentId.setDisabled(true);
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+							
+
+지정한 이벤트를 중단함. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+evListStringN중단할 이벤트 목록. (null을 지정할 경우 해당 컴포넌트의 모든 사용자 이벤트가 중단되거나 중단 해제됨.)
+
+
+flagBooleanY이벤트 중단 여부. 
+true: 중단
+false: 중단 해제.
+
+
+
+Sample
+// (예제 1)
+// onclick 이벤트를 중단. 
+input1.setEventPause("onclick", true); 
+
+// (예제 2)
+// onfocus 및 onblur 이벤트의 중단을 해제.
+input1.setEventPause("onfocus,onblur", false); 
+
+// (예제 3)
+// input1에 등록된 모든 사용자 이벤트를 중단.
+input1.setEventPause(null, true);
+
+
+setHeaderBtn(
+									  Options
+										)
+							
+
+칼렌더 좌우 상단에 버튼 및 타이틀 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+OptionsObjectYheader 버튼 설정 정보
+  option.headerLeftBtn 좌측 상단 버튼 설정 여부 (true/false)
+  options.headerRightBtn 좌측 상단 버튼 설정 여부 (true/false)
+  options.headerTitle 칼렌더 헤더 타이틀 설정 여부 (true/false)
+
+
+
+Sample
+
+ scheduleCalendar1.setHeaderBtn({headerLeftBtn:false,headerRightBtn:false,headerTitle:false});
+
+
+
+setInitStyle(
+									  property
+										)
+							
+
+컴포넌트의 초기 스타일을 복구한다. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다 (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyStringNCSS 속성 (지정하지 않으면 모든 속성의 초기 값으로 복구.)
+
+
+
+Sample
+// (예제)
+group1.setInitStyle();
+
+
+setOpacity(
+									  value
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS 속성인 opacity(불투명도)를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYOpacity 값 (0과 1 사이의 실수)
+
+
+
+Sample
+// (예제) 불투명도를 0.45로 설정
+componentId.setOpacity(0.45);
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberY설정할 left 위치 값 또는 null.
+
+
+topNumberY설정할 top 위치 값 또는 null.
+
+
+modeStringN위치 설정 방법. [default: absolute, delta] 
+absolute: 입력된 값을 위치로 설정.
+delta: 현재 위치에 입력된 left 및 top 값을 추가.
+
+
+
+Sample
+// (예제) 컴포넌트의 top만 100px로 설정.
+componentId.setPosition(null, 100);
+
+
+setReadOnly(
+									  readOnly
+										)
+							
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+readOnlyBooleanYreadOnly 속성 활성화 여부. ( "true" : 활성화, "false" : 비활성화)
+
+
+
+Sample
+// 컴포넌트의 readOnly 속성을 true로 설정하는 예.
+componentId.setReadOnly(true);
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widthNumberY새로 설정할 컴포넌트의 width 값 또는 null
+
+
+heightNumberY새로 설정할 컴포넌트의 height 값 또는 null
+
+
+
+Sample
+// (예제) 컴포넌트의 height만 100px로 설정.
+componentId.setSize(null,100);
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY설정할 CSS 속성
+
+
+valueStringY해당 CSS 속성에 적용할 값
+
+
+
+Sample
+// (예제 1) 컴포넌트의 width를 200px로 설정
+componentId.setStyle("width", "200px");
+
+// (예제 2) 배경색을 olive로 변경
+componentId.setStyle("background-color","olive");
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 컴포넌트에 설정 가능한 key를 입력해야 함. 설정 가능한 key가 아닌 경우, 해당 내용이 로그에 출력됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY설정할 데이터의 key
+
+
+valueStringY설정한 데이터의 value
+
+
+
+Sample
+// 컴포넌트에 'data'라는 key로 'WebSquare'라는 value를 설정하는 예제.
+
+componentId.setUserData("data", "WebSquare");
+
+// 컴포넌트에 설정이 불가능한 key를 임력할 경우, key 설정이 불가능. 
+ 
+componentId.setUserData("title", "WebSquare");
+// 아래와 같이 로그가 출력됨. 
+// !!!WARNING - [title] can't be defined as UserData.
+
+
+show(
+									  displayType
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)CSS display 속성을 주어진 값으로 설정하고 "visibility: show;"를 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+displayTypeStringN적용할 CSS display 속성의 값.   
+block : display: block;을 적용. (기본 값)
+inline : display: inline;을 적용.
+none : display: none;을 적용.
+"" : show 수행 이전의 display 속성 값으로 복구.
+
+
+
+Sample
+// (예제) display: block; CSS를 설정.
+componentId.show();  
+
+// (예제) 위제 설정한 display 속성 값을 취소하고 원래의 display 값을 복구.
+componentId.show("");
+
+
+toggleClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)웹스퀘어 컴포넌트가 파라미터로 주어진 class를 포함한 경우, 해당 class를 제거. 웹스퀘어 컴포넌트에 파라미터로 주어진 class가 없는 경우, 해당 class를 추가. 기본적으로 addClass를 통해 추가된 class만 삭제 가능. 웹스퀘어 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가. 
+ // config.xml 파일에 아래 설정 추가
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가/삭제할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+//config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// tmpInputClass class를 삭제.
+input1.toggleClass("tmpInputClass");
+
+// (위에서 삭제된) tmpInputClass class를 다시 추가.
+input1.toggleClass("tmpInputClass");
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+컴포넌트에서 특정 이벤트를 발생시킴. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트
+
+
+arrayArrayN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+// (예제 1)
+// input1 컴포넌트에 onclick 이벤트를 발생시킴.
+input1.trigger("onclick");
+
+// (예제 2)
+// input1에 onviewchange 이벤트를 발생시키고 핸들러 함수에 (1,2) 인자를 전달하여 호출.
+input1.trigger("onviewchange", [1,2]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+컴포넌트에서 이벤트를 제거. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트. (생략할 경우 해당 컴포넌트의 모든 이벤트를 제거.)
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. (생략할 경우 해당 위에 지정한 이벤트에 등록된 모든 핸들러 함수를 제거.)
+
+
+
+Sample
+// (예제 1)
+// input1에 등록된 모든 이벤트를 제거.
+input1.unbind();
+
+// (예제 2)
+// input1의 onviewchange 이벤트에 대한 모든 핸들러 함수를 제거.
+input1.unbind("onviewchange");
+
+// (예제 3)
+// input1의 onviewchange 이벤트에 대한 func1 이벤트 핸들러 함수를 제거.
+input1.unbind("onviewchange", func1);
+
+
+visible(
+									  flag
+										)
+							
+
+[deprecated] show/hide 혹은 setStyle 사용을 권장.엔진 내부적으로 CSS visibility 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY설정할 CSS visibility 속성 값 
+true : visibility: visible;
+false : visibility: hidden;
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

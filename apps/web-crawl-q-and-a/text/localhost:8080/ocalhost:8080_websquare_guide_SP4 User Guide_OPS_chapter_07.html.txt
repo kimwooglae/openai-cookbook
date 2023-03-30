@@ -1,0 +1,16 @@
+
+웹표준 호환성7.웹표준 호환성7.1비표준 태그 처리컴포넌트 별로 사용자 정의 attribute를 사용하는 경우, w3c validator에서 오류가 검출됩니다. config.xml 설정 파일에 <dataPrefix> 항목을 아래와 같이 설정하면 "data-" prefix가 추가되어 오류가 발생하지 않습니다.코드 7-1.설정 예<WebSquare>
+    <dataPrefix value="true" />
+</WebSquare>코드 7-2.적용 전<th removeborderstyle="false" or_wd="70" inputtype="select" style="text-align: center; position: static;" id="grid1_column1" value="" blockselect="false" displaymode="label" datatype="" customformatter="aaaa" alloption="" chooseoption="" ref="" onchangefunction="doTest" colindex="0" role="gridcell" class="gridHeaderTDDefault gridHeaderTDDefault_data grid1_header__column0" col_id="column1" header_id="column1">
+...
+</th>코드 7-3.적용 후<th data-or_wd="70" data-inputtype="select" style="text-align: center; position: static;" id="grid1_column1" data-value="" data-datatype="" data-onchangefunction="doTest"  data-colindex="0" class="gridHeaderTDDefault gridHeaderTDDefault_data grid1_header__column0" data-col_id="column1" data-header_id="column1">
+...
+</th>7.2GridView의 <nobr> 태그GridView에서 텍스트 데이터를 출력할 경우 <nobr> 태그로 출력됩니다. <nobr> 태그는 비권장 태그입니다. config.xml 설정 파일에 <gridView> – <dataTag> 항목을 아래와 같이 설정하여, <nobr> 태그 대신 <span> 태그로 출력하십시오.코드 7-4.설정 예<WebSquare>
+    <gridView>
+        <dataTag value="span" />
+    </gridView>
+</WebSquare>7.3XML의 namespace 제거config.xml 설정 파일에 <removeXmlNameSpace> 항목을 아래와 같이 설정하면, XML 관련 namespace를 제거할 수 있습니다.코드 7-5.설정 예<WebSquare>
+        <removeXmlNameSpace value="true" />
+</WebSquare>7.4<table> 태그일부 컴포넌트의 경우 <table> 태그에 cellpadding 및 cellspacing 속성이 생성됩니다. cellpadding 및 cellspacing 속성은 비권장 항목입니다. config.xml 설정 파일에 <paddingDisplay> 항목을 아래와 같이 설정하면, 두 속성을 제거할 수 있습니다.코드 7-6.설정 예<WebSquare>
+        <paddingDisplay value="false" />
+</WebSquare>관련 컴포넌트는 아래와 같습니다.AutoCompleteCalendarCheckBoxCheckComboBoxFloatingLayerInputCalendarMultiSelectPageListRadioSelectBoxTreeViewTrigger

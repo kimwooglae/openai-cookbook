@@ -1,0 +1,213 @@
+
+
+
+WebSquare.session 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.session - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+브라우저에 저장되는 Session 정보를 관리한다.
+  WebSquare.session.getAttribute                 브라우저 세션에서 값을 가져온다.
+  WebSquare.session.removeAttribute              브라우저 세션에서 값을 삭제한다. 기존에 저장된 값은 return으로 반환한다.
+  WebSquare.session.removeSession                브라우저 세션 전체를 삭제한다.
+  WebSquare.session.setAttribute                 브라우저 세션에 값을 설정한다. 기존 값이 존재하면 덮어쓰여진다.
+
+Type
+
+
+engine
+
+Property Summary
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+
+getAttribute(
+									  key
+										)
+								
+
+브라우저 세션에서 값을 가져옵니다
+
+
+
+removeAttribute(
+									  key
+										)
+								
+
+브라우저 세션에서 값을 삭제합니다
+
+
+
+removeSession(
+									  
+										)
+								
+
+브라우저 세션 전체를 삭제합니다
+
+
+
+setAttribute(
+									  key
+									       , 
+									       value
+										)
+								
+
+브라우저 세션에 값을 설정합니다
+
+
+
+Property Detail
+
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+getAttribute(
+									  key
+										)
+							
+
+브라우저 세션에서 값을 가져옵니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY브라우저 세션에서의 키값
+
+
+
+
+Return
+
+typedescription
+
+
+ObjectretType에 해당하는 인스턴스
+
+
+Sample
+
+WebSquare.session.getAttribute( "custInfo" );
+
+
+
+removeAttribute(
+									  key
+										)
+							
+
+브라우저 세션에서 값을 삭제합니다. 기존에 저장된 값은 return으로 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY브라우저 세션에서의 키값
+
+
+
+
+Return
+
+typedescription
+
+
+Object삭제된 세션의 값
+
+
+Sample
+
+WebSquare.session.removeAttribute( "custInfo" );
+
+
+
+removeSession(
+									  
+										)
+							
+
+브라우저 세션 전체를 삭제합니다.
+
+
+Sample
+
+WebSquare.session.removeSession();
+
+
+
+setAttribute(
+									  key
+									       , 
+									       value
+										)
+							
+
+브라우저 세션에 값을 설정합니다. 기존 값이 존재하면 덮어쓰여집니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY브라우저 세션에서의 이름
+
+
+valueStringY브라우저 세션에서의 키값
+
+
+
+Sample
+
+WebSquare.session.setAttribute("userName", "홍길동");
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

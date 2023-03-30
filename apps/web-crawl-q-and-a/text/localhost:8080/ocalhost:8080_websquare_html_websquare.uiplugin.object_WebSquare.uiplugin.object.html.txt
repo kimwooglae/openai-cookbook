@@ -1,0 +1,241 @@
+
+
+
+WebSquare.uiplugin.object 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.object - 5.0_5.4617M.20220324.084547
+
+
+
+
+
+오브젝트. ActiveX 지원.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+align
+
+객체가 텍스트와 연관된 정렬.
+
+
+
+classid
+
+객체의 클래스 ID.
+
+
+
+codebase
+
+객체의 주소 (URL).
+
+
+
+codetype
+
+객체의 인터넷 미디어 타입.
+
+
+
+data
+
+객체의 데이터를 참조하는 주소 (URL).
+
+
+
+groupid
+
+객체의 groupid 속성
+
+
+
+hspace
+
+객체의 수평 마진. (단위: px)
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+name
+
+객체의 name 속성.
+
+
+
+standby
+
+객체에 standby 기능 생성을 위한 문자열.
+
+
+
+tooltip
+
+객체의 tooltip 속성
+
+
+
+tooltipLocaleRef
+
+tooltip 문구가 정의되어 있을 경우 클라이언트 다국어 적용시 툴팁에 출력하는 텍스트의 key.
+
+
+
+type
+
+객체의 type 속성.
+
+
+
+usemap
+
+이미지맵에 사용되는 주소.
+
+
+
+viewastext
+
+객체의 viewastext 속성.
+
+
+
+vspace
+
+객체의 수직 마진. (단위: px)
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+Property Detail
+
+
+
+
+align
+
+객체가 텍스트와 연관된 정렬.	object tag의 align 속성으로 사용됨.
+
+
+classid
+
+객체의 클래스 ID.<object> 태그의 classid 속성으로 사용됨.
+
+
+codebase
+
+객체의 주소 (URL).<object> 태그의 codebase 속성으로 사용됨.
+
+
+codetype
+
+객체의 인터넷 미디어 타입.	object tag의 codetype 속성으로 사용됨.
+
+
+data
+
+객체의 데이터를 참조하는 주소 (URL).<object> 태그의 data 속성으로 사용됨.
+
+
+groupid
+
+객체의 groupid 속성<object> 태그의 groupid 속성으로 사용됨.
+
+
+hspace
+
+객체의 수평 마진. (단위: px)<object> 태그의 hspace 속성으로 사용됨.
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+name
+
+객체의 name 속성.<object> 태그의 name 속성으로 사용됨.
+
+
+standby
+
+객체에 standby 기능 생성을 위한 문자열.<object> 태그의 standby 속성으로 사용됨.
+
+
+tooltip
+
+객체의 tooltip 속성<object> 태그의 tooltip 속성으로 사용됨.
+
+
+tooltipLocaleRef
+
+tooltip 문구가 정의되어 있을 경우 클라이언트 다국어 적용시 툴팁에 출력하는 텍스트의 key.key에 해당하는 텍스트가 없을 경우 "global_undefined"가 화면에 표시됨.
+
+
+type
+
+객체의 type 속성.<object> 태그의 type 속성으로 사용됨.
+
+
+usemap
+
+이미지맵에 사용되는 주소.<object> 태그의 usemap 속성으로 사용됨.
+
+
+viewastext
+
+객체의 viewastext 속성.<object> 태그의 viewastext 속성으로 사용됨.
+
+
+vspace
+
+객체의 수직 마진. (단위: px)<object> 태그의 vspace 속성으로 사용됨.
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

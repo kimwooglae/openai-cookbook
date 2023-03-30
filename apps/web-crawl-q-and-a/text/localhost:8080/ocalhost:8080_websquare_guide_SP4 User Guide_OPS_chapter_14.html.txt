@@ -1,0 +1,579 @@
+
+Grid14.Grid14.1소개표 14-1.컴포넌트 설명요약테이블형 자료를 그리드로 표시기능 및 특징크게 Body와 Header로 구분 다양한 데이터 형식 지원자유로운 그리드 편집페이징, 정렬, 필터링, 그룹핑 지원각 칼럼 별로 데이터 형식 지정순차적으로 데이터를 표시하여 대량의 데이터 표시에 적합 & 데이터 출력 속도 개선 (무한 스크롤링)Total, Subtotal, Footer 지원클립보드를 지원하여 데이터 바인딩이 용이 (드래그-앤-드롭으로 바로 GridView와 바인딩 가능)주요 용도복잡한 테이블 구성대량의 데이터를 처리하는 테이블 구성대용량 파일 업로드/다운로드 (Excel, CVS, 한셀/넥셀)관련 동영상 모음GridView아래의 주요 속성을 사용하여 GridView의 여러 가지 유용한 기능을 편리하게 사용할 수 있습니다.표 14-2.주요 API속성기능 및 설명autoFit화면 전체 폭에 그리드를 출력. lastColum: 마지막 열만 확장allColumn: 모든 열의 폭을 균등하게 확장visibleRowNum페이지 당 표시할 행을 지정. all: 모든 행을 표시. (단, 최적의 성능을 위해 50행 이하를 권장.)defaultValue새로운 행이 추가될 때 표시할 기본 값을 지정.hidden열 표시/숨김을 지정.textAlign셀에 표시할 텍스트의 정렬 방향을 지정합니다.readOnly각 셀 및 그리드 전체에 대해 데이터의 수정을 허용하거나 금지합니다.sortable해당 열의 정렬 가능 여부를 지정합니다.resize열의 너비를 사용자가 조정할 수 있도록 허가합니다.hideHeader헤더를 표시하거나 숨깁니다.fixedColumn틀고정을 위해 고정할 열의 개수를 지정합니다.focusModefocusMovekeyMoveEditModeeditModeEvent포커스 이동, 키 이동, 편집 모드 등을 설정할 수 있습니다.tooltipDisplay각 셀의 표시되지 못한 데이터를 사용자의 마우스 오버시 풍선 도움말 형태로 보여줍니다.colMergeupperColumncolMerge="true"는 하나의 열에 있는 공통된 값의 행을 하나의 셀로 병합하도록 설정합니다. upperColumn은 하나의 셀 병합 열을 기준으로 다른 열을 셀 병합하도록 기준을 설정합니다.14.2데이터 바인딩GridView에 데이터를 표시하기 위해서는 DataList와의 바인딩이 필요합니다. DataList를 생성한 후, GridView와 바인딩하십시오. 좀 더 자세한 정보는 DataCollection과 Submission 부분을 참고하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/load_add_remove_delete_initilize_view_GridView/)그림 14-1.YouTube 동영상 (https://youtu.be/2JVHeNzkFZ8)14.3구조그림 14-2.GridView 구조아래와 같이 GridView 최외곽을 선택하면 GridView 전체에 대한 속성을 지정할 수 있습니다.14.3.1BodygridView.column에서 지정한 다양한 inputType을 통해 Body를 표현할 수 있습니다.GridView의 경우 dataCollection 객체에서 dataType 속성을 설정할 수 있습니다.14.3.2HeaderHeader 셀도 Body와 마찬가지로 inputType 지정을 통해 다양한 형식을 지정할 수 있습니다. 단, Body가 더 다양한 종류를 지원합니다.Header 셀을 선택한 후 inputType을 지정하십시오. 헤더에서 사용할 수 있는 inputType 및 dataType의 종류는 다음과 같습니다. (기본 값은 text입니다.)표 14-3.inputTypeinputType설명미리보기text일반 텍스트로 표현text (& dataType = "own")셀 값(value)은 참조하려는 body 열의 id를 값으로 갖습니다.텍스트 입력이 가능.checkbox셀 값(value)은 참조하려는 body 열의 id를 값으로 갖습니다.선택/해제 가능.select셀 값(value)은 참조하려는 body 열의 id를 값으로 갖습니다.단일 선택용.14.3.2.1inputType 별 속성Body 셀의 속성과 동일하나, Header 셀에 사용 가능한 속성은 제한적입니다. 아래 표를 참고하십시오.표 14-4.InputType & dataTypepropertyInputType & dataTypetexttext & owncheckboxselectallOption×××○chooseOption×××○chooseOptionLabel×××○colspan○○○○dataType○○××hidden○○○○id○○○○inputType○○○○localeRef○○××rowspan○○○○sortable○○○○textAlign○○○○useLocale×××○value○○○○width○○○○onChangeFunction×○○○아래의 경우 sortable 속성과 필터링 기능을 함께 사용하지 마십시오. (단, multiSort() API와 필터링 기능은 함께 사용할 수 있습니다.)* inputType="text" dataType="own"* inputType="select14.3.2.2Header 병합동일한 열의 연속된 행을 <Ctrl>을 누른 채 선택하여 병합(rowSpan)할 수 있습니다. 같은 행의 연속된 열도 병합(colSpan)할 수 있습니다.14.3.2.3Header 텍스트 정렬textAlign 속성으로 텍스트를 좌, 우, 중앙으로 정렬할 수 있습니다. 기본 값은 중앙(center)입니다.14.3.2.4Header 텍스트 설정Header 셀에 출력할 텍스트는 아래 방법으로 설정가능합니다.셀을 더블 클릭한 후, '값 수정' 대화 창에 텍스트를 입력합니다.혹은, setHeaderValue( headerId , value ) API를 통해서 동적으로 변경할 수도 있습니다.14.3.3subTotal14.3.3.1subTotal 추가예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (GridView/subTotal/subtotal_GridView.xml)그림 14-3.YouTube 동영상 (https://youtu.be/WsJdYLy8lcU)GridView에 subTotal을 추가하여, 특정 컬럼에 속한 일부 데이터의 통계값을 계산할 수 있습니다.GridView 우클릭 후, Add SubTotal 메뉴를 선택합니다.그림 14-4.subTotal 추가Outline 뷰의 Design 탭에서 추가한 subTotal을 선택한 후, targetColumnID 속성 값으로 subTotal 통계값의 기준이 될 컬럼을 지정합니다.그림 14-5.subTotal의 targetColumnID 지정subTotal을 표시할 컬럼의 inputType을 "expression"으로 지정합니다.subTotal을 표시할 컬럼의 expression 속성 값을 정의합니다. subTotal 컬럼이 지원하는 통계 계산식을 사용하십시오.그림 14-6.subTotal을 표시할 컬럼의 inputType 및 expression 속성 지정다음은 city 컬럼("col1")을 기준으로 sales 컬럼("col4")의 소계(sum("col4"))를 계산하여 subTotal에 표시한 모습입니다.그림 14-7.subTotal 추가 전그림 14-8.subTotal 추가 후subTotal 컬럼의 expression 속성에 사용할 수 있는 계산식은 다음과 같습니다.표 14-5.subTotal 지원 계산식No.함수설명1SUM총합.2AVG평균.3MIN최소값.4MAX최대값.5COUNT해당 컬럼의 데이터 건 수. subTotal 컬럼에서의 사용 예: COUNT("colID")footer 컬럼에서의 사용 예: COUNT()주의GridView의 subTotal 및 total 컬럼이 지원하는 사용하는 계산식과 일반 컬럼이 지원하는 계산식은 서로 차이가 있습니다. (inputType="expression" 참고.)14.3.3.2subTotal 표시/숨기기setSubtotalVisible(true); 함수를 이용하여 subTotal을 표시할 수 있습니다.setSubtotalVisible(false); 함수를 이용하여 subTotal을 숨길 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/subTotal/setSubtotalVisible_GridView.xml)그림 14-9.YouTube 동영상 (https://youtu.be/U-IW9JUdi5M)14.3.3.3subtotal 값을 기준으로 서로 다른 CSS 스타일 적용subtotalStyleFormatter 속성으로 subtotal 데이터에 적용할 CSS 클래스를 판단하는 함수를 지정할 수 있습니다. 즉, 해당 함를 통해 subtotal 데이터에 따라 서로 다른 CSS를 적용할 수 있습니다.subtotalStyleFormatter="scwin.styleFormatter"인 경우, 아래와 같이 scwin.styleFormatter() 함수를 정의하여, subtotal 데이터에 따라 서로 다른 CSS 클래스를 적용할 수 있습니다. 아래 예시의 경우, subtotal 데이터가 5000보다 크면 w2subtotalbig 클래스가 추가되고, subtotal 데이터가 500이하이면 w2subtotalsmall 클래스가 적용됩니다.코드 14-1.subtotalStyleFormatter 속성값으로 지정한 함수 정의 예시scwin.styleFormatter = function(value, formattedValue) {
+  if (value > 5000) {
+    return "w2subtotalbig";
+  } else {
+    return "w2subtotalsmall"
+  }
+}코드 14-2.스타일 정의 예시.w2subtotalbig {
+  color: red;
+}
+
+.w2subtotalsmall {
+  color: blue;
+}그림 14-10.subtotalStyleFormatter=""그림 14-11.subtotalStyleFormatter="scwin.styleFormatter"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/subTotal/subtotalStyleFormatter_GridView.xml)그림 14-12.YouTube 동영상 (https://youtu.be/vGa9ayKAHtc)14.3.3.4subtotal 컬럼을 기준으로 서로 다른 CSS 스타일 적용subtotalStyleFormatter 속성 값으로 지정한 함수는 subtotal 컬럼의 ID(subtotalColumnId)를 세번째 인자로 받습니다. 이 세번째 인자를 사용하여 각 subtotal 컬럼마다 서로 다른 CSS 스타일을 적용할 수 있습니다.코드 14-3.함수 구현 예scwin.styleFormatter = function(value, formattedValue, subtotalColumnId) {
+  if (subtotalColumnId == "column16" || subtotalColumnId == "column18) {
+    return "w2subtotalformatted";
+  }
+  else {
+    return "w2subtotalnotformatted";
+  }
+};예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/subTotal/subtotalStyleFormatter_subtotalColumnId_GridView.xml)그림 14-13.YouTube 동영상 (https://youtu.be/3xh5OE5Mar4)14.3.4footer표 14-6.설명관련 속성footerCaption: 푸터 내용. 푸터(footerCaption)가 존재할 경우, 타이틀(CaptionTitle)에 우선하여 푸터 표시.footerCaptionAuto: captionAuto 설정에 상관 없이 푸터(<footerCaption>)를 자동 표시. footerCaptionTitle: 푸터를 자동 생성할 때 참고할 텍스트.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/footer/footer_GridView.xml)그림 14-14.YouTube 동영상 (https://youtu.be/Cs-DeBICs6s)14.3.4.1footer 추가GridView에 footer를 추가하여, 특정 컬럼 데이터의 통계값을 계산할 수 있습니다.GridView 우클릭 후, Insert Footer 메뉴를 선택합니다.그림 14-15.footer 추가footer를 표시할 컬럼의 inputType을 "expression"으로 지정합니다.footer를 표시할 컬럼의 expression 속성 값을 정의합니다. footer 컬럼이 지원하는 통계 계산식을 사용하십시오.다음은 sales 컬럼("col4")의 합계(sum("col4"))를 footer에 표시한 모습입니다.그림 14-16.footer 추가 후표 14-7.footer 지원 계산식No.함수설명1SUM총합.2AVG평균.3MIN최소값.4MAX최대값.5COUNT해당 컬럼의 데이터 건 수. subTotal 컬럼에서의 사용 예: COUNT("colID")footer 컬럼에서의 사용 예: COUNT()예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(GridView/footer/inputType_expression_footer_gridView_column/)그림 14-17.YouTube 동영상 (https://youtu.be/tqulgI92fOU)14.3.4.2footer 타이틀표 14-8.푸터 생성 규칙조건생성 푸터captionTitle="타이틀"footerCaption="푸터"footerCaptionAuto="true""푸터"captionTitle="타이틀"footerCaption=""footerCaptionAuto="true""타이틀의 합계를 나타낸 표"14.3.4.3푸터 요약(footerSummary) 생성footerSummaryAuto 속성을 사용하면 아래와 같이 푸터 요약을 자동 생성할 수 있습니다.표 14-9.summary 생성 규칙조건summaryfooterSummaryAuto="false"생성되는 summary 없음. footerSummaryAuto="true"captionTitle="타이틀"footerSummary=""summary="타이틀의 합계를 나타낸 표"footerSummaryAuto="true"captionTitle=""footerSummary="푸터 요약"summary="푸터 요약"14.3.4.4부동 소수점 오류 자동 보정 (SUM 및 AVG 연산)footer 컬럼의 inputType을 "expression"으로 지정한 후 expression=SUM("column") 혹은 expression=AVG("column") 설정을 추가하여 해당 컬럼의 합계 혹은 평균을 계산할 수 있습니다.합계나 평균을 구하는 컬럼의 데이터가 소숫점 숫자일 경우, JavaScript의 부동 소수점 오류를 처리하기 위해 아래와 같은 설정이 필요합니다.바디의 컬럼 (gridView.column) – dataType="bigDecimal"푸터의 컬럼 (gridView.column) – dataType="bigDecimal"config.xml 파일에 설정 추가 (하단 참조)코드 14-4.config.xml (부동 소수점 오류 처리를 위한 설정)<engine>
+        <module src="/websquare/externalJS/big/big.min.js"/>
+</engine>단, 위의 처리는 모두 2020년 11월 전에 릴리즈된 엔진에 해당합니다. 2020년 11월 이후 출시된 에진의 경우 GridView의 SUM 및 AVG 연산에 대해 JavaScript의 부동 소수점 오류를 자동 처리합니다14.3.4.4.1inputType="expression" expression='SUM'("columnID")2020년 11월 이후 출시된 엔진의 경우 소수점 숫자의 합계(SUM) 연산을 위한 추가 저리가 필요 없습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/footer/inputType_expression_SUM_gridView_column/)그림 14-18.YouTube 동영상 (https://youtu.be/L1GGULl6cFA)14.3.4.4.2inputType="expression" expression='AVG'("columnID")2020년 12월 이후 출시된 엔진의 경우 소수점 숫자의 평균(AVG) 연산을 위한 추가 처리가 필요 없습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/footer/inputType_expression_AVG_gridView_column.xml)그림 14-19.YouTube 동영상 (https://youtu.be/ojd55iLjAOg)14.3.4.5footer 값 확인getFooterData() 함수를 사용하면, footer 컬럼의 ID 혹은 인덱스를 지정하여 해당 footer 값을 확인할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/footer/getFooterData_GridView.xml)그림 14-20.YouTube 동영상 (https://youtu.be/u1TYaMl_enY)14.4inputType14.4.1inputType 설정각 컬럼의 inputType을 서로 다르게 지정할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/inpuType/inputType_checkbox_select_gridView_column.xml)그림 14-21.YouTube 동영상 (https://youtu.be/O10T7sHSOK4)14.4.2inputType 별 속성inputType에 따라 Body 칼럼에 지정할 수 있는 속성이 달라집니다. 좀 더 자세한 정보는 API 가이드에서 확인하십시오.표 14-10.inputType 별 주요 속성inputType주요 속성inputType = "text"dataTypedisplayFormatinputType = "image"imageHeightimageWidthimageSrcinputType = "calendar"displayFormatinputType = "checkbox"valueTypeinputType = "select"dataType="own" (화살표(▼)를 기본으로 표시)14.4.3inpuType 종류열의 inputType의 종류는 다음과 같습니다. 기본 값은 text입니다.종류설명미리보기text일반 텍스트(InputBox와 비슷.)link밑줄 쳐진 강조된 텍스트checkboxtrue/false에 따라 다중 행 선택button버튼image이미지radiotrue/false 단일 행 선택selectSelectBox처럼 셀 값과 같은 value의 label을 선택calendar달력 아이콘 표시 달력 아이콘에서 날짜 형태 선택 (기본 형식: yyyy-MM-dd)(InputCalendar와 비슷.)expression함수를 사용하여 텍스트를 표현다른 컬럼을 참조하여 새로운 데이터를 생성하는 사용자 정의 함수 등록 가능 예시: display('columnID'), rowIndex(), userExp(rowIndex(), display('columnID')textarea여러 줄의 텍스트drilldown+/- 버튼이 있는 트리 형태textImage일반 텍스트로 표현하며, 아이콘을 보여준다. 이벤트처리함수(imageClickFunction)를 통해 아이콘 클릭에 따른 동작 설정이 가능.checkcomboboxCheckBox와 SelectBox가 결합된 형태.한 개 이상의 항목 선택 가능. autoComplete텍스트 자동 완성secret텍스트를 감추어 표시14.4.3.1inputType="custom"14.4.3.1.1inputType 동적 변경 (typeGetter)표 14-11.기능 설명설명각 행 별로 서로 다른 inputType을 지정사용 방법<Body> 부분에 inputType="custom"으로 지정.typeGetter 함수를 정의합니다. (반드시 lazy="false" 설정을 사용하십시오!)lazy="false"를 설정하는 이유 typeGetter로 지정한 함수는 GridView가 렌더링될 때 로딩해야 해당 함수에 의해 GridView의 inputType을 동적으로 변경할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/inputType/inputType_custom_typeGetter_gridView_column.xml)그림 14-22.YouTube 동영상 (https://youtu.be/NZiUIy2BUEE)코드 14-5.typeGetter="getType"인 경우 해당 함수 정의 예시getType = function(info) {
+  var rowIndex = info.rowIndex;
+  var colIndex = info.colIndex;
+  var returnInfo;
+
+  if (dataList1.getCellData(rowIndex, "Age") < 40 && dataList1.getCellData(rowIndex, "Age") > 29) {
+    returnInfo = {
+      id: "dynamic_select_" + rowIndex + "_" + colIndex,
+      inputType: "button",
+      options: {
+        viewType: "icon"
+      }
+    };
+  } else {
+    returnInfo = {
+      id: "dynamic_text_" + rowIndex + "_" + colIndex,
+      inputType: "text",
+      options: {}
+    };
+  }
+
+  if (returnInfo) {
+    console.log("[typeGetter] (" + rowIndex + ", " + colIndex + ") : " + returnInfo.inputType);
+  }
+
+  return returnInfo;
+};typeGetter로 지정할 함수의 인자와 반환값은 아래와 같습니다.표 14-12.typeGetter 함수인자반환 값아래의 정보를 엔진이 전달rowIndexcolndexcolIDvalueObject 형태로 반환id: ID (이미 존재할 경우 재활용)inputType: 동적으로 지정할 inputTypeoptions: GridView가 지원하는 각 inputType의 속성itemSet: 바인딩된 dataCollection코드 14-6.typeGetter의 반환 값 예제returnInfo = {
+    id: "dynamic_select_" + cnt,
+    inputType: "select",
+    options: {
+        viewType: "icon"
+    },
+    itemSet: {
+        nodeset: "data:dataList2",
+        label: "label",
+        value: "value"
+    },
+    value: "select"
+}14.4.3.1.2inputType 동적 변경 (setCellInputTypeCustom & setCellInputType())GridView의 컬럼이 inputType="custom"인 경우, setCellInputTypeCustom="true" 설정과 setCellInputType() 함수를 사용하여 해당 컬럼에 속한 특정 셀의 inputType을 동적으로 변경할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/setCellInputType_setCellInputTypeCustom_GridView/)그림 14-23.YouTube 동영상 (https://youtu.be/GaGi7q3_Lps)14.4.3.2inputType="autoComplete"그림 14-24.inputType="autoComplete"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/inputType_autoComplete_gridView_column.xml)그림 14-25.YouTube 동영상 (https://youtu.be/IEJiQnLUlxQ)14.4.3.2.1directOpenviewType="icon" 및 viewTypeIconImage="true" 설정을 사용할 경우, GridView의 autoComplete 상자에 화살표 이미지가 표시됩니다. 이 경우, directOpen="true" 설정을 추가하면 화살표 이미지 클릭만으로 아이템 목록을 바로 펼칠 수 있습니다.그림 14-26.directOpen="true"directOpen="false"인 경우, 화살표 이미지를 클릭하면 해당 셀만 선택합니다. 화살표 이미지를 더블 클릭해야 아이템 목록이 펼쳐집니다.그림 14-27.directOpen="false"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/inputType_autoComplete_directOpen_gridView_column.xml)그림 14-28.YouTube 동영상 (https://youtu.be/hGZhEpgzH0s)14.4.3.3inputType="calendar"14.4.3.3.1날짜 입력 순서 및 표시 형식 지정dataType="date" inputType="calendar" 컬럼의 경우, setColumnIoFormat(options); 함수를 이용하여 (1) 날짜 입력 형식 (2) 입력란의 날짜 출력 형식 (3) 달력의 날짜 출력 형식을 지정할 수 있습니다.코드 14-7.setColumnIoFormatgridView1.setColumnIoFormat(
+    {
+      colIndex: "col2" , 
+      ioFormat:"ddMMyyyy", 
+      dateMask:"dd-MM-yyyy", 
+      useMonthYearFormat:true, 
+      calendarDisplayFormat:"dd-MM-yyyy"
+    }
+);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/inputType_calendar_setColumnIoFormat_gridView_column.xml)그림 14-29.YouTube 동영상 (https://youtu.be/9ebQWJJoACI)14.4.3.4inputType="checkbox"14.4.3.4.1checkboxLabelColumninputType="checkbox" 컬럼의 경우, 다른 칼럼의 값을 조합하여 CheckBox 라벨 값으로 사용할 수 있습니다. checkboxLabelColumn 속성으로 조합할 GridView 바디 컬럼의 ID를 지정하십시오.그림 14-30.checkboxLabelColumn=""그림 14-31.checkboxLabelColumn="Status,Hobby"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/checkboxLabelColumn_radioLabelColumn_gridView_column/)그림 14-32.YouTube 동영상 (https://youtu.be/3AzVyG6XZ6k)14.4.3.4.2checkAllType (GridView)헤더가 inputType="checkbox"의 경우, 헤더의 체크박스를 통해 전체 셀을 선택할 때 disabled이거나 readOnly 상태의 셀을 셀 상태 판단에 포함할지 여부를 결정할 수 있습니다.아래의 예제에서 두 행은 선택 상태가 아니고 이 두 행의 상태를 셀 상태 판단에 포함("include")됩니다. 그 결과, 두 셀을 포함하면, 모든 셀이 선택된 것으로 볼 수 없기 때문에 부분 선택 기호가 표시되었습니다.그림 14-33.checkAllType="include"아래의 예제에서 두 행은 선택 상태가 아니고 이 두 행의 상태는 셀 상태 판단에서 제외("exclude")됩니다. 그 결과 두 셀을 제외한 모든 셀이 선택된 것으로 볼 수 있기 때문에 전체 선택 기호가 표시되었습니다.그림 14-34.checkAllType="exclude"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/checkAllType_GridView.xml)그림 14-35.YouTube 동영상 (https://youtu.be/LzioAerK1g0)14.4.3.4.3partialCheckNextClickGridView의 inputType="checkbox" 컬럼에서 일부 행들을 선택한 후, 헤더의 체크박스를 선택할 경우, 전체 행들의 체크박스를 모두 선택할 것인지 혹은 모두 선택 해제할 것인지를 결정할 수 있습니다. 모두 선택할 경우 particalCheckNextClick 속성을 "check"로, 모두 선택 해제할 경우 "uncheck"로 선택해야 합니다.그림 14-36.particalCheckNextClick="uncheck"그림 14-37.particalCheckNextClick="check"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/inputType_checkbox_partialCheckNextClick_gridView_column.xml)그림 14-38.YouTube 동영상 (https://youtu.be/GQtn0YSOPmc)14.4.3.4.4checkHeaderOnviewchangeGridView의 inputType="checkbox" 컬럼에서 일부 행들을 선택한 후, 헤더의 체크박스를 선택할 경우, 선택되거나 선택해제된 행의 개수만큼 onviewchange 이벤트를 발생시킬 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/inputType/inputType_checkbox_checkHeaderOnviewchange_gridView_column.xml)그림 14-39.YouTube 동영상 (https://youtu.be/CcE_1CQpaq4)14.4.3.4.5inputType="checkbo" 혹은 inputType="selet" 열에서 체크한 행의 인덱스 및 데이터 확인inputType="checkbox" 혹은 inputType="radio" 칼럼의 경우 아래 함수를 이용하여 체크한 행의 데이터를 확인할 수 있습니다.getCheckedIndex();getCheckedData();getCheckedJSON();getCheckedXML();예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/getCheckedXXX_Gridview.xml)그림 14-40.YouTube 동영상 (https://youtu.be/zsfXnqs-j6Q)14.4.3.4.6체크한 행 삭제/제거inputType="checkbox" 컬럼을 추가한 후, 해당 컬럼에서 체크된 행들을 삭제/제거(delete/remove)할 수 있습니다.관련 API inputType=“checkbox” (gridView.column)rowStatusVisible=“true” (gridView)getCheckedIndex(“colID”); (gridView)ignoreStatus=“true” (dataList)deleteRows(Arr); (dataList)removeRows(Arr); (dataList)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/inputType/inputType_checkbox_gridView_column/)그림 14-41.YouTube 동영상 (https://youtu.be/UF44Y8TMKOs)14.4.3.5inputType="checkcombobox"그림 14-42.inputType="checkcombobox"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/inputType_checkcombobox_gridView_column.xml)그림 14-43.YouTube 동영상 (https://youtu.be/4EHQtRAoEV4)14.4.3.6inputType="drilldown"GridView의 각 행을 메뉴 형식으로 접고 펼수 있는 드릴다운 형태의 컬럼을 설정할 수 있습니다. 단, 메뉴단계에 대한 데이터를 담고 있는 컬럼이 존재해야 하며, 해당 컬럼을 depthColumn 속성으로 지정해야 합니다. 이 외에도 관련된 속성은 아래와 같습니다.표 14-13.관련 속성depthColumn메뉴 단계에 대한 정보를 담고 있는 컬럼.showDepthGridView에 표시할 메뉴 단계.depthType상위 메뉴 및 하위의 메뉴를 표시하는 방법. 그림 14-44.inputType="drilldown"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/inputType/inputType_drilldown_gridView_column/)그림 14-45.YouTube 동영상 (https://youtu.be/S87KThzT_SY)14.4.3.7inputType="expression"일반 컬럼, subTotal, 혹은 footer 컬럼의 경우 inputType을 "expression"으로 지정한 후, 직접 계산식을 정의하여 사용할 수 있습니다.14.4.3.7.1일반 컬럼표 14-14.지원 계산식No.함수설명1SUM총합.2AVG평균.3MIN최소값.4MAX최대값.5rowIndex()행 인덱스.6rowStatus()행 상태.7display("colID")지정한 컬럼의 값.8userExp(display("col1"), rowIndex())사용자 정의함수에서 사용 가능. 14.4.3.7.2subTotal 및 footer 컬럼표 14-15.지원 계산식No.함수설명1SUM총합.2AVG평균.3MIN최소값.4MAX최대값.5COUNT해당 컬럼의 데이터 건 수. subTotal 컬럼에서의 사용 예: COUNT("colID")footer 컬럼에서의 사용 예: COUNT()14.4.3.8inputType="radio"14.4.3.8.1radioLabelColumninputType="radio" 컬럼의 경우, 다른 칼럼의 값을 조합하여 Radio 라벨 값으로 사용할 수 있습니다. radioLabelColumn 속성으로 조합할 GridView 바디 컬럼의 ID를 지정하십시오.그림 14-46.radioLabelColumn=""그림 14-47.radioLabelColumn="Hobby,Region,Frequency"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/checkboxLabelColumn_radioLabelColumn_gridView_column/)그림 14-48.YouTube 동영상 (https://youtu.be/3AzVyG6XZ6k)14.4.3.9inputType="select"그림 14-49.inputType="select"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/inputType_select_gridView_column.xml)그림 14-50.YouTube 동영상 (https://youtu.be/QwmMkijoymM)14.4.4inputType에 따른 아이콘 표시표 14-16.기능 설명설명inputType에 따라 해당 아이콘을 표시. 관련 APIviewType="default" 셀을 클릭해야 해당 아이콘이 표시됨.viewType="icon" (셀 클릭 없이도) 바로 아이콘이 표시됨.14.4.4.1viewType예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/inputType/viewType_inputType_gridView_column.xml)그림 14-51.YouTube 동영상 (https://youtu.be/govrkDp04nM)14.4.4.2예제 (inputType="spinner")inputType="spinner" 컬럼의 viewType="icon" 설정을 추가하면 해당 컬럼의 셀에 화살표 아이콘을 표시할 수 있습니다.그림 14-52.YouTube 동영상 (https://youtu.be/hfi2sQqtKsU)14.4.5inputType에 따른 일부 선택 항목 숨기기gridView.column의 inputType이 아래 중 하나이고, DataList와 바인딩하여 선택 항목을 표시할 경우, setColumnVisibleColumn() 함수를 사용하여 일부 선택 항목을 숨길 수 있습니다.inputType="autoComplete"inputType="checkbox"inputType="checkcombobox"inputType="radio"inputType="select"숨길 항목은 GridView 컬럼과 바인딩된 DataList의 특정 컬럼의 값을 기준으로 결정할 수 있습니다. 아래와 같이 setColumnVisibleColumn() 함수의 파라미터로 GridView 컬럼과, DataList의 컬럼, 그리고 숨김 처리 조건으로 사용할 DataList 컬럼의 값을 명시하십시오.코드 14-8.사용 예// (조건)
+// GridView의 column1은 inputType="select"이고, 
+// column1은 dataList1과 바인딩되어 있음.
+
+// (실행)
+gridView1.setColumnVisibleColumn("column1", "Type", "true");
+
+// (결과)
+// dataList1에서 Type 컬럼의 값이 "true"인 행들은,
+// GridView의 column1의 선택 항목 목록에서 숨김 처리되어 표시되지 않음.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setColumnVisibleColumn_GridView/)그림 14-53.YouTube 동영상 (https://youtu.be/TG3nZBI8msE)14.4.6inputType에 따른 일부 선택 항목 비활성화하기gridView.column의 inputType이 아래 중 하나이고, DataList와 바인딩하여 선택 항목을 표시할 경우, setColumnEnableColumn() 함수를 사용하여 일부 선택 항목을 비활성화할 수 있습니다.inputType="autoComplete"inputType="checkbox"inputType="checkcombobox"inputType="radio"inputType="select"비활성화할 항목은 GridView 컬럼과 바인딩된 DataList의 특정 컬럼의 값을 기준으로 결정할 수 있습니다. 아래와 같이 setEnableColumn() 함수의 파라미터로 GridView 컬럼과, DataList의 컬럼, 그리고 비활성화 조건으로 사용할 DataList 컬럼의 값을 명시하십시오.코드 14-9.사용 예// (조건)
+// GridView의 column1은 inputType="select"이고, 
+// column1은 dataList1과 바인딩되어 있음.
+
+// (실행)
+gridView1.setColumnEnableColumn("column1", "Type", "false");
+
+// (결과)
+// dataList1에서 Type 컬럼의 값이 "false"인 행들은,
+// GridView의 column1의 선택 항목 목록에서 비활성화되어 표시됨.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setColumnEnableColumn_GridView.xml)그림 14-54.YouTube 동영상 (https://youtu.be/0IybbS4LnxU)14.5gridView.columnGridView의 각 컬럼을 선택한 후 해당 컬럼의 속성을 설정할 수 있습니다.14.5.1GridView 컬럼의 dataType 확인 및 변경setDataType 및 getDataType 함수를 사용하여 GridView 컬럼의 dataType을 변경할 수 있습니다.코드 14-10.사용 예gridView1.getDataType ( “col1” );
+// 리턴 값 (예시) : "text"
+
+gridView1.setDataType ( “col1”, “float” );
+// col1 컬럼의 dataType을 float로 변경.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/setDataType_getDataType_GridView.xml)그림 14-55.YouTube 동영상 (https://youtu.be/5jcVHiTcUuQ)14.5.2컬럼 숨기기hidden 속성을 이용하여 열을 숨길 수 있습니다. 또한, setColumnVisible(colIndex, colVisible) API를 사용하여 열 숨기기 기능을 동적으로 사용할 수 있습니다.코드 14-11.사용 예<w2:column id="openDate" style="height:70px" inputType="calendar" width="70" rowSpan="2" displayFormat="yyyy.MM.dd" hidden="true"></w2:column>
+<w2:column id="nation" style="height:70px" inputType="text" width="70" rowSpan="2" hidden="true"></w2:column>또한, setColumnVisible(colIndex, colVisible) API를 사용하여 열 숨기기 기능을 동적으로 사용할 수 있습니다.14.5.3텍스트 정렬textAlign 속성으로 텍스트를 좌, 우, 중앙으로 정렬할 수 있습니다. 기본 값은 중앙(center)입니다.코드 14-12.사용 예<w2:column id="orgtitle" style="height:35px" inputType="text" width="200" defaultValue="영화제목" textAlign="left"></w2:column>
+<w2:column id="userRating" style="height:70px" width="60" inputType="text" rowSpan="2" dataType="number" displayFormat="##.#" defaultValue="0" textAlign="right"></w2:column>14.5.4포맷/포맷터14.5.4.1displayFormatgridView.colum의 displayFormat 속성을 사용하여 해당 컬럼의 데이터 표시 형식을 설정할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/gridView.column/displayFormat_gridView_column.xml)그림 14-56.YouTube 동영상 (https://youtu.be/6Zeh7zcZrHU)14.5.4.2displayFormattergridView.colum의 displayFormatter 속성으로 함수명을 지정한 후 해당 함수를 별도로 정의하여, 해당 컬럼의 데이터 표시 형식을 설정할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/gridView.column/displayFormatter_gridView_column.xml)그림 14-57.YouTube 동영상 (https://youtu.be/rpAfKJRLKqA)14.5.4.3customFormattergridView.colum의 customFormatter 속성으로 함수명을 지정한 후 해당 함수를 별도로 정의하여, 해당 컬럼의 데이터 표시 형식을 설정할 수 있습니다.단, 해당 컬럼의 inputType이 아래와 같은 경우에만 유효합니다."text""link""textImage""textarea""select""expression""spinner"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/gridView.column/customFormatter_gridView_column.xml)그림 14-58.YouTube 동영상 (https://youtu.be/I3IWomt4n7o)14.5.4.4displayFormatter 및 customerFormatter 동적 변경setCellDisplayFormatter 및 setCellCustomFormatter 함수를 사용하여 각 셀의 displayFormatter 및 customerFormatter 속성을 동적으로 변경할 수 있습니다.표 14-17.기능 설명설명각 셀의 displayFormatter 및 customerFormatter 속성을 동적으로 변경 가능. 해당 셀의 행과 열 인덱스를 지정해야 함. 사용법 2setCellDisplayFormatter (rowIndex, colIndex, formatter);rowIndex: 셀의 행 인덱스colIndex: 셀의 열 인덱스formatter: displayFormatter로 설정하려는 함수 이름사용법 2setCellCustomFormatter (rowIndex, colIndex, formatter);rowIndex: 셀의 행 인덱스colIndex: 셀의 열 인덱스formatter: customFormatter로 설정하려는 함수 이름적용 대상 셀inputType="custom"displayFormatter 혹은 customFormatter 속성이 존재코드 14-13.사용 예 (setCellDisplayFormatter)scwin.displayFormatter = function(param){
+            
+            return "** " + param + " **";
+ };
+
+....
+
+grd.setCellDisplayFormatter( 2, 2, 'scwin.displayFormatter');        
+
+...코드 14-14.사용 예 (setCellCustomFormatter)scwin.customFormatter = function(data, formattedData, rowIndex, colIndex ){
+            
+            return "[[ " + data + " ]]";
+};
+
+....
+
+grd.setCellCustomFormatter( 2, 2, 'scwin.customFormatter' );        
+
+...14.5.4.5dataList.column - importFormatterdataList.column의 importFormatter 속성으로 사용자 정의 함수를 지정한 후, 해당 함수를 통해 컬럼의 데이터를 변경할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/importFormatter_dataList_column.xml)그림 14-59.YouTube 동영상 (https://youtu.be/0rb9R-itwAQ)14.6GridView 이벤트 추가GridView를 우클릭한 후 Event – 추가할 이벤트를 선택 후, 해당 로직을 추가하여 이벤트를 추가할 있습니다.그림 14-60.GridView 이벤트 추가14.6.1onsortsortable="true" 속성 설정이 적용된 헤더를 클릭하거나 더블 클릭하여 정렬을 수행할 경우 onsort 이벤트가 발생합니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Events/adding_event_example_onsort_GridView.xml)그림 14-61.YouTube 동영상 (https://youtu.be/FYEZ1AWTD7Y)14.6.2oncellclickGridView 셀을 클릭할 경우 oncellclick 이벤트가 발생하며 클릭된 셀의 행 인덱스, 열 인덱스, 컬럼 ID를 인자로 전달합니다.14.6.2.1예제 (1)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Events/oncellclick_GridView.xml)그림 14-62.YouTube 동영상 (https://youtu.be/s5C2af3_DpU)14.6.2.2예제 (2)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Events/oncellclick_2_GridView.xml)그림 14-63.YouTube 동영상 (https://youtu.be/VNIi6KxFbV8)14.6.3oncelldblclickGridView 셀을 더블-클릭할 경우 oncelldblclick 이벤트가 발생하며 클릭된 셀의 행 인덱스, 열 인덱스, 컬럼 ID를 인자로 전달합니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Events/oncelldblclick_GridView.xml)그림 14-64.YouTube 동영상 (https://youtu.be/n6vEnvfSqqA)14.6.4onscrollstartonscrollstart 이벤트는 세로 스크롤이 그리드뷰 상단에 닿을 때 발생합니다. alwaysTriggerScrollStart="true" 설정을 적용하면 세로 스크롤이 상단에 닿을 때마다 onscrollstart 이벤트가 발생합니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Events/onscrollstart_alwaysTriggerScrollStart_GridView/)그림 14-65.YouTube 동영상 (https://youtu.be/x9bKnWeS3OA)14.6.5ondateselect & onmonthselect & onyearselect예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Events/ondateselect_onmonthselect_onyearselect_GridView.xml)그림 14-66.YouTube 동영상 (https://youtu.be/-2yFh9y4rcQ)14.6.6oncontextopenoncontextopen 이벤트는 GridView의 컨텍스트 메뉴가 표시될 때 발생하며, 반환하는 값은 아래와 같습니다.rowIndex : 클릭된 셀의 행 인덱스. (헤더인 경우 -1을 반환.)colIndex : 클릭된 셀의 열 인덱스.focusedCell : 포커스된 셀의 좌표를 담은 1차원 배열.info.isHeader : 클릭된 셀이 헤더인지 여부.info.headerId : 클릭된 셀이 헤더일 경우, 헤더의 ID.코드 14-15.사용 예scwin.gridView1_oncontextopen = function(rowIndex, colIndex, focusedCell,
+info) {
+     var logStr = "rowIndex=" + rowIndex + ", colIndex=" + colIndex
+     + ", isHeader=" + info.isHeader + ", headerId=" + info.headerId;
+     WebSquare.logger.printLog(logStr);
+     console.log(logStr);
+}예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Events/oncontextopen_GridView.xml)그림 14-67.YouTube 동영상 (https://youtu.be/2sRK1QVpSZo)14.7GridView 주요 기능14.7.1틀 고정14.7.1.1열 고정표 14-18.기능 설명설명스프레드시트와 같은 틀고정 기능관련 APIfixedColumn : 좌측에 고정할 열의 갯수 fixedRightColumn : 우측에 고정할 열의 갯수setFixedColumn()setFixedRightColumn()비고가로 스크롤이 생길 경우 동작.그림 14-68.YouTube 동영상 (https://youtu.be/Kxh6WwZUUWo)그림 14-69.YouTube 동영상 (https://youtu.be/vXsMm4ydtY4)14.7.1.2행 고정표 14-19.기능 설명설명스크롤링 시에도 항상 표시될 행들을 지정관련 APIfixedRow (속성)setFixedRow(); (함수)그림 14-70.YouTube 동영상 (https://youtu.be/1Gta-JwBQNI)14.7.1.3스크롤 숨기기fixedColumnScrollHidden 속성 설정을 통해 고정된 영역에는 스크롤을 표시하지 않을 수 있습니다.그림 14-71.fixedColumnScrollHidden="false"그림 14-72.fixedColumnScrollHidden="true"14.7.2컬럼 폭 조정14.7.2.1자동 맞춤 (autoFit)표 14-20.기능 설명설명각 컬럼의 폭을 조절하여 그리드 폭 전체를 채우는 기능관련 APIautoFit="allColumn" (모든 컬럼의 폭을 조정) autoFit="lastColumn" (마지막 컬럼의 폭만 조정)setAutoFit() (autoFit 속성 설정)clearAutoFit() (autoFit 속성 해제) 비고그리드의 너비가 모든 열의 너비의 합보다 작아 x축으로 스크롤이 생길 경우에는 autoFit 속성이 적용되지 않습니다.14.7.2.1.1autoFit예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/autoFit_GridView.xml)그림 14-73.YouTube 동영상 (https://youtu.be/pjEYTl_b7TI)14.7.2.1.2autoFit & autoFitMinWidth예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setAutoFit_clearAutoFit_GridView/)그림 14-74.YouTube 동영상 (https://youtu.be/VtwE8p1ALfc)14.7.2.1.3setAutoFit() & clearAutoFit()예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setAutoFit_clearAutoFit_GridView/)그림 14-75.YouTube 동영상 (https://youtu.be/08K5gCovQcc)14.7.2.2드래깅을 통한 조정표 14-21.기능 설명설명헤더 셀을 드래깅하여 해당 컬럼의 폭을 조절할 수 있는 기능관련 APIresize="true"/"false" (기본값: true)14.7.2.3드래깅을 통한 행 번호 컬럼 폭 조정표 14-22.기능 설명설명10만 건 이상의 대량 데이터를 바인딩하여 행 번호가 "...."로 표시될 경우 마웃 드래깅을 통해 컬럼 폭을 조정할 수 있습니다. 아래 속성을 설정하십시오.관련 APIrowNumStatusResize="true"14.7.2.4최소 폭 지정표 14-23.기능 설명설명컬럼의 최소 너비를 속성값 정의를 통해 지정할 수 있습니다. minWidth를 통해 최소 너비를 지정할 경우, 마우스 드래깅을 수행해도 컬럼 폭이 해당 너비 이하로 줄어들지 않습니다.관련 APIminWidth (기본 값: 20, 단위: pixels)14.7.3행 번호 및 행 상태표 14-24.기능 설명설명행의 번호 및 상태를 표시하는 기능관련 API행 번호rowNumVisible="true"/"false" (기본값: "false")rowNumHeaderValue행 상태rowStatusVisible="true"/"false" (기본값: "false")rowStatusHeaderValue14.7.3.1행 번호 및 상태 표시를 위한 컬럼예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/rowNumVisible_rowStatusVisible_Gridview.xml)그림 14-76.YouTube 동영상 (https://youtu.be/Tm8IbxPJwmo)14.7.3.2행 번호 표시 컬럼의 헤더 값, 폭, 배경색 지정rowNumVisible="true" 속성 설정을 통해 GridView 각 행의 번호를 표시하는 컬럼을 사용할 경우, 아래 속성들을 설정하여 행 번호 표시 컬럼의 헤더 값과 폭, 배경색 또한 지정할 수 있습니다.rowNumHeaderValue (헤더 값)rowNumWidth (폭)rowNumBackgroundColor (배경색)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/rowNumVisible_rowNumHeaderValue_rowNumWidth_rowNumBackgroundColor_GridView.xml)그림 14-77.YouTube 동영상 (https://youtu.be/-_q4M1AaeZw)14.7.3.3행 상태 표시 컬럼의 헤더 값과 폭 지정rowNumStatus="true" 속성 설정을 통해 GridView 각 행의 상태를 표시하는 컬럼을 사용할 경우, 아래 속성들을 설정하여 행 상태 표시 컬럼의 헤더 값과 폭을 지정할 수 있습니다.rowStatusHeaderValue (헤더 값)rowStatusWidth (폭)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/rowStatusVisible_rowStatusHeaderValue_rowStatusWidth_GridView.xml)그림 14-78.YouTube 동영상 (https://youtu.be/hr7-xVWzIUU)표 14-25.행 상태StatusStatusValue이미지초기상태R0없음갱신U1삽입C2삭제D3삽입후 삭제V4코드 14-16.번호 및 상태 컬럼 표시 (예)<w2:grid id="grid1" baseNode="item"
+  repeatNode="filmo"
+  style="position: absolute ;left:0px;top:0px;width: 800px;height: 400px;"
+  valueNode="" sortable="true" resize="true"
+  readOnlyBackgroundColor="#D9E6F3"
+  readOnly="false" hideHeader="false"
+  rowNumVisible="true"
+  rowNumHeaderValue="No."
+  rowStatusVisible="true"
+  rowStatusHeaderValue="상태">코드 14-17.상태 변경 (예)grid1.setCellData(1, 'userRating', 5.88); // 갱신 상태.
+grid1.deleteRow(2);                       // 삭제 상태.
+grid1.insertRow(grid1.getRowCount());     // 삽입 상태.14.7.3.4다국어 지원표 14-26.기능 설명설명rowStatusVisible="true" 및 rowNumVisible="true" 설정을 사용하면 행 번호 및 상태를 나타내는 컬럼을 표시할 수 있습니다. 이 경우, WebSquare.WebSquareLang에 각 언어의 key 값 별로 텍스트를 정의하여 행 번호 및 행 상태 컬럼의 헤더를 다국어로 표시할 수 있습니다.관련 APIrowStatusLocaleRef: 행 상태 컬럼에 표시할 헤더의 키 값.rowNumLocaleRef: 행 번호 컬럼에 표시할 헤더의 키 값.코드 14-18.사용 예 (행 순서/상태 컬럼의 헤더를 순번/상태 대신 Number/Status로 표시)...
+<script 
+    ...
+    scwin.init = function(){
+          WebSquare.WebSquareLang = {
+            'rowNum' : 'Number',
+            'rowStatus' : 'Status' 
+            };
+    };
+        
+scwin.init();]]></script>
+
+<w2:gridView 
+    ... 
+    rowNumLocaleRef="rowNum" rowStatusLocaleRef="rowStatus" 
+    rowNumVisible="true" rowStatusVisible="true" 
+    rowNumHeaderValue="순번" rowStatusHeaderValue="상태"
+    ... 
+</w2:gridView>
+
+...14.7.4컬럼 이동GridView의 헤더를 드래깅하여 해당 컬럼을 이동할 수 있습니다. 드래깅 시 헤더의 value로 지정한 값이 툴팁으로 나타납니다. 세로 틀로 고정된 컬럼의 경우, 드래깅 가능 여부를 별도로 지정할 수 있습니다.관련 APIcolumnMove="true": 해당 컬럼의 이동을 허용.fixedColumn & fixedColumnNoMove: 세로 틀 고정된 컬럼의 드래깅 허용 여부.세로 틀 고정된 컬럼의 드래깅fixedColumn: 세로 틀 고정 대상 컬럼을 지정. columnMove="true": 틀 고정된 컬럼도 columnMove="true"인 경우 드래깅을 통해 이동 가능. fixedColumnNoMove="true": fixedColumn을 통해 고정된 컬럼의 경우 columnMove="true" 설정을 적용받지 않음. 즉, 드래깅을 통한 이동 불가능.14.7.4.1헤더 드래깅을 통한 컬럼 이동예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/columnMove_GridView.xml)그림 14-79.YouTube 동영상 (https://youtu.be/Ni5pxGNM0HU)14.7.4.2헤더가 병합된 컬럼을 푸터와 함께 이동예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/columnMove_columnMoveWithFooter_GridView.xml)그림 14-80.YouTube 동영상 (https://youtu.be/wihXBhaxeyA)14.7.5행 제어14.7.5.1동적 행 추가 및 삭제GridView와 DataList가 바인딩된 경우, insertRow(); 및 removeRows(); 함수를 사용하여 행을 새로 추가하거나 삭제할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/_DataCollection/insertRow_removeRows_DataList.xml)그림 14-81.YouTube 동영상 (https://youtu.be/ksZSCRIbnO0)14.7.5.2표시할 행 수 지정다음은 visibleRowNum 속성 값을 "8"로 지정하여, 8개의 행만 GridView에 표시한 모습입니다.그림 14-82.visibleRowNum="8"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/visibleRowNum_GridView.xml)그림 14-83.YouTube 동영상 (https://youtu.be/cDQtZ5Vw_vA)14.7.5.3행 표시하기 숨기기예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/setRowVisible_clearRowVisible_GridView/)그림 14-84.YouTube 동영상 (https://youtu.be/D8IuSJgB-TA)14.7.5.4행 추가, 삭제, 저장 버튼버튼은 Trigger 혹은 다른 컴포넌트로 나타낼 수 있습니다. 이들 컴포넌트는 다른 컴포넌트와 연계하여 사용할 수 있으며, 이벤트를 사용하여 그리드를 조작할 수 있습니다.<xf:trigger id="trigger1"
+  style="position: absolute ;left:0px;top:0px;width: 100px;height: 25px;"
+  type="button">
+  <xf:label>행 추가</xf:label>
+  <script ev:event="onclick"
+    type="javascript"><![CDATA[
+      grid1.insertRow( 0 );
+  ]]></script>
+</xf:trigger>
+<xf:trigger id="trigger2"
+  style="position: absolute ;left:100px;top:0px;width: 100px;height: 25px;"
+  type="button">
+  <xf:label>행 삭제</xf:label>
+  <script ev:event="onclick"
+    type="javascript"><![CDATA[
+      var chkDataArr = grid1.getCheckedData("chk");
+      var dataArr = [];
+      for ( var i = 0; i < chkDataArr.length; i++) {
+        dataArr[i] = chkDataArr[i][2];
+      }
+ 
+      var qStr = dataArr.join(", ") + " ("
+          + chkDataArr.length + "건)을 삭제하시겠습니까? ";
+      output1.setValue(qStr);
+      if (chkDataArr.length == 0) {
+        output1.setValue("선택된 건수가 없습니다.");
+        group3.hide();
+      } else {
+        group3.show();
+      }
+ 
+      gridReadOnly(true);
+      floatingLayer1.show();
+   ]]></script>
+</xf:trigger>
+<xf:trigger id="trigger3"
+  style="position: absolute ;left:200px;top:0px;width: 100px;height: 25px;"
+  type="button">
+  <xf:label>저장</xf:label>
+  <script ev:event="onclick"
+    type="javascript"><![CDATA[
+      for ( var i = 0; i < grid1.getRowCount(); i++) {
+        var doc = dataList1.getRowXML(i);
+        var ret = validCheck(doc, i);
+        if (ret == false) {
+          alert('필수 입력 항목이 존재합니다.');
+          return;
+        }
+      }
+ 
+      var modifiedXML = dataList1.getModifiedXML();
+ 
+      alert(WebSquare.xml.indent(modifiedXML));
+    ]]></script>
+</xf:trigger>14.7.5.5행 배경색 설정setRowBackgroundColor() 함수를 사용하여, 필터에 의해 숨겨진 행을 포함한 특정 행의 배경색을 동적으로 변경할 수 있습니다.코드 14-19.사용 예gridView1.setRowBackgroundColor(
+    0, // 행 인덱스
+    “green", // 배경색
+    false // 실제 인덱스 사용 여부
+);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setRowBackgroundColor_GridView.xml)그림 14-85.YouTube 동영상 (https://youtu.be/h4a3nwF5VpE)14.7.6행 드래깅동일한 GridView 내에서, 혹은 서로 다른 GridView 사이에서 한 개 이상의 행을 드래그-앤-드롭을 통해 이동할 수 있습니다.14.7.6.1관련 속성 및 함수관련 속성 및 함수dataDragDrop 및 함수 (드래그-앤-드롭 허용)dragDisplayColumn (툴팁에 표시할 컬럼 ID 지정)dragStartFunction / dragEndFunction (드래깅 시작/종료 시 실행할 함수 지정)useShiftKey (Shift 키 사용을 통한 행 선택 허용)setDrillDownDragDrop() (inputType="drilldown" 컬럼을 포함한 행의 이동 허용)14.7.6.1.1dataDragDrop동일한 GridView 내에서, 혹은 서로 다른 GridView 사이에 GridView 행 전체를 드래그-앤-드롭하여 이동할 경우, dataDragDrop="true"로 설정하십시오. Shift 키를 사용할 경우, useShiftKey="true" 설정도 추가합니다.그림 14-86.행을 다른 GridView로 드래깅그림 14-87.드래깅된 행이 다른 GridView로 이동됨예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Dragging/dataDragDrop_GridView/)그림 14-88.YouTube 동영상 (https://youtu.be/Mycybcw6kZ4)14.7.6.1.2dragStartFucntion & dragEndFunction드래깅 시작/종료 시 실행할 함수는 dragStartFucntion 및 dragEndFunction 속성을 통해 지정할 수 있습니다. 단, 해당 함수는 직접 정의해야 합니다.//그리드 1
+  dataDragDrop="true" 
+  dragDisplayColumn="orgtitle"
+  dragStartFunction="dragStart1"
+  dragEndFunction="dragEnd1"
+  ...
+ 
+//그리드 2 
+  dataDragDrop="true"
+  dragDisplayColumn="orgtitle, openDate"
+  dragStartFunction="dragStart2"
+  dragEndFunction="dragEnd2" 
+  ...코드 14-20.dragStart1(), dragEnd1(), dragStart2(), dragEnd2() 정의function dragStart1(rowIndex, rowXML) {
+  return rowXML;
+}
+ 
+function dragEnd1(rowIndex, rowXML) {
+  return false;
+}
+ 
+function dragStart2(rowIndex, rowXML) {
+  grid2.removeRow(rowIndex);
+  return rowXML;
+}
+ 
+function dragEnd2(rowIndex, rowXML) {
+  grid2.setRowXML(rowIndex, rowXML, false);
+  return false;
+}14.7.6.1.3setDrillDownDragDrop()inputType="drilldown" 컬럼을 포함한 행들을 GridView 내에서, 혹은 서로 다른 GridView 사이에서 드래깅하여 이동할 수 있습니다. setDrillDownDragDrop() 함수를 사용하십시오. 단, GridView에는 dataDragDrop="true" 설정이 있어야 합니다.코드 14-21.사용 예gridView1.setDrillDownDragDrop(true);그림 14-89.inputType="drilldown" 컬럼을 포함한 행을 다른 GridView로 드래깅그림 14-90.드래깅 후 다른 GridView로 이동된 모습예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Dragging/setDrillDownDragDrop_GridView/)그림 14-91.YouTube 동영상 (https://youtu.be/CAh0xUkNLts)14.7.6.2드래깅을 통한 행 이동 시 rowStatus 유지dataDragDropStatus="true" 설정을 추가할 경우, 하나의 GridView 내에서 드래그-앤-드롭으로 행을 이동할 때rowStatus를 유지할 수 있습니다. dataDragDropStatus 속성을 기본 값이 "false"로 설정할 경우, 드래그-앤-드롭으로 행이 이동되면 rowStatus가 "C"로 변경됩니다.단, dragEndFunction 함수를 지정하여 사용하는 경우에는 해당하지 않습니다. dragEndFunction으로 지정된 함수에서 직접 처리해야 합니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Draggingl/dataDragDropStatus_GridView.xml)그림 14-92.YouTube 동영상 (https://youtu.be/_Hh63KhRaII)14.7.6.3다른 GridView로의 드래깅만 허용 (dataDragDropOther)dataDragDrop="true" 속성 설정을 통해 GridView의 행 이동을 허용할 경우, dataDragDropOther="true" 설정을 추가하면, 다른 GridView로의 행 이동만 허용할 수 있습니다. 즉, 동일한 GridView 내에서의 행 이동은 금지할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Dragging/dataDragDropOther_GridView.xml)그림 14-93.YouTube 동영상 (https://youtu.be/OaPwYvixkpA)14.7.7셀14.7.7.1셀 너비/높이 설정속성 기본값 width와 style = "height"를 통해 셀의 너비와 높이를 조절할 수 있습니다. (예: width="70" style="height:20px")header가 있는 경우나 셀 병합에 따라 특정 셀만이 그 크기를 결정할 수도 있습니다.14.7.7.2셀의 기본 값 설정새로 추가되는 셀의 기본 값은 defaultValue를 통해 설정할 수 있습니다.셀에 데이터가 바인되지 않았을 경우 기본값이 표시됩니다. XML 데이터: 열의 id와 같은 노드명이 없는 경우JSON 데이터: 열의 id와 같은 속성 이름이 없는 경우아래와 같이 defaultValue 속성을 정의하십시오.<w2:column id="orgtitle"
+  style="height:35px" inputType="text"
+  width="200" defaultValue="영화제목">
+</w2:column>14.7.7.3셀 선택14.7.7.3.1동적 셀 선택표 14-27.기능 설명설명setFocusedMultiCell() 함수를 이용하여 특정 칼럼의 데이터 혹은 특정 영역의 데이터만 선택할 수 있습니다. 선택한 데이터는 복사하여 Excel 등으로 붙여넣을 수 있습니다.사용 방법setFocusedMultiCell (startRow, startCol, endRow, endCol);startRow : 포커싱 시작 지점의 행 값.startCol : 포커싱 시작 지점의 열 값.endRow : 포커싱 종료 지점의 행 값.endCol : 포커싱 종료 지점의 열 값.관련 속성focusMode="row" 혹은 focusMode="both"인 경우 {ignoreFocusMode:true} 옵션을 추가해야 지정한 영역의 셀들만 선택됩니다. 코드 14-22.사용 예 (1) - 영역 선택gridView1.setFocusedMultiCell(3,2,4,3);
+
+// 실행 결과:  (3,2), (3,3), (4,2), (4,3) 셀들이 선택.코드 14-23.사용 예 (2) - 전체 선택gridView1.setFocusedMultiCell(0,0,totalRow-1,totalCol-1);
+
+// 실행 결과:  전체 셀을 선택.코드 14-24.사용 예 (3) - 컬럼 선택gridView1.setFocusedMultiCell(0,1,totalRow-1,1);
+
+// 실행 결과: 두 번째 컬럼의 모든 셀을 선택코드 14-25.사용 예 (4) - GridView의 focusMode 속성이 "row" 혹은 "both"인 경우gridView1.setFocusedMultiCell(1, 1, 8, 2, {ignoreFocusMode:true});
+
+// focusMode 설정에 상관 없이 영역 안의 셀들만 선택됨그림 14-94.focusMode="both"일 때 {ignoreFocusMode:true} 옵션으로 setFocusedMultiCell() 실행예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setFocusedMultiCell_GridView/)그림 14-95.YouTube 동영상 (https://youtu.be/erKy4irXoBY)14.7.7.3.2드래깅 및 Shift 키를 통한 셀 선택예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Dragging/dataDragSelect_useShiftKey_2_GridView.xml)그림 14-96.YouTube 동영상 (https://youtu.be/6LJXsgFWDpk)14.7.7.3.3여러 셀을 한꺼번에 선택하고 삭제useShiftKey="true" 및 dataDragSelect="true" 속성을 설정하면 마우스 드래깅 혹은 Shift 키를 통해 여러 개의 셀을 선택하고, 선택한 여러 셀들을 한꺼번에 삭제할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Dragging/dataDragSelect_useShiftKey_GridView.xml)그림 14-97.YouTube 동영상 (https://youtu.be/qLlMWSH_WwE)14.7.7.3.4Ctrl 및 Shift 키를 통한 셀 선택 (ctrlShiftKey)useCtrlKey="true" 속성 설정을 적용하면 Ctrl 키를 사용하여 GridView 셀들을 선택할 수 있고, useShiftKey="true" 속성 설정을 적용하면 Shift 키를 사용하여 GridView 셀들을 선택할 수 있습니다. 또한, ctrlShiftKey="true" 속성을 적용하면 Ctrl 키와 Shift 키를 함께 사용하여 셀들을 선택할 수 있습니다.그림 14-98.ctrlShiftKey="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/ctrlShiftKey_GridView.xml)그림 14-99.YouTube 동영상 (https://youtu.be/r84IR-bECaI)14.7.7.4셀 선택 시 스크롤링드래깅으로 셀을 선택할 경우, 마우스가 GridView 밖을 벗어나면 마우스 방향에 따라 그리드뷰가 상하, 좌우, 대각선 방향으로 자동 스크롤링됩니다.표 14-28.관련 속성useShiftKey=“true”Shift 키를 이용하여 여러 개의 셀을 선택 가능. dataDragSelect=“true”여러 개의 셀을 드래깅으로 선택 가능. (useShiftKey="true"인 경우에만 유효.)dataDragSelectAutoScroll=“true”마우스가 GridView 밖을 벗어날 경우 자동으로 스크롤링 수행. 14.7.7.4.1예제 (1)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Dragging/dataDragSelect_dataDragSelectAutoScroll_GridView.xml)그림 14-100.YouTube 동영상 (https://youtu.be/v1rBikFN3JM)14.7.7.4.2예제 (2)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Dragging/dataDragSelect_dataDragSelectAutoScroll_2_GridView.xml)그림 14-101.YouTube 동영상 (https://youtu.be/fudMTaIu1lY)14.7.7.5셀 선택 금지14.7.7.5.1드래깅을 통한 셀 텍스트 선택 방지 (noSelect)noSelect="true" 속성 설정을 통해 마우스 드래깅을 통한 셀 텍스트 선택을 방지할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/noSelect_GridView/)그림 14-102.YouTube 동영상 (https://youtu.be/h9GJfv6sopE)14.7.7.5.2속성을 통한 금지 (blockSelect)gridView.column의 blockSelect 속성을 사용하면, 해당 컬럼의 셀들이 사용자 선택되는 것을 금지할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/blockSelect_gridView_column.xml)그림 14-103.YouTube 동영상 (https://youtu.be/BKVzAv9EVNM)14.7.7.5.3함수를 통한 동적 금지 (setBlockSelect())GridView의 setBlockSelect() 함수를 사용하면 각 컬럼의 셀 선택을 막는 blockSelect 속성 값을 동적으로 설정하여, 셀 선택을 동적으로 차단할 수 있습니다.코드 14-26.사용 예gridView1.setBlockSelect("a", true); 
+// id가 "a"인 컬럼의 blockSelect 속성 값을 "true"로 설정.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setBlockSelect_GridView.xml)그림 14-104.YouTube 동영상 (https://youtu.be/c0Atmug5x1U)14.7.7.6셀 제목헤더, 해당 셀의 데이터, label, inputType 등을 조합하여 각 셀의 <td>에 title 속성을 추가합니다.관련 APItitleAuto해당 셀의 inputType에 따른 타이틀 생성 규칙은 아래와 같습니다."text" / "link" / "button" (1) 헤데 셀에 데이터가 있을 때: "헤더 컬럼의 title 값 + 해당 셀의 데이터"(2) 헤데 셀에 데이터가 없을 때: "헤더 컬럼의 title 값 + 해당 컬럼의 inputType""check" / "radio"(1) 헤데 셀에 label 값이 있을 때: "선택한 값 + label 값"(2) 헤데 셀에 label 값이 없을 때: "선택한 값 + 해당 컬럼의 inputType""select" (1) 헤더 셀의 label 값이 있을 때: "헤더 컬럼의 title 값 + label 값"(2) 헤더 셀의 label 값이 없을 때: "헤더 컬럼의 title 값 + 해당 컬럼의 inputType"제약 사항아래와 같은 경우 titleAuto 속성을 지원하지 않음. 이 경우 각 셀의 title 속성을 직접 설정해야 함. (1) 헤더 또는 바디의 셀들이 합쳐진 경우(2) 헤더가 두 줄인 경우(3) inputType="text"를 제외한 다른 경우14.7.7.7특정 셀에 지정한 스타일 적용setCellClass() 함수를 사용하여 특정 GridView 셀에 지정한 스타일 클래스를 적용할 수 있습니다.코드 14-27.사용 예gridView1.setCellClass(0, 0, "blue");
+
+//// 스타일 클래스 정의 ////
+.blue { 
+    color : blue;
+    font-weight: bolder;
+    font-size: 40px;
+    background-color: yellow;
+}그림 14-105.setCellClass() 적용 전그림 14-106.setCellClass() 적용 후예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setCellClass_GridView.xml)그림 14-107.YouTube 동영상 (https://youtu.be/adJpaP0DK_4)14.7.7.8특정 셀 비활성화setCellDisabled() 함수를 사용하여, 필터에 의해 숨겨진 셀을 포함한 특정 셀을 동적으로 비활성화할 수 있습니다.코드 14-28.사용 예gridView1.setCellDisabled(
+    0, // 행 인덱스
+    0, // 컬럼 인덱스
+    true, // 비활성화 여부 
+    false // 실제 인덱스 사용 여부
+);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setCellDisabled_GridView.xml)그림 14-108.YouTube 동영상 (https://youtu.be/_CkuXLhoAnE)14.7.7.9특정 셀의 배경색 설정setCellBackgroundColor() 함수를 사용하여, 필터에 의해 숨겨진 셀을 포함한 특정 셀의 배경색을 동적으로 설정할 수 있습니다.코드 14-29.사용 예gridView1.setCellBackgroundColor(
+    0, // 행 인덱스
+    0, // 컬럼 인덱스
+    "red", // 셀 배경색
+    false // 실제 인덱스 사용 여부
+);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setCellBackgroundColor_GridView.xml)그림 14-109.YouTube 동영상 (https://youtu.be/qH62eyFsngM)14.7.8포커싱, 포커스 이동, 편집 모드표 14-29.기능 설명설명사용자에 의한 키 이동, 포커싱, 편집 모드 등을 설정.관련 APIeditModeEvent: 편집 모드로 변환하기 위한 이벤트 설정.focusMode: 셀 포커스시, 표현 방법.focusMove: 셀 포커스이후, 포커스 이동을 위해 방향키(상하좌우)사용 방법 설정.keyMoveEditMode: 편집과 관련된 포커스 이동키를 통한 포커스 변경시, 바로 수정모드로 변경여부.enterKeyMove: Enter키 입력시, 포커스 이동방향에 대한 설정.그리드는 여러가지 키를 통하여 제어할 수 있습니다.셀 포커스 이동: 상하좌우 방향키편집 관련한 포커스 이동: Tab, Enter, Shift+Tab, Shift+Enter키포커스된 셀을 수정 모드로 전환: Backspace, Insert 키를 포함한 문자키수정 모드의 셀에서 값 선택 및 문자간 이동: 상하좌우 방향키체크박스나 라디오의 값 토글: Space 키그 밖에도 Home, End, PageUp, PageDown 키 등을 사용할 수 있습니다.<w2:grid id="grid1" baseNode="item"
+  repeatNode="filmo"
+  style="position: absolute ;left:0px;top:0px;width: 800px;height: 400px;"
+  valueNode="" sortable="true" resize="true"
+  readOnlyBackgroundColor="#D9E6F3"
+  readOnly="false" hideHeader="false"
+  rowNumVisible="true"
+  rowNumHeaderValue="No."
+  rowStatusVisible="false"
+  rowStatusHeaderValue="상태" fixedColumn="2"
+  focusMode="both" 
+  focusMove="true"
+  keyMoveEditMode="true" 
+  editModeEvent="ondblclick"
+  enterKeyMove="down">
+  ...14.7.8.1포커싱 (focusMode)사용자가 GridView 상에서 셀을 선택할 경우, 선택된 셀 및 해당 셀이 속한 행을 포커싱하는 방법을 설정할 수 있습니다. focusMode, selectedCellColor, selectedRowColor 속성을 아래와 같이 설정하십시오.focusMode"cell" (기본 값) : 셀을 선택. "row" : 행을 선택. "both" : 셀과 행을 모두 선택. "none" : 아무 것도 선택하지 않음. selectedCellColor : 선택된 셀의 배경색. (예: "yellow")selectedCellColor : 선택된 행의 배경색. (예: "pink")예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/focusMode_selectedCellColor_selectedRowColor_GridView.xml)그림 14-110.YouTube 동영상 (https://youtu.be/cyrSKWMVQmY)14.7.8.2포커스 이동 방식 (focusFlow)포커스가 GridView의 맨 왼쪽, 맨 오른쪽, 상단, 혹은 하단에 있을 경우 이후 포커스 이동 방식을 설정할 수 있습니다. focusFlow 속성을 아래와 같이 설정하십시오."default" (기본 값) : 맨 좌측, 맨 우즉, 상단, 하단에서 더 이상 이동하지 않음."linear" : 맨 좌측/우즉 혹은 상단/하단 이후, 위/아래 행 혹은 이전/이후 컬럼으로 이동.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/focusFlow_GridView.xml)그림 14-111.YouTube 동영상 (https://youtu.be/48LmTXIrjH8)14.7.8.3편집 모드 진입표 14-30.기능 설명설명방향키를 사용하여 편집 모드로 셀 간의 이동이 가능. 관련 APIarrowMove="true": 방향키 사용.moveKeyEditMode="true": 좌/우 방향키 선택을 통해 편집 모드로 진입moveKeyEditModeAll="true": 상/하/좌/우 방향키 선택을 통해 편집 모드로 진입표 14-31.키 이동 방법키 동작 방법해당 inputType상하 키: 항상 편집모드로 이동. 좌우 키: 커서가 첫번째 또는 마지막 문자열에서 있을 때만 편집 모드로 이동. inputTypetextcalendarsecrettextarea상하 키: 커서가 목록의 첫번째 또는 마지막 항목에 있을 때만 편집 모드로 이동.좌우 키: 항상 편집모드로 이동.inputTypeselectcheckcomboboxinputType="autocomplete"는 미지원.14.7.8.3.1editModeEvent & editModeEventIcon예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/editModeEvent_editModeEventIcon_GridView.xml)그림 14-112.YouTube 동영상 (https://youtu.be/-aoxUkqpDG8)14.7.8.3.2keyMoveEdit & ModemoveKeyEditMode & moveKeyEditModeAll예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/keyMoveEditMode_moveKeyEditMode_moveKeyEditModeAll_GridView.xml)그림 14-113.YouTube 동영상 (https://youtu.be/oaRI4VgA3I4)14.7.8.3.3moveKeyEditMode & moveKeyEditModeAll예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/moveKeyEditMode_moveKeyEditModeAll_GridView.xml)그림 14-114.YouTube 동영상 (https://youtu.be/eJTTpnbLIeY)14.7.8.4Enter 키 입력 시 포커스 이동 방향 설정사용자가 셀에서 Enter 키를 입력할 경우 포커스가 이동하는 방향 및 편집 모드 진입 여부를 설정할 수 있습니다. enterKeyMove 속성을 아래와 같이 설정하십시오."down" (기본 값) : Enter 키 입력 시 아래쪽 셀로 이동."right" : Enter 키 입력 시 오른쪽 셀로 이동."none" : Enter 키를 입력해도 포커스 이동이 없음."edit" : Enter 키 입력 시 편집 모드로 이동."editRight" : 편집 모드로 진입한 후, 다시 Enter 키를 입력하면 오른쪽 셀로 이동. "editDown" : 편집 모드로 이동한 후, 다시 Enter 키를 입력하면 아래쪽 셀로 이동.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/enterKeyMove_GridView/)그림 14-115.YouTube 동영상 (https://youtu.be/mM_2hO0FG1s)14.7.9읽기 전용 셀 선택표 14-32.기능 설명설명읽기 전용 셀인 경우, 상/하 방향키를 통한 셀간의 이동을 허용하거나 제어관련 APIreadOnly="true"ignoreNonEditableCell="true"ignoreNonEditableCellTabnter="true"14.7.10데이터 복사하기/붙여넣기표 14-33.기능 설명설명GridView의 데이터는 복사하여 Excel 등으로 붙여넣기가 가능합니다. 단, 아래 속성을 사용하여 특정 칼럼이나 그리드 전체의 데이터의 복사하기 및 붙여넣기를 금지할 수 있습니다.관련 APIPreventCopy: 그리드 전체 데이터를 복사할 수 없음.PreventCopyColumn: 해당 컬럼의 데이터를 복사할 수 없음.PreventPaste: 그리도 전체 데이터를 붙여넣을 수 없음.PreventPasteColumn: 해당 컬럼의 데이터를 붙여넣을 수 없음.checkReadOnlyOnPaste: readOnly 속성이 설정된 컬럼에는 데이터를 붙여넣을 수 없음.checkReadOnlyOnPasteEnable: readOnly 속성이 설정된 컬럼이더라도 붙여넣기가 가능.customPasteFormatter 속성을 지정하면 클립 보드에 복사한 데이터를 붙여넣기 할 때 데이터 모양과 값을 변환할 수 있습니다.14.7.10.1복사 기준 설정 (copyOption)copyOption 속성을 설정하여 바인딩된 DatatList 값 혹은 현재 화면에 표시된 값 중 어떤 값을 복사할 수 있습니다.copyOption"dataList" (기본 값) : 바인딩된 DatatList 값을 복사. "display" : 현재 화면에 표시된 값을 복사예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/copyOption_GridView.xml)그림 14-116.YouTube 동영상 (https://youtu.be/WEkPBLOgshE)14.7.10.2복사 방식 결정 (copyType)copyType 속성을 설정하여 셀 데이터를 복사하는 방식을 결정할 수 있습니다.copyType"default" (기본 값) : 포커싱된 셀 전체를 복사. 여러 셀을 복사할 경우, 여러 셀에 걸쳐 복사됨."native" : 드래깅한 텍스트만 복사. 드래깅된 텍스트는 하나의 셀에만 복사됨.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/copyType_GridView.xml)그림 14-117.YouTube 동영상 (https://youtu.be/wtetKx3tna0)14.7.10.3선택한 셀들을 다른 GridView로 복사dataDragDrop="true" 혹은 useShiftKey="true" 속성 설정을 사용할 경우, 드래깅이나 Shift 키를 사용하여 여러 개의 셀들을 선택하고, 선택한 셀을 다른 GridView로 복사할 수 있습니다.그림 14-118.YouTube 동영상 (https://youtu.be/bXdHyR0HuJQ)14.7.11데이터 추가GridView와 DataList가 바인딩된 경우, setData();, setJSON(); 및 setXML(); 함수를 사용하여 데이터를 설정하거나 추가할 수 있습니다.그림 14-119.YouTube 동영상 (https://youtu.be/caCW-DB97EI)14.7.11.1"데이터 없음" 표시 (noResultMessage & noResultMessageVisibleAlways)GridView와 바인딩된 DataList, LinkedDataList, 혹은 AliasLinkedDataList에 데이터가 없는 경우, noResultMessage 및 noResultMessageVisibleAlways 속성 설정을 통해 "데이터 없음" 메시지를 표시할 수 있습니다.그림 14-120.noResultMessageVisibleAlways="true" noResultMessage="No data."예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/noResultMessageVisibleAlways_GridView.xml)그림 14-121.YouTube 동영상 (https://youtu.be/rHG-CO9T2eI)14.7.12정렬14.7.12.1정렬 기능 추가 및 정렬 아이콘 표시표 14-34.기능 설명설명여러 열의 데이터를 기준으로 오름차순/내림차순 정렬관련 속성sortable="true"sortEventshowSortableImage="true": 정렬 가능한 컬럼의 헤더에 화살표 아이콘을 표시. 사용 방법일반 정렬은 하나의 Header 컬럼을 클릭 혹은 더블클릭하면 sortEvent로 설정된 이벤트에 따라 정렬됩니다.다중 정렬은, <Ctrl>키를 이용하여 여러 컬럼을 선택한 후 클릭 혹은 더블 클릭합니다.14.7.12.1.1예제 (1)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Sorting/sortable_showSortableImage_GridView.xml)그림 14-122.YouTube 동영상 (https://youtu.be/tZj2gnbHRS0)14.7.12.1.2예제 (2)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Sorting/sortable_sortEvent_showSortableImage_sortedIconPosition_sortOrderReverse_GridView.xml)그림 14-123.YouTube 동영상 (https://youtu.be/PvlaP7HAZqU)14.7.12.2여러 컬럼을 정렬useCtrlOnMultisort="true" 설정을 사용할 경우, Ctrl 키를 누른 채로 컬럼 헤더를 더블 클릭하여 여러 개의 컬럼을 정렬할 수 있습니다.그림 14-124.세 개의 컬럼을 순서대로 정렬한 경우 (예시)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Sorting/useCtrlOnMultisort_GridView.xml)그림 14-125.YouTube 동영상 (https://youtu.be/7AqfLk-g32c)14.7.12.3헤더 컬럼이 병합된 경우 정렬 기준 컬럼 지정여러 개의 헤더 컬럼이 병합된 경우, orderByColumn 속성을 통해 정렬 기준이 되는 컬럼을 지정할 수 있습니다. 아래 예제와 같이 세 개의 컬럼 헤더가 병합된 경우, 정렬 아이콘을 클릭할 경우 세 개의 컬럼 중 정렬의 기준이 될 컬럼을 GridView의 Body Column ID로 지정할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Sorting/orderByColumn_gridView_column/)그림 14-126.YouTube 동영상 (https://youtu.be/PlMxvfTZ55o)14.7.12.4라벨 값을 기준으로 정렬GridView 컬럼의 inputType이 "autoComplete"이거나 "select"인 경우, 라벨 값을 기준으로 정렬할 수 있습니다. inputType="custom" 컬럼의 inputType을 "autoComplete"이거나 "select"로 변경한 경우에도 해당합니다. gridView.column의 sortLabel 속성을 "true"로 설정하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Sorting/sortLabel_gridView_column/)그림 14-127.YouTube 동영상 (https://youtu.be/9iG--eshvBI)14.7.12.5데이터가 없을 경우 정렬 버튼 숨기기sortable과 showSortableImage 속성을 사용하여 정렬 버튼을 표시할 경우, GridView에 데이터가 없는 경우에도 정렬 버튼이 표시됩니다. 이 때 hideSortIconOnNoData="true" 속성 설정을 적용하면, GridView와 바인딩된 데이터가 없을 경우 정렬 버튼을 숨길 수 있습니다.그림 14-128.hideSortIconOnNoData="false"그림 14-129.hideSortIconOnNoData="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Sorting/hideSortIconOnNoData_GridView.xml)그림 14-130.YouTube 동영상 (https://youtu.be/Ww-uwKEmwBg)14.7.13필터링표 14-35.기능 설명설명헤더 셀의 inputType에 따라 바디 컬럼의 데이터를 필터링관련 APIuseFilter: 필터링 기능 사용 여부. useFilterList: 필터링 대상 값을 목록으로 표시. 이 때 목록 첫번째에는 "사용자 필터"를 표시. (GridView 전체에 설정.)useFilterListSync: (false로 설정할 경우) setColumnFilter() 함수를 통해 동적으로 필터링을 수행할 경우, 필터링 결과 값만 필터 목록에 표시. (true인 경우에는 해당 컬럼의 전체 값을 필터 목록에 표시.)14.7.13.1필터 아이콘 표시GridView 컬럼의 헤더에 useFilter="true" 설정을 추가하면 필터 아이콘이 표시되고, 해당 아이콘을 클릭하면 직접 필터를 설정할 수 있습니다.그림 14-131.useFilter="true" (gridView.column)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Filtering/useFilter_gridView_column.xml)그림 14-132.YouTube 동영상 (https://youtu.be/k6mRK45a-2I)14.7.13.2필터 아이콘 및 필터링 항목 표시GridView 컬럼의 헤더에 useFilter="true" 설정을 추가한 후, GridView의 useFilterList 속성을 "true"로 설정할 경우, 필터 아이콘을 클릭하면 직접 필터를 설정할 수 있는 메뉴와 함께 필터링 항목이 목록으로 표시됩니다.그림 14-133.useFilter="true" (gridView.column) & useFilterList="true" (GridView)그림 14-134.YouTube 동영상 (https://youtu.be/2Fzwxj5d7SU)14.7.13.3정렬/필터링 아이콘 표시 (showSortableUseFilter)GridView가 정렬 기능(sortable="true")을 사용하면서 정렬 아이콘을 헤더에 표시하고(showSortableImage="true"), 또 그리드뷰 컬럼이 필터링 기능(useFilter="true")을 사용할 경우, 정렬 아이콘과 필터링 아이콘을 모두 헤더에 표시할 수 있습니다. showSortableUseFilter 속성을 "true"로 설정하십시오.그림 14-135.showSortableUseFilter="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Filtering/showSortableUseFilter_GridView.xml)그림 14-136.YouTube 동영상 (https://youtu.be/I0FnIFnnVG8)14.7.13.4사용자 정의 필터 저장표 14-36.기능 설명설명사용자가 지정한 필터링 조건이 하단에 별도의 목록으로 저장할 수 있음. 그룹핑 시, 하단의 필터링 조건을 선택하여 그룹핑 결과에 필터링 조건 적용 가능.관련 APIcustomFilterBox="true"14.7.13.5필터링 후의 데이터만 반환GridView와 DataList가 바인딩된 경우, 필터링을 수행한 후, 필터링 결과만 반환할 수 있습니다. 이 때 사용하는 함수는 DataList의 getFilteredColData ( colInfo );입니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/_DataCollection/getFilteredColData_getColData_DataList.xml)그림 14-137.YouTube 동영상 (https://youtu.be/-VtNzKup8WA)14.7.13.6숫자 필터링 조건 vs. 알파벳 필터링 조건필터링 조건이 알파벳 등의 문자인 경우 '<', '<=', '>', '>=' 네 개의 연산자가 표시되지 않고 '=' 및 '<>'만 표시됩니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Filtering/useFilter_gridView_column.xml)그림 14-138.YouTube 동영상 (https://youtu.be/k6mRK45a-2I)14.7.13.7필터링 조건 표시 및 검색useFilterList="true" 설정을 사용하면 필터링 조건을 목록으로 표시할 수 있습니다.그림 14-139.useFilterList="false"그림 14-140.useFilterList="true"그림 14-141.useFilterList="true"useFilterList="true"와 useFilterSearch="true" 설정을 동시에 사용할 경우, 필터링 조건 목록과 함께 필터링 조건을 입력할 수 있는 상자가 표시됩니다.그림 14-142.useFilterList="true" useFilterSearch="true"필터링 조건 입력 상자는 검색 기능을 함께 제공합니다. 다음은 알파벳 "J"를 입력했을 때 대문자 "J"를 포함하는 필터링 조건이 검색된 모습입니다.그림 14-143.필터링 조건 검색예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Filteringl/useFilterSearch_GridView/)그림 14-144.YouTube 동영상 (https://youtu.be/VPx1BHrDEjc)14.7.13.8필터 상자 폭 자동 맞춤그리드뷰 컬럼 헤더에 autoFitFilterList="true" 설정을 적용하면, 필터 항목 텍스트 길이에 따라 필터 상자의 폭을 자동으로 조절할 수 있습니다.그림 14-145.autoFitFilterList="false"그림 14-146.autoFitFilterList="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/autoFitFilterList_gridView_column.xml)그림 14-147.YouTube 동영상 (https://youtu.be/J086xJbf7Wg)14.7.13.9데이터가 없을 경우 필터 버튼 숨기기각 헤더에 useFilter="true" 속성 설정을 적용하고 GridView에 showSortableUseFilter="true" 속성 설정을 적용하여 필터 버튼을 표시할 경우, GridView에 데이터가 없는 경우에도 필터 버튼이 표시됩니다. 이 때 hideFilterIconOnNoData="true" 속성 설정을 적용하면, GridView와 바인딩된 데이터가 없을 경우 필터 버튼을 숨길 수 있습니다.그림 14-148.hideFilterIconOnNoData="true"그림 14-149.hideFilterIconOnNoData="false"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Filtering/hideFilterIconOnNoData_GridView.xml)그림 14-150.YouTube 동영상 (https://youtu.be/W8AuO1d5E_o)14.7.14그룹핑그룹핑 기능을 사용하면 한 개 이상의 컬럼을 기준으로 GridView의 데이터를 그룹으로 분류하고 각 그룹에 대한 통계 값을 확인할 수 있습니다. groupby() 함수를 사용할 경우 동적으로 그루핑을 수행할 수 있고, groupbyZone="true" 속성 설정을 사용할 경우 사용자가 직접 컬럼 헤더를 드래그-앤-드롭하여 데이터를 그룹핑할 수 있습니다.그림 14-151.그룹핑 전 Vs. 그룹핑 후14.7.14.1groupby() 함수를 통한 그룹핑groupby() 함수를 사용하여 그룹핑을 수행할 수 있습니다. 각 옵션에 대한 자세한 설명은 API 가이드를 참고하십시오.코드 14-30.사용 예var options = {
+    sortIndex: [0, 1],
+    closeGroup: true,
+    groupbyHeader: [{
+        inputType: "expression",
+        expression: 'toggle() + depthStr() + "    [ " + count() + " Cases ]  "',
+        align: "left",
+        colSpan: "4"
+    }],
+    groupbyFooter: {
+        depth_0: [{
+            colSpan: "3",
+            value: "Total",
+            align: "right"
+        }, {
+            inputType: "expression",
+            expression: 'SUM("col4")'
+        }],
+        depth_1: [{
+            colSpan: "3",
+            value: "Sub Total",
+            align: "right"
+        }, {
+            inputType: "expression",
+            expression: 'SUM("col4")'
+        }]
+    }
+};
+gridView1.groupby(options);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Grouping/groupby_GridView.xml)그림 14-152.YouTube 동영상 (https://youtu.be/1THvU4kuA5Y)14.7.14.2그룹핑 헤더에 마지막 단계만 표시groupby() 함수를 통해 그룹핑을 수행할 경우, showOnlyLastDepth 옵션을 true로 설정하면 헤더에 마지막 단계만 표시할 수 있습니다.그림 14-153.showOnlyLastDepth: true (마지막 단계만 표시)그림 14-154.showOnlyLastDepth: false (모든 단계를 표시)코드 14-31.사용 예var options = {
+    sortIndex: [0, 1, 2],
+    closeGroup: true,
+    showOnlyLastDepth: true,
+    groupbyHeader: [{
+        inputType: "expression",
+        expression: 'toggle() + depthStr() + "    [ " + count() + " Cases ]  "',
+        align: "left",
+        colSpan: "4"
+    }],
+    groupbyFooter: {
+        depth_0: [{
+            colSpan: "3",
+            value: "Total",
+            align: "right"
+        }, {
+            inputType: "expression",
+            expression: 'SUM("col4")'
+        }],
+        depth_1: [{
+            colSpan: "3",
+            value: "Sub Total",
+            align: "right"
+        }, {
+            inputType: "expression",
+            expression: 'SUM("col4")'
+        }]
+    }
+};
+gridView1.groupby(options);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Grouping/groupby_showOnlyLastDepth_GridView.xml)그림 14-155.YouTube 동영상 (https://youtu.be/t6ENhJNOeas)14.7.14.3expression그룹핑된 각 컬럼의 데이터에 대해 아래의 expression 계산식을 사용할 수 있습니다.표 14-37.지원 계산식No.함수설명1SUM총합.2AVG평균.3MIN최소값.4MAX최대값.5COUNT해당 컬럼의 각 그룹 당 데이터 건 수.6DEPTH해당 컬럼이 그룹핑된 순서. 7DEPTHSTR해당 컬럼에 속한 각 그룹의 value 혹은 label. 8TOGGLE해당 컬럼에 속한 각 그룹을 토글할 수 있는 버튼의 생성 여부.14.7.14.4그룹핑 & 필터링groupbyZone="true" 속성 설정을 사용할 경우, 한 개 이상의 컬럼 헤더를 드래그-앤-드롭하여 그룹핑을 수행할 수 있습니다. 단, ongroupby 이벤트를 추가하여 그룹핑 조건을 지정해야 합니다. 또한 ongroupby 이벤트를 통해 그룹핑 수행 시 groupby() 함수를 사용하십시오.그림 14-156.헤더 드래깅을 통한 그룹핑그룹핑 영역으로 드래깅된 헤더를 클릭하면 아래와 같이 필터가 표시됩니다. 즉, 사용자는 그룹핑을 수행한 후 필터를 선택하여 필터링도 수행할 수 있습니다.그림 14-157.그룹핑 후 필터링코드 14-32.ongroupby 정의 (예시)scwin.gridView1_ongroupby = function(options) {
+  options.groupbyHeader = [{
+    inputType: 'expression',
+    expression: 'toggle() + depthStr() + "    [ " + count() + " Cases ]  "',
+    align: 'left',
+    colSpan: 4
+  }];
+  options.closeGroup = true,
+    options.groupbyFooter = {
+      depth_0: [{
+        colSpan: 3,
+        value: "(1) Maximum Value",
+        align: "right"
+      }, {
+        inputType: 'expression',
+        expression: 'MAX("col4")'
+      }],
+      depth_1: [{
+        colSpan: 3,
+        value: "(2) Maximum Value",
+        align: "right"
+      }, {
+        inputType: 'expression',
+        expression: 'MAX("col4")'
+      }],
+      depth_2: [{
+        colSpan: 3,
+        value: "(3) Maximum Value",
+        align: "right"
+      }, {
+        inputType: 'expression',
+        expression: 'MAX("col4")'
+      }]
+    };
+  gridView1.groupby(options);
+
+};예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Grouping/groupbyZone_GridView.xml)그림 14-158.YouTube 동영상 (https://youtu.be/uu1wFeYjNKc)14.7.14.4.1그룹핑 영역 높이 및 표시할 메시지 지정groupbyZoneHeight 및 groupbyZoneMessage 속성들을 사용하여 그룹핑 영역의 높이와 그룹핑 영역에 표시할 메시지를 지정할 수 있습니다.그림 14-159.groupbyZoneHeight & groupbyZoneMessage예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Grouping/groupbyZoneHeight_groupbyZoneMessage_GridView.xml)그림 14-160.YouTube 동영상 (https://youtu.be/eI_9K0QEJI4)14.7.14.4.2그룹핑 기준 컬럼 수 제한groupbyZone 속성 설정을 통한 그룹핑 기능을 사용할 때, 그룹핑을 위해 드래깅할 수 있는 컬럼의 최대 개수를 지정할 수 있습니다. groupbyMaxCount 속성을 사용하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Grouping/groupbyMaxCount_GridView.xml)그림 14-161.YouTube 동영상 (https://youtu.be/H3h9EJvdoIk)14.7.14.4.3필터 박스 표시groupbyZoneFilterBox="true" 속성 설정을 사용할 경우, 그룹핑 후 선택한 필터 조건을 표시하는 필터 박스가 표시됩니다. 필터 박스는 사용자가 설정한 필터링 조건을 표시하고, 사용자가 특정 필터링 조건을 선택할 때 해당 결과물만 화면에 출력합니다.관련 속성groupbyFilterBoxgroupbyFilterBoxLocationfilterBoxVisibleRowNum아래와 같이 groupbyFilterBox="false"인 경우, 그룹핑 후 헤더에서 필터링 조건을 선택했지만 필터링 조건이 별도로 표시되지 않습니다.그림 14-162.groupbyFilterBox="false"아래와 같이 groupbyFilterBox="true"인 경우, 그룹핑 후 헤더에서 필터링 조건을 설정할 경우, 해당 조건이 별도의 박스에 표시됩니다.그림 14-163.groupbyFilterBox="true"groupbyFilterBoxLocation 속성을 사용할 경우, 필터 박스를 표시할 위치("top"/"bottom")를 지정할 수 있습니다.그림 14-164.groupbyFilterBoxLocation="top"filterBoxVisibleRowNum 속성은 필터 박스에 표시할 최대 필터링 조건 수를 제한하는데 사용됩니다.그림 14-165.filterBoxvisibleRowNum="5"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/Grouping/groupbyFilterBox_groupbyFilterBoxLocation_GridView.xml)그림 14-166.YouTube 동영상 (https://youtu.be/-qWrX0UwPnE)14.7.14.4.4필터링을 유지한 채로 그룹핑 수행GridView에 필터링이 설정된 경우, 필터링 조건을 선택한 후 해당 조건으로 필터링된 데이터에 대해서만 그룹핑을 수행할 수 있습니다. customFilterBox="true" 설정을 추가하십시오.관련 속성은 아래와 같습니다.필터링 관련useFilterList="true"useFilter="true" // 헤더에 설정그룹핑 관련groupbyZone="true"groupbyFilterBox="true"필터 유지 관련customFilterBox="true"아래와 같이 필터를 선택한 후 헤더를 드래깅하여 그룹핑을 수행할 수 있습니다.그림 14-167.필터 선택customFilterBox="true"인 경우, 필터링이 유지된 채로 그룹핑이 수행됩니다.그림 14-168.customFilterBox="true"하단의 필터 상자에는 "필터링" 조건과 "필터링 + 그룹핑" 조건이 모두 표시됩니다.그림 14-169."필터링" 조건 및 "필터링 + 그룹핑" 조건 모두 표시됨customFilterBox="false"인 경우, 필터링이 풀리고 전체 데이터에 대해 그룹핑이 수행됩니다.그림 14-170.customFilterBox="false"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Grouping/customFilterBox_GridView.xml)그림 14-171.YouTube 동영상 (https://youtu.be/PuhCRu0KEmo)14.7.14.5그룹핑 취소clearGroupby() 함수를 사용하여 groupbyZone="true" 속성 설정 혹은 groupby() 함수를 통해 수행한 그룹핑을 취소할 수 있습니다.코드 14-33.사용 예gridView1.clearGroupby();예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Grouping/clearGroupby_GridView.xml)그림 14-172.YouTube 동영상 (https://youtu.be/ODulxBbi1hY)14.7.14.6그룹핑 조건 확인getGroupbyData() 함수는 groupbyZone 속성을 통해 현재 적용된 그룹핑 조건을 반환합니다.코드 14-34.사용 예//JSON 형태로 반환. 
+ var data = gridView1.getGroupbyData();
+ 
+//string으로 반환.
+ var data = gridView1.getGroupbyData(false);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/Grouping/getGroupbyData_GridView.xml)그림 14-173.YouTube 동영상 (https://youtu.be/8QHBOsQZ4VQ)14.7.14.7그룹핑 후 Excel 파일로 다운로드advancedExcelDownload 함수를 이용할 경우 그룹핑을 수행한 GridView를 Excel 파일로 다운로드할 수 있습니다. 단, 아래의 예제와 같이 options.groupby="true"로 설정하십시오.표 14-38.options.groupby설명그룹핑된 상태의 GridView를 엑셀 파일로 다운로드.값true: 그룹핑된 상태의 GridView를 엑셀 파일로 다운로드. false (기본 값): 그룹핑 전의 원래 상태의 GridView를 엑셀 파일로 다운로드.코드 14-35.사용 예var options = {};
+                options.fileName= "test.xlsx";
+                options.type = "0";
+                options.startRowIndex = 0;
+                options.startColumnIndex = 0;
+                options.removeColumns = ""; 
+                options.groupby = "true";
+gridView1.advancedExcelDownload( options );14.7.15병합14.7.15.1셀 병합동일한 데이터가 연속적으로 반복될 경우, 아래 방식으로 동일한 데이터가 반복되는 셀을 병합할 수 있습니다.셀 병합 방법(1) 동일한 컬럼 내에서 연속적으로 동일한 데이터를 갖는 셀을 병합. (열 병합.)(2) 동일한 행 내에서 연속적으로 동일한 데이터를 갖는 셀을 병합. (행 병합.)(3) 열 병합 후, 행 병합.(4) 행 병합 후, 열 병합.(5) 왼쪽 열이 병합된 경우, 열 병합.(6) 위쪽 행이 병합된 경우, 행 병합.그림 14-174.YouTube 동영상 (https://youtu.be/PfhoJKm7BPU)14.7.15.1.1열 병합표 14-39.열 병합관련 속성mergeCells="bycol"관련 함수mergeByCol();그림 14-175.열 병합 (예시)그림 14-176.YouTube 동영상 (https://youtu.be/7rZ888Lz42M)14.7.15.1.2행 병합표 14-40.행 병합관련 속성 mergeCells="byrow"관련 함수mergeByRow();그림 14-177.행 병합 (예시)그림 14-178.YouTube 동영상 (https://youtu.be/Q_TRkxYXWuA)14.7.15.1.3열 병합 후, 행 병합표 14-41.열 병합 후, 행 병합관련 속성 mergeCells="bycolrec"관련 함수mergeByColRec();아래와 같이 열 병합을 먼저 수행합니다.그림 14-179.열 병합 (예시)이후 열 병합된 셀들을, 아래와 같이, 다시 행 기준으로 병합합니다.그림 14-180.열 병합 후 행 병합 (예시)그림 14-181.YouTube 동영상 (https://youtu.be/YhTmo5kW1jo)14.7.15.1.4행 병합 후, 열 병합표 14-42.행 병합 후, 열 병합관련 속성mergeCells="byrowrec"관련 함수mergeByRowRec();아래와 같이 행 병합을 먼저 수행합니다.그림 14-182.행 병합 (예시)이후 행 병합된 셀들을, 아래와 같이, 다시 열 기준으로 병합합니다.그림 14-183.행 병합 후 열 병합 (예시)그림 14-184.YouTube 동영상 (https://youtu.be/1Zg-WdrvD60)14.7.15.1.5왼쪽 열 기준 열 병합표 14-43.왼쪽 열 기준 열 병합관련 속성mergeCells="byrestriccol"관련 함수mergeByRestricCol();그림 14-185.왼쪽 열 기준 열 병합 (예시)그림 14-186.YouTube 동영상 (https://youtu.be/RorWt-B12_Y)14.7.15.1.6윗 행 기준 행 병합표 14-44.윗 행 기준 행 병합관련 속성 mergeCells="byrestricrow"관련 함수mergeByRestricRow();그림 14-187.윗 행 기준 행 병합 (예시)그림 14-188.YouTube 동영상 (https://youtu.be/iApEMalPwDA)14.7.15.2셀 병합 해제위에 설명한 방법으로 병합된 셀들을 mergeClear() 함수를 사용하여 병합을 해제할 수 있습니다.코드 14-36.사용 예gridView1.mergeClear();그림 14-189.YouTube 동영상 (https://youtu.be/3J0xoRsM7cE)14.7.15.3포커스된 셀 병합 및 병합 해제표 14-45.포커스된 셀 병합 및 병합 해제관련 함수mergeFocusedCell();mergeSplitFocusedCell(); (병합 해제)그림 14-190.YouTube 동영상 (https://youtu.be/UPplWg8kuXM)14.7.15.4특정 셀들의 병합 및 병합 해제14.7.15.4.1지정한 영역의 셀을 병합하거나 병합을 해제표 14-46.특정 셀만 병합관련 함수 mergeByFree( startRow, startCol, endRow, endCol );unmergeByFree( startRow, startCol );코드 14-37.사용 예gridView1.mergeByFree(0,0,4,4);코드 14-38.사용 예gridView1.unmergeByFree(0,0);그림 14-191.YouTube 동영상 (https://youtu.be/X16DleFE0Vg)14.7.15.4.2특정 열에서만 병합표 14-47.특정 열에서만 병합관련 속성mergeCellsmergeCol코드 14-39.사용 예 (속성 지정)mergeCells="bycol" mergeCol="col3,col5"
+
+// (결과) 
+// col3 및 col5 컬럼에서만 셀 병합이 수행됨.그림 14-192.YouTube 동영상 (https://youtu.be/mq_Zq0H_K9c)14.7.15.4.3틀 고정(행 고정)된 부분에서만 병합관련 속성fixedRowmergeCellsFixedRows관련 함수setFixedRow()mergeCellsFixedRows()그림 14-193.YouTube 동영상 (https://youtu.be/MKQ1c0k33bw)코드 14-40.사용 예 (속성 지정)fixedRow="4" mergeCellsFixedRows="bycol"
+
+// (결과) 
+// gridView1의 상단 4개의 행을 고정. 
+// 행 고정된 부분에서만 행 병합("bycol")이 수행됨.코드 14-41.사용 예 (함수 사용)gridView1.setFixedRow(4);
+gridView1.mergeCellsFixedRows("byrow");
+
+// (결과) 
+// gridView1의 상단 4개의 행을 고정. 
+// 행 고정된 부분에서만 행 병합("byrow")이 수행됨.14.7.15.4.4틀 고정(열 고정)된 부분에서만 병합표 14-48.틀 고정(열 고정)된 부분에서만 병합관련 속성fixedColumnmergeCellsFixedCols="byrow"관련 함수setFixedCol()setFixedRightCol()mergeCellsFixedCols()코드 14-42.사용 예 (속성 지정)fixedColumn="4" mergeCellsFixedCols="byrow"
+
+// (결과) 
+// gridView1의 좌측 4개의 열을 고정. 
+// 열 고정된 부분에서만 행 병합("byrow")이 수행됨.코드 14-43.사용 예 (함수 사용)gridView1.setFixedCol(4);
+gridView1.setFixedRightCol(5);
+gridView1.mergeCellsFixedCols("bycol");
+
+// (결과) 
+// gridView1의 좌측 4개의 열을 고정. // gridView1의 우측 5개의 열을 고정. 
+// 열 고정된 부분에서만 열 병합("bycol")이 수행됨.그림 14-194.YouTube 동영상 (https://youtu.be/N6Md83g1YgY)14.7.15.5병합에서 제외할 컬럼 지정아래의 API를 사용하여 셀 병합에서 제외할 컬럼을 지정할 수 있습니다.표 14-49.병합 상태 확인관련 APImergeCol( colIndex, flag );colIndex: 제외할 컬럼의 인덱스. flag: 제외 여부를 결정하는 값. 코드 14-44.사용 예mergeCol(3, false);
+mergeByCol();
+
+// (결과) 
+// 4번째 컬럼을 제외하고 열 병합이 수행됨.그림 14-195.YouTube 동영상 (https://youtu.be/bl6q791x12U)동일 명칭 속성 주의동일한 명칭의 mergeCol 속성도 존재. 단, megeCol 속성은  mergeCells="bycol" 설정을 사용할 때 적용 대상이 되는 컬럼의 ID를 mergeCol="col1, col3"와 같이 지정하는 용도로 사용.14.7.15.6병합 상태 확인아래의 API를 사용하여 특정 셀의 병합 상태를 확인할 수 있습니다.표 14-50.병합 상태 확인관련 APIgetMerged( rowIndex , colIndex );rowIndex: 병합 여부를 확인하고 싶은 셀의 행 인덱스 colIndex: 병합 여부를 확인하고 싶은 셀의 열 인덱스사용 예gridView1.getMerged(4, 4);: (4, 4) 셀의 셀 병합 상태를 반환. (True/False)그림 14-196.YouTube 동영상 (https://youtu.be/TCRq5oo_wxw)14.7.15.7동일 데이터를 갖는 행 병합표 14-51.기능 설명설명하나의 열, 연속된 행의 공통된 값에 의한 데이터를 병합데이터 간의 연관성을 시각적으로 표현하여 정보 전달 효과를 높임관련 APIcolMerge(바디):"true"로 설정upperColumn (바디): 하나의 셀 병합 열을 기준으로 다른 열을 병합하도록 기준을 설정코드 14-45.colMerge & upperColumn<w2:column id="pubDate" style="height:70px"
+  inputType="select" width="60" rowSpan="2"
+  dataType="" allOption="" chooseOption=""
+  colMerge="true">
+    <w2:choices>
+        <w2:itemset nodeset="pubYear/item">
+            <w2:label ref="label"></w2:label>
+            <w2:value ref="value"></w2:value>
+        </w2:itemset>
+    </w2:choices>
+</w2:column>
+<w2:column id="genre" style="height:70px"
+  inputType="text" width="70" rowSpan="2"
+  displayType="all" colMerge="true"
+  upperColumn="pubDate">
+</w2:column>14.7.16Excel 업로드 (Import)Excel 업로드 → GridView 참조.14.7.17Excel 다운로드 (Export)GridView → Excel 다운로드 참조.14.7.18CSV 업로드CSV 업로드 → GridView 참조.14.7.19CSV 다운로드GridView → CSV 다운로드 참조.14.7.20여러 GridView를 Excel 파일로 다운로드GridView 여러 개 → Excel 다운로드 참조.14.7.21일반 페이징표 14-52.기능 설명설명별도의 설정 없이 서버로부터 데이터를 받아 페이지로 나누어 표현.그리드를 페이지 별로 표시할 경우 PageList 혹은 PageControl 컴포넌트와 함께 사용 가능.필요 정보그리드에 표현하는 전체 데이터 건수한 페이지 당 표현하는 데이터 건수각 페이지의 시작 행에 대한 정보사용 방법페이지 수를 구합니다.PageList (혹은 PageControl) 컴포넌트의 setCount(count) API의 인자 값으로 설정합니다.선택된 페이지에 표현할 데이터를 Submission을 통해 서버로 부터 가져옵니다. (PageList 혹은 PageControl 컴포넌트의 onchange 이벤트를 사용.)<w2:pageList pageSize="2"
+  displayFormat="#" id="pageList1"
+  style="position:absolute;left:1px;top:410px;width:600px;height:30px;"
+  buttonShowType="3">
+    <script ev:event="onchange(current,before)"
+    type="javascript">
+        <![CDATA[
+ 
+        start = current;
+        $p.executeSubmission("getMovies"); 
+ 
+      ]]>
+    </script>
+</w2:pageList><xf:submission id="getMovies"
+  ref="reqMovies" target="resMovies"
+  action="" method="get" mediatype="text/xml"
+  encoding="UTF-8" instance="" replace="instance"
+  errorHandler="" customHandler=""
+  mode="asynchronous" processMsg="조회중입니다.">
+    <script type="javascript"
+    ev:event="xforms-submit-done">
+        <![CDATA[
+      var totalCnt = WebSquare.ModelUtil
+          .getInstanceValue('resMovies/rss/channel/total/@filmoTotal');
+ 
+      if (totalSetYn != true) {
+        var quotient = parseInt(totalCnt / display, 10);
+        var remainderYn = (totalCnt % display) ? 1 : 0;
+        var count = quotient + remainderYn;
+        pageList1.setCount(count);
+        totalSetYn = true;
+      }
+ 
+      var dataCnt = WebSquare.ModelUtil
+          .getInstanceValue('resMovies/rss/channel/total/@filmoDisplay');
+      if (dataCnt != 0) {
+        var item = WebSquare.ModelUtil
+            .findInstanceNode("resMovies/rss/channel/item");
+        grid1.setXML(item);
+      }        
+  ]]>
+    </script>
+    <script type="javascript"
+    ev:event="xforms-submit">
+        <![CDATA[
+ 
+      var sub = WebSquare.ModelUtil.getSubmission( "getMovies" );
+      sub.action = "/developGuide/getPagingData.jsp?start="
+    + start + "&display=" + display;
+ 
+  ]]>
+    </script>
+</xf:submission>14.7.22무한 그리드표 14-53.기능 설명설명Y축 스크롤이 끝에 이르렀을 때 다음 데이터를 서버로 부터 가져와 그리드에 이어쓰는 방법관련 APIloadCount: onscrollend 이벤트 발생 조건으로 사용되는 잔여 행 수(예: loadCount="1" 인 경우 onscrollend 이벤는 스크롤 다운으로 행이 1개 남았을 때 발생.)<w2:grid baseNode="item"
+  repeatNode="filmo" id="grid1"
+  style="position: absolute ;left:0px;top:0px;width: 600px;height: 340px;"
+  valueNode="" sortable="true" resize="true"
+  readOnlyBackgroundColor="#D9E6F3"
+  readOnly="false" hideHeader="false"
+  rowNumVisible="true"
+  rowNumHeaderValue="No."
+  rowStatusVisible="false"
+  rowStatusHeaderValue="상태" fixedColumn="2"
+  focusMode="both" focusMove="true"
+  keyMoveEditMode="true" editModeEvent="ondblclick"
+  enterKeyMove="down" tooltipDisplay="true"
+  oddEvenColorDisplay="false" loadCount="1">
+  ...
+ 
+  <script type="javascript"
+    ev:event="onscrollend"><![CDATA[ 
+    start++;
+    $p.executeSubmission("getMovies");    
+   ]]></script>
+</w2:grid><xf:submission id="getMovies"
+  ref="reqMovies" target="resMovies"
+  action="" method="get" mediatype="text/xml"
+  encoding="UTF-8" instance="" replace="instance"
+  errorHandler="" customHandler=""
+  mode="asynchronous" processMsg="조회중입니다.">
+  <script type="javascript"
+    ev:event="xforms-submit-done"><![CDATA[
+      var totalCnt = WebSquare.ModelUtil
+          .getInstanceValue('resMovies/rss/channel/total/@filmoTotal');
+      if (totalSetYn != true) {
+        output2.setValue(totalCnt);
+        totalSetYn = true;
+      }
+ 
+      var dataCnt = WebSquare.ModelUtil
+          .getInstanceValue('resMovies/rss/channel/total/@filmoDisplay');
+      if (dataCnt != 0) {
+ 
+        var item = WebSquare.ModelUtil
+            .findInstanceNode("resMovies/rss/channel/item");
+        grid1.setXML(item, true);
+        output1.setValue(grid1.getRowCount());
+      }
+    ]]></script>
+  <script type="javascript"
+    ev:event="xforms-submit"><![CDATA[
+ 
+    var sub = WebSquare.ModelUtil.getSubmission( "getMovies" );
+    sub.action = "/developGuide/getPagingData.jsp?start="
+    +start+"&display="+display ;
+ 
+  ]]></script>
+</xf:submission>14.7.23읽기 전용readOnly 속성을 통해 특정 열을 읽기 전용으로 설정할 수 있습니다. 행, 열, 셀에 대한 읽기 전용 설정은 API를 통해서도 가능합니다. readOnly 설정은 그리드 전체, 행, 열, 셀 별로 적용가능합니다.표 14-54.기능 설명설명GridView 전체에 대한 수정 가능 여부를 설정하는 기능 (수정이 가능할 경우, 수정한 데이터를 바로 서버로 전송 가능.관련 APIreadOnly="true"/"false" (기본값: "false")14.7.23.1읽기 전용 셀 선택표 14-55.기능 설명설명읽기 전용 셀인 경우, 상/하 방향키를 통한 셀간의 이동을 허용하거나 제어관련 APIreadOnly="true"ignoreNonEditableCell="true"ignoreNonEditableCellTabnter="true"14.7.24표 제목관련 속성captionAuto: 표 제목을 자동으로 생성할지 여부.captionTitle: 표 제목을 자동으로 생성할 때 사용할 텍스트코드 14-46.사용 예captionTitle="표 제목" captionAuto="true"헤더가 항목 1, 항목2, 항목 3인 세 개의 칼럼을 포함하고 위와 같은 설정을 갖는 GridView의 경우 "표 제목 은(는) 항목 1, 항목 2, 항목 3 을(를) 나타낸 표"라는 제목이 생성됩니다.N/ACaptionTitle: 표 제목을 자동으로 생성할 때 사용할 텍스트그림 14-197.captionAuto"true" captionTitle="정보 테이블"코드 14-47.표 제목 생성 결과<caption id="caption1" style="position:relative; top:100px;" value="this is a grid caption." class="setcaption">정보 테이블은(는) 정보 1,정보 2,정보 3 을(를) 나타낸 표</caption>그림 14-198.captionAuto"true" captionTitle=""코드 14-48.표 제목 생성 결과<caption id="caption1" style="position:relative; top:100px;" value="this is a grid caption." class="setcaption">정보 1,정보 2,정보 3 을(를) 나타낸 표</caption>표 14-56.표 제목 생성 규칙조건생성 제목captionAuto="true"captionTitle="표 제목""표 제목 은(는) 항목 1, 항목 2, 항목 3 을(를) 나타낸 표"captionAuto="true"captionTitle="""항목 1, 항목 2, 항목 3 을(를) 나타낸 표"GridView에 titleAuto="true" 설정할 경우, 헤더의 inputType="text"인 컬럼의 각 셀의 <td>에 title 속성을 자동으로 생성할 수 있습니다.제약 사항아래와 같은 경우 titleAuto 속성을 지원하지 않습니다. 이 경우 각 셀의 title 속성을 직접 설정해야 합니다. (1) 헤더 또는 바디의 셀들이 합쳐진 경우(2) 헤더가 두 줄인 경우(3) 헤더가 inputType="text"를 제외한 다른 경우14.7.24.1inputType="text" / "link" / "button"헤더에 데이터가 있을 때title="헤더 컬럼의 title 값 + 해당 셀의 데이터"헤더에 데이터가 없을 때title="헤더 컬럼의 title 값 + 해당 컬럼의 inputType"14.7.24.2inputType="check" / "radio"헤더에 label 값이 있을 때title="선택한 값 + label 값"헤더에 label 값이 없을 때title="선택한 값 + 해당 컬럼의 inputType"14.7.24.3inputType="select"헤더에 label 값이 있을 때title="헤더 컬럼의 title 값 + label 값"헤더에 label 값이 없을 때title="헤더 컬럼의 title 값 + 해당 컬럼의 inputType"제약 사항아래와 같은 경우 titleAuto 속성을 지원하지 않음. 이 경우 각 셀의 title 속성을 직접 설정해야 함. (1) 헤더 또는 바디의 셀들이 합쳐진 경우(2) 헤더가 두 줄인 경우(3) inputType="text"를 제외한 다른 경우14.7.25툴팁그림 14-199.헤더 툴팁예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/tooltipDisplay_tooltipShowAlways_GridView.xml)그림 14-200.YouTube 동영상 (https://youtu.be/Pb4R8a6wQOk)14.7.26헤더 숨기기표 14-57.기능 설명설명GridView 헤더를 숨기는 기능관련 APIhideHeader="true"/"false" (기본값: "false")setHeaderHide(hideYn)14.7.27화폐 표시금액을 표시하는 경우, 각 컬럼 별로 금액 표시 방법 및 화폐 단위를 동적으로 설정할 수 있습니다.관련 APIchangeCurrency: 화폐 단위 별 표시 방법 지정euroMask, rupeeMask, tengeMask: 각 화페 별 금액 표시 방법changeCurrency (columnID, dataType, displayFormat, delimiter, decimalDelimiter, customModelFormatter, customModelUnFormatter)columnID : 화폐 단위를 적용할 컬럼 IDdataType : 적용할 화폐 단위displayFormat : 칼럼에 적용할 포맷delimiter : 통화 구분자decimalDelimiter : 통화 소수 구분자customModelFormatter : GridView와 바인딩된 DataList에 값이 저장되기 전에 실행되는 사용자 정의 함수.customModelUnFormatter : GridView와 바인딩된 DataList에 값을 읽어올 때 값을 반환하기 전에 실행되는 사용자 정의 함수.코드 14-49.사용 예 (1)...
+gridView1.changeCurrency("col1", "euro");
+
+gridView1.changeCurrency("col2", "number");
+gridView2.changeCurrency("col3", "rupee", "##,##,###.00");
+gridView2.changeCurrency("col4", "tenge", "# ###-00");
+...
+
+<w2:gridView id="gridView1"
+euroMask="#.###,00" numberMask="#,###.00"
+...
+</w2:gridView>
+
+<w2:gridView id="gridView2"
+...
+</w2:gridView>코드 14-50.사용 예 (2)scwin.inputCustomFormat = function(realData, formattedData) {
+  return realData.replace(",", ".");
+};
+
+scwin.inputCustomUnFormat = function(realData, formattedData) {
+  return realData.replace(".", ",");
+};
+
+scwin.trigger1_onclick = function(e) {
+  var info = {
+    colID: "col1",
+    type: "euro",
+    format: "#.###,00",
+    customModelFormatter: "scwin.inputCustomFormat",
+    customModelUnformatter: "scwin.inputCustomUnFormat"
+  }
+  gridView1.changeCurrency(info);
+};14.7.28맵핑각 컬럼의 데이터를 서로 다른 컴포넌트와 맵핑할 수 있습니다. 즉, GridView의 특정 행을 선택할 경우, 해당 행 각 컬럼의 값을 서로 다른 컴포넌트에 표시할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/column_mapping_GridView.xml)그림 14-201.YouTube 동영상 (https://youtu.be/LwgP92q8hNQ)14.7.29컨텍스트 메뉴14.7.29.1컨텍스트 메뉴 표시 (바디)contextMenu="true" 설정을 추가할 경우, GridView를 우클릭하면 컨텍스트 메뉴가 표시됩니다.그림 14-202.컨텍스트 메뉴예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/contextMenu_GridView.xml)그림 14-203.YouTube 동영상 (https://youtu.be/AF3KgtSROwc)14.7.29.2컨텍스트 메뉴 표시 (헤더)contextMenu="true" 설정만 사용하면 GridView의 바디에 있는 셀을 우클릭할 때만 컨텍스트 메뉴가 표시됩니다. 헤더의 셀을 우클릭해도 컨텍스트 메뉴를 표시하려면 useHeaderContextMenu="true" 속성을 추가하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/GridView/_General/useHeaderContextMenu_contextMenu_GridView.xml)그림 14-204.YouTube 동영상 (https://youtu.be/Ggkkn42zZMU)14.7.29.3Alt 키 + 마우스 좌클릭을 통한 컨텍스트 메뉴 표시contextMenuAltClick=“true” 설정을 추가할 경우, Alt 키 + 마우스 좌클릭을 통해 GridView의 컨텍스트 메뉴를 표시할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/contextMenuAltClick_GridView/)그림 14-205.YouTube 동영상 (https://youtu.be/iqsNUcLaBIU)14.7.29.4컨텍스트 메뉴를 통한 컬럼 폭 조정컨텍스트 메뉴를 사용하여 autoFit 속성을 사용할 때와 마찬가지로 GridView 컬럼의 너비를 자동으로 조절할 수 있습니다.그림 14-206.GridView의 컨텍스트 메뉴예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/contextMenu_autoFit_GridView/)그림 14-207.YouTube 동영상 (https://youtu.be/PYq9S0e4T8w)14.7.30높이14.7.30.1초기 height 값 설정visibleRowNumFix=“true” 설정을 추가할 경우, visibleRowNum 속성 설정에 따라 GridView의 높이를 설정할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/visibleRowNum_visibleRowNumFix_GridView/)그림 14-208.YouTube 동영상 (https://youtu.be/vftrJvR2tT8)14.7.31렌더링14.7.31.1drawTypedrawType 속성을 사용하여 GridView를 그리는 방법을 결정할 수 있습니다. "virtual"은 화면에 보이는 부부만 그리고, "native"는 전체 GridView를 그립니다.표 14-58."virtual" 및 "native" 비교항목"virtual""native"데이터 양데이터가 많은 경우 유리. 데이터가 적은 경우 유리. 대용량 그리드화면에 보이는 영역만 랜더링하므로 대용량 그리드에서 유리.세로 스크롤 처리drawType="native" 인 경우 세로 스크롤 처리를 브라우저가 담당하기 때문에 세로 스크롤링이 자연스러움. 행 높이가 다른 경우GridView 각 행의 높이(height)가 다른 경우 권장. 제약 사항drawType="native" 사용 시 GridView의 height 속성을 지정해야 함. (visibleRowNum 속성값은 적용되지 않음.)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/drawType_GridView.xml)그림 14-209.YouTube 동영상 (https://youtu.be/JvQNnEjHWzc)14.8GridView 성능을 위한 권장 사항권장 사항GridView 조회시 허용 가능한 메모리의 크기는 임계치의 50%내로 사용하는 것을 권장.그리드의 조회 건수는 약 400,000 Cell을 기준으로 제한하는 것을 권장GridView를 조회해서 렌더링할 때 소요되는 시간은 전체 셀의 개수에 영향을 받습니다. 셀이 많을수록 GridView를 조회해서 화면에 표시하는데 소요되는 시간은 증가하며, 셀이 많을 수록 증가폭이 더 큽니다.그림 14-210.셀 개수에 따른 GridView 조회 시간14.9Pivot표 14-59.컴포넌트 설명요약기존 GridView에서 제한적으로 제공했던 Pivot 기능을 전문적으로 제공하는 컴포넌트. Excel의 Pivot Table 기능과 유사.기능 및 특징주요 기능다차원 데이터 분석드릴다운축 변환무한 가로축 스크롤링통계 함수Sum, Avg, Count, Minimum, Maximum최대 지원 필터 수 : 1000개비고현재 IE10 버전 이상만 지원.표 14-60.주요 기능 설명주요 기능설명축 변환드래그&드롭을 통해 행과 열 사이의 축 변환이 가능하고, 새로운 축을 사용하여 테이블을 다시 생성. 컬럼 리사이징드래그&드롭을 통해 헤더 사이즈 변경 가능. Pivot 너비에 따른 컬럼 폭 자동 조절테이블 전체 혹은 마지막 열의 너비를 화면 크기에 맞게 자동 조절 가능. 관련 속성: autoFit파일 Import/ExportExcel (xsl, xsls)파일 내보내기/가져가오 가능. CSV컨텍스트 메뉴 제공고정할 행 및 열을 지정할 수 있음. 포매팅 기능자용자 정의 메뉴 지정 가능. 통계 함수(행, 열, 및 전체 데이터에 대한 통계)숫자 포맷에 필요한 옵션 제공. digitsAfterDecimalscalershowZerodecimalSepthousandsSepprefixsuffix헤더 데이터 필터링화면에 출력하지 않을 헤더 데이터 지정 가능. DataCollection 바인딩DataCollection과 바인딩 가능. 텍스트 정렬textAlign (각 항목)bodyTextAlign (바디)headerTextAlign (헤더)totalTextAlign (전체)14.9.1총 합계showGrandTotal="true"  설정을 추가할 경우 총 합계를 표시할 수 있습니다.14.9.1.1총 합계를 표시하거나 숨기기예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/Pivot/showGrandTotal_Pivot.xml)그림 14-211.YouTube 동영상 (https://youtu.be/hsqXcU-qWNY)14.9.1.2총 합계 표시 위치 설정showGrandTotal="true"  설정을 사용할 경우, grandTotalDisplayType 속성을 통해 총 합계 표시 위치를 선택할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/Pivot/showGrandTotal_grandTotalDisplayType_Pivot.xml)그림 14-212.YouTube 동영상 (https://youtu.be/_Y7BYZg4fUg)14.9.1.3총 합계 라벨 지정showGrandTotal="true"인 경우, allTotalName 속성을 전체 행 합계의 Label 값으로, grandTotalName 속성을 전체 열 합계의 Label 값으로 지정할 수 있습니다.그림 14-213.grandTotalName & allTotalName예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/Pivot/allTotalName_grandTotalName_Pivot.xml)그림 14-214.YouTube 동영상 (https://youtu.be/kyAnzuh-0fc)14.9.2Excel 파일로 다운로드14.9.2.1다운로드하기pivotExcelDownload( opt );  함수를 이용하여 피봇을 Excel 파일로 다운로드 할 수 있습니다.코드 14-51.사용 예var options = {};
+options.sumColor = "red";
+options.sumFontSize = "15";
+options.sumFormat = "#,###";
+options.bodyFormat = "#,###";
+
+pivot1.pivotExcelDownload(options);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/Pivot/pivotExcelDownload_Pivot.xml)그림 14-215.YouTube 동영상 (https://youtu.be/2vzPY0QLCok)14.9.2.2컬럼 너비 조정options.autoSizeColumn 옵션 설정을 통해 헤더 혹은 바디의 텍스트 길이에 따라 해당 컬럼의 너비를 조절할 수 있습니다.options.autoColumnSize : body – 피벗의 Body를 기준으로 너비를 조정.options.autoColumnSize : header – 피벗의 Header를 기준으로 너비를 조정.options.autoSizeColumn : false (기본 값) – 너비 자동 맞춤을 수행하지 않음.코드 14-52.사용 예var options = {};
+options.type = "1";
+options.fileName = "excelData.xls";
+options.bodyFormat = "#,###,0#"; options.bodyTextAlign = "right";
+options.autoSizeColumn = "false"; //“body” “header”
+
+pivot1.pivotExcelDownload(options);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Pivot/pivotExcelDownload_options_autoSizeColumn_Pivot.xml)그림 14-216.YouTube 동영상 (https://youtu.be/oQNBP6TfFAU)14.9.2.3세로축 헤더 병합 후 다운로드headerYMerge="true" 설정을 통해 세로축 헤더 컬럼을 병합한 후 pivotExcelDownload() 함수로 Pivot을 Excel 파일로 다운로드하면, Excel 파일에서도 헤더 병합 상태가 유지됩니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Pivot/headerYMerge_pivotExcelDownload_Pivot.xml)그림 14-217.YouTube 동영상 (https://youtu.be/cyOfyb2seAE)14.9.3Excel 파일을 Pivot으로 업로드pivotExcelUpload( opt );  함수를 이용하여 Excel 파일을 피봇으로 업로드할 수 있습니다.코드 14-53.사용 예var options = {};
+options.startRowIndex = 1;
+options.startColumnIndex = 1;
+options.append = 0;
+
+pivot1.pivotExcelUpload(options);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/Pivot/pivotExcelUpload_Pivot/)그림 14-218.YouTube 동영상 (https://youtu.be/Vxrj5-Wmzjk)14.9.4헤더 컬럼 병합 (headerYMerge)headerYMerge 속성을 사용할 경우, 헤더의 컬럼을 병합할 수 있습니다.그림 14-219.headerYMerge="false"그림 14-220.headerYMerge="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Pivot/headerYMerge_Pivot.xml)그림 14-221.YouTube 동영상 (https://youtu.be/z8XAjzKVfDw)headerYMerge="true" 설정을 통해 세로축 헤더 컬럼을 병합한 후 pivotExcelDownload() 함수로 Pivot을 Excel 파일로 다운로드하면, Excel 파일에서도 헤더 병합 상태가 유지됩니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Pivot/headerYMerge_pivotExcelDownload_Pivot.xml)그림 14-222.YouTube 동영상 (https://youtu.be/cyOfyb2seAE)14.9.5헤더 컬럼 이동 금지 (noColumnMove)noColumnMove="true" 설정을 사용할 경우 드래깅을 통한 헤더 컬럼 이동을 방지할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Pivot/noColumnMove_Pivot.xml)그림 14-223.YouTube 동영상 (https://youtu.be/jOGforAhQk4)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/GridView/_General/setRowBackgroundColor_GridView.xml)

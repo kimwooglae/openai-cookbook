@@ -1,3 +1,7 @@
 examples/data/olympics_sections_document_embeddings_ko.npy filter=lfs diff=lfs merge=lfs -text
 examples/data/snli_embedding_cache.pkl filter=lfs diff=lfs merge=lfs -text
 examples/data/olympics_sections_document_embeddings.csv filter=lfs diff=lfs merge=lfs -text
+apps/web-crawl-q-and-a/processed/embeddings_en.csv filter=lfs diff=lfs merge=lfs -text
+apps/web-crawl-q-and-a/processed/embeddings_ko.csv filter=lfs diff=lfs merge=lfs -text
+apps/web-crawl-q-and-a/processed/scraped_en.csv filter=lfs diff=lfs merge=lfs -text
+apps/web-crawl-q-and-a/processed/scraped_ko.csv filter=lfs diff=lfs merge=lfs -text

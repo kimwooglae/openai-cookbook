@@ -1,0 +1,2 @@
+
+PageInherit21.PageInherit21.1PageInheritJSP의 Include처럼 다른 웹스퀘어 xml화면 파일을 현재 화면에 include할때 사용하는 컴포넌트입니다. 접근성과 직접적인 관계는 없습니다.

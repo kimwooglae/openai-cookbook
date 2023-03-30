@@ -1,0 +1,3332 @@
+
+
+
+WebSquare.uiplugin.tabControl 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.tabControl - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+탭 컨트롤. 동적으로 탭을 생성/삭제.  
+ 최상위에 <div>가 위치하며 하위에 복합 태그들로 구성.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+accessibility
+
+웹 접근성 지원 기능을 사용할지에 대한 여부.
+
+
+
+adaptive
+
+[layout]browser의 width에 따른 적응형 웹 모드로 adaptiveThreshold속성값(width값)을 참조하여 동작한다
+
+
+
+adaptiveThreshold
+
+[default:480]adaptive속성이 정의되어있는 경우 browser의 width에 따른 레이아웃 변경을 위한 전환 width값
+
+
+
+alwaysDraw
+
+TabControl 컴포넌트가 포함하는 모든 탭의 컴포넌트의 렌더링 여부를 결정.
+
+
+
+changeActiveTab
+
+탭 스크롤 버튼(tabScroll="true")을 클릭할 경우 옆의 탭으로 이동하여 해당 탭을 활성화하는 기능 사용 여부
+
+
+
+changeActiveTabBeforeselect
+
+changeActiveTab 속성 적용후 탭 스크롤 버튼 클릭시 onbeforeselect 이벤트 발생 여부 설정
+(관련 속성)
+ changeActiveTab="true"
+(옵션 설명)
+"false" (기본 값) : 탭 스크롤 버튼을 클릭시 탭이 선택되기 전에 onbeforeselect 이벤트가 발생하지 않는다
+
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. CSS 파일이나 style 블럭에 정의한 여러 개의 class를 공백으로 구분하여 적용 가능.
+
+
+
+closable
+
+tab의 닫기 버튼을 활성화 할지의 여부로, 개별 closable 속성은 개별 tab에서 설정 함
+
+
+
+confirmFalseAction
+
+[default:new, select, exist]중복 확인 confirm에서 취소(cancel)를 선택했을 때의 컨텐츠 로딩 방식.
+
+
+
+confirmMessage
+
+useConfirmMessage속성의 값이 true인 경우 적용되며 confirm창에 보여줄 메세지.
+
+
+
+confirmTrueAction
+
+[default: exist, select, new] 중복 확인 confirm에서 확인(ok)를 선택했을 때의 컨텐츠 로딩 방식.
+
+
+
+focusOnStart
+
+[default:true, false]화면 로딩 시 활성화된 탭에 포커스를 이동시킬지에 대한 여부
+
+
+
+frameModal
+
+popup open시 tabControl content 영역 안에 팝업 띄우고 modal을 표시할지 여부. [default: false,true] 
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+keepDisabledTab
+
+tabControl을 disabled 처리할 경우, 각각의 tab의 disabled 유지 여부
+
+
+
+noUseTitle
+
+tabScroll 옵션 사용시 표시되는 이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title 사용 유무 설정
+
+
+
+preventTabClickEvent
+
+[default:false, true] onTabClick event를 막을지 여부
+
+
+
+processMsgFrame
+
+비동기 통신 중 processMsg를 WFrame 내부에 표시. [default: false,true] 
+
+
+
+selectedIndex
+
+선택돼 있는 tab의 인덱스
+
+
+
+tableRender
+
+[default : "",ul] 어떤 HTML 태그를 사용하여 선택 대상 목록을 렌더링할지 결정. tableRender = "ul"로 설정 시,
+
+
+
+tabLiRole
+
+tab > li 접근성관련 요소 role 설정값
+
+
+
+tabMove
+
+[default: false, true] 드래그-앤-드롭을 통해 탭 순서 변경을 허용.
+
+
+
+tabPosition
+
+탭 위치를 지정하는 속성. 
+
+
+
+tabRole
+
+[default:true, false]tab 컴포넌트의 role="tab" 속성으로 제어
+
+
+
+tabScroll
+
+[default:false, true]상단 탭들의 이동과 선택의 편의성을 제공하는 기능의 사용 여부로 하위버전의 호환성을 위해 기본 false로 설정되어있다
+
+
+
+tabScrollAuto
+
+[default:false, true] tabScroll이 오른쪽 끝까지 이동한 상태에서  tab을 닫았을 때, 남아있는 tab이 있을 경우 화면에 보이는 tab의 개수를 유지시켜 주는 기능
+
+
+
+useAccessibilityMenu
+
+[default : false, true] tabScroll="true" tableRender="ul" 사용시 좌측/우측/전체탭메뉴보기 버튼이 button으로 그려지고
+
+
+
+useATagBtn
+
+[default:false, true] closable="true"인 경우, 탭의 닫기 버튼을 a 태그로 렌더링하. 각 탭 마다 설정해야 함.
+
+
+
+useConfirmMessage
+
+[default:false, true]addTab API로 동적으로 tab을 생성할 때 사용자에게 중복체크 confirm처리를 할지의 여부로 주의사항은 아래와같다. 
+
+
+
+useLocale
+
+다국어 사용. 탭 이름 label에 표현되는 값을 클라이언트의 다국어 key를 이용하여 표현.
+
+
+
+useMoveNextTabFocus
+
+[default:false, true] tab 안에 있는 컴포넌트를 tab키로 focus 이동시 마지막 컴포넌트에서 focus를 이동할 경우 다음 tab으로 focus 이동이 가능하다.
+
+
+
+userData1
+
+사용자 정의 데이터 속성
+
+
+
+userData2
+
+사용자 정의 데이터 속성
+
+
+
+userData3
+
+사용자 정의 데이터 속성
+
+
+
+useTitleTooltip
+
+tabScroll 옵션 사용시 표시되는 이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title을 툴팁으로 표시함
+
+
+
+windowMaxNum
+
+[default:-1]최대 tab 개수로 -1로 설정할 경우 최대 tab개수에 제한을 두지 않는다.
+
+
+
+Event Summary
+
+
+
+
+onaftertabmove
+
+tab이동이 발생한 직후 발생한다
+
+
+
+onbeforeselect
+
+tab이 선택되기 전에 발생되며 return을 통해 tab의 이동을 제어할 수 있다
+
+
+
+onbeforetabclose
+
+tab이 close되기 전에 발생되며 return을 통해 close여부를 제어할 수 있다.
+
+
+
+onbeforetabmove
+
+tab이동이 발생하기 직전에 발생한다
+
+
+
+onchange
+
+선택 된 tab이 변경된 경우에 발생한다
+
+
+
+ondrawcomplete
+
+alwaysDraw="false"일 때, content의 wframe 또는 iframe이 화면에 load되는 시점에 발생한다
+
+
+
+onscrollleftbtnclick
+
+왼쪽 tab 이동 버튼을 클릭하면 발생
+
+
+
+onscrollrightbtnclick
+
+오른쪽 tab 이동 버튼을 클릭하면 발생
+
+
+
+onsubmenubtnclick
+
+submenu 버튼을 클릭하면 발생
+
+
+
+ontabclick
+
+tab이 클릭된 경우 발생
+
+
+
+ontabclose
+
+close버튼이 클릭된 경우 발생
+
+
+
+ontabload
+
+content의 wframe 또는 iframe이 화면에 완전히 load되는 시점에 발생한다
+
+
+Method Summary
+
+
+
+
+activateTab(
+									  idx
+										)
+								
+
+지정한 index의 탭이 비활성화 상태인 경우(alwaysDraw=false) 활성화 상태로 변경. 
+
+
+
+addClass(
+									  className
+										)
+								
+
+컴포넌트에 CSS class를 추가
+
+
+
+addTab(
+									  id
+									       , 
+									       tabOpt
+									       , 
+									       contOpt
+										)
+								
+
+(SP5 async) tab을 추가하는 기능으로 tab과 content의 세부 생성 옵션을 설정할 수 있다.
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+								
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+createFrame(
+									  
+										)
+								
+
+빈 iframe을 동적으로 생성한다
+
+
+
+deleteAllTabs(
+									  
+										)
+								
+
+TabControl의 모든 탭을 한번에 삭제한다(닫는다)
+
+
+
+deleteTab(
+									  idx
+										)
+								
+
+(SP5 async) 탭의 index로 탭을 삭제한다(닫는다).
+
+
+
+disableTab(
+									  tabIndex
+										)
+								
+
+tab을 disabeld 처리한다
+
+
+
+enableTab(
+									  tabIndex
+										)
+								
+
+tab의 disabeld를 해제한다
+
+
+
+focus(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트에 포커스를 줌
+
+
+
+getDisabled(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환
+
+
+
+getFrame(
+									  idx
+										)
+								
+
+tab의 index(또는 id)에 해당하는 iframe 또는 wframe을 반환한다.
+
+
+
+getGenerator(
+									  
+										)
+								
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환
+
+
+
+getID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 ID를 반환
+
+
+
+getInitStyle(
+									  CSS
+										)
+								
+
+컴포넌트의 초기 스타일을 반환
+
+
+
+getLabelText(
+									  idx
+										)
+								
+
+tab의 label을 반환한다
+
+
+
+getOpacity(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getOriginalID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getPluginName(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환
+
+
+
+getPosition(
+									  positionName
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getReadOnly(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환
+
+
+
+getScope(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getSelectedTabID(
+									  
+										)
+								
+
+현재 선택된 tab의 ID를 반환한다
+
+
+
+getSelectedTabIndex(
+									  
+										)
+								
+
+현재 선택된 tab의 index를 반환한다
+
+
+
+getSize(
+									  sizeName
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getStyle(
+									  propertyName
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환
+
+
+
+getStyleValue(
+									  style
+										)
+								
+
+[deprecated]
+
+
+
+getTabCount(
+									  options
+										)
+								
+
+현재 tab 개수 반환
+
+
+
+getTabID(
+									  tabIndex
+										)
+								
+
+tab index에 해당하는 ID 리턴합니다
+
+
+
+getTabIndex(
+									  tabID
+										)
+								
+
+tab의 ID로 해당 tab의 index를 반환한다
+
+
+
+getTabInfo(
+									  
+										)
+								
+
+각 tab에 대한 id, label, defaultTabIndex(초기의탭위치), currentTabIndex(현재화면의탭위치), src, alwaysDraw 정보를 배열에 담아 리턴하는 함수
+
+
+
+getTitle(
+									  
+										)
+								
+
+컴포넌트의 title 속성 값을 반환
+
+
+
+getUdcHome(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUdcRoot(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUserData(
+									  key
+										)
+								
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환
+
+
+
+getWindow(
+									  idx
+										)
+								
+
+tab index 또는 id에 해당하는 window 객체를 반환한다.
+
+
+
+hasClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인
+
+
+
+hide(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)
+
+
+
+hideTab(
+									  tabIndex
+										)
+								
+
+(SP5 async) tab을 숨김(hidden)처리 한다.
+
+
+
+isLoaded(
+									  idx
+										)
+								
+
+tab의 index에 해당하는 화면의 출력유무를 반환한다
+
+
+
+removeClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setContentsHeight(
+									  height
+										)
+								
+
+컨텐츠 영역의 높이(px단위)를 설정한다
+
+
+
+setDisabled(
+									  disabled
+										)
+								
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정
+
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+								
+
+지정한 이벤트를 중단함
+
+
+
+setHeight(
+									  height
+										)
+								
+
+tabControl의 height를 설정하며 px단위로 적용된다
+
+
+
+setInitStyle(
+									  property
+										)
+								
+
+컴포넌트의 초기 스타일을 복구한다
+
+
+
+setLabelText(
+									  idx
+									       , 
+									       label
+										)
+								
+
+tab의 label을 설정한다
+
+
+
+setOpacity(
+									  value
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정
+
+
+
+setReadOnly(
+									  readOnly
+										)
+								
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정
+
+
+
+setSelectedTabIndex(
+									  tabIndex
+										)
+								
+
+(SP5 async) tab의 index에 해당하는 tab을 선택한다.
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정
+
+
+
+setTabHTML(
+									  tabID
+									       , 
+									       tabHTML
+										)
+								
+
+tabHTML 값을 동적으로 변경한다
+
+
+
+setTabOrder(
+									  tabOrderArr
+										)
+								
+
+새로운 tab순서에 대한 배열을 받아 해당 순서대로 tab을 재배치시키는 함수
+
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+setWidth(
+									  width
+										)
+								
+
+tabControl의 width를 설정하며 px단위로 적용된다
+
+
+
+setWindowMaxNum(
+									  windowMaxNum
+										)
+								
+
+tabControl에서 열 수 있는 최대 window 개수를 설정합니다
+
+
+
+show(
+									  displayType
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)
+
+
+
+showTab(
+									  tabIndex
+										)
+								
+
+(SP5 async) hide된 tab을 보여둔다.
+
+
+
+toggleClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+컴포넌트에서 특정 이벤트를 발생시킴
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+컴포넌트에서 이벤트를 제거
+
+
+
+visible(
+									  flag
+										)
+								
+
+[deprecated] 
+
+
+
+Property Detail
+
+
+
+
+accessibility
+
+웹 접근성 지원 기능을 사용할지에 대한 여부.1. 키보드 기능 변경 : tablist 영역에서 좌우 방향키를 통해 tab을 탐색하며, tablist 영역에서 shift키를 누르면 tablist를 벗어나 다음 컨트롤로 이동한다.  포커스가 위치한 tab에서 enter 키 또는 space 키를 누르면 해당 탭이 활성화되고 포커스가 탭 컨텐츠 부분으로 이동한다.2. tabScroll="true"일 때 UI 변경 : 관련 UI들이 button으로 렌더링되고, tab 목록이 ul, li로 구성된다.3. 아래의 속성값이 강제로 적용된다.
+ useAccessibilityMenu="true" 
+ useTabKeyOnly="false"
+ tableRender="ul"
+ tabScrollDiv="true"
+ useBridge="true"
+ useMoveNextTabFocus="false"
+ changeActiveTab="true"
+ useATagBtn="true"
+(옵션 설명)
+"false" (기본 값)웹 접근성 지원 기능을 사용하지 않음.
+"true" 웹 접근성 기능이 적용되어 키보드 기능 및 tabScroll관련 UI가 변경됨
+
+
+adaptive
+
+[layout]browser의 width에 따른 적응형 웹 모드로 adaptiveThreshold속성값(width값)을 참조하여 동작한다.
+
+
+adaptiveThreshold
+
+[default:480]adaptive속성이 정의되어있는 경우 browser의 width에 따른 레이아웃 변경을 위한 전환 width값. px단위로 계산된다.
+
+
+alwaysDraw
+
+TabControl 컴포넌트가 포함하는 모든 탭의 컴포넌트의 렌더링 여부를 결정.true: TabControl 컴포넌트가 포함하는 모든 탭의 컴포넌트를 초기 화면 로딩 시 렌더링. (탭 및 컴포넌트 개수에 따라 브라우저의 렌더링 부하가 증가할 수 있음.)false (기본 값): 초기 로딩 시, 첫번 째 탭의 컴포넌트만 렌더링. 사용자 이벤트 혹은 스크립트 이벤트로 각 탭이 선택되는 시점에 해당 탭의 화면을 렌더링. (초기 랜더링 후 첫 번째 탭을 제외한 나머지 탭의 컴포넌트는 객체화되지 않음.)
+
+
+changeActiveTab
+
+탭 스크롤 버튼(tabScroll="true")을 클릭할 경우 옆의 탭으로 이동하여 해당 탭을 활성화하는 기능 사용 여부.[default: false, true] 
+(관련 속성)
+ tabScroll="true"
+
+
+changeActiveTabBeforeselect
+
+changeActiveTab 속성 적용후 탭 스크롤 버튼 클릭시 onbeforeselect 이벤트 발생 여부 설정
+(관련 속성)
+ changeActiveTab="true"
+(옵션 설명)
+"false" (기본 값) : 탭 스크롤 버튼을 클릭시 탭이 선택되기 전에 onbeforeselect 이벤트가 발생하지 않는다.
+"true" : 탭 스크롤 버튼을 클릭시 탭이 선택되기 전에 onbeforeselect 이벤트가 발생한다.
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. CSS 파일이나 style 블럭에 정의한 여러 개의 class를 공백으로 구분하여 적용 가능.Engine 내부에서 각 컴포넌트 별로 지정된 class를 적용하나, class 속성을 이용하여 컴포넌트의 CSS를 제어 가능. 컴포넌트의 layout이 복잡한 구조를 가지고 있으므로 CSS의 selector를 이용하여 하위 항목에 접근해야 함.
+
+
+closable
+
+tab의 닫기 버튼을 활성화 할지의 여부로, 개별 closable 속성은 개별 tab에서 설정 함
+
+
+confirmFalseAction
+
+[default:new, select, exist]중복 확인 confirm에서 취소(cancel)를 선택했을 때의 컨텐츠 로딩 방식.(new:새로운 탭, select:기존 탭을 선택, exist:tabID에 해당하는 탭에 src를 바꿔 로딩하고 해당 탭을 선택)
+
+
+confirmMessage
+
+useConfirmMessage속성의 값이 true인 경우 적용되며 confirm창에 보여줄 메세지.기본적으로 엔진에서 tab의 label값을 이용하여 중복 확인 메세지를 보여준다.
+
+
+confirmTrueAction
+
+[default: exist, select, new] 중복 확인 confirm에서 확인(ok)를 선택했을 때의 컨텐츠 로딩 방식.(new: 새로운 탭, select: 기존 탭을 선택, exist: tabID에 해당하는 탭에 src를 바꿔 로딩하고 해당 탭을 선택)
+
+
+focusOnStart
+
+[default:true, false]화면 로딩 시 활성화된 탭에 포커스를 이동시킬지에 대한 여부. 기본값은 true이다.
+
+
+frameModal
+
+popup open시 tabControl content 영역 안에 팝업 띄우고 modal을 표시할지 여부. [default: false,true] content가 frameMode="wframe" 또는 "wframePreload"인 경우에만 동작.단, popup의 frameModal 속성이 "top"일 경우에는 전체 화면에 표시.
+(옵션 설명)
+ "false" (기본 값) : popup frameModal 속성에 따름.
+ "true" : WFrame 내부에 표시.
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+keepDisabledTab
+
+tabControl을 disabled 처리할 경우, 각각의 tab의 disabled 유지 여부. 
+(옵션 설명)
+"false" tabControl disabled 해제할 경우 모든 tab 활성화. 
+"true"  tabControl disabled 해제할 경우, disabled 처리 전 이미 disabled 된 tab은 비활성화 유지.
+
+
+noUseTitle
+
+tabScroll 옵션 사용시 표시되는 이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title 사용 유무 설정.
+(옵션 설명)
+"false" 이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title을 사용함.
+"true"  이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title을 사용 하지 않음.
+
+
+preventTabClickEvent
+
+[default:false, true] onTabClick event를 막을지 여부. tab disabled 상태에서만 처리 된다.
+
+
+processMsgFrame
+
+비동기 통신 중 processMsg를 WFrame 내부에 표시. [default: false,true] content가 frameMode="wframe" 또는 "wframePreload"인 경우에만 동작.
+(옵션 설명)
+ "false" (기본 값) : 전체 화면에 표시.
+ "true" : WFrame 내부에 표시.
+(관련 속성)
+ 
+
+
+selectedIndex
+
+선택돼 있는 tab의 인덱스
+
+
+tableRender
+
+[default : "",ul] 어떤 HTML 태그를 사용하여 선택 대상 목록을 렌더링할지 결정. tableRender = "ul"로 설정 시,tabControl 컴포넌트의 tabScroll버튼 클릭 시 나타나는 전체 탭들에 대한 항목들을 ul 및 li 태그로 생성.
+
+
+tabLiRole
+
+tab > li 접근성관련 요소 role 설정값
+
+
+tabMove
+
+[default: false, true] 드래그-앤-드롭을 통해 탭 순서 변경을 허용.true: 허용. false: 기본 값. 허용하지 않음.
+
+
+tabPosition
+
+탭 위치를 지정하는 속성. 기본적으로는 탭은 위에 위치. 단, 하위 호환을 위해 이 속성을 공백으로 둔 것과 "top" 지정한 것 사이에는 CSS 등의 차이가 존재. [top, left, right, bottom]
+(옵션 설명)
+ "top" 위에 위치. 
+ "left" 왼쪽에 위치. 
+ "right" 오른쪽에 위치. 
+ "bottom" 하단에 위치.
+ tabScroll="true"인 경우, top, bottom만 지원. left, right인 경우 top으로 설정.
+
+
+tabRole
+
+[default:true, false]tab 컴포넌트의 role="tab" 속성으로 제어
+
+
+tabScroll
+
+[default:false, true]상단 탭들의 이동과 선택의 편의성을 제공하는 기능의 사용 여부로 하위버전의 호환성을 위해 기본 false로 설정되어있다.
+
+
+tabScrollAuto
+
+[default:false, true] tabScroll이 오른쪽 끝까지 이동한 상태에서  tab을 닫았을 때, 남아있는 tab이 있을 경우 화면에 보이는 tab의 개수를 유지시켜 주는 기능tabScroll 속성이 true일 때만 동작하는 속성이다. (ex) tab이 총 10개 있고 화면에 보이는 tab이 5개일 때 tabScroll을 오른쪽 끝으로 이동한 상태에서 tab을 닫을 경우, 전체 tab 개수가 5개 미만으로 줄어들기 전까지는 tab을 닫아도 화면에 보이는 tab의 개수를 5개로 유지한다.
+
+
+useAccessibilityMenu
+
+[default : false, true] tabScroll="true" tableRender="ul" 사용시 좌측/우측/전체탭메뉴보기 버튼이 button으로 그려지고tabScroll버튼 클릭 시 나타나는 탭들의 항목들이 ul 및 li 태그로 생성되서 나타나도록 설정함.
+
+
+useATagBtn
+
+[default:false, true] closable="true"인 경우, 탭의 닫기 버튼을 a 태그로 렌더링하. 각 탭 마다 설정해야 함.a 태그는 키보드를 통한 제어가 가능하여 웹 접근성 준수가 가능.true: a 태그로 렌더링. false: 기본 값. div 태그로 렌더링.
+
+
+useConfirmMessage
+
+[default:false, true]addTab API로 동적으로 tab을 생성할 때 사용자에게 중복체크 confirm처리를 할지의 여부로 주의사항은 아래와같다. addTab API의 파라메터의 속성 중 openAction의 값이 정의되지 않고 tab의 id가 중복되었을 경우 아래의 속성과 연동하여 사용자에게 중복체크 confirm 처리한다.관련 속성 : confirmMessage, confirmTrueAction, confirmFalseAction
+
+
+useLocale
+
+다국어 사용. 탭 이름 label에 표현되는 값을 클라이언트의 다국어 key를 이용하여 표현.(세부 내용은 다국어 설정 가이드 - 클라이언트 편을 참고.)
+(옵션 설명)
+"false" (기본 값)클라이언트의 다국어 key를 이용하지 않음. 
+"true" 클라이언트의 다국어 key를 이용하여 다국어 지원.
+
+
+useMoveNextTabFocus
+
+[default:false, true] tab 안에 있는 컴포넌트를 tab키로 focus 이동시 마지막 컴포넌트에서 focus를 이동할 경우 다음 tab으로 focus 이동이 가능하다.해당 속성은 useTabKeyOnly가 false일 경우에만 적용된다.
+
+
+userData1
+
+사용자 정의 데이터 속성. getUserData("userData1") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData1");
+
+
+userData2
+
+사용자 정의 데이터 속성. getUserData("userData2") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData2");
+
+
+userData3
+
+사용자 정의 데이터 속성. getUserData("userData3") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData3");
+
+
+useTitleTooltip
+
+tabScroll 옵션 사용시 표시되는 이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title을 툴팁으로 표시함.
+(옵션 설명)
+"false" 이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title을 툴팁으로 표시 하지 않음.
+"true"  이전 탭, 다음 탭, 탭 목록 버튼, tab, tab close 버튼들의 title을 툴팁으로 표시함.
+
+
+windowMaxNum
+
+[default:-1]최대 tab 개수로 -1로 설정할 경우 최대 tab개수에 제한을 두지 않는다.spaInitCount속성값을 설정 한 경우 일반적으로 해당 속성의 값과 동일하게 설정한다.
+
+
+
+
+
+Event Detail
+
+
+
+
+onaftertabmove
+
+tab이동이 발생한 직후 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+infoObjectstartTabID, startTabIndex, endTabID, endTabIndex를 포함한 오브젝트를 반환한다.
+  info.startTabIndex : tab이동을 시작한 tab의 index (화면기준)
+  info.startTabID : tab이동을 시작한 tab의 id 
+  info.endTabID : tab이동이 끝나는 지점에 있는 tab (tab이동 처리 후, tab이동을 시작한 tab의 왼쪽에 위치할 tab) 의 id
+  info.endTabIndex : tab이동이 끝나는 지점에 있는 tab (tab이동 처리 후, tab이동을 시작한 tab의 왼쪽에 위치할 tab) 의 index
+
+
+
+
+
+onbeforeselect
+
+tab이 선택되기 전에 발생되며 return을 통해 tab의 이동을 제어할 수 있다.
+
+Parameter
+
+nametypedescription
+
+
+selectedIndexNumber:Y이전 index
+
+
+indexNumber:Y사용자가 선택한 index
+
+
+Sample
+ <![CDATA[
+    //tab의 label 가져오기
+    var tmpLabel = this.getLabelText( index );
+    return confirm(tmpLabel + " 로(으로) 이동하시겠습니까?");
+ ]]>
+
+
+onbeforetabclose
+
+tab이 close되기 전에 발생되며 return을 통해 close여부를 제어할 수 있다.사용자가 close버튼을 클릭하거나 deleteTab API를 통해 tab을 닫을 때 발생된다.
+
+Parameter
+
+nametypedescription
+
+
+tabIDString:Y변경된 탭의 ID로 엔진 내부에서 사용하는 id.
+
+
+idxNumber:Y탭의 index
+
+
+Sample
+ <![CDATA[
+    //tab의 label 가져오기
+    var tmpLabel = this.getLabelText( idx );
+    return confirm(tmpLabel + " 을(를) 닫으시겠습니까?");
+ ]]>
+
+
+onbeforetabmove
+
+tab이동이 발생하기 직전에 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+infoObjectstartTabID, startTabIndex, endTabID, endTabIndex를 포함한 오브젝트를 반환한다.
+  info.startTabIndex : tab이동을 시작한 tab의 index (화면기준)
+  info.startTabID : tab이동을 시작한 tab의 id 
+  info.endTabID : tab이동이 끝나는 지점에 있는 tab (tab이동 처리 후, tab이동을 시작한 tab의 왼쪽에 위치할 tab) 의 id
+  info.endTabIndex : tab이동이 끝나는 지점에 있는 tab (tab이동 처리 후, tab이동을 시작한 tab의 왼쪽에 위치할 tab) 의 index
+
+
+
+
+
+onchange
+
+선택 된 tab이 변경된 경우에 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+tabIDString:Y변경된 탭의 ID로 엔진 내부에서 사용하는 id.
+
+
+idxNumber:Y변경된 탭의 index
+
+
+userTabIDString:Y변경된 탭의 사용자가 지정한 ID으로 addTab API를 이용하여 탭 추가 한 경우 탭의 옵션 중 id값.
+
+
+Sample
+//아래와 같이 tab을 추가하고 해당 tab을 click한 경우
+var tabOpt = {};
+tabOpt.label= "웹스퀘어 문서 사이트";
+tabOpt.openAction = "new";
+tabOpt.closable ="true";
+
+var contentOpt = {
+        "src" : "http://docs.inswave.com"
+};
+
+tabControl1.addTab( "tab01", tabOpt, contentOpt);
+
+//onchage이벤트의 return 예시         
+ <![CDATA[
+    alert(tabID + " , " + idx + " , " + userTabID);
+    //alert의 string 예시 ) tabControl1_tab_tab1 , 1 , tab1 
+ ]]>
+
+ output1의 표현되는 값은 tabControl1_tab_tab2 : 1 : tab2 이며, tab2로 이동.
+
+
+ondrawcomplete
+
+alwaysDraw="false"일 때, content의 wframe 또는 iframe이 화면에 load되는 시점에 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+tabIDStringload된 탭의 ID로 엔진 내부에서 사용하는 id
+
+
+idxStringload된 탭의 index
+
+
+userIDStringload된 탭의 사용자 id
+
+
+Sample
+script의 lazy="false"로 설정 후 이벤트 사용한다.  
+ <![CDATA[
+  scwin.tabControl1_ondrawcomplete = function(tabID, idx, userID) {
+     console.log("tabID:"+tabID+" idx:"+idx+" userID:"+userID); 
+  };
+ ]]>
+
+
+onscrollleftbtnclick
+
+왼쪽 tab 이동 버튼을 클릭하면 발생
+
+
+
+onscrollrightbtnclick
+
+오른쪽 tab 이동 버튼을 클릭하면 발생
+
+
+
+onsubmenubtnclick
+
+submenu 버튼을 클릭하면 발생
+
+
+
+ontabclick
+
+tab이 클릭된 경우 발생
+
+Parameter
+
+nametypedescription
+
+
+tabIDString:Y변경된 탭의 ID로 엔진 내부에서 사용하는 id.
+
+
+idxNumber:Y변경된 탭의 index
+
+
+Sample
+ <![CDATA[
+    alert(tabID + " , " + idx);
+    //alert의 string 예시 ) tabControl1_tab_tab1 , 1 
+ ]]>
+
+
+ontabclose
+
+close버튼이 클릭된 경우 발생
+
+Parameter
+
+nametypedescription
+
+
+tabIDString:Y탭의 ID로 엔진 내부에서 사용하는 id.
+
+
+idxNumber:Y탭의 index
+
+
+Sample
+ <![CDATA[
+    alert(tabID + " , " + idx);
+    //alert의 string 예시 ) tabControl1_tab_tab1 , 1 
+ ]]>
+
+
+ontabload
+
+content의 wframe 또는 iframe이 화면에 완전히 load되는 시점에 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+tabIDStringload된 탭의 ID로 엔진 내부에서 사용하는 id
+
+
+idxStringload된 탭의 index
+
+
+userIDStringload된 탭의 사용자 id
+
+
+Sample
+script의 lazy="false"로 설정 후 이벤트 사용한다.  
+ <![CDATA[
+  scwin.tabControl1_ontabload = function(tabID, idx, userID) {
+     console.log("tabID:"+tabID+" idx:"+idx+" userID:"+userID); 
+  };
+ ]]>
+
+
+
+Method Detail
+
+
+
+
+activateTab(
+									  idx
+										)
+							
+
+지정한 index의 탭이 비활성화 상태인 경우(alwaysDraw=false) 활성화 상태로 변경. 탭 내부 컨텐츠에 대해 API를 적용할 경우, 해당 탭을 활성화시켜야 API가 동작.관련 API: isLoaded (탭 활성화 상태를 확인.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idxNumberY
+
+
+
+
+
+
+addClass(
+									  className
+										)
+							
+
+컴포넌트에 CSS class를 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가할 class의 이름
+
+
+
+Sample
+// (예제)
+// input1 컴포넌트에 oddClass라는 class를 추가    
+input1.addClass("oddClass");
+
+
+addTab(
+									  id
+									       , 
+									       tabOpt
+									       , 
+									       contOpt
+										)
+							
+
+(SP5 async) tab을 추가하는 기능으로 tab과 content의 세부 생성 옵션을 설정할 수 있다.SP5에서 비동기 함수로 변경되었다. 따라서 await tabControl.addTab(); 형태로 호출해야 올바로 동작한다. 이 함수의 호출을 포함하는 함수들은 async function이 되어야 한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idStringYtab의 ID
+
+
+tabOptJSONYtab의 생성 옵션
+  label : tab에 표현 될 text.
+  title : tab에 마우스 over 시 tooltip형태로 표현되는 값.
+  openAction : 컨텐츠 로딩 옵션. [select, exist, new, last]  select : 기존 탭을 선택.  exist : tabID에 해당하는 탭에 src를 바꿔 로딩하고 해당 탭을 선택.  new: 새로운 탭.  last: 기존 tab을 마지막 tab으로 이동후 선택.
+ closable : [default:false, true]tab의 close 버튼 표시 유무
+ disabled : [default:false, true]disabled 유무
+  tabWidth : tab의 width
+  tabHeight: tab의 height
+  class : tab에 적용할 class
+  style : tab에 적용할 Style
+  activeTabClass : 활성 tab에 적용할 class
+  disabledTabClass : 비활성 tab에 적용할 class
+  selectedImage : 선택된 tab에 적용할 Image URL
+  defaultImage : 기본 tab에 적용할 Image URL
+  hoverImage : tab Hover시 적용할 Image URL
+  tabType : Tab 표현 유형("image", "text")
+  selectedClass : 선택된 tab에 적용할 class
+  defaultClass : 기본 tab에 적용할 class
+  hoverClass : tab hover시 적용할 class
+  addTabIndex : 추가되는 tab의 tabIndex
+ useATagBtn : closable이 true인 경우, 추가되는 tab의 close버튼을 a Tag로 할지 여부
+
+
+contOptJSONYcontent의 생성 옵션
+  src : contents의 URL
+ wframe : [default:false, true]contents의 생성 mode. default는 false 즉 iframe 이며, true를 줄 경우 wframe으로 그린다.
+ alwaysDraw : [default:false, true]tab 생성시 contents의 draw 유무
+  style : tab contents에 적용할 style
+  name : tab contents로 설정할 iframe의 name
+  title : tab contents로 설정할 iframe의 title
+
+
+
+
+Return
+
+typedescription
+
+
+Promise(SP5)생성된 tabId 정보를 포함하는 Promise 객체 반환
+
+
+Sample
+ // SP5에서 addTab이 비동기 함수가 되었으므로 이 함수의 호출을 포함하는 scwin.addTabTest또한 async function이 되어야 한다.
+ scwin.addTabTest = async function() {
+     // 실제 전달할 데이터 정의. 새로 열릴 탭에 데이터를 전달 (dataObject를 통해 전달 가능) 
+     var rowJSON = {
+        "Personal Info" : { "Name": "Lee", "Age": 50, "Married" : false},   
+        "Region": "Seoul",  
+        "Carrier": true .
+        };  
+        
+     // 탭 생성. SP5에서는 Promise 객체를 return하므로 await 키워드를 붙여야 tabId가 올바로 반환된다.
+     var newTabId = await tabControl1.addTab("cmcm011",  
+        {   
+            "label": "New", 
+            "title": "dataObject",
+            "openAction": "exist",
+            "closable": "true"
+        }, 
+        {   
+            "src": "popup_sub.xml",
+            "frameMode" : "wframePreload",
+            "scope" : true, 
+            "alwaysDraw": "true",
+            "dataObject":{
+                    "type" : "json",
+                "name" : "tabParam",
+                "data" : rowJSON
+            }
+        }
+     );
+     common.doSomething(); // 만약 위의 addTab 호출 시 await 키워드를 생략할 경우 addTab이 완료되기 전에 이 함수가 호출된다.
+ }
+
+ // 새로 생성한 탭에서 전달 받은 데이터를 확인하는 예제 
+ 
+ // var paramData = $p.getParameter("paramTest");
+ // var data = JSON.stringify(paramData);
+ // alert(data);
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY할당할 이벤트
+
+
+functionFunctionY이벤트에 대한 핸들러 함수.
+
+
+
+Sample
+// (예제 1)
+// input1의 onclick 이벤트에 대한 핸들러 함수를 직접 정의하여 할당. 
+input1.bind("onclick", function(e){ alert(input1.getValue();}));
+
+// (예제 2)
+// 미리 commObj.ev_click 함수를 정의.
+var commObj = {};
+commObj.ev_click = function(e){
+    alert("click :: "+this.id);
+};
+
+// input1 컴포넌트에 onclick 이벤트와 정의한 핸들러 함수를 동적으로 할당. 
+input1.bind("onclick", commObj.ev_click );
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+							
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 기본적으로 addClass를 통해 추가된 class만 변경 가능. 웹스퀘어 컴포넌트의 class 속성에 직접 정의된 class를 삭제하려면 config.xml 파일에 아래 설정을 추가해야 함. 
+// config.xml에 아래 설정을 추가. 
+<removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+oldClassNameStringY변경할 class
+
+
+newClassNameStringY새로 사용할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+// config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// class를 변경 가능. 
+// (tmpInputClass class를 tmpInputWarninClass로 변경.)
+input1.changeClass("tmpInputClass","tmpInputWarninClass");
+
+
+createFrame(
+									  
+										)
+							
+
+빈 iframe을 동적으로 생성한다. 단 iframe의 총 개수가 windowMaxNum 설정과 같은 경우에는 이 함수를 직접 호출하더라도 빈 iframe을 생성하지 않는다.
+
+
+
+
+
+deleteAllTabs(
+									  
+										)
+							
+
+TabControl의 모든 탭을 한번에 삭제한다(닫는다).
+
+
+Sample
+tabControl1.deleteAllTabs();
+
+
+deleteTab(
+									  idx
+										)
+							
+
+(SP5 async) 탭의 index로 탭을 삭제한다(닫는다).SP5에서 비동기 함수로 변경되었다. 따라서 await tabControl.deleteTab(); 형태로 호출해야 올바로 동작한다. 이 함수의 호출을 포함하는 함수들은 async function이 되어야 한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idxNumberY삭제하(닫으)려는 텝의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Promise(SP5) Promise 객체 반환
+
+
+Sample
+ // SP5에서 deleteTab가 비동기 함수가 되었으므로 이 함수의 호출을 포함하는 scwin.deleteTabTest또한 async function이 되어야 한다.
+ scwin.deleteTabTest = async function() {
+     // SP5에서는 Promise 객체를 return하므로 await 키워드를 붙여야 deleteTab호출 이후의 동작이 정상적인 순서로 동작하게 된다.
+     await tabControl1.deleteTab(1);
+     common.doSomething(); // 만약 위의 deleteTab 호출 시 await 키워드를 생략할 경우 deleteTab이 완료되기 전에 이 함수가 호출된다.
+ }
+
+
+
+disableTab(
+									  tabIndex
+										)
+							
+
+tab을 disabeld 처리한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIndexNumberYdisabled할 tab의 index
+
+
+
+Sample
+//첫번째 tab이 비활성화된다.
+tabControl1.disableTab(0);
+
+
+enableTab(
+									  tabIndex
+										)
+							
+
+tab의 disabeld를 해제한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIndexNumberYenabled할 tab의 index.
+
+
+
+Sample
+//첫번째 tab을 활성화한다.
+tabControl1.enableTab(0);
+
+
+focus(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트에 포커스를 줌. (웹스퀘어 컴포넌트 공통.)
+
+
+
+
+
+getDisabled(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Booleandisabled 속성 값
+
+
+Sample
+// 컴포넌트의 disabled 속성 값 확인 예제
+var returnValue = componentId.getDisabled();
+// (반환 값 예시) false
+
+
+getFrame(
+									  idx
+										)
+							
+
+tab의 index(또는 id)에 해당하는 iframe 또는 wframe을 반환한다.wframe 또는 iframe안의 객체(컴포넌트,function 등)에 접근하려면 getWindow API를 사용한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idxNumber||StringYtab의 index 또는 tab의 id
+
+
+
+
+Return
+
+typedescription
+
+
+Objecttab index에 해당하는 wframe 또는 iframe 객체
+
+
+Sample
+//첫번째 tab의 src를 "/tmp/tmp01.xml"로 변경한다.
+var tmpContFrame = tabControl1.getFrame(0);
+tmpContFrame.setSrc("/tmp/tmp01.xml");
+
+
+getGenerator(
+									  
+										)
+							
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Object부모 Generator 객체
+
+
+Sample
+//부모 Generator가 자식으로 Trigger를 생성한 예제
+  
+
+// 아래 예제의 경우 trigger1을 클릭하면 generator1 객체가 console에 표시됨. 
+ scwin.trigger1.onclick = function(){ console.log(this.getGenerator());} 
+
+
+
+getID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 ID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트 ID
+
+
+Sample
+// 동적으로 웹스퀘어 컴포넌트를 받을 경우, 아래와 같이 ID 확인 가능.
+function fn_validCheck(tmpObj){
+    var compID = tmpObj.getID();
+}
+// 위의 예제 에서 tmpObj가 "input1" ID를 가지고 있는 경우,
+// (반환 값) "input1"
+
+
+getInitStyle(
+									  CSS
+										)
+							
+
+컴포넌트의 초기 스타일을 반환. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다.(웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+CSSStringN속성 (지정하지 않으면 모든 정보 출력)
+
+
+
+
+
+
+getLabelText(
+									  idx
+										)
+							
+
+tab의 label을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idxNumberYtab의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Stringtab의 label
+
+
+Sample
+//1번째 tab의 label을 반환
+var returnValue = tabControl1.getLabelText(0);
+
+
+getOpacity(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS의 opacity 속성 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+IntegerOpacity 값
+
+
+Sample
+// inputBox 컴포넌트에 opacity CSS를 적용.
+
+        
+// inputBox 컴포넌트의 opacity 값을 반환. 
+var returnValue = input1.getOpacity(); 
+// returnValue는 0 ~ 1 사이의 실수.
+// (반환 값) "0.2"
+
+
+getOriginalID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)originalID는 Scope 기능을 사용할 경우 존재. scope="true"인 WFrame를 사용할 경우, WFrame 내부의 컴포넌트 ID는 원래 사용자가 정의한 값(originalID) 앞에 prefix(wframeID + "_")가 추가되는 방식으로 변경됨.  originalID는 이 때, prefix가 추가되기 전 ID를 의미.
+
+
+
+Return
+
+typedescription
+
+
+String컴포넌트의 originalID
+
+
+Sample
+// WFrame을 사용하는 다중 화면 구조 예시
+
+// WFrame을 포함한 메인 화면 (main.xml) 
+ 
+
+// 메인 화면 WFrame에 연결되는 소스 화면 (text.xml)
+
+
+// text.xml 화면의 내부 스크립트에서 ID 및 originalID 확인하는 예제.
+// getID 실행 
+textbox1.getID(); // 실행 결과는 "wframe1_textbox1"
+ 
+// getOriginalID 실행 
+textbox1.getOriginalID(); // 실행 결과는 "textbox1"
+
+
+getPluginName(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트의 이름 (pluginName)
+
+
+Sample
+// 아래와 같이 공통 함수에서 동적으로 웹스퀘어 객체를 받는 경우, 컴포넌트 종류에 따른 분기 처리가 가능.
+var commObj = {};
+
+commObj.fn_makeReqData = function(tmpObj){
+    var tmpID = tmpObj.getID(); // 컴포넌트 ID
+    var tmpCompType = tmpObj.getPluginName();   // 컴포넌트 이름
+
+    if(tmpCompType == "input"){
+        //..로직..
+    }else if(tmpCompType == "gridView"){
+        //..로직 ..
+    }else{
+        //..로직..
+    }
+};
+
+
+getPosition(
+									  positionName
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 위치 값이 %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNameStringY[left, top] 위치 종류
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 위치 값
+
+
+Sample
+// 아래와 같이 input 컴포넌트에 CSS 속성 margin이 적용된 경우,
+
+
+// (예제) 위의 inputBox 컴포넌트의 top 값을 확인     
+var returnValue = input1.getPosition("top"); 
+
+// 픽셀 단위의 위치 값이 반환됨.
+
+// (반환 값) 10
+
+
+getReadOnly(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Boolean현재 설정되어있는 readOnly 속성
+
+
+Sample
+// 컴포넌트의 readOnly 속성 값 확인 예제
+var returnValue = componentId.getReadOnly();
+// (반환 값 예시) false
+
+
+getScope(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, null을 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체 또는 null
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+textbox1.getScope(); 
+// (반환 값) wframe11 객체
+
+
+getScopeWindow(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, 전역 window 객체를 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체의 scope 객체 또는 전역 window 객체
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+var scope = textbox1.getScopeWindow();
+scope.wframe11 === textbox1.getScope(); // true
+
+
+getSelectedTabID(
+									  
+										)
+							
+
+현재 선택된 tab의 ID를 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+String선택된 tab의 ID
+
+
+Sample
+
+var returnValue = tabControl1.getSelectedTabID();
+
+
+getSelectedTabIndex(
+									  
+										)
+							
+
+현재 선택된 tab의 index를 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Numbertab의 index
+
+
+Sample
+
+var returnValue = tabControl1.getSelectedTabIndex();
+
+
+getSize(
+									  sizeName
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sizeNameStringY크기 값의 종류. sizeName 별 계산 방법은 아래 표를 참고. 
+height : element.clientHeight
+innerHeight : element.clientHeight + padding
+outerHeight : element.clientHeight + padding + border
+outerMarginHeight : element.clientHeight + padding + border + margin
+width : element.clientWidth
+innerWidth : element.clientWidth + padding
+outerWidth : element.clientWidth + padding + border
+outerMarginWidth : element.clientWidth + padding + border + margin
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 크기 값
+
+
+Sample
+var returnValue = componentId.getSize("width");
+// (반환 예) 100 
+// 픽셀 단위의 크기 값이 반환됨. 
+// %로 설정된 경우, 픽셀로 변환된 값이 반환됨.
+
+
+getStyle(
+									  propertyName
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY반환할 CSS 속성
+
+
+
+
+Return
+
+typedescription
+
+
+StringCSS 속성 값
+
+
+Sample
+//아래와 같이 input 컴포넌트가 정의 된 경우
+
+
+// (예제) 위의 inputBox 컴포넌트의 width 값을 확인   
+var returnValue = input1.getStyle("width");
+
+// (반환 값) "144px"
+
+
+getStyleValue(
+									  style
+										)
+							
+
+[deprecated]getStyle 사용 권장.웹스퀘어 컴포넌트에 적용된 해당 CSS 속성 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+styleStringY반환하려는 CSS 속성.
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstyle 해당 CSS 속성 값 (색을 반환하는 경우, HexCode로 반환됨.)
+
+
+
+
+
+getTabCount(
+									  options
+										)
+							
+
+현재 tab 개수 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionsJSONObjectYgetTabCount의 반환 옵션
+ hiddenTab : hideTab으로 숨겨진 탭을 전체 개수에 포함. (default: true)
+
+
+
+
+Return
+
+typedescription
+
+
+Number현재 tab의 개수
+
+
+Sample
+
+var totTabCount = tabControl1.getTabCount();
+
+
+getTabID(
+									  tabIndex
+										)
+							
+
+tab index에 해당하는 ID 리턴합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIndexNumberYtab의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Stringtab의 ID
+
+
+Sample
+//0번째 tab의 ID를 반환
+var tmpRs = tabControl1.getTabID(0);
+
+
+getTabIndex(
+									  tabID
+										)
+							
+
+tab의 ID로 해당 tab의 index를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIDStringYtab의 ID
+
+
+
+
+Return
+
+typedescription
+
+
+Numbertab의 index
+
+
+Sample
+//tab의 id가 "tab1"인 tab의 index를 반환
+var tmpRs = tabControl1.getTabIndex("tab1");
+
+
+getTabInfo(
+									  
+										)
+							
+
+각 tab에 대한 id, label, defaultTabIndex(초기의탭위치), currentTabIndex(현재화면의탭위치), src, alwaysDraw 정보를 배열에 담아 리턴하는 함수.
+
+
+
+Return
+
+typedescription
+
+
+Array각 tab에 대한 정보를 담은 array
+
+
+
+
+
+getTitle(
+									  
+										)
+							
+
+컴포넌트의 title 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Stringtitle 속성 값.
+
+
+Sample
+// 아래와 같이 input 컴포넌트의 title 속성이 "이름 입력"으로 정의된 경우
+
+
+var tmpTitle = input1.getTitle();
+// (반환 값 예시) "이름 입력"
+
+
+getUdcHome(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)파일명은 마지막 .xml까지 포함. .xml을 제외한 경로는 getUdcRoot를 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome(); 
+// (실행 결과) /a/b/udc.xml
+
+
+getUdcRoot(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)파일명을 포함하지 않음. 파일명을 포함한 경로는 getUdcHome을 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome();    
+// (실행 결과) /a/b/
+
+
+getUserData(
+									  key
+										)
+							
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY데이터의 key
+
+
+
+
+Return
+
+typedescription
+
+
+Stringkey에 해당하는 value
+
+
+Sample
+// Input 컴포넌트에 사용자 속성(setTest)을 설정하는 예제
+
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("setTest");
+// (반환 값) "Hello"
+
+//setUserData를 통해 'valueTest'(key)와 'WebSquare'(data)로 설정하는 예제. 
+input1.setUserData("valueTest","WebSquare");
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("WebSquare");
+// (반환 값) "WebSquare"
+
+
+getWindow(
+									  idx
+										)
+							
+
+tab index 또는 id에 해당하는 window 객체를 반환한다.반환된 객체를 통해 웹스퀘어 컴포넌트 및 function, 변수 등에 접근이 가능한다.idx 인자가 없을 경우 현재 선택된 tab의 window content를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idxNumber||StringNtab의 index 또는 tab의 id
+
+
+
+
+Return
+
+typedescription
+
+
+windowObjectwindowObject
+
+
+Sample
+//현재 선택 된 tab의 객체 반환
+var tmpObj = tabControl1.getWindow();
+
+//선택 된 tab의 컨텐츠에 있는 input1 컴포넌트에 value를 설정.
+tmpObj.input1.setValue("WebSquare");
+
+
+hasClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY검색할 class 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Booleanclass의 포함 여부
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+        
+var returnValue = input1.hasClass("tmpInputClass");
+// (반환 값) true
+
+
+hide(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)display:none; 및 visibility:hidden; CSS를 적용.
+
+
+Sample
+// (예제) 컴포넌트를 숨김
+componentId.hide();
+
+
+hideTab(
+									  tabIndex
+										)
+							
+
+(SP5 async) tab을 숨김(hidden)처리 한다.SP5에서 비동기 함수로 변경되었다. 따라서 await tabControl.hideTab(); 형태로 호출해야 올바로 동작한다. 이 함수의 호출을 포함하는 함수들은 async function이 되어야 한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIndexNumberYhide할 tab의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Promise(SP5)hideTab 성공 여부 (true/false)를 포함하는 Promise 객체 반환
+
+
+Sample
+ // SP5에서 hideTab가 비동기 함수가 되었으므로 이 함수의 호출을 포함하는 scwin.hideTabTest또한 async function이 되어야 한다.
+ scwin.hideTabTest = async function() {
+     // SP5에서는 Promise 객체를 return하므로 await 키워드를 붙여야 hideTab호출 이후의 동작이 정상적인 순서로 동작하게 된다.
+     await tabControl1.hideTab(1); // 첫번째 탭을 감춘다.
+     common.doSomething(); // 만약 위의 hideTab 호출 시 await 키워드를 생략할 경우 hideTab이 완료되기 전에 이 함수가 호출된다.
+ }
+
+
+
+isLoaded(
+									  idx
+										)
+							
+
+tab의 index에 해당하는 화면의 출력유무를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idxNumberYtab의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Objecttab index에 해당하는 화면의 출력유무
+
+
+Sample
+// alwaysDraw="false"상황에서 두번째 탭이 출력되었는지 판단 후 객체접을 한다.
+if( tabControl1.isLoaded( 1 ) ) {
+    input1.setValue( "WebSquare5" );
+}
+
+
+removeClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)기본적으로 addClass를 통해 추가된 class만 삭제 가능. 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가해야 함. 
+ // config.xml 파일에 아래 설정 추가 
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY삭제 할 class명
+
+
+
+Sample
+// inputBox의 속성으로 class가 직접 정의된 경우,
+
+
+// config.xml 파일에 아래 항목을 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// removeClass를 통해 삭제 가능. 
+input1.removeClass("tmpInputClass");
+
+
+setContentsHeight(
+									  height
+										)
+							
+
+컨텐츠 영역의 높이(px단위)를 설정한다
+
+
+Parameter
+
+nametyperequireddescription
+
+
+heightNumberYheight(숫자만 입력한다)
+
+
+
+Sample
+//tabControl의 컨텐츠 영역의 높이를 500px로 변경한다.
+tabControl1.setContentsHeight(500);
+
+
+setDisabled(
+									  disabled
+										)
+							
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disabledBooleanYdisabled 상태. 
+true: disabled 속성 활성화
+false: disabled 속성 비활성화
+
+
+
+Sample
+// 컴포넌트의 disabled 속성을 활성화.
+componentId.setDisabled(true);
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+							
+
+지정한 이벤트를 중단함. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+evListStringN중단할 이벤트 목록. (null을 지정할 경우 해당 컴포넌트의 모든 사용자 이벤트가 중단되거나 중단 해제됨.)
+
+
+flagBooleanY이벤트 중단 여부. 
+true: 중단
+false: 중단 해제.
+
+
+
+Sample
+// (예제 1)
+// onclick 이벤트를 중단. 
+input1.setEventPause("onclick", true); 
+
+// (예제 2)
+// onfocus 및 onblur 이벤트의 중단을 해제.
+input1.setEventPause("onfocus,onblur", false); 
+
+// (예제 3)
+// input1에 등록된 모든 사용자 이벤트를 중단.
+input1.setEventPause(null, true);
+
+
+setHeight(
+									  height
+										)
+							
+
+tabControl의 height를 설정하며 px단위로 적용된다. 숫자가 아닌 값이 오면 무시한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+heightNumberY컴포넌트 height
+
+
+
+Sample
+//height를 20px로 설정한다.
+tabControl1.setHeight(20);
+
+
+setInitStyle(
+									  property
+										)
+							
+
+컴포넌트의 초기 스타일을 복구한다. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다 (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyStringNCSS 속성 (지정하지 않으면 모든 속성의 초기 값으로 복구.)
+
+
+
+Sample
+// (예제)
+group1.setInitStyle();
+
+
+setLabelText(
+									  idx
+									       , 
+									       label
+										)
+							
+
+tab의 label을 설정한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+idxNumberYtab의 index
+
+
+labelNumberYtab의 label
+
+
+
+Sample
+//첫번째 tab의 label을 "임시페이지"로 설정한다.
+tabControl1.setLabelText(0, "임시페이지");
+
+
+setOpacity(
+									  value
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS 속성인 opacity(불투명도)를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYOpacity 값 (0과 1 사이의 실수)
+
+
+
+Sample
+// (예제) 불투명도를 0.45로 설정
+componentId.setOpacity(0.45);
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberY설정할 left 위치 값 또는 null.
+
+
+topNumberY설정할 top 위치 값 또는 null.
+
+
+modeStringN위치 설정 방법. [default: absolute, delta] 
+absolute: 입력된 값을 위치로 설정.
+delta: 현재 위치에 입력된 left 및 top 값을 추가.
+
+
+
+Sample
+// (예제) 컴포넌트의 top만 100px로 설정.
+componentId.setPosition(null, 100);
+
+
+setReadOnly(
+									  readOnly
+										)
+							
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+readOnlyBooleanYreadOnly 속성 활성화 여부. ( "true" : 활성화, "false" : 비활성화)
+
+
+
+Sample
+// 컴포넌트의 readOnly 속성을 true로 설정하는 예.
+componentId.setReadOnly(true);
+
+
+setSelectedTabIndex(
+									  tabIndex
+										)
+							
+
+(SP5 async) tab의 index에 해당하는 tab을 선택한다.SP5에서 비동기 함수로 변경되었다. 따라서 await tabControl.setSelectedTabIndex(); 형태로 호출해야 올바로 동작한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIndexNumberYtab의 index ( id를 넘기게 되면 idx로 처리 함)
+
+
+
+
+Return
+
+typedescription
+
+
+Promise(SP5) Promise 객체 반환
+
+
+Sample
+ // SP5에서 setSelectedTabIndex가 비동기 함수가 되었으므로 이 함수의 호출을 포함하는 scwin.setSelectedTabIndexTest또한 async function이 되어야 한다.
+ scwin.setSelectedTabIndexTest = async function() {
+     // SP5에서는 Promise 객체를 return하므로 await 키워드를 붙여야 setSelectedTabIndex호출 이후의 동작이 정상적인 순서로 동작하게 된다.
+     await tabControl1.setSelectedTabIndex(1);
+     common.doSomething(); // 만약 위의 setSelectedTabIndex 호출 시 await 키워드를 생략할 경우 setSelectedTabIndex이 완료되기 전에 이 함수가 호출된다.
+ }
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY설정할 CSS 속성
+
+
+valueStringY해당 CSS 속성에 적용할 값
+
+
+
+Sample
+// (예제 1) 컴포넌트의 width를 200px로 설정
+componentId.setStyle("width", "200px");
+
+// (예제 2) 배경색을 olive로 변경
+componentId.setStyle("background-color","olive");
+
+
+setTabHTML(
+									  tabID
+									       , 
+									       tabHTML
+										)
+							
+
+tabHTML 값을 동적으로 변경한다. 타이틀 영역을 html string을 직접 넣어서 꾸미기 위한 API이다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIDStringY대상 tab의 ID
+
+
+tabHTMLStringY설정할 tabHTML값 또는 변수명
+
+
+
+Sample
+ tabControl1.setTabHTML(scwin.tabControl1_tabHTML);
+ scwin.tabControl1_tabHTML = "test";
+
+
+setTabOrder(
+									  tabOrderArr
+										)
+							
+
+새로운 tab순서에 대한 배열을 받아 해당 순서대로 tab을 재배치시키는 함수
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabOrderArrArrayYtab순서를 담은 배열. 배열의 길이는 반드시 tab전체 길이와 일치해야 한다.
+
+
+
+Sample
+ // 기존 탭의 순서가 아래와 같이 있을 때 (배열의 각 항목은 탭의 id임)
+ [ 'tabs1', 'tabs2', 'tabs3' ]
+
+ // setTabOrder의 인자에는 변경하고자 하는 탭의 순서 배열을 넘겨준다. (단, 해당 배열의 길이는 tab전체의 길이와 같아야 하고, 각 원소는 탭의 id여야 한다.)
+ tabControl1.setTabOrder(['tabs3', 'tabs1', 'tabs2'])
+
+ // 탭의 순서는 다음과 같이 바뀐다.
+ [ 'tabs3', 'tabs1', 'tabs2' ]
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 컴포넌트에 설정 가능한 key를 입력해야 함. 설정 가능한 key가 아닌 경우, 해당 내용이 로그에 출력됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY설정할 데이터의 key
+
+
+valueStringY설정한 데이터의 value
+
+
+
+Sample
+// 컴포넌트에 'data'라는 key로 'WebSquare'라는 value를 설정하는 예제.
+
+componentId.setUserData("data", "WebSquare");
+
+// 컴포넌트에 설정이 불가능한 key를 임력할 경우, key 설정이 불가능. 
+ 
+componentId.setUserData("title", "WebSquare");
+// 아래와 같이 로그가 출력됨. 
+// !!!WARNING - [title] can't be defined as UserData.
+
+
+setWidth(
+									  width
+										)
+							
+
+tabControl의 width를 설정하며 px단위로 적용된다. 숫자가 아닌 값이 오면 무시한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widthNumberY컴포넌트의 width.
+
+
+
+Sample
+//width를 200px로 설정한다.
+tabControl1.setWidth(200);
+
+
+setWindowMaxNum(
+									  windowMaxNum
+										)
+							
+
+tabControl에서 열 수 있는 최대 window 개수를 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowMaxNumNumberY새로 설정할 window의 최대 개수
+
+
+
+
+
+
+show(
+									  displayType
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)CSS display 속성을 주어진 값으로 설정하고 "visibility: show;"를 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+displayTypeStringN적용할 CSS display 속성의 값.   
+block : display: block;을 적용. (기본 값)
+inline : display: inline;을 적용.
+none : display: none;을 적용.
+"" : show 수행 이전의 display 속성 값으로 복구.
+
+
+
+Sample
+// (예제) display: block; CSS를 설정.
+componentId.show();  
+
+// (예제) 위제 설정한 display 속성 값을 취소하고 원래의 display 값을 복구.
+componentId.show("");
+
+
+showTab(
+									  tabIndex
+										)
+							
+
+(SP5 async) hide된 tab을 보여둔다.SP5에서 비동기 함수로 변경되었다. 따라서 await tabControl.showTab(); 형태로 호출해야 올바로 동작한다. 이 함수의 호출을 포함하는 함수들은 async function이 되어야 한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+tabIndexNumberYtab의 index
+
+
+
+
+Return
+
+typedescription
+
+
+Promise(SP5)showTab 성공 여부 (true/false)를 포함하는 Promise 객체 반환
+
+
+Sample
+ // SP5에서 showTab가 비동기 함수가 되었으므로 이 함수의 호출을 포함하는 scwin.showTabTest또한 async function이 되어야 한다.
+ scwin.showTabTest = async function() {
+     // SP5에서는 Promise 객체를 return하므로 await 키워드를 붙여야 showTab호출 이후의 동작이 정상적인 순서로 동작하게 된다.
+     await tabControl1.showTab(1);
+     common.doSomething(); // 만약 위의 showTab 호출 시 await 키워드를 생략할 경우 showTab이 완료되기 전에 이 함수가 호출된다.
+ }
+
+
+
+toggleClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)웹스퀘어 컴포넌트가 파라미터로 주어진 class를 포함한 경우, 해당 class를 제거. 웹스퀘어 컴포넌트에 파라미터로 주어진 class가 없는 경우, 해당 class를 추가. 기본적으로 addClass를 통해 추가된 class만 삭제 가능. 웹스퀘어 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가. 
+ // config.xml 파일에 아래 설정 추가
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가/삭제할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+//config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// tmpInputClass class를 삭제.
+input1.toggleClass("tmpInputClass");
+
+// (위에서 삭제된) tmpInputClass class를 다시 추가.
+input1.toggleClass("tmpInputClass");
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+컴포넌트에서 특정 이벤트를 발생시킴. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트
+
+
+arrayArrayN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+// (예제 1)
+// input1 컴포넌트에 onclick 이벤트를 발생시킴.
+input1.trigger("onclick");
+
+// (예제 2)
+// input1에 onviewchange 이벤트를 발생시키고 핸들러 함수에 (1,2) 인자를 전달하여 호출.
+input1.trigger("onviewchange", [1,2]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+컴포넌트에서 이벤트를 제거. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트. (생략할 경우 해당 컴포넌트의 모든 이벤트를 제거.)
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. (생략할 경우 해당 위에 지정한 이벤트에 등록된 모든 핸들러 함수를 제거.)
+
+
+
+Sample
+// (예제 1)
+// input1에 등록된 모든 이벤트를 제거.
+input1.unbind();
+
+// (예제 2)
+// input1의 onviewchange 이벤트에 대한 모든 핸들러 함수를 제거.
+input1.unbind("onviewchange");
+
+// (예제 3)
+// input1의 onviewchange 이벤트에 대한 func1 이벤트 핸들러 함수를 제거.
+input1.unbind("onviewchange", func1);
+
+
+visible(
+									  flag
+										)
+							
+
+[deprecated] show/hide 혹은 setStyle 사용을 권장.엔진 내부적으로 CSS visibility 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY설정할 CSS visibility 속성 값 
+true : visibility: visible;
+false : visibility: hidden;
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

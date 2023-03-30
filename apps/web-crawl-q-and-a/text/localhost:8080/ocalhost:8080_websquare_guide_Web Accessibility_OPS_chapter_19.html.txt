@@ -1,0 +1,2 @@
+
+Navigation19.Navigation19.1Navigationhtml5 태그로 Navigation영역을 지정할 때 사용한다. 접근성과 직접적인 관계는 없습니다.

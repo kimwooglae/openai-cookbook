@@ -1,0 +1,2617 @@
+
+
+
+WebSquare.uiplugin.multiupload 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.multiupload - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+멀티 업로드. 복수의 파일을 동시에 업로드.
+ 파일 여러 개를 동시에 업로드할 수 있는 기능을 제공. 
+ 사용자는 파일 여러 개를 동시에 업로드할 수 있음. 
+ MultiUpload는 Flash로 구현되어 제공됨.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+action
+
+업로드 처리 URL
+
+
+
+callbackSync
+
+[default: true, false] 다중 파일 업로드시 callback정보를 전송순서대로 받을지 여부
+
+
+
+clearOnError
+
+[default: true, false] 에러(파일 갯수 초과, 단일 첨부 사이즈 초과, 이미 존재하는 파일) 발생시 multiupload의 파일정보를 초기화 합니다
+
+
+
+displaySizeUnit
+
+[default:MB, KB, Byte, GB, TB] 업로딩이 완료(ondone 이벤트 발생)되는 시점에 화면에 표시할 사이즈 단위. (Byte, KB, MB (기본 값), GB, TB)
+
+
+
+filter
+
+업로드 가능한 파일 확장자를 지정
+
+
+
+fireEventOnError
+
+[default: false, true] 에러(파일 갯수 초과, 단일 첨부 사이즈 초과, 이미 존재하는 파일) 발생시 onerror 이벤트 발생 허용 여부.
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+lang
+
+언어 설정
+
+
+
+maxcount
+
+[default:5] 전송가능한 파일의 최대 개수
+
+
+
+maxsize
+
+[default:20000] 전송가능한 파일의 최대 크기 (단위 Kb)
+
+
+
+mode
+
+[default:flash, transparent, html5_transparent] UI 출력 유형을 정의
+
+
+
+selectCallback
+
+파일 선택후 실행 될 콜백 함수 (Mode가 transparent시 동작)
+
+
+
+sizeUnit
+
+[default:Byte, KB, MB, GB, TB] 업로딩이 완료(ondone 이벤트 발생)되는 시점에 서버에서 응답할 때 사용하는 사이즈 단위.
+
+
+
+subDir
+
+sub Directory르 지정한 노드명, websquare
+
+
+
+subSize
+
+websquare.xml와 config.xml에서 업로드 가능한 maximum upload size 값을 가지고 있는 node이름.
+
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. 
+
+
+
+uploadButton
+
+전송버튼 숨김 여부
+
+
+
+userData1
+
+사용자 정의 데이터 속성
+
+
+
+userData2
+
+사용자 정의 데이터 속성
+
+
+
+userData3
+
+사용자 정의 데이터 속성
+
+
+
+wmode
+
+wmode를 사용하여 선택 항목 목록을 object 태그보다 상위에 표시. 
+
+
+
+Event Summary
+
+
+
+
+onComplete
+
+업로드 로딩 후에 발생
+
+
+
+ondone
+
+파일 업로드 끝날 시 발생
+
+
+
+onerror
+
+클라이언트에서 파일 업로드 실패 시 발생. (에러 종류: 파일 갯수 초과, 단일 첨부 사이즈 초과, 이미 존재하는 파일)
+
+
+
+onprogress
+
+mode="html5_transparent" 사용시 업로드 진행상태를 확인 할 수 있도록 onprogress 발생
+
+
+Method Summary
+
+
+
+
+addClass(
+									  className
+										)
+								
+
+컴포넌트에 CSS class를 추가
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당
+
+
+
+browserDisable(
+									  disable
+										)
+								
+
+transparent 모드에서 파일 열기 기능을 disable 시킵니다
+
+
+
+changeAction(
+									  action
+										)
+								
+
+multiupload 객체가 입력받은 값을 multiupload할 때 URL을 설정합니다
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+								
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+disableCancel(
+									  disable
+										)
+								
+
+취소 버튼  disable 시킵니다
+
+
+
+disableUpload(
+									  disable
+										)
+								
+
+업로드 버튼  disable 시킵니다
+
+
+
+dropFiles(
+									  e
+										)
+								
+
+multiupload 컴포넌트의 drag&drop 업로드 기능을 구현하기 위한 함수
+
+
+
+focus(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트에 포커스를 줌
+
+
+
+getFileCount(
+									  
+										)
+								
+
+현재 전송할 파일의 수를 반환합니다
+
+
+
+getFileInfos(
+									  
+										)
+								
+
+현재 멀티업로드 그리드에 있는 파일정보를 배열로 반환합니다
+
+
+
+getFileNames(
+									  
+										)
+								
+
+현재 멀티업로드 그리드에 있는 파일명을 배열로 반환합니다
+
+
+
+getGenerator(
+									  
+										)
+								
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환
+
+
+
+getID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 ID를 반환
+
+
+
+getInitStyle(
+									  CSS
+										)
+								
+
+컴포넌트의 초기 스타일을 반환
+
+
+
+getOpacity(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getOriginalID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getPluginName(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환
+
+
+
+getPosition(
+									  positionName
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getReadOnly(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환
+
+
+
+getScope(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getSize(
+									  sizeName
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getStyle(
+									  propertyName
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환
+
+
+
+getStyleValue(
+									  style
+										)
+								
+
+[deprecated]
+
+
+
+getTitle(
+									  
+										)
+								
+
+컴포넌트의 title 속성 값을 반환
+
+
+
+getUdcHome(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUdcRoot(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUserData(
+									  key
+										)
+								
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환
+
+
+
+hasClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인
+
+
+
+hide(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)
+
+
+
+isUploading(
+									  
+										)
+								
+
+업로드 중인지 여부를 반환합니다
+
+
+
+removeAllFiles(
+									  
+										)
+								
+
+현재 멀티업로드 그리드에 있는 파일명을 모두 삭제합니다
+
+
+
+removeClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)
+
+
+
+removeFile(
+									  name
+										)
+								
+
+업로드 하기 위해 선택된 파일 중에서 업로드에서 제외하려는 파일을 리스트에서 삭제합니다
+
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+								
+
+지정한 이벤트를 중단함
+
+
+
+setInitStyle(
+									  property
+										)
+								
+
+컴포넌트의 초기 스타일을 복구한다
+
+
+
+setMaxFileCount(
+									  value
+										)
+								
+
+멀티 업로드 컴포넌트의 전송 가능 파일 개수를 value로 설정합니다
+
+
+
+setMaxFileSize(
+									  value
+										)
+								
+
+멀티 업로드 컴포넌트의 전송 가능 파일 사이즈를 value로 설정합니다
+
+
+
+setMessageDuplicateText(
+									  label
+										)
+								
+
+멀티 업로드 컴포넌트의 중복 메시지 text 를 바꿉니다
+
+
+
+setMessageMaxCountText(
+									  label
+										)
+								
+
+멀티 업로드 컴포넌트의 최대파일 세부 메시지 text를 바꿉니다
+
+
+
+setMessageMaxSizeText(
+									  label
+										)
+								
+
+멀티 업로드 컴포넌트의 최대 사이즈 메시지 text 를 바꿉니다
+
+
+
+setOpacity(
+									  value
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setParam(
+									  index
+									       , 
+									       name
+									       , 
+									       value
+										)
+								
+
+업로드 param 지정을 지정합니다
+
+
+
+setParamJSON(
+									  param
+										)
+								
+
+업로드하는 각 파일 별로 파라미터를 설정. 
+
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정
+
+
+
+setReadOnly(
+									  readOnly
+										)
+								
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정
+
+
+
+setRefCancelText(
+									  label
+										)
+								
+
+멀티 업로드 컴포넌트의 취소중 text 를 바꿉니다
+
+
+
+setRefProgressText(
+									  label
+										)
+								
+
+멀티 업로드 컴포넌트의 진행중 text를 바꿉니다
+
+
+
+setRefSuccessText(
+									  label
+										)
+								
+
+멀티 업로드 컴포넌트의 완료 text를 바꿉니다
+
+
+
+setSelectCallback(
+									  functionName
+										)
+								
+
+selectCallback 함수를 설정합니다
+
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 설정
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정
+
+
+
+setSubDir(
+									  subDir
+										)
+								
+
+multiupload의 subDir 경로를 설정합니다
+
+
+
+setTitleInput(
+									  title
+										)
+								
+
+multiupload 가 화면에서 div > span > input 으로 그려지는데 이 때, input의 title 속성을 설정합니다
+
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+show(
+									  displayType
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)
+
+
+
+startUpload(
+									  
+										)
+								
+
+멀티 업로드 컴포넌트의 업로드를 시작합니다
+
+
+
+toggleClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+컴포넌트에서 특정 이벤트를 발생시킴
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+컴포넌트에서 이벤트를 제거
+
+
+
+visible(
+									  flag
+										)
+								
+
+[deprecated] 
+
+
+
+Property Detail
+
+
+
+
+action
+
+업로드 처리 URL
+
+
+callbackSync
+
+[default: true, false] 다중 파일 업로드시 callback정보를 전송순서대로 받을지 여부. true인 경우 전송순서대로 callback정보 전송, false일 경우 응답순서대로 callback 정보 전송.
+
+
+clearOnError
+
+[default: true, false] 에러(파일 갯수 초과, 단일 첨부 사이즈 초과, 이미 존재하는 파일) 발생시 multiupload의 파일정보를 초기화 합니다.
+
+
+displaySizeUnit
+
+[default:MB, KB, Byte, GB, TB] 업로딩이 완료(ondone 이벤트 발생)되는 시점에 화면에 표시할 사이즈 단위. (Byte, KB, MB (기본 값), GB, TB)(5.0_1.2701A.20170714.211228 버전에서 추가.)
+
+
+filter
+
+업로드 가능한 파일 확장자를 지정.
+
+
+fireEventOnError
+
+[default: false, true] 에러(파일 갯수 초과, 단일 첨부 사이즈 초과, 이미 존재하는 파일) 발생시 onerror 이벤트 발생 허용 여부.true: 이벤트 발생. false (기본 값): 이벤트 발생하지 않음.
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+lang
+
+언어 설정
+
+
+maxcount
+
+[default:5] 전송가능한 파일의 최대 개수
+
+
+maxsize
+
+[default:20000] 전송가능한 파일의 최대 크기 (단위 Kb)
+
+
+mode
+
+[default:flash, transparent, html5_transparent] UI 출력 유형을 정의flash : flash (swf)로 multiupload를 지원하는 모드transparent : flash 모드로 지원하는 UI를 사용자가 직접 구성하여 커스트마이징할 수 있는 모드html5_transparent : ie9이하에서는 flash모드로 동작하며 그외 브라우저에서는 HTML5의 XHR을 이용하여 업로드지원하는 모드
+
+
+selectCallback
+
+파일 선택후 실행 될 콜백 함수 (Mode가 transparent시 동작)
+
+
+sizeUnit
+
+[default:Byte, KB, MB, GB, TB] 업로딩이 완료(ondone 이벤트 발생)되는 시점에 서버에서 응답할 때 사용하는 사이즈 단위.(5.0_1.2701A.20170714.211228 버전에서 추가.)
+
+
+subDir
+
+sub Directory르 지정한 노드명, websquare.xml에서 /websquare/upload/baseDir/"subDir노드명"/@value값이 설정되어 있으면 설정경로를 반환한다. 설정값이 없으면 baseDir 지정경로가 반환 된다.
+
+
+subSize
+
+websquare.xml와 config.xml에서 업로드 가능한 maximum upload size 값을 가지고 있는 node이름.(5.0_1.2701A.20170714.211228 버전에서 추가.)
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. HTML의 tabindex 속성과 동일.
+
+
+uploadButton
+
+전송버튼 숨김 여부
+
+
+userData1
+
+사용자 정의 데이터 속성. getUserData("userData1") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData1");
+
+
+userData2
+
+사용자 정의 데이터 속성. getUserData("userData2") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData2");
+
+
+userData3
+
+사용자 정의 데이터 속성. getUserData("userData3") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData3");
+
+
+wmode
+
+wmode를 사용하여 선택 항목 목록을 object 태그보다 상위에 표시. 선택 항목 목록이 object(ActiveX, Flash 등)에 가려질 경우 사용. 본 컴포넌트가 아닌 object(ActiveX, Flash 등)태그에 wmode 사용할 것을 권장. 
+ (옵션 설명)
+ "true" wmode 사용.
+ "false" (기본 값) wmode 사용하지 않음.
+
+
+
+
+
+Event Detail
+
+
+
+
+onComplete
+
+업로드 로딩 후에 발생
+
+
+
+ondone
+
+파일 업로드 끝날 시 발생. (data: 업로드 후에 받을 수 있는 json 객체)
+
+Parameter
+
+nametypedescription
+
+
+dataObject업로드 후에 반환되는 파일 업로드에 관한 응답 json 객체. 
+ [{
+    deniedFile      : new String(), //저장 실패한 파일명.
+    localFile       : new String(), //저장된 파일의 로컬 파일명.
+    deniedCode      : new String(), //저장 실패 코드 (101: 허용하지 않는 확장자, 102: 허용범위 밖의 파일 사이즈, 999: 기타 서버 오류) 
+    key             : new String(), //저장 파일 경로.
+    maxUploadSize   : new String(), //허용 최대 사이즈.(byte)
+    file            : new String(), //저장된 서버 파일명.
+    size            : new String()  //저장된 파일 사이즈.
+ }]
+
+
+
+
+
+onerror
+
+클라이언트에서 파일 업로드 실패 시 발생. (에러 종류: 파일 갯수 초과, 단일 첨부 사이즈 초과, 이미 존재하는 파일)서버측 에러는 ondone 이벤트를 통해 파악 가능.
+
+Parameter
+
+nametypedescription
+
+
+dataObject업로드 실패 정보를 담고 있는 json
+ {
+    type        : string,   // 에러타입. ( fileExist, uploadCountExceed, fileSizeExceed )
+    message     : string,   // 에러 메세지.
+ }
+
+
+
+
+
+onprogress
+
+mode="html5_transparent" 사용시 업로드 진행상태를 확인 할 수 있도록 onprogress 발생
+
+Parameter
+
+nametypedescription
+
+
+dataObject업로드 정보
+ {
+    percentData        : number,   // 진행률
+    fileName           : string    // 업로드파일명
+ }
+
+
+
+
+
+
+Method Detail
+
+
+
+
+addClass(
+									  className
+										)
+							
+
+컴포넌트에 CSS class를 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가할 class의 이름
+
+
+
+Sample
+// (예제)
+// input1 컴포넌트에 oddClass라는 class를 추가    
+input1.addClass("oddClass");
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY할당할 이벤트
+
+
+functionFunctionY이벤트에 대한 핸들러 함수.
+
+
+
+Sample
+// (예제 1)
+// input1의 onclick 이벤트에 대한 핸들러 함수를 직접 정의하여 할당. 
+input1.bind("onclick", function(e){ alert(input1.getValue();}));
+
+// (예제 2)
+// 미리 commObj.ev_click 함수를 정의.
+var commObj = {};
+commObj.ev_click = function(e){
+    alert("click :: "+this.id);
+};
+
+// input1 컴포넌트에 onclick 이벤트와 정의한 핸들러 함수를 동적으로 할당. 
+input1.bind("onclick", commObj.ev_click );
+
+
+browserDisable(
+									  disable
+										)
+							
+
+transparent 모드에서 파일 열기 기능을 disable 시킵니다. (transparent mode 전용)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disableBooleanYdisable 여부
+
+
+
+Sample
+ multiupload1.browserDisable(true);
+ 멀티업로드를 클릭시, 파일 업로드 기능을 비활성화한다.
+
+
+changeAction(
+									  action
+										)
+							
+
+multiupload 객체가 입력받은 값을 multiupload할 때 URL을 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+actionStringYmultiupload시에 전송될 URL
+
+
+
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+							
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 기본적으로 addClass를 통해 추가된 class만 변경 가능. 웹스퀘어 컴포넌트의 class 속성에 직접 정의된 class를 삭제하려면 config.xml 파일에 아래 설정을 추가해야 함. 
+// config.xml에 아래 설정을 추가. 
+<removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+oldClassNameStringY변경할 class
+
+
+newClassNameStringY새로 사용할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+// config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// class를 변경 가능. 
+// (tmpInputClass class를 tmpInputWarninClass로 변경.)
+input1.changeClass("tmpInputClass","tmpInputWarninClass");
+
+
+disableCancel(
+									  disable
+										)
+							
+
+취소 버튼  disable 시킵니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disableBooleanY여부
+
+
+
+Sample
+ multiupload1.disableCancel(true);
+ 취소 버튼을 비활성화한다.
+
+
+disableUpload(
+									  disable
+										)
+							
+
+업로드 버튼  disable 시킵니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disableBooleanY여부
+
+
+
+Sample
+ multiupload1.disableUpload(true);
+ 업로드 버튼을 비활성화한다.
+
+
+dropFiles(
+									  e
+										)
+							
+
+multiupload 컴포넌트의 drag&drop 업로드 기능을 구현하기 위한 함수. (5.0_1.2701A.20170714.211228 버전에서 추가.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eDragEventYdragEvent 객체 (이벤트 객체)
+
+
+
+Sample
+ fileDropZone.addEventListener("drop", multiupload.dropFiles, false);
+
+
+focus(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트에 포커스를 줌. (웹스퀘어 컴포넌트 공통.)
+
+
+
+
+
+getFileCount(
+									  
+										)
+							
+
+현재 전송할 파일의 수를 반환합니다.
+
+
+
+Return
+
+typedescription
+
+
+Number전송할 파일의 수
+
+
+Sample
+ 멀티업로드에 전송할 파일 예: Tiger.jpg, Lion.jpg
+ var returnValue = multiupload1.getFileCount();
+ returnValue는 2이다.
+
+
+getFileInfos(
+									  
+										)
+							
+
+현재 멀티업로드 그리드에 있는 파일정보를 배열로 반환합니다.
+
+
+
+Return
+
+typedescription
+
+
+Array<Object> 그리드에 있는 파일정보 
+ [{
+    name        : new String(),     //파일명.
+    size        : new Integer(),    //파일 사이즈(단위:byte).
+    displaySize : new String()      //화면표시 파일 사이즈
+ }]
+
+
+Sample
+ 멀티업로드 그리드에 파일리스트 예: Tiger.jpg, Lion.jpg
+ var returnArr = multiupload1.getFileInfos();
+ [{name:"Tiger.jpg",size:1024,displaySize:"1Kb"},{name:"Lion.jpg",size:2048,displaySize:"2Kb"}]
+
+
+getFileNames(
+									  
+										)
+							
+
+현재 멀티업로드 그리드에 있는 파일명을 배열로 반환합니다.
+
+
+
+Return
+
+typedescription
+
+
+Array그리드에 있는 파일명
+
+
+Sample
+ 멀티업로드 그리드에 파일리스트 예: Tiger.jpg, Lion.jpg
+ var returnArr = multiupload1.getFileNames();
+ returnArr.length는 2이다.
+ returnArr[0]은 Tiger.jpg, returnArr[1]은 Lion.jpg이다.
+
+
+getGenerator(
+									  
+										)
+							
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Object부모 Generator 객체
+
+
+Sample
+//부모 Generator가 자식으로 Trigger를 생성한 예제
+  
+
+// 아래 예제의 경우 trigger1을 클릭하면 generator1 객체가 console에 표시됨. 
+ scwin.trigger1.onclick = function(){ console.log(this.getGenerator());} 
+
+
+
+getID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 ID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트 ID
+
+
+Sample
+// 동적으로 웹스퀘어 컴포넌트를 받을 경우, 아래와 같이 ID 확인 가능.
+function fn_validCheck(tmpObj){
+    var compID = tmpObj.getID();
+}
+// 위의 예제 에서 tmpObj가 "input1" ID를 가지고 있는 경우,
+// (반환 값) "input1"
+
+
+getInitStyle(
+									  CSS
+										)
+							
+
+컴포넌트의 초기 스타일을 반환. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다.(웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+CSSStringN속성 (지정하지 않으면 모든 정보 출력)
+
+
+
+
+
+
+getOpacity(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS의 opacity 속성 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+IntegerOpacity 값
+
+
+Sample
+// inputBox 컴포넌트에 opacity CSS를 적용.
+
+        
+// inputBox 컴포넌트의 opacity 값을 반환. 
+var returnValue = input1.getOpacity(); 
+// returnValue는 0 ~ 1 사이의 실수.
+// (반환 값) "0.2"
+
+
+getOriginalID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)originalID는 Scope 기능을 사용할 경우 존재. scope="true"인 WFrame를 사용할 경우, WFrame 내부의 컴포넌트 ID는 원래 사용자가 정의한 값(originalID) 앞에 prefix(wframeID + "_")가 추가되는 방식으로 변경됨.  originalID는 이 때, prefix가 추가되기 전 ID를 의미.
+
+
+
+Return
+
+typedescription
+
+
+String컴포넌트의 originalID
+
+
+Sample
+// WFrame을 사용하는 다중 화면 구조 예시
+
+// WFrame을 포함한 메인 화면 (main.xml) 
+ 
+
+// 메인 화면 WFrame에 연결되는 소스 화면 (text.xml)
+
+
+// text.xml 화면의 내부 스크립트에서 ID 및 originalID 확인하는 예제.
+// getID 실행 
+textbox1.getID(); // 실행 결과는 "wframe1_textbox1"
+ 
+// getOriginalID 실행 
+textbox1.getOriginalID(); // 실행 결과는 "textbox1"
+
+
+getPluginName(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트의 이름 (pluginName)
+
+
+Sample
+// 아래와 같이 공통 함수에서 동적으로 웹스퀘어 객체를 받는 경우, 컴포넌트 종류에 따른 분기 처리가 가능.
+var commObj = {};
+
+commObj.fn_makeReqData = function(tmpObj){
+    var tmpID = tmpObj.getID(); // 컴포넌트 ID
+    var tmpCompType = tmpObj.getPluginName();   // 컴포넌트 이름
+
+    if(tmpCompType == "input"){
+        //..로직..
+    }else if(tmpCompType == "gridView"){
+        //..로직 ..
+    }else{
+        //..로직..
+    }
+};
+
+
+getPosition(
+									  positionName
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 위치 값이 %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNameStringY[left, top] 위치 종류
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 위치 값
+
+
+Sample
+// 아래와 같이 input 컴포넌트에 CSS 속성 margin이 적용된 경우,
+
+
+// (예제) 위의 inputBox 컴포넌트의 top 값을 확인     
+var returnValue = input1.getPosition("top"); 
+
+// 픽셀 단위의 위치 값이 반환됨.
+
+// (반환 값) 10
+
+
+getReadOnly(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Boolean현재 설정되어있는 readOnly 속성
+
+
+Sample
+// 컴포넌트의 readOnly 속성 값 확인 예제
+var returnValue = componentId.getReadOnly();
+// (반환 값 예시) false
+
+
+getScope(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, null을 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체 또는 null
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+textbox1.getScope(); 
+// (반환 값) wframe11 객체
+
+
+getScopeWindow(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, 전역 window 객체를 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체의 scope 객체 또는 전역 window 객체
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+var scope = textbox1.getScopeWindow();
+scope.wframe11 === textbox1.getScope(); // true
+
+
+getSize(
+									  sizeName
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sizeNameStringY크기 값의 종류. sizeName 별 계산 방법은 아래 표를 참고. 
+height : element.clientHeight
+innerHeight : element.clientHeight + padding
+outerHeight : element.clientHeight + padding + border
+outerMarginHeight : element.clientHeight + padding + border + margin
+width : element.clientWidth
+innerWidth : element.clientWidth + padding
+outerWidth : element.clientWidth + padding + border
+outerMarginWidth : element.clientWidth + padding + border + margin
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 크기 값
+
+
+Sample
+var returnValue = componentId.getSize("width");
+// (반환 예) 100 
+// 픽셀 단위의 크기 값이 반환됨. 
+// %로 설정된 경우, 픽셀로 변환된 값이 반환됨.
+
+
+getStyle(
+									  propertyName
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY반환할 CSS 속성
+
+
+
+
+Return
+
+typedescription
+
+
+StringCSS 속성 값
+
+
+Sample
+//아래와 같이 input 컴포넌트가 정의 된 경우
+
+
+// (예제) 위의 inputBox 컴포넌트의 width 값을 확인   
+var returnValue = input1.getStyle("width");
+
+// (반환 값) "144px"
+
+
+getStyleValue(
+									  style
+										)
+							
+
+[deprecated]getStyle 사용 권장.웹스퀘어 컴포넌트에 적용된 해당 CSS 속성 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+styleStringY반환하려는 CSS 속성.
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstyle 해당 CSS 속성 값 (색을 반환하는 경우, HexCode로 반환됨.)
+
+
+
+
+
+getTitle(
+									  
+										)
+							
+
+컴포넌트의 title 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Stringtitle 속성 값.
+
+
+Sample
+// 아래와 같이 input 컴포넌트의 title 속성이 "이름 입력"으로 정의된 경우
+
+
+var tmpTitle = input1.getTitle();
+// (반환 값 예시) "이름 입력"
+
+
+getUdcHome(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)파일명은 마지막 .xml까지 포함. .xml을 제외한 경로는 getUdcRoot를 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome(); 
+// (실행 결과) /a/b/udc.xml
+
+
+getUdcRoot(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)파일명을 포함하지 않음. 파일명을 포함한 경로는 getUdcHome을 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome();    
+// (실행 결과) /a/b/
+
+
+getUserData(
+									  key
+										)
+							
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY데이터의 key
+
+
+
+
+Return
+
+typedescription
+
+
+Stringkey에 해당하는 value
+
+
+Sample
+// Input 컴포넌트에 사용자 속성(setTest)을 설정하는 예제
+
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("setTest");
+// (반환 값) "Hello"
+
+//setUserData를 통해 'valueTest'(key)와 'WebSquare'(data)로 설정하는 예제. 
+input1.setUserData("valueTest","WebSquare");
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("WebSquare");
+// (반환 값) "WebSquare"
+
+
+hasClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY검색할 class 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Booleanclass의 포함 여부
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+        
+var returnValue = input1.hasClass("tmpInputClass");
+// (반환 값) true
+
+
+hide(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)display:none; 및 visibility:hidden; CSS를 적용.
+
+
+Sample
+// (예제) 컴포넌트를 숨김
+componentId.hide();
+
+
+isUploading(
+									  
+										)
+							
+
+업로드 중인지 여부를 반환합니다.
+
+
+
+Return
+
+typedescription
+
+
+Boolean업로드 여부
+
+
+Sample
+ var returnValue = multiupload1.isUploading();
+ 업로드 중이면 returnValue는 true이다.
+
+
+removeAllFiles(
+									  
+										)
+							
+
+현재 멀티업로드 그리드에 있는 파일명을 모두 삭제합니다.
+
+
+Sample
+ 멀티업로드 그리드에 파일리스트 예: Tiger.jpg, Lion.jpg
+ multiupload1.removeAllFiles();
+ 멀티업로드 그리드에 있는 파일 리스트가 삭제된다.
+
+
+removeClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)기본적으로 addClass를 통해 추가된 class만 삭제 가능. 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가해야 함. 
+ // config.xml 파일에 아래 설정 추가 
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY삭제 할 class명
+
+
+
+Sample
+// inputBox의 속성으로 class가 직접 정의된 경우,
+
+
+// config.xml 파일에 아래 항목을 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// removeClass를 통해 삭제 가능. 
+input1.removeClass("tmpInputClass");
+
+
+removeFile(
+									  name
+										)
+							
+
+업로드 하기 위해 선택된 파일 중에서 업로드에서 제외하려는 파일을 리스트에서 삭제합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+nameStringY삭제하려는 파일명
+
+
+
+Sample
+ 선택된 파일리스트 예: Tiger.jpg, Lion.jpg
+ multiupload1.removeFile("Tiger.jpg");
+ Tiger.jpg 파일이 리스트에서 삭제된다.
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+							
+
+지정한 이벤트를 중단함. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+evListStringN중단할 이벤트 목록. (null을 지정할 경우 해당 컴포넌트의 모든 사용자 이벤트가 중단되거나 중단 해제됨.)
+
+
+flagBooleanY이벤트 중단 여부. 
+true: 중단
+false: 중단 해제.
+
+
+
+Sample
+// (예제 1)
+// onclick 이벤트를 중단. 
+input1.setEventPause("onclick", true); 
+
+// (예제 2)
+// onfocus 및 onblur 이벤트의 중단을 해제.
+input1.setEventPause("onfocus,onblur", false); 
+
+// (예제 3)
+// input1에 등록된 모든 사용자 이벤트를 중단.
+input1.setEventPause(null, true);
+
+
+setInitStyle(
+									  property
+										)
+							
+
+컴포넌트의 초기 스타일을 복구한다. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다 (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyStringNCSS 속성 (지정하지 않으면 모든 속성의 초기 값으로 복구.)
+
+
+
+Sample
+// (예제)
+group1.setInitStyle();
+
+
+setMaxFileCount(
+									  value
+										)
+							
+
+멀티 업로드 컴포넌트의 전송 가능 파일 개수를 value로 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberY최대 개수
+
+
+
+Sample
+ multiupload1.setMaxFileCount(5);
+ 한번에 전송 가능한 파일의 개수를 5개로 설정합니다.
+
+
+setMaxFileSize(
+									  value
+										)
+							
+
+멀티 업로드 컴포넌트의 전송 가능 파일 사이즈를 value로 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberY최대 파일 사이즈(Kb)
+
+
+
+Sample
+ multiupload1.setMaxFileSize(1*1024);
+ 한번에 전송 가능한 파일의 사이를 1MB로 설정합니다.
+
+
+setMessageDuplicateText(
+									  label
+										)
+							
+
+멀티 업로드 컴포넌트의 중복 메시지 text 를 바꿉니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY변경할 중복 메시지
+
+
+
+Sample
+ multiupload1.setMessageDuplicateText('파일 중복 오류');
+
+
+setMessageMaxCountText(
+									  label
+										)
+							
+
+멀티 업로드 컴포넌트의 최대파일 세부 메시지 text를 바꿉니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY변경할 메세지
+
+
+
+Sample
+ multiupload1.setMessageMaxCountText('전송 가능한 파일 수');
+
+
+setMessageMaxSizeText(
+									  label
+										)
+							
+
+멀티 업로드 컴포넌트의 최대 사이즈 메시지 text 를 바꿉니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY변경할 메시지
+
+
+
+Sample
+ multiupload1.setMessageMaxSizeText('전송 가능 최대 크기 (byte)');
+
+
+setOpacity(
+									  value
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS 속성인 opacity(불투명도)를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYOpacity 값 (0과 1 사이의 실수)
+
+
+
+Sample
+// (예제) 불투명도를 0.45로 설정
+componentId.setOpacity(0.45);
+
+
+setParam(
+									  index
+									       , 
+									       name
+									       , 
+									       value
+										)
+							
+
+업로드 param 지정을 지정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+indexNumberY파라미터의 인덱스
+
+
+nameStringY파라미터 이름
+
+
+valueStringY파라미터 값
+
+
+
+
+
+
+setParamJSON(
+									  param
+										)
+							
+
+업로드하는 각 파일 별로 파라미터를 설정. (예) Tiger.jpg 및 Lion.jpg 등 각 파일 별로 다른 파라미터를 설정하여 업로드 가능.해당 메소드는 mode="html5_transparent"일 때만 동작.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+paramObjectYparameter들이 들어있는 Object
+
+
+
+Sample
+(사용 방법)
+ 1. getFileNames 혹은 geFileInfos를 사용하여 파일의 이름을 반환.
+ 2. 파일 이름을 사용하여 파라미터 정보를 JSON 형태 생성. 
+ 3. setParamJSON()을 호출하여 파라미터 정보를 인자로 전달.
+ ----------------------------------------------------------------------
+    var paramJSON = {}
+    var fileNames = multiupload1.getFileNames();
+    for(var fileName of fileNames) {
+        // paramJSON의 key로 파일 이름을 사용해야만 정상 동작함
+        paramJSON[fileName] = {"param1":"파라미터1", "param2":"파라미터2", ...};
+    }
+    multiupload1.setParamJSON(paramJSON);
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberY설정할 left 위치 값 또는 null.
+
+
+topNumberY설정할 top 위치 값 또는 null.
+
+
+modeStringN위치 설정 방법. [default: absolute, delta] 
+absolute: 입력된 값을 위치로 설정.
+delta: 현재 위치에 입력된 left 및 top 값을 추가.
+
+
+
+Sample
+// (예제) 컴포넌트의 top만 100px로 설정.
+componentId.setPosition(null, 100);
+
+
+setReadOnly(
+									  readOnly
+										)
+							
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+readOnlyBooleanYreadOnly 속성 활성화 여부. ( "true" : 활성화, "false" : 비활성화)
+
+
+
+Sample
+// 컴포넌트의 readOnly 속성을 true로 설정하는 예.
+componentId.setReadOnly(true);
+
+
+setRefCancelText(
+									  label
+										)
+							
+
+멀티 업로드 컴포넌트의 취소중 text 를 바꿉니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY제목
+
+
+
+Sample
+ multiupload1.setRefProgressText('CANCEL');
+ 멀티업로드 그리드의 status에 표시되는 취소중 텍스트를 변경한다.
+
+
+setRefProgressText(
+									  label
+										)
+							
+
+멀티 업로드 컴포넌트의 진행중 text를 바꿉니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY변경할 text
+
+
+
+Sample
+ multiupload1.setRefProgressText('PROCESSING');
+ 멀티업로드 그리드의 status에 표시되는 진행중 텍스트를 변경한다.
+
+
+setRefSuccessText(
+									  label
+										)
+							
+
+멀티 업로드 컴포넌트의 완료 text를 바꿉니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY변경할 text
+
+
+
+Sample
+ multiupload1.setRefSuccessText('DONE');
+ 멀티업로드 그리드의 status에 표시되는 완료 텍스트를 변경한다.
+
+
+setSelectCallback(
+									  functionName
+										)
+							
+
+selectCallback 함수를 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+functionNameStringYselectCallback으로 지정할 함수 이름
+
+
+
+Sample
+ console.log( typeof newSelectCallback ); // function
+ multiupload1.setSelectCallback("newSelectCallback");
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widthNumberY새로 설정할 컴포넌트의 width 값 또는 null
+
+
+heightNumberY새로 설정할 컴포넌트의 height 값 또는 null
+
+
+
+Sample
+// (예제) 컴포넌트의 height만 100px로 설정.
+componentId.setSize(null,100);
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY설정할 CSS 속성
+
+
+valueStringY해당 CSS 속성에 적용할 값
+
+
+
+Sample
+// (예제 1) 컴포넌트의 width를 200px로 설정
+componentId.setStyle("width", "200px");
+
+// (예제 2) 배경색을 olive로 변경
+componentId.setStyle("background-color","olive");
+
+
+setSubDir(
+									  subDir
+										)
+							
+
+multiupload의 subDir 경로를 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+subDirStringY
+
+
+
+
+
+
+setTitleInput(
+									  title
+										)
+							
+
+multiupload 가 화면에서 div > span > input 으로 그려지는데 이 때, input의 title 속성을 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+titleStringY속성으로 설정할 값.
+
+
+
+Sample
+ multiupload.setTitleInput("inputTitle");
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 컴포넌트에 설정 가능한 key를 입력해야 함. 설정 가능한 key가 아닌 경우, 해당 내용이 로그에 출력됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY설정할 데이터의 key
+
+
+valueStringY설정한 데이터의 value
+
+
+
+Sample
+// 컴포넌트에 'data'라는 key로 'WebSquare'라는 value를 설정하는 예제.
+
+componentId.setUserData("data", "WebSquare");
+
+// 컴포넌트에 설정이 불가능한 key를 임력할 경우, key 설정이 불가능. 
+ 
+componentId.setUserData("title", "WebSquare");
+// 아래와 같이 로그가 출력됨. 
+// !!!WARNING - [title] can't be defined as UserData.
+
+
+show(
+									  displayType
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)CSS display 속성을 주어진 값으로 설정하고 "visibility: show;"를 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+displayTypeStringN적용할 CSS display 속성의 값.   
+block : display: block;을 적용. (기본 값)
+inline : display: inline;을 적용.
+none : display: none;을 적용.
+"" : show 수행 이전의 display 속성 값으로 복구.
+
+
+
+Sample
+// (예제) display: block; CSS를 설정.
+componentId.show();  
+
+// (예제) 위제 설정한 display 속성 값을 취소하고 원래의 display 값을 복구.
+componentId.show("");
+
+
+startUpload(
+									  
+										)
+							
+
+멀티 업로드 컴포넌트의 업로드를 시작합니다.
+
+
+Sample
+ multiupload1.startUpload();
+
+
+toggleClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)웹스퀘어 컴포넌트가 파라미터로 주어진 class를 포함한 경우, 해당 class를 제거. 웹스퀘어 컴포넌트에 파라미터로 주어진 class가 없는 경우, 해당 class를 추가. 기본적으로 addClass를 통해 추가된 class만 삭제 가능. 웹스퀘어 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가. 
+ // config.xml 파일에 아래 설정 추가
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가/삭제할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+//config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// tmpInputClass class를 삭제.
+input1.toggleClass("tmpInputClass");
+
+// (위에서 삭제된) tmpInputClass class를 다시 추가.
+input1.toggleClass("tmpInputClass");
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+컴포넌트에서 특정 이벤트를 발생시킴. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트
+
+
+arrayArrayN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+// (예제 1)
+// input1 컴포넌트에 onclick 이벤트를 발생시킴.
+input1.trigger("onclick");
+
+// (예제 2)
+// input1에 onviewchange 이벤트를 발생시키고 핸들러 함수에 (1,2) 인자를 전달하여 호출.
+input1.trigger("onviewchange", [1,2]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+컴포넌트에서 이벤트를 제거. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트. (생략할 경우 해당 컴포넌트의 모든 이벤트를 제거.)
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. (생략할 경우 해당 위에 지정한 이벤트에 등록된 모든 핸들러 함수를 제거.)
+
+
+
+Sample
+// (예제 1)
+// input1에 등록된 모든 이벤트를 제거.
+input1.unbind();
+
+// (예제 2)
+// input1의 onviewchange 이벤트에 대한 모든 핸들러 함수를 제거.
+input1.unbind("onviewchange");
+
+// (예제 3)
+// input1의 onviewchange 이벤트에 대한 func1 이벤트 핸들러 함수를 제거.
+input1.unbind("onviewchange", func1);
+
+
+visible(
+									  flag
+										)
+							
+
+[deprecated] show/hide 혹은 setStyle 사용을 권장.엔진 내부적으로 CSS visibility 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY설정할 CSS visibility 속성 값 
+true : visibility: visible;
+false : visibility: hidden;
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

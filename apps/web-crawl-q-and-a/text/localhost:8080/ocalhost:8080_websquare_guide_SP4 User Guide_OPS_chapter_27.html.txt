@@ -1,0 +1,22 @@
+
+입력 검증27.입력 검증27.1단순 검증 vs. 사용자 정의 검증입력 컴포넌트의 경우 사용자가 입력한 데이터를 검증해야 합니다. 예를 들어 사용자가 필수 데이터를 입력했는지 혹은 입력한 데이터가 적절한지 등을 검증할 필요가 있습니다.검증 기능을 제공하는 입력 컴포넌트 AutoCompleteCheckBoxCheckComboBoxInputBoxInputCalendarMultiSelectRadioSearchBoxSecretSelectBoxTextArea표 27-1.유효성 검증 방법단순 검증사용자 정의 검증컴포넌트의 속성 값 설정을 통한 검증. 구현은 간단하지만 세밀한 검증은 어려움.사용자 정의 함수를 통한 검증. 구현은 복잡하지만 세밀하고 유연한 검증이 가능함.27.2검증 관련 속성각 입력 컴포넌트에 검증 관련 속성을 설정한 후 validate() 함수를 호출하여 입력 값을 검증할 수 있습니다.표 27-2.검증 관련 속성속성데이터 형설명mandatorycombo필수 입력 여부 설정minLengthnumber최소길이maxLengthnumber최대길이minByteLengthnumber최소 Byte 길이maxByteLengthnumber최대 Byte 길이27.3검증 실패 시 표시할 메시지검증 실패시 출력할 메시지를 아래의 방법으로 설정합니다.displaymessage 속성을 true로 설정합니다.invalidMessage 속성에 원하는 메시지를 입력하십시오. (invalidMessage 속성을 정의하지 않으면 기본 메시지가 출력됩니다.)27.4사용자 정의 검증invalidMessageFunc 혹은 validator 속성을 사용자가 JavaScript로 정의한 함수로 설정하여 입력 데이터를 검증할 수 있습니다.27.4.1invalidMessageFunc검증이 필요한 단계에서 validate() 함수가 호출되면 invalidMessageFunc 속성에 정의된 함수가 유효성 검사를 수행합니다.invalidMessageFunc 속성으로 설정한 함수는 아래와 같은 API를 사용할 수 있습니다.표 27-3.invalidMessageFuncAPI설명this.getCaller()사용자 정의 함수를 호출한 컴포넌트this.getType()검증 실패한 속성의 이름this.getValue()검증 실패한 속성의 값코드 27-1.invalidMessageFunc<xf:input id="input3" style="position: relative;width: 144px;height: 21px;" mandatory="true" ev:onblur="scwin.input3_onblur"    invalidMessage="이름(Name)을 확인해 주세요." displaymessage="true" invalidMessageFunc="CheckValid1">
+</xf:input>코드 27-2.사용자 정의 함수 (CheckValid1)function CheckValid1() {
+    var Obj = this.getCaller();
+    var type = this.getType();
+    var value = this.getValue();
+
+    if (type == 'mandatory') {
+        return '이름을 입력해주세요.';
+    } else if (type == 'minLength') {
+        return '입력값은 ' + Obj.getValue() +
+            '입니다.\n 최소 입력 글자를 확인해주세요.(' + value +
+            ')';
+    }
+}27.4.2validator입력 컴포넌트에서 포커스가 빠져 나올 경우(onblur 이벤트), validator에 정의된 함수가 유효성 검사를 진행합니다.코드 27-3.validator<xf:input id="input3" style="position: relative;width: 144px;height: 21px;" mandatory="true" ev:onblur="scwin.input3_onblur"    invalidMessage="이름(Name)을 확인해 주세요." displaymessage="true" invalidMessageFunc="CheckValid1" validator="CheckValid2">
+</xf:input>코드 27-4.사용자 정의 함수 (CheckValid2)function CheckValid2(inputValue) {
+    var regExp = /^[A-Z][A-Za-z]+\s[A-Z][A-Za-z]+$/;
+    if (!regExp.test(inputValue)) {
+        alert("이름이 정확하지 않습니다.");
+        return inputValue;
+    }
+}invalidMessageFunc 혹은 validator 속성을 사용자가 JavaScript로 정의한 함수로 설정하여 입력 데이터를 검증할 수 있습니다.27.5메시지 우선 순위invalidMessageFunc, invalidMessage, displaymessage를 모두 설정하더라도 아래의 우선순위에 따라 한가지만 적용됩니다.우선 순위관련 속성1invalidMessageFunc↓2invalidMessage↓3displaymessage27.6예제검증 항목으로 설정한 속성에 대해 validate(); 함수는 검증을 수행하여 결과를 true/false로 반환합니다.입력 검증 결과가 false이고 displaymessage="true"로 설정된 경우, 함수 내부에 정의된 메시지가 표시됩니다.invalidMessage="검증 실패 안내 메시지"까지 설정된 경우, invalidMessage 속성으로 설정한 "검증 실패 안내 메시지"가 표시됩니다.검증을 수행하고 결과를 표시할 함수를 구현한 뒤, 해당 함수를 invalidMessageFunc 속성으로 설정할 경우, 해당 함수를 통해 검증을 수행하고 메시지를 표시할 수 있습니다.27.6.1AutoCompletemandatory="true"인 경우, validate(); 함수는 검증을 수행하여 결과를 true/false로 반환합니다.표 27-4.사용자 입력 검증 및 검증 실패 메시지 표시관련 함수validate();검증 항목mandatory예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/AutoComplete/validate_mandatory_AutoComplete.xml)그림 27-1.YouTube 동영상 (https://youtu.be/6m7u0qA3OyY)27.6.2InputBox표 27-5.사용자 입력 검증 및 검증 실패 메시지 표시관련 함수validate();관련 속성displaymessageinvalidMessageinvalidMessageFunc검증 항목mandatorymaxByteLengthmaxlengthminByteLengthminlength예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/InputBox/validate_displaymessage_invalidMessage_invalidMessageFunc_InputBox.xml)그림 27-2.YouTube 동영상 (https://youtu.be/tMrwS__eKc8)27.6.3InputCalendar예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/InputCalendar/validate_displaymessage_invalidMessageFunc_InputCalendar.xml)그림 27-3.YouTube 동영상 (https://youtu.be/sGQz9aiUx3s)27.6.4Radio표 27-6.사용자 입력 검증 및 검증 실패 메시지 표시관련 함수validate();관련 속성displaymessageinvalidMessageinvalidMessageFunc검증 항목mandatory예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/Radio/validate_displaymessage_invalidMessage_invalidMessageFunc_Radio.xml)그림 27-4.YouTube 동영상 (https://youtu.be/kKe7RFP_wFk)27.6.5SelectBox표 27-7.사용자 입력 검증 및 검증 실패 메시지 표시관련 함수validate();관련 속성displaymessageinvalidMessageinvalidMessageFunc검증 항목mandatory예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/SelectBox/validate_displaymessage_invalidMessage_invalidMessageFunc_SelectBox.xml)그림 27-5.YouTube 동영상 (https://youtu.be/8_Ip6Fl5Od4)

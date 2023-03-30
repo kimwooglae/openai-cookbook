@@ -1,0 +1,4169 @@
+
+
+
+WebSquare.uiplugin.autoComplete 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.autoComplete - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+오토 컴플리트. 검색 결과를 선택 목록에 표시.
+ SelectBox의 확장 버전으로 사용자가 입력한 값을 초성 검색하여 그 결과를 표시.
+ 사용자가 입력한 값을 기반으로 실시간 서버 통신을 수행한 후 항목을 나열하는 기능도 제공. (관련 속성: interactionMode)
+ AutoComplet의 최상위는 <div>를 하위는 복합 태그를 이용.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+allOption
+
+제거 예정 속성
+
+
+
+allowEmptySubmission
+
+interactionMode="true"인 경우, 빈 문자열의 검색 허용 유무
+
+
+
+animation
+
+선택 항목 목록에 적용할 애니메이션 효과
+
+
+
+autoFocus
+
+사용자가 입력한 값이 선택 목록의 값과 정확하게 일치할 경우, nextTabID로 지정된 컴포넌트로 (100ms 이후) 포커스를 이동.
+
+
+
+caseSensitive
+
+검색 시 영문 대소문자 구분 여부
+
+
+
+chooseOption
+
+선택 안내 메시지 표시 여부. [default: false, true] 
+
+
+
+chooseOptionLabel
+
+선택 안내 메시지로 표시할 텍스트의 label을 정의
+
+
+
+chooseOptionLabelLocaleRef
+
+클라이언트 다국어 적용시 화면에 출력하는 chooseOptionLabel의 key. 
+
+
+
+chooseOptionValue
+
+선택 안내 메시지로 표시할 텍스트의 value를 정의
+
+
+
+class
+
+HTML의 class 속성과 동일. 
+
+
+
+closeonmouseleave
+
+subLayer로 열린 경우, 선택 항목 목록에서 마우스 커서가 빠져나갈 때 목록을 닫을지 여부
+
+
+
+delimiter
+
+선택 항목 목록에 value와 label을 함께 표시할 때 사용하는 구분자
+
+
+
+direction
+
+선택 항목 목록이 열리는 방향 지정
+
+
+
+disabled
+
+컴포넌트 비활성 여부
+
+
+
+disableEdit
+
+마우스 클릭 시, 목록만 표시하고 수정 모드로 진입하지 않음
+
+
+
+displayFormatter
+
+컴포넌트의 value를 포맷하는 함수의 이름. 
+
+
+
+displayMode
+
+선택 항목의 표현 방법. [default: label, value delim label, label delim value] 
+
+
+
+displayModeSync
+
+searchTarget="both"일 때 편집모드 진입 시 displayMode대로 값이 나타나게 하는 기능 [default: false, true] 
+(관련 속성)
+ searchTarget</xmp>
+
+
+
+editModeEvent
+
+수정 모드로의 변경을 야기하는 이벤트 설정
+
+
+
+editType
+
+사용자가 컴포넌트 클릭 시 결과 동작 지정
+
+
+
+emptyIndex
+
+처음 AutoComplete를 그릴 때 선택할 선택 항목의 인덱스
+
+
+
+emptyItem
+
+(setValue, setSelectedIndex 등을 이용하여) 선택 항목에 없는 value나 index가 동적으로 설정하는 경우 빈 값(empty string)으로 label과 value를 설정. [default: false, true] 
+
+
+
+emptyValue
+
+emptyItem="true"인 경우, 설정한 value 값.
+
+
+
+enableColumn
+
+선택 항목 목록에서 특정 항목을 disable 처리하는 기능. disable 처리된 목록은 보이기만 할 뿐 선택이 되지 않음.
+
+
+
+enableColumnFalseValue
+
+enableColumn 사용 시 목록에서 특정 항목을 감추기 위한 조건에 해당하는 값
+
+
+
+escape
+
+<>&"를 HTML Escape 문자로 변환하여 화면에 표시
+
+
+
+hideListOnFocus
+
+편집 모드 진입 시 목록을 보여줄지에 대한 여부
+(옵션 설명)
+ "false" (기본 값) : 편집 모드 진입 시 현재 값과 매칭되는 autoComplete 목록이 펼쳐진다
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+interactionEnterKey
+
+입력 창에 값을 입력 후 Enter 키를 누를 때만 submission을 실행. [default: false, true] 
+
+
+
+interactionMode
+
+사용자 입력에 따라 서버로부터 데이터를 동적으로 받아 항목 생성 여부. [default: false, true] 
+
+
+
+keyInputRef
+
+검색 값을 InstanceData와 연동할 때, XPath 경로 하위에서 key 노드를 포함할 노드 명칭
+
+
+
+mandatory
+
+필수 선택 적용 여부. [default: false, true] 
+
+
+
+nextTabByEnter
+
+nextTabID가 지정되어 있는 경우, Enter키 입력시 nextTabID 컴포넌트로 포커스를 이동시킬지에 대한 여부
+
+
+
+nextTabID
+
+Tab 키로 이동할 경우, Tab 키를 누를 때 선택되는 컴포넌트의 ID
+
+
+
+noResult
+
+사용자가 입력한 값에 대한 검색 결과가 없을 때, 화면에 표현하는 텍스트 처리 방식
+
+
+
+noResultFirstItem
+
+최초 로딩 시 첫번째 선택 항목 표시 여부. [default: false, true] 
+
+
+
+placeholder
+
+HTML5의 placeholder와 동일한 기능을 제공. 사용자에게 알려줘야 할 힌트 문구 등을 명시. 
+
+
+
+preventKeyList
+
+웹스퀘어 엔진 내부에서 처리하는 키 동작을 막는 기능
+
+
+
+preventWheelEvent
+
+마우스 휠 이벤트 금지 여부
+
+
+
+readOnly
+
+읽기 전용 적용 여부
+
+
+
+ref
+
+컴포넌트의 초기 값을 model이나 DataCollection과 연동
+
+
+
+renderType
+
+브라우저에 표현될 레이아웃 구조
+
+
+
+search
+
+사용자 입력 값 검색 방법. [default: start, contain, none] 
+
+
+
+searchTarget
+
+사용자의 입력 값을 기반으로 선택 항목을 제안하기 위해 검색할 대상을 지정
+
+
+
+selectedData
+
+선택한 값이 바인딩된 DataList의 목록에 없을 경우 선택한 값 유지 여부
+
+
+
+setNodeSetNoOnchange
+
+setNodeSet API에 의해 목록이 변경되어 선택 항목이 초기화되는 경우 onchange 이벤트를 발생시키지 않도록 하는 속성 (하위호환을 위해 속성 추가)
+(예시)
+ autoComplete의 목록이 3번째 항목이 선택된 상태에서 setNodeSet API에 의해 선택 항목이 첫번째로 초기화되는 경우
+ setNodeSetNoOnchange="false" (기본값) : 선택된 항목이 3번째에서 첫번째로 변경된 것으로 인식하여 onchange 이벤트 발생
+
+
+
+sortMethod
+
+선택 항목 목록 정렬 방법
+
+
+
+sortOption
+
+선택 항목 목록 정렬 기준. [label, value] 
+
+
+
+submenuSize
+
+선택 항목 목록 크기 결정 방법
+
+
+
+submission
+
+interactioMode="true"인 경우 호출할 submission의 ID.
+
+
+
+submissionFunc
+
+interactioMode="true"인 경우 호출할 함수. 
+
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. 
+
+
+
+textAlign
+
+선택 항목 목록 상의 텍스트 정렬
+
+
+
+title
+
+HTML의 title 속성과 동일
+
+
+
+tooltipClass
+
+툴팁에 적용할 스타일 class
+
+
+
+tooltipDisplay
+
+사용자가 선택한 값에 대한 툴팁 표시 여부
+
+
+
+tooltipTime
+
+툴팁 표시 시간. (단위: 초)
+
+
+
+type
+
+HTML의 type 속성과 동일
+
+
+
+useItemLocale
+
+아이템 목록 다국어 사용 여부
+
+
+
+useKeywordHighlight
+
+검색 결과 중 사용자 입력값에 별도의 class를 적용하여 다르게 표시할지 여부
+
+
+
+useLocale
+
+다국어 사용.
+
+
+
+useMousewheel
+
+선택 항목 목록 상에서 마우스 휠 사용 허용 여부
+
+
+
+userData1
+
+사용자 정의 데이터 속성
+
+
+
+userData2
+
+사용자 정의 데이터 속성
+
+
+
+userData3
+
+사용자 정의 데이터 속성
+
+
+
+visibleColumn
+
+선택 항목 목록에서 특정 항목을 감추는 기능. 
+
+
+
+visibleColumnFalseValue
+
+visibleColumn 사용 시 목록에서 특정 항목을 감추기 위한 조건에 해당하는 값
+
+
+
+visibleRowNum
+
+표현 될 항목 행수
+
+
+
+wmode
+
+wmode를 사용하여 선택 항목 목록을 object 태그보다 상위에 표시. [default: false, true]
+
+
+
+Event Summary
+
+
+
+
+onafteredit
+
+사용자가 선택 항목을 변경하고, 해당 변경이 완전히 처리된 후에 발생
+
+
+
+onchange
+
+사용자가 선택 항목을 변경할 경우 발생
+
+
+
+oneditenter
+
+엔터키를 키를 눌렀을 때 발생
+
+
+
+oneditkeyup
+
+키보드에서 키를 눌렀다 놓았을 때 발생.
+
+
+
+onitemclick
+
+선택 항목 목록(itemTable) 상에서 항목이 클릭된 경우 발생
+
+
+
+onselected
+
+선택 항목 목록(itemTable)에서 항목이 클릭된 이후에 발생
+
+
+
+ontoggleclick
+
+토글 버튼(▼)이 클릭된 경우 발생
+
+
+
+onviewchange
+
+키보드 또는 마우스 조작을 통해 값이 변경된 경우 발생.
+
+
+Method Summary
+
+
+
+
+addClass(
+									  className
+										)
+								
+
+컴포넌트에 CSS class를 추가
+
+
+
+addItem(
+									  label
+									       , 
+									       value
+									       , 
+									       nodest
+									       , 
+									       index
+										)
+								
+
+선택 항목을 추가
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당
+
+
+
+changeChooseOption(
+									  newValue
+									       , 
+									       newLabel
+										)
+								
+
+chooseOption 속성을 변경
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+								
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+disableEdit(
+									  onoff
+										)
+								
+
+사용자의 마우시 클릭 시, 편집 상태로 들어가지 않고 항목 목록들만 표시
+
+
+
+focus(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트에 포커스를 줌
+
+
+
+getDataListInfo(
+									  
+										)
+								
+
+AutoComplete와 바인딩된 DataList를 반환
+
+
+
+getDisabled(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환
+
+
+
+getGenerator(
+									  
+										)
+								
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환
+
+
+
+getID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 ID를 반환
+
+
+
+getInitStyle(
+									  CSS
+										)
+								
+
+컴포넌트의 초기 스타일을 반환
+
+
+
+getItem(
+									  index
+										)
+								
+
+주어진 index에 해당하는 항목의 정보를 담은 객체를 반환
+
+
+
+getItemCount(
+									  
+										)
+								
+
+선택 항목 개수를 반환
+
+
+
+getNextTabID(
+									  
+										)
+								
+
+nextTabID 속성의 설정 값을 반환
+
+
+
+getOpacity(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getOriginalID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getPluginName(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환
+
+
+
+getPosition(
+									  positionName
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getReadOnly(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환
+
+
+
+getScope(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getSearchedItems(
+									  
+										)
+								
+
+검색된 모든 항목을 배열로 반환
+
+
+
+getSelectedIndex(
+									  
+										)
+								
+
+선택된 항목의 인덱스를 반환. 
+
+
+
+getSelectedRow(
+									  
+										)
+								
+
+선택된 항목의 정보를 담은 객체를 반환.
+
+
+
+getSize(
+									  sizeName
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getStyle(
+									  propertyName
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환
+
+
+
+getStyleValue(
+									  style
+										)
+								
+
+[deprecated]
+
+
+
+getText(
+									  isOriginal
+										)
+								
+
+선택된 항목의 label 값을 반환
+
+
+
+getTitle(
+									  
+										)
+								
+
+컴포넌트의 title 속성 값을 반환
+
+
+
+getUdcHome(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUdcRoot(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUserData(
+									  key
+										)
+								
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환
+
+
+
+getValue(
+									  
+										)
+								
+
+현재 선택된 항목의 value 값을 반환
+
+
+
+hasClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인
+
+
+
+hide(
+									  
+										)
+								
+
+컴포넌트를 화면에서 숨김
+
+
+
+initAutoComplete(
+									  
+										)
+								
+
+AutoCompelete 컴포넌트에 대해 초기화를 실행
+
+
+
+openTable(
+									  
+										)
+								
+
+선택 항목 목록을 여는 기능. 
+
+
+
+removeClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setDelimiter(
+									  
+										)
+								
+
+autoComplete delimiter 동적 변경
+
+
+
+setDisabled(
+									  disabled
+										)
+								
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정
+
+
+
+setDisplyaMode(
+									  
+										)
+								
+
+autoComplete displayMode 동적 변경
+
+
+
+setDummyData(
+									  value
+									       , 
+									       label
+										)
+								
+
+임의의 선택 항목 값(value와 label)을 설정. 
+
+
+
+setEditMode(
+									  
+										)
+								
+
+입력 창에 포커스를 표시
+
+
+
+setEnableColumn(
+									  columnId
+									       , 
+									       enableColumnFalseValue
+										)
+								
+
+enableColumn 속성을 동적으로 설정.
+
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+								
+
+지정한 이벤트를 중단함
+
+
+
+setGridItemset(
+									  obj
+										)
+								
+
+바인딩된 gridViewItemset을 변경. 
+
+
+
+setInitStyle(
+									  property
+										)
+								
+
+컴포넌트의 초기 스타일을 복구한다
+
+
+
+setItem(
+									  label
+									       , 
+									       value
+									       , 
+									       nodest
+									       , 
+									       index
+										)
+								
+
+주어진 값으로 선택 항목을 설정
+
+
+
+setItemSet(
+									  nodeset
+									       , 
+									       label
+									       , 
+									       value
+										)
+								
+
+선택 항목 목록을 설정. 
+
+
+
+setMaxLength(
+									  maxlength
+										)
+								
+
+maxlength를 설정
+
+
+
+setNextTabID(
+									  componentID
+									       , 
+									       componentScope
+										)
+								
+
+nextTabID 속성을 설정.
+
+
+
+setNodeSet(
+									  nodeset
+									       , 
+									       label
+									       , 
+									       value
+										)
+								
+
+선택 항목 목록을 설정. 
+
+
+
+setOpacity(
+									  value
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정
+
+
+
+setReadOnly(
+									  readOnly
+										)
+								
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정
+
+
+
+setRef(
+									  path
+										)
+								
+
+ref 속성을 설정. DataCollection과 연동시 "data:"라는 prefix를 꼭 붙여야 함.
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+								
+
+명시한 스타일을 주어진 값으로 설정
+
+
+
+setText(
+									  label
+									       , 
+									       isOriginal
+										)
+								
+
+인자로 받은 label에 해당하는 항목을 선택
+
+
+
+setTitle(
+									  title
+										)
+								
+
+컴포넌트의 title 속성을 설정
+
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+setValue(
+									  value
+										)
+								
+
+인자로 받은 value에 해당하는 값을 갖는 항목을 선택
+
+
+
+setVisibleColumn(
+									  columnId
+									       , 
+									       visibleColumnFalseValue
+										)
+								
+
+visibleColumn 속성을 동적으로 설정.
+
+
+
+show(
+									  displayType
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)
+
+
+
+toggleClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+컴포넌트에서 특정 이벤트를 발생시킴
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+컴포넌트에서 이벤트를 제거
+
+
+
+unbindRef(
+									  
+										)
+								
+
+ref 바인딩을 해제
+
+
+
+validate(
+									  
+										)
+								
+
+컴포넌트의 유효성 관련 속성값을 통해 유효성 검사를 실행.
+
+
+
+validateObject(
+									  
+										)
+								
+
+컴포넌트에 정의된 유효성 관련 속성값을 통해 유효성 검사를 실행
+
+
+
+visible(
+									  flag
+										)
+								
+
+[deprecated] 
+
+
+
+Property Detail
+
+
+
+
+allOption
+
+제거 예정 속성. (override 후 제거 예정.)
+
+
+allowEmptySubmission
+
+interactionMode="true"인 경우, 빈 문자열의 검색 허용 유무. [default: false, true] 
+ (옵션 설명)
+ "false" (기본 값) : 허용하지 않음. 
+ "true" : 허용.  
+ (관련 속성)
+ interactionMode="true"
+
+
+animation
+
+선택 항목 목록에 적용할 애니메이션 효과. [default: "", show, fadeIn, slideDown] 
+ (옵션 설명)
+ "" (기본 값) : 전체 내역이 한번에 표시.
+ "show" : 한 점에서 퍼지면서 내역을 표시.
+ "fadeIn" : 전체 내역을 점점 선명하게 표시. 
+ "slideDown" : 하위로 내려오면서 순차적으로 내역을 표시.
+
+
+autoFocus
+
+사용자가 입력한 값이 선택 목록의 값과 정확하게 일치할 경우, nextTabID로 지정된 컴포넌트로 (100ms 이후) 포커스를 이동.(주의) InputBox와 달리 maxByteLength 설정에는 영향을 받지 않음.
+
+
+caseSensitive
+
+검색 시 영문 대소문자 구분 여부. [default: true, false] 
+ (옵션 설명)
+ "true" (기본 값) : 대소문자 구분. 
+ "false" : 대소문자 구분하지 않음.
+
+
+chooseOption
+
+선택 안내 메시지 표시 여부. [default: false, true] chooseOptionLabel 속성이 설정된 경우 해당 값을 표시. 단, chooseOptionLabel 속성이 설정되지 않고 chooseOption="true"인 경우, 선택 항목 목록에 "-선택-"(label)이 표시됨.  이 때 value는 ""(empty string)으로 설정됨.
+ (옵션 설명)
+ "true" : 선택 안내 메시지를 표시.  chooseOptionLabel 속성에 설정 된 값을 표시. 
+ "false" (기본 값) : 선택 안내 메시지를 표시하지 않음. 
+
+ (관련 속성)
+ chooseOptionLabel
+
+
+chooseOptionLabel
+
+선택 안내 메시지로 표시할 텍스트의 label을 정의. chooseOption="true"인 경우 유효. 
+ (관련 속성)
+ chooseOption="true"
+
+
+chooseOptionLabelLocaleRef
+
+클라이언트 다국어 적용시 화면에 출력하는 chooseOptionLabel의 key. key에 해당하는 텍스트가 없을 경우 "global_undefined"가 화면에 표시됨.
+
+
+chooseOptionValue
+
+선택 안내 메시지로 표시할 텍스트의 value를 정의. chooseOption="true"인 경우 유효. 
+ (관련 속성)
+ chooseOption="true"
+
+
+class
+
+HTML의 class 속성과 동일. CSS 파일 또는 style 블럭에 정의한 class를 적용 가능. 여러 개를 적용할 경우 공백(space)으로 구분.기본적으로 엔진 내부에서 컴포넌트 별로 class를 적용하고 있으나 본 속성을 이용하여 컴포넌트에 별도의 CSS 적용 가능.
+
+
+closeonmouseleave
+
+subLayer로 열린 경우, 선택 항목 목록에서 마우스 커서가 빠져나갈 때 목록을 닫을지 여부. [default: false, true]  
+ (옵션 설명)
+ "false" (기본 값) : 목록을 닫지 않음. 
+ "true" : 목록을 닫음.
+
+
+delimiter
+
+선택 항목 목록에 value와 label을 함께 표시할 때 사용하는 구분자. displayMode 속성에서 참조.
+ (관련 속성)
+ displayMode
+
+
+direction
+
+선택 항목 목록이 열리는 방향 지정. [default: auto, down, up, fit] 
+ (옵션 설명)
+ "auto" (기본 값) : 브라우저 상의 위치에 따라 자동 결정.
+ "down" : 아래쪽으로 열림. 
+ "up" : 위로 열림. 
+ "fit"
+
+
+disabled
+
+컴포넌트 비활성 여부. 
+ (옵션 설명)
+ "false" (기본 값) : 컴포넌트를 비활성화 하지 않음. 
+ "true" : 컴포넌트를 비활성화 함.
+
+
+disableEdit
+
+마우스 클릭 시, 목록만 표시하고 수정 모드로 진입하지 않음. [default: false, true] 
+ (옵션 설명)
+ "false" (기본 값) : 목록을 표시하고 수정 모드로 진입. 
+ "true" : 목록은 표시하지만 수정 모드로 진입하지 않음.
+
+
+displayFormatter
+
+컴포넌트의 value를 포맷하는 함수의 이름. 해당 함수는 엔진에서 파라미터로 넘겨준 value에 대해 포매팅을 수행한 후, 화면에 표현할 최종 값을 반환함. 
+(예시)
+ 전역 스크립트에 function fn_inputFormat (tmpVal){ return tmpVal+" 님" }; 을 정의
+ 본 속성을 displayFormatter="fn_inputFormat"으로 설정.
+
+
+displayMode
+
+선택 항목의 표현 방법. [default: label, value delim label, label delim value] label과 value를 함께 표현하는 것이 가능. 구분자는 delimiter 속성에 정의 된 값을 사용.
+(옵션 설명)
+ "label" (기본 값) : label을 표시 (예시: "label")
+ "value delim label" : value 구분자 label 순서로 표시 (예시: "value + 구분자 + label")
+ "label delim value" : label 구분자 value 순서로 표시 (예시: "label + 구분자 + value")
+ "value" : value를 표시 (예시: "value")
+
+(관련 속성)
+ delimiter
+
+
+displayModeSync
+
+searchTarget="both"일 때 편집모드 진입 시 displayMode대로 값이 나타나게 하는 기능 [default: false, true] 
+(관련 속성)
+ searchTarget
+
+
+editModeEvent
+
+수정 모드로의 변경을 야기하는 이벤트 설정. [default: onclick, onfocus] 
+ (옵션 설명)
+ "onclick" (기본 값) : onclick 이벤트 발생 시 수정 모드로 전환. 
+ "onfocus" : onfocus 이벤트 발생 시 수정 모드로 전환.
+
+
+editType
+
+사용자가 컴포넌트 클릭 시 결과 동작 지정. [default: select, focus] 
+ (옵션 설명)
+ "select" (기본 값) : 포커스가 발생할 때 선택된 텍스트를 선택.  
+ "focus" : 텍스트의 맨 끝으로 커서를 이동.
+
+
+emptyIndex
+
+처음 AutoComplete를 그릴 때 선택할 선택 항목의 인덱스.
+ // 아래와 같은 설정을 사용할 경우, 초기 로딩 시 빈 값이 선택됨. 
+ emptyItem="true" emptyIndex="-1"
+
+
+emptyItem
+
+(setValue, setSelectedIndex 등을 이용하여) 선택 항목에 없는 value나 index가 동적으로 설정하는 경우 빈 값(empty string)으로 label과 value를 설정. [default: false, true] 빈 값으로 value가 설정된 선택 항목이 추가되거나 삭제될 경우, 첫번째 항목이 선택됨. (HTML select의 selectedIndex=-1과 동일)단, emptyValue 속성을 사용하여 빈 값이 아닌 다른 값을 value로 설정 가능. 
+ (옵션 설명)
+ "false" (기본 값) : 동적으로 설정된 값을 사용함. 
+ "true" : 빈 값으로 설정함. 
+
+ (관련 속성)
+ emptyValue
+
+
+emptyValue
+
+emptyItem="true"인 경우, 설정한 value 값.단, emptyValue와 동일한 value를 갖는 선택항 목이 존재할 경우에도 label은 ""으로 표현됨.
+ (관련 속성)
+ emptyItem="true"
+
+
+enableColumn
+
+선택 항목 목록에서 특정 항목을 disable 처리하는 기능. disable 처리된 목록은 보이기만 할 뿐 선택이 되지 않음.선택 항목 목록이 DataList와 바인딩된 경우, disable 여부를 알려주는 컬럼을 지정. disable 여부를 알려주는 컬럼의 값이 enableColumnFalseValue 속성에 지정한 값과 같은 경우, 해당 행은 disable 처리됨.selectedIndex는 영향을 받지 않음. 즉 목록에 보이는 인덱스가 아닌 전체 인덱스를 기준으로 동작.해당 속성은 setEnableColumn 함수를 통해 동적으로 설정 가능. 
+(예제) 
+ autoComplete1이 dataList1과 바인딩되어있고,
+ enableColumn="col3" 및 enableColumnFalseValue="false" 설정 사용.
+
+ 아래를 실행.  
+ dataList1.getCellData(row, "col3");
+ 위의 결과로 false가 반환될 경우, 해당 행은 목록에서 disable 처리됨.
+
+(관련 API)
+ enableColumnFalseValue (속성)
+ setenableColumn (함수)
+
+
+enableColumnFalseValue
+
+enableColumn 사용 시 목록에서 특정 항목을 감추기 위한 조건에 해당하는 값. 
+(옵션 설명)
+ 기본 값: "0", "false", "FALSE", 혹은 "F"
+
+(예시)
+ 아래를 실행. 
+ dataList.getCellData(row, enableColumn);
+ 위의 결과 값이 "0, false, FALSE, F" 중 하나에 해당되면, 해당 행은 목록에서 disable 처리됨.
+ 
+(관련 속성)
+ enableColumn
+
+
+escape
+
+<>&"를 HTML Escape 문자로 변환하여 화면에 표시. [default: false, true] 
+(옵션 설명)
+ "true" (기본 값) : Escape 문자로 변환하지 않음.
+ "false" : Escape 문자로 변환하여 화면에 표시.
+
+
+hideListOnFocus
+
+편집 모드 진입 시 목록을 보여줄지에 대한 여부
+(옵션 설명)
+ "false" (기본 값) : 편집 모드 진입 시 현재 값과 매칭되는 autoComplete 목록이 펼쳐진다.
+ "true" : 편집 모드 진입 시 목록이 펼쳐지지 않는다.
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+interactionEnterKey
+
+입력 창에 값을 입력 후 Enter 키를 누를 때만 submission을 실행. [default: false, true] interactionMode="true"인 경우만 유효.
+ (옵션 설명)
+ "false" (기본 값) 
+ "true" : Enter 키를 누를 때만 submission을 실행.
+ (!!!주의!!!)
+ interactionKey="all" 인 경우에는 동작하지 않음.
+
+
+interactionMode
+
+사용자 입력에 따라 서버로부터 데이터를 동적으로 받아 항목 생성 여부. [default: false, true] submission 또는 submissionFunc 둘 중에 하나는 속성을 정의해야 함.xforms-submit-done 이벤트 또는 submission submitdone 이벤트에서 setItemSet() 과 openTable() 함수를 사용해야 함. 
+ "false" (기본 값): 사용자 입력에 따라 선택 항목 생성. 
+ "true" : 사용자 입력에 따라 선택 항목 생성하지 않음.
+
+
+keyInputRef
+
+검색 값을 InstanceData와 연동할 때, XPath 경로 하위에서 key 노드를 포함할 노드 명칭. interactionMode="true"인 경우 유효.  
+ (사용 예)
+ // keyInputRef="req/search"인 경우, 
+ 검색어
+ (관련 속성)
+ interactionMode="true"
+
+
+mandatory
+
+필수 선택 적용 여부. [default: false, true] validate 함수를 통해 입력값을 검증할 경우 필수 입력을 확인. 
+(옵션 설명)
+ "false" (기본 값) : 필수 선택 적용하지 않음. 
+ "true" : 필수 선택 적용.
+ 
+(관련 함수)
+ validate();
+
+
+nextTabByEnter
+
+nextTabID가 지정되어 있는 경우, Enter키 입력시 nextTabID 컴포넌트로 포커스를 이동시킬지에 대한 여부.
+
+
+nextTabID
+
+Tab 키로 이동할 경우, Tab 키를 누를 때 선택되는 컴포넌트의 ID.
+
+
+noResult
+
+사용자가 입력한 값에 대한 검색 결과가 없을 때, 화면에 표현하는 텍스트 처리 방식. [default: previous, clear, noEnd, useData, first] 
+ (옵션 설명)
+ "previous" (기본 값) : 이전 결과값 표시. (interactionMode="false"인 경우 유효.)
+ "clear" : 입력 값 삭제. 
+ "noEnd" : 입력 모드 유지. 
+ "useData" : 사용자가 입력한 값을 표시하고 항목에 추가. (interactionMode="false"인 경우 유효.)
+ "first" : 첫번째 선택 항목을 표시.
+
+
+noResultFirstItem
+
+최초 로딩 시 첫번째 선택 항목 표시 여부. [default: false, true] ref를 통해 DataCollection과 바인딩되고 noResult="first"인 경우 유효.  
+ (옵션 설명)
+ "false" (기본 값) : 첫번째 선택 항목을 표시하지 않음. 
+ "true" : 첫번째 선택 항목을 표시. false (기본 값): 첫번째 항목을 선택하지 않음. 
+ (관련 속성)
+ ref
+ noResult="first"
+
+
+placeholder
+
+HTML5의 placeholder와 동일한 기능을 제공. 사용자에게 알려줘야 할 힌트 문구 등을 명시. AutoComplete의 값이 비어 있을 때 placeholder로 설정한 문구가 표시되며, 값을 입력하는 순간 문구는 사라짐. 지원 브라우저 : IE10이상
+
+
+preventKeyList
+
+웹스퀘어 엔진 내부에서 처리하는 키 동작을 막는 기능. 막고자 하는 keycode 값들을 구분자 , 를 사용하여 나열한다. 모든 키를 차단하려면 all을 입력한다.
+(예시)
+ autoComplete의 방향키관련 엔진 처리를 막고 싶을 경우 아래와 같이 설정한다. 이 경우 autoComplete에 포커스된 상태에서 방향키 위아래를 눌러도 목록이 펼쳐지지 않는다. 
+   (37=left,38=up,39=right,40=down)
+ autoComplete의 엔터키 관련 엔진 처리를 막고 싶을 경우 아래와 같이 설정한다. 이 경우 autoComplete에 포커스된 상태에서 엔터키를 입력해도 편집 모드로 진입하지 않는다.
+   (13=enter)
+ 웹스퀘어의 autoComplete 키 관련 처리를 전부 막고자 하는 경우에는 이 속성값을 all로 설정한다. 
+  (autoComplete 컴포넌트의 기본 키 동작을 전부 막는다.)
+
+
+preventWheelEvent
+
+마우스 휠 이벤트 금지 여부. [default: false, true] 
+(옵션 설명)
+ "false" (기본 값) : 마우스 휠 이벤트 허용. 
+ "true" : 마우스 휠 이벤트 금지. 
+
+(관련 이벤트)
+ mouseWheelEvent
+
+
+readOnly
+
+읽기 전용 적용 여부. [default: false, true] 
+ (옵션 설명)
+ "false" (기본 값) : 읽기 전용 적용하지 않음. 
+ "true" : 읽기 전용 적용.
+
+
+ref
+
+컴포넌트의 초기 값을 model이나 DataCollection과 연동.
+
+
+renderType
+
+브라우저에 표현될 레이아웃 구조. [default: component, native]
+(옵션 설명) 
+ "component" : <select> 태그를 사용하지 않고, 최상위 <div> 태그 하위에 table 태그를 사용하여 항목을 표현. 
+ "native" : HTML <select> 태그를 사용. 모든 브라우저 환경에서 동일한 모양과 기능을 제공하며, 웹접근성 준수를 위해 title 속성을 필수로 생성해야 함.
+
+
+search
+
+사용자 입력 값 검색 방법. [default: start, contain, none] interactionMode="false"인 경우 유효. 
+ (옵션 설명)
+ "start" (기본 값): 입력값과 항목의 시작과 같을 경우만 검색. 
+ "contain" : 입력값이 항목에 속해 있는 모든 경우 검색. 
+ "none" : 입력값이 항목과 완전히 같은 경우만 검색. 
+ (관련 속성)
+ interactionMode="false"
+
+
+searchTarget
+
+사용자의 입력 값을 기반으로 선택 항목을 제안하기 위해 검색할 대상을 지정. [default: label, value, both]
+ (옵션 설명)
+ "label" (기본 값) : label 검색
+ "value" : value 검색
+ "both" : label과 value 모두 검색.
+
+
+selectedData
+
+선택한 값이 바인딩된 DataList의 목록에 없을 경우 선택한 값 유지 여부. [default: true, false] 
+ (옵션 설명)
+ "true" (기본 값) : 선택 값을 무시하고 이전 값 유지.
+ "false" : 선택 값 유지.
+
+
+setNodeSetNoOnchange
+
+setNodeSet API에 의해 목록이 변경되어 선택 항목이 초기화되는 경우 onchange 이벤트를 발생시키지 않도록 하는 속성 (하위호환을 위해 속성 추가)
+(예시)
+ autoComplete의 목록이 3번째 항목이 선택된 상태에서 setNodeSet API에 의해 선택 항목이 첫번째로 초기화되는 경우
+ setNodeSetNoOnchange="false" (기본값) : 선택된 항목이 3번째에서 첫번째로 변경된 것으로 인식하여 onchange 이벤트 발생. 기존 동작 유지.
+ setNodeSetNoOnchange="true" : onchange 이벤트 발생하지 않음.
+
+
+sortMethod
+
+선택 항목 목록 정렬 방법. sortOption 속성이 정의된 경우에만 유효. [default: ascending, descending] 
+ (옵션 설명)
+ "ascending" (기본 값) : 오름차순으로 선택 항목 목록을 정렬.
+ "descending" : 내림차순으로 선택 항목 목록을 정렬.  
+
+ (관련 속성)
+ sortOption
+
+
+sortOption
+
+선택 항목 목록 정렬 기준. [label, value] 기본적으로 오름차순으로 정렬되며, sortMethod 속성이 설정된 경우 해당 설정을 따름. 
+ (옵션 설명)
+ "label" : label을 기준으로 선택 항목 목록 정렬.
+ "value" : value를 기준으로 선택 항목 목록 정렬.  
+
+ (관련 속성)
+ sortMethod="ascending" 
+ sortMethod="descending"
+
+
+submenuSize
+
+선택 항목 목록 크기 결정 방법. [default: fixed, auto] 
+(옵션 설명)
+ "fixed" (기본 값) : 기본 width 사용
+ "auto" : label에 따라 자동 조정.
+
+
+submission
+
+interactioMode="true"인 경우 호출할 submission의 ID.(현재 비공개인) interactionKey 속성에 따라 submission이 실행됨.
+ (관련 속성)
+ interactioMode="true"
+ interactionKey
+ (!!!주의!!!)
+ submissionFunc 속성과 동시 사용 불가.
+
+
+submissionFunc
+
+interactioMode="true"인 경우 호출할 함수. (현재 비공개인) interactionKey 속성에 따라 함수가 실행됨.
+ (관련 속성)
+ interactioMode="true"
+ interactionKey
+ (!!!주의!!!)
+ submission 속성과 동시 사용 불가.
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. HTML의 tabindex 속성과 동일.
+
+
+textAlign
+
+선택 항목 목록 상의 텍스트 정렬. [default: center, left, right] 
+ (옵션 설명)
+ "center" (기본 값) : 가운데 정렬
+ "left" : 왼쪽 정렬 
+ "right" : 오른쪽 정렬
+
+
+title
+
+HTML의 title 속성과 동일. 마우스 오버 시, title로 저장한 값이 툴팁으로 표시됨. 일반적으로 웹접근성 지원용으로 설정.
+
+
+tooltipClass
+
+툴팁에 적용할 스타일 class. 툴팁을 표시할 경우(tooltipDisplay="true") 유효. 
+ (관련 속성)
+ tooltipDisplay="true"
+
+
+tooltipDisplay
+
+사용자가 선택한 값에 대한 툴팁 표시 여부. [default: false, true] 
+(옵션 설명)
+ "true" : 툴팁 표시. 
+ "false" (기본 값) : 툴팁 표시하지 않음.
+
+
+tooltipTime
+
+툴팁 표시 시간. (단위: 초)툴팁을 표시할 경우(tooltipDisplay="true")에만 유효. 
+ (관련 속성)
+ tooltipDisplay="true"
+
+
+type
+
+HTML의 type 속성과 동일. [default: text]
+
+
+useItemLocale
+
+아이템 목록 다국어 사용 여부.
+
+
+useKeywordHighlight
+
+검색 결과 중 사용자 입력값에 별도의 class를 적용하여 다르게 표시할지 여부. [default: false, true] 
+ (옵션 설명)
+ "false" (기본 값) : 적용하지 않음. 
+ "true" : 검색된 키워드에 "w2autoComplete_keyword" class를 적용.
+
+
+useLocale
+
+다국어 사용.선택 항목의 label에 표현되는 값을 클라이언트의 다국어 key를 이용하여 표현.(세부 내용은 다국어 설정 가이드 - 클라이언트 편을 참고.)
+(옵션 설명)
+ "false" (기본 값): 클라이언트의 다국어 key를 이용하지 않음. 
+ "true" : 클라이언트의 다국어 key를 이용하여 다국어 지원. 
+
+(관련 속성)
+ chooseOptionLabel에 대해서도 다국어 key가 필요함. (chooseOptionLabelLocaleRef)
+
+
+useMousewheel
+
+선택 항목 목록 상에서 마우스 휠 사용 허용 여부. [default: true, false] 
+ (옵션 설명)
+ "true" (기본 값) : 마우스 휠 사용 가능. 
+ "false" : 마우스 휠 사용할 수 없음.
+
+
+userData1
+
+사용자 정의 데이터 속성. getUserData("userData1") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData1");
+
+
+userData2
+
+사용자 정의 데이터 속성. getUserData("userData2") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData2");
+
+
+userData3
+
+사용자 정의 데이터 속성. getUserData("userData3") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData3");
+
+
+visibleColumn
+
+선택 항목 목록에서 특정 항목을 감추는 기능. 선택 항목 목록이 DataList와 바인딩된 경우, 표시 여부를 알려주는 컬럼을 지정. 표시 여부를 알려주는 컬럼의 값이 visibleColumnFalseValue 속성에 지정한 값과 같은 경우, 해당 행은 선택 항목 목록에 표시되지 않음. selectedIndex는 영향을 받지 않음. 즉 목록에 보이는 인덱스가 아닌 전체 인덱스를 기준으로 동작.해당 속성은 setVisibleColumn 함수를 통해 동적으로 설정 가능. 
+(예제) 
+ autoComplete가 dataList1과 바인딩되어있고,
+ visibleColumn="col3" 및 visibleColumnFalseValue="false" 설정 사용.
+
+ 아래를 실행.  
+ dataList1.getCellData(row, "col3");
+ 위의 결과로 false가 반환될 경우, 해당 행은 선택 항목 목록에 표시되지 않음. 
+
+(관련 API)
+ visibleColumnFalseValue (속성)
+ setVisibleColumn (함수)
+
+
+visibleColumnFalseValue
+
+visibleColumn 사용 시 목록에서 특정 항목을 감추기 위한 조건에 해당하는 값. 
+(옵션 설명)
+ 기본 값: "0", "false", "FALSE", 혹은 "F"
+
+(예시)
+ 아래를 실행. 
+ dataList.getCellData(row, visibleColumn);
+ 위의 결과 값이 "0, false, FALSE, F" 중 하나에 해당되면, 해당 행은 선택 항목 목록에 표시되지 않음.
+ 
+(관련 속성)
+ visibleColumn
+
+
+visibleRowNum
+
+표현 될 항목 행수. "1"로 설정하는 것은 비권장.
+
+
+wmode
+
+wmode를 사용하여 선택 항목 목록을 object 태그보다 상위에 표시. [default: false, true]선택 항목 목록이 object(ActiveX, Flash 등)에 가려질 경우 사용. 본 컴포넌트가 아닌 object(ActiveX, Flash 등)태그에 wmode 사용할 것을 권장. 
+ (옵션 설명)
+ "true" : wmode 사용.
+ "false" (기본 값) : wmode 사용하지 않음.
+
+
+
+
+
+Event Detail
+
+
+
+
+onafteredit
+
+사용자가 선택 항목을 변경하고, 해당 변경이 완전히 처리된 후에 발생.
+
+
+
+onchange
+
+사용자가 선택 항목을 변경할 경우 발생.
+
+Parameter
+
+nametypedescription
+
+
+infoJSONoldValue, newValue를 포함한 JSON을 반환한다.
+ info.oldValue : 이전 값
+ info.newValue : 변경된 값
+
+
+Sample
+// 컴포넌트 태그 안에 event가 있는 경우
+<![CDATA[
+    var oldValue = info.oldValue;
+    var newValue = info.newValue;
+]]>
+
+
+oneditenter
+
+엔터키를 키를 눌렀을 때 발생.
+Sample
+
+scwin.autoComplete1_oneditenter = function(e) {
+    var keyCode = (e.charCode) ? e.charCode : e.keyCode;   
+    var logStr = "keyCode=" + keyCode;
+    logger.printLog(logStr);
+    console.log(logStr);
+}
+
+
+oneditkeyup
+
+키보드에서 키를 눌렀다 놓았을 때 발생.oldValue, newValue, keyCode를 포함한 JSON 객체가 인자로 추가로 들어옴.
+
+Parameter
+
+nametypedescription
+
+
+infoJSONoldValue, newValue, keyCode를 포함한 JSON을 반환.
+ info.oldValue : 키가 입력되기 이전의 autoComplete 값
+ info.newValue : 키가 입력된 후의 autoComplete 값
+ info.keyCode : 입력된 키의 코드값
+
+
+eEventevent 객체
+
+
+Sample
+
+scwin.autoComplete1_oneditkeyup = function(info, e) {
+    var logStr = "oldValue=" + info.oldValue + ", newValue=" + info.newValue + ", keyCode=" + info.keyCode;
+    logger.printLog(logStr);
+    console.log(logStr);
+}
+
+
+onitemclick
+
+선택 항목 목록(itemTable) 상에서 항목이 클릭된 경우 발생.
+
+Parameter
+
+nametypedescription
+
+
+indexnumber클릭된 아이템의 index
+
+
+
+
+
+onselected
+
+선택 항목 목록(itemTable)에서 항목이 클릭된 이후에 발생
+Sample
+
+scwin.autoComplete1_onselected = function() {
+}
+
+
+ontoggleclick
+
+토글 버튼(▼)이 클릭된 경우 발생.
+
+Parameter
+
+nametypedescription
+
+
+isOpenboolean이벤트가 발생하기 전에 선택 항목 목록이 펼쳐졌는지에 대한 여부
+
+
+
+
+
+onviewchange
+
+키보드 또는 마우스 조작을 통해 값이 변경된 경우 발생.스크립트를 통해 값이 변경된 경우에는 발생하지 않음. (native onchange 이벤트와 유사함.)
+
+Parameter
+
+nametypedescription
+
+
+infoObject이전 값과 현재 선택된 값의 정보를 담고있는 객체.
+ info.oldValue : 이전 값
+ info.newValue : 현재 선택된 값
+ info.oldSelectedIndex : 이전 인덱스 
+ info.newSelectedIndex : 현재 인덱스
+
+
+Sample
+<![CDATA[
+    var oldValue = info.oldValue;
+    var newValue = info.newValue;
+    var oldSelectedIndex = info.oldIndex;
+    var newSelectedIndex = info.newIndex;
+]]>
+
+
+
+Method Detail
+
+
+
+
+addClass(
+									  className
+										)
+							
+
+컴포넌트에 CSS class를 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가할 class의 이름
+
+
+
+Sample
+// (예제)
+// input1 컴포넌트에 oddClass라는 class를 추가    
+input1.addClass("oddClass");
+
+
+addItem(
+									  label
+									       , 
+									       value
+									       , 
+									       nodest
+									       , 
+									       index
+										)
+							
+
+선택 항목을 추가.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY추가할 항목의 label 값
+
+
+valueStringY추가할 항목의 value 값
+
+
+nodestElementY추가할 항목의 nodeset 값
+
+
+indexNumberN추가할 항목의 index 값
+
+
+
+
+Return
+
+typedescription
+
+
+BooleanaddItem 성공 여부. 실패 시 false가 반환됨.
+
+
+Sample
+// label: 책제목 , value: isbn이며, 괄호()로 구분
+// (예제)금토일 "해외여행 (9788959136315)"을 추가
+//  제목이 "금토일 해외여행"이고 isbn이 "9788959136315"
+   
+var returnValue = autoComplete1.addItem("금토일 해외여행","9788959136315");
+// (실행 결과) 선택 항목 목록 마지막에 '금토일 해외여행' 책 제목이 추가됨.
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY할당할 이벤트
+
+
+functionFunctionY이벤트에 대한 핸들러 함수.
+
+
+
+Sample
+// (예제 1)
+// input1의 onclick 이벤트에 대한 핸들러 함수를 직접 정의하여 할당. 
+input1.bind("onclick", function(e){ alert(input1.getValue();}));
+
+// (예제 2)
+// 미리 commObj.ev_click 함수를 정의.
+var commObj = {};
+commObj.ev_click = function(e){
+    alert("click :: "+this.id);
+};
+
+// input1 컴포넌트에 onclick 이벤트와 정의한 핸들러 함수를 동적으로 할당. 
+input1.bind("onclick", commObj.ev_click );
+
+
+changeChooseOption(
+									  newValue
+									       , 
+									       newLabel
+										)
+							
+
+chooseOption 속성을 변경.
+(관련 속성)
+chooseOption
+
+
+Parameter
+
+nametyperequireddescription
+
+
+newValueStringY변경할 chooseOption의 value
+
+
+newLabelStringY변경할 chooseOption의 label
+
+
+
+Sample
+// (예제) value "0", label "선택"으로 변경
+autoComplete1.changeChooseOption("0","선택");
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+							
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 기본적으로 addClass를 통해 추가된 class만 변경 가능. 웹스퀘어 컴포넌트의 class 속성에 직접 정의된 class를 삭제하려면 config.xml 파일에 아래 설정을 추가해야 함. 
+// config.xml에 아래 설정을 추가. 
+<removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+oldClassNameStringY변경할 class
+
+
+newClassNameStringY새로 사용할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+// config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// class를 변경 가능. 
+// (tmpInputClass class를 tmpInputWarninClass로 변경.)
+input1.changeClass("tmpInputClass","tmpInputWarninClass");
+
+
+disableEdit(
+									  onoff
+										)
+							
+
+사용자의 마우시 클릭 시, 편집 상태로 들어가지 않고 항목 목록들만 표시. 사용자는 항목을 선택할 수 있음.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+onoffBooleanY편집 상태
+
+
+
+
+
+
+focus(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트에 포커스를 줌. (웹스퀘어 컴포넌트 공통.)
+
+
+
+
+
+getDataListInfo(
+									  
+										)
+							
+
+AutoComplete와 바인딩된 DataList를 반환.
+
+
+
+Return
+
+typedescription
+
+
+Objectnodeset, label, value id를 객체로 반환
+
+
+Sample
+// 사용 예
+autoComplete1.getDataListInfo();
+
+
+getDisabled(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Booleandisabled 속성 값
+
+
+Sample
+// 컴포넌트의 disabled 속성 값 확인 예제
+var returnValue = componentId.getDisabled();
+// (반환 값 예시) false
+
+
+getGenerator(
+									  
+										)
+							
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Object부모 Generator 객체
+
+
+Sample
+//부모 Generator가 자식으로 Trigger를 생성한 예제
+  
+
+// 아래 예제의 경우 trigger1을 클릭하면 generator1 객체가 console에 표시됨. 
+ scwin.trigger1.onclick = function(){ console.log(this.getGenerator());} 
+
+
+
+getID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 ID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트 ID
+
+
+Sample
+// 동적으로 웹스퀘어 컴포넌트를 받을 경우, 아래와 같이 ID 확인 가능.
+function fn_validCheck(tmpObj){
+    var compID = tmpObj.getID();
+}
+// 위의 예제 에서 tmpObj가 "input1" ID를 가지고 있는 경우,
+// (반환 값) "input1"
+
+
+getInitStyle(
+									  CSS
+										)
+							
+
+컴포넌트의 초기 스타일을 반환. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다.(웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+CSSStringN속성 (지정하지 않으면 모든 정보 출력)
+
+
+
+
+
+
+getItem(
+									  index
+										)
+							
+
+주어진 index에 해당하는 항목의 정보를 담은 객체를 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+indexNumberY항목의 index 값
+
+
+
+
+Return
+
+typedescription
+
+
+JSON항목의 정보가 담은 객체
+    label : 화면에 표현된 label (displayMode속성이 적용 된 값)
+    orgLabel : label의 원래 값
+    value : value의 값
+
+
+Sample
+// DataList 정의
+
+
+
+
+
+
+
+
+네덜란드
+0016
+
+
+대한민국
+0022
+
+
+덴마크
+0023
+
+
+
+
+// (1) AutoComplete와 위에 정의한 DataList(dc_tmpList) 바인딩
+// (2) label과 value를 함께 표현하기 위해 아래 설정을 적용 
+//     (설정 1) displayMode="label delim value"
+//     (설정 2) delimiter="::"
+
+
+
+
+
+
+
+
+
+
+// (예제) 1번째 항목 꺼내오기
+var tmpObj = autoComplete1.getItem(0)
+// (반환 값) 
+//  {
+//      "label":"네덜란드::0016",
+//      "value":"0026",
+//      "orgLabel":"네덜란드"
+//  }
+
+
+getItemCount(
+									  
+										)
+							
+
+선택 항목 개수를 반환.
+
+
+
+Return
+
+typedescription
+
+
+Number선택 항목 새수
+
+
+Sample
+// 총 2개의 선택 항목이 있는 경우
+var returnValue = checkbox1.getItemCount();
+// (반환 값) 2
+
+
+getNextTabID(
+									  
+										)
+							
+
+nextTabID 속성의 설정 값을 반환.
+(관련 속성)
+nextTabID
+
+
+Sample
+// 사용 예
+var nextTabID = autoComplete1.getNextTabID();
+
+
+getOpacity(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS의 opacity 속성 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+IntegerOpacity 값
+
+
+Sample
+// inputBox 컴포넌트에 opacity CSS를 적용.
+
+        
+// inputBox 컴포넌트의 opacity 값을 반환. 
+var returnValue = input1.getOpacity(); 
+// returnValue는 0 ~ 1 사이의 실수.
+// (반환 값) "0.2"
+
+
+getOriginalID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)originalID는 Scope 기능을 사용할 경우 존재. scope="true"인 WFrame를 사용할 경우, WFrame 내부의 컴포넌트 ID는 원래 사용자가 정의한 값(originalID) 앞에 prefix(wframeID + "_")가 추가되는 방식으로 변경됨.  originalID는 이 때, prefix가 추가되기 전 ID를 의미.
+
+
+
+Return
+
+typedescription
+
+
+String컴포넌트의 originalID
+
+
+Sample
+// WFrame을 사용하는 다중 화면 구조 예시
+
+// WFrame을 포함한 메인 화면 (main.xml) 
+ 
+
+// 메인 화면 WFrame에 연결되는 소스 화면 (text.xml)
+
+
+// text.xml 화면의 내부 스크립트에서 ID 및 originalID 확인하는 예제.
+// getID 실행 
+textbox1.getID(); // 실행 결과는 "wframe1_textbox1"
+ 
+// getOriginalID 실행 
+textbox1.getOriginalID(); // 실행 결과는 "textbox1"
+
+
+getPluginName(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트의 이름 (pluginName)
+
+
+Sample
+// 아래와 같이 공통 함수에서 동적으로 웹스퀘어 객체를 받는 경우, 컴포넌트 종류에 따른 분기 처리가 가능.
+var commObj = {};
+
+commObj.fn_makeReqData = function(tmpObj){
+    var tmpID = tmpObj.getID(); // 컴포넌트 ID
+    var tmpCompType = tmpObj.getPluginName();   // 컴포넌트 이름
+
+    if(tmpCompType == "input"){
+        //..로직..
+    }else if(tmpCompType == "gridView"){
+        //..로직 ..
+    }else{
+        //..로직..
+    }
+};
+
+
+getPosition(
+									  positionName
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 위치 값이 %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNameStringY[left, top] 위치 종류
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 위치 값
+
+
+Sample
+// 아래와 같이 input 컴포넌트에 CSS 속성 margin이 적용된 경우,
+
+
+// (예제) 위의 inputBox 컴포넌트의 top 값을 확인     
+var returnValue = input1.getPosition("top"); 
+
+// 픽셀 단위의 위치 값이 반환됨.
+
+// (반환 값) 10
+
+
+getReadOnly(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Boolean현재 설정되어있는 readOnly 속성
+
+
+Sample
+// 컴포넌트의 readOnly 속성 값 확인 예제
+var returnValue = componentId.getReadOnly();
+// (반환 값 예시) false
+
+
+getScope(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, null을 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체 또는 null
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+textbox1.getScope(); 
+// (반환 값) wframe11 객체
+
+
+getScopeWindow(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, 전역 window 객체를 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체의 scope 객체 또는 전역 window 객체
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+var scope = textbox1.getScopeWindow();
+scope.wframe11 === textbox1.getScope(); // true
+
+
+getSearchedItems(
+									  
+										)
+							
+
+검색된 모든 항목을 배열로 반환.
+
+
+
+Return
+
+typedescription
+
+
+Array항목의 정보를 담고 있는 1차원 배열
+  Object : label(포맷팅이 적용된 label 값), value(value 값), orgLabel(원래의 label 값), index(인덱스)가 담긴 객체
+
+
+Sample
+// DataList 정의
+
+
+
+
+
+
+
+
+네덜란드
+0016
+
+
+대한민국
+0022
+
+
+덴마크
+0023
+
+
+
+
+// (1) AutoComplete와 위에 정의한 DataList(dc_tmpList) 바인딩
+// (2) label과 value를 함께 표현하기 위해 아래 설정을 적용 
+//     (설정 1) displayMode="label delim value"
+//     (설정 2) delimiter="::"
+
+
+
+
+
+
+
+
+
+
+// (예제 1) 전체 항목 꺼내기 
+var tmpRsArr = autoComplete1.getSearchedItems();    
+// (결과) 총 3건 항목이 담긴 배열
+
+// (예제 2) 첫번째 항목 꺼내기
+var tmpObj = tmpRsArr[0];
+// (결과) 
+//  {
+//      "label":"네덜란드::0016",
+//      "value":"0026",
+//      "orgLabel":"네덜란드",
+//      "index":0
+//  }
+
+
+
+getSelectedIndex(
+									  
+										)
+							
+
+선택된 항목의 인덱스를 반환. 선택된 항목이 없는 경우 -1을 반환.
+
+
+
+Return
+
+typedescription
+
+
+Number선택된 항목의 인덱스
+
+
+Sample
+ // 사용 예
+ autoComplete1.getSelectedIndex();
+
+
+getSelectedRow(
+									  
+										)
+							
+
+선택된 항목의 정보를 담은 객체를 반환.단, 선택 항목 목록이 gridViewItemset으로 바인딩된 경우, 선택된 행을 반환.
+
+
+
+Return
+
+typedescription
+
+
+JSON항목의 정보가 담긴 객체 - 기본 반환 정보
+    label : displayMode가 적용되지 않은 원래의 label값
+    value : value
+
+
+Sample
+// DataList 정의
+
+
+
+
+
+
+
+
+네덜란드
+0016
+
+
+대한민국
+0022
+
+
+덴마크
+0023
+
+
+
+
+// (1) AutoComplete와 위에 정의한 DataList(dc_tmpList) 바인딩
+// (2) label과 value를 함께 표현하기 위해 아래 설정을 적용 
+//     (설정 1) displayMode="label delim value"
+//     (설정 2) delimiter="::"
+
+
+
+
+
+
+
+
+
+
+// (예시) 사용자가 첫번째 항목을 선택한 경우
+var tmpObj = autoComplete1.getSelectedRow();
+// (반환 값) 
+//  {
+//      "label":"네덜란드",
+//      "value":"0026"
+//  }
+
+
+getSize(
+									  sizeName
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sizeNameStringY크기 값의 종류. sizeName 별 계산 방법은 아래 표를 참고. 
+height : element.clientHeight
+innerHeight : element.clientHeight + padding
+outerHeight : element.clientHeight + padding + border
+outerMarginHeight : element.clientHeight + padding + border + margin
+width : element.clientWidth
+innerWidth : element.clientWidth + padding
+outerWidth : element.clientWidth + padding + border
+outerMarginWidth : element.clientWidth + padding + border + margin
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 크기 값
+
+
+Sample
+var returnValue = componentId.getSize("width");
+// (반환 예) 100 
+// 픽셀 단위의 크기 값이 반환됨. 
+// %로 설정된 경우, 픽셀로 변환된 값이 반환됨.
+
+
+getStyle(
+									  propertyName
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY반환할 CSS 속성
+
+
+
+
+Return
+
+typedescription
+
+
+StringCSS 속성 값
+
+
+Sample
+//아래와 같이 input 컴포넌트가 정의 된 경우
+
+
+// (예제) 위의 inputBox 컴포넌트의 width 값을 확인   
+var returnValue = input1.getStyle("width");
+
+// (반환 값) "144px"
+
+
+getStyleValue(
+									  style
+										)
+							
+
+[deprecated]getStyle 사용 권장.웹스퀘어 컴포넌트에 적용된 해당 CSS 속성 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+styleStringY반환하려는 CSS 속성.
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstyle 해당 CSS 속성 값 (색을 반환하는 경우, HexCode로 반환됨.)
+
+
+
+
+
+getText(
+									  isOriginal
+										)
+							
+
+선택된 항목의 label 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+isOriginalBooleanN[default: false, true] true일 경우 본래의 label 값을 반환.
+"false" (기본 값) 포맷팅이 적용된 값을 반환
+"true" 원래의 값을 반환
+
+
+
+
+Return
+
+typedescription
+
+
+String현재 선택된 항목의 label
+
+
+Sample
+// DataList 정의
+
+
+
+
+
+
+
+
+네덜란드
+0016
+
+
+대한민국
+0022
+
+
+덴마크
+0023
+
+
+
+
+// (1) AutoComplete와 위에 정의한 DataList(dc_tmpList) 바인딩
+// (2) label과 value를 함께 표현하기 위해 아래 설정을 적용 
+//     (설정 1) displayMode="label delim value"
+//     (설정 2) delimiter="::"
+
+
+
+
+
+
+
+
+
+
+//사용자가 첫번째 항목을 선택한 경우
+// (예제 1) 현재 화면에 표현 된 label을 반환
+var tmpObj = autoComplete1.getText();
+// (반환 값) "네덜란드::0016"
+
+// (예제 2) 원래 label 값을 반환
+var tmpObj = autoComplete1.getText(true);
+// (반환 값) "네덜란드"
+
+
+getTitle(
+									  
+										)
+							
+
+컴포넌트의 title 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Stringtitle 속성 값.
+
+
+Sample
+// 아래와 같이 input 컴포넌트의 title 속성이 "이름 입력"으로 정의된 경우
+
+
+var tmpTitle = input1.getTitle();
+// (반환 값 예시) "이름 입력"
+
+
+getUdcHome(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)파일명은 마지막 .xml까지 포함. .xml을 제외한 경로는 getUdcRoot를 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome(); 
+// (실행 결과) /a/b/udc.xml
+
+
+getUdcRoot(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)파일명을 포함하지 않음. 파일명을 포함한 경로는 getUdcHome을 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome();    
+// (실행 결과) /a/b/
+
+
+getUserData(
+									  key
+										)
+							
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY데이터의 key
+
+
+
+
+Return
+
+typedescription
+
+
+Stringkey에 해당하는 value
+
+
+Sample
+// Input 컴포넌트에 사용자 속성(setTest)을 설정하는 예제
+
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("setTest");
+// (반환 값) "Hello"
+
+//setUserData를 통해 'valueTest'(key)와 'WebSquare'(data)로 설정하는 예제. 
+input1.setUserData("valueTest","WebSquare");
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("WebSquare");
+// (반환 값) "WebSquare"
+
+
+getValue(
+									  
+										)
+							
+
+현재 선택된 항목의 value 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+String선택된 항목의 value 값
+
+
+Sample
+ // (사용 예)
+ autoComplete1.getValue();
+
+
+hasClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY검색할 class 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Booleanclass의 포함 여부
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+        
+var returnValue = input1.hasClass("tmpInputClass");
+// (반환 값) true
+
+
+hide(
+									  
+										)
+							
+
+컴포넌트를 화면에서 숨김.
+
+
+Sample
+// 사용 예
+autoComplete1.hide();
+
+
+initAutoComplete(
+									  
+										)
+							
+
+AutoCompelete 컴포넌트에 대해 초기화를 실행. (항목 삭제 및 값을 초기화.)
+
+
+Sample
+// 사용 예
+autoComplete1.initAutoComplete();
+
+
+openTable(
+									  
+										)
+							
+
+선택 항목 목록을 여는 기능. 선택 항목 목록을 갱신(updateTabe)하고 보여(showTable)주는 작업을 수행. interactionMode="true"인 경우 xforms-submit-done 이벤트에서 사용해야 하며 submission 또는 submissionFunc가 실행된 후 호출해야 함. 
+ (관련 속성)
+ interactionMode="true"
+
+
+
+
+
+removeClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)기본적으로 addClass를 통해 추가된 class만 삭제 가능. 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가해야 함. 
+ // config.xml 파일에 아래 설정 추가 
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY삭제 할 class명
+
+
+
+Sample
+// inputBox의 속성으로 class가 직접 정의된 경우,
+
+
+// config.xml 파일에 아래 항목을 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// removeClass를 통해 삭제 가능. 
+input1.removeClass("tmpInputClass");
+
+
+setDelimiter(
+									  
+										)
+							
+
+autoComplete delimiter 동적 변경
+
+
+
+
+
+setDisabled(
+									  disabled
+										)
+							
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disabledBooleanYdisabled 상태. 
+true: disabled 속성 활성화
+false: disabled 속성 비활성화
+
+
+
+Sample
+// 컴포넌트의 disabled 속성을 활성화.
+componentId.setDisabled(true);
+
+
+setDisplyaMode(
+									  
+										)
+							
+
+autoComplete displayMode 동적 변경
+
+
+
+
+
+setDummyData(
+									  value
+									       , 
+									       label
+										)
+							
+
+임의의 선택 항목 값(value와 label)을 설정. 항목에는 해당 값이 추가되지 않고 selectedIndex는 -1로 설정됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueStringY설정하려는 value 값
+
+
+labelStringY설정하려는 label 값
+
+
+
+Sample
+// (예시 1) 임의 값을 설정
+autoComplete1.setDummyData("0000","WebSquare"); //"WebSquare" 문자열이 보여짐
+
+// (예시 2) 설정한 value 값 꺼내오기
+var tmpRs = autoComplete1.getValue();
+// (반환 값) "0000"
+
+// (예시 3) 선택한 항목의 index 꺼내오기
+var tmpIdx = autoComplete1.getSelectedIndex();  
+// (반환 값) 항목에서 선택된 값이 아니므로 -1 반환
+
+
+setEditMode(
+									  
+										)
+							
+
+입력 창에 포커스를 표시.
+
+
+Sample
+// 사용 예
+autoComplete1.setEditMode();
+
+
+setEnableColumn(
+									  columnId
+									       , 
+									       enableColumnFalseValue
+										)
+							
+
+enableColumn 속성을 동적으로 설정.enableColumn 속성으로 설정된 컬럼은 AutoComplete와 바인딩된 DataList의 컬럼 중 선택 항목으로의 disable 여부에 대한 설정 값을 가지고 있음.enableColumn 속성은 AutoComplete의 선택 항목 목록 중 특정 항목을 disable 시키기 위한 용도로 사용됨.selectedIndex는 영향을 받지 않고 항상 전체 목록을 기준으로 동작.
+(관련 속성)  
+ enableColumn
+ enableColumnFalseValue
+
+
+Parameter
+
+nametyperequireddescription
+
+
+columnIdStringYenableColumn으로 설정할 컬럼의 ID. (disable 시킬 항목에 대한 데이터를 가지고 있는 컬럼)
+
+
+enableColumnFalseValueStringN목록을 disable 시키기 위한 조건에 해당하는 값.
+
+
+
+Sample
+// AutoComplete는 DataList와 바인딩되어 있음.
+autoComplete1.setEnableColumn(col3, false);
+// (실행 결과) DataList에서 col3 컬럼의 값을 false로 갖는 행은 AutoComplete의 선택 목록에 disable 처리되어 표시됨.
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+							
+
+지정한 이벤트를 중단함. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+evListStringN중단할 이벤트 목록. (null을 지정할 경우 해당 컴포넌트의 모든 사용자 이벤트가 중단되거나 중단 해제됨.)
+
+
+flagBooleanY이벤트 중단 여부. 
+true: 중단
+false: 중단 해제.
+
+
+
+Sample
+// (예제 1)
+// onclick 이벤트를 중단. 
+input1.setEventPause("onclick", true); 
+
+// (예제 2)
+// onfocus 및 onblur 이벤트의 중단을 해제.
+input1.setEventPause("onfocus,onblur", false); 
+
+// (예제 3)
+// input1에 등록된 모든 사용자 이벤트를 중단.
+input1.setEventPause(null, true);
+
+
+setGridItemset(
+									  obj
+										)
+							
+
+바인딩된 gridViewItemset을 변경. 기존에 존재하는 gridViewItemset을 삭제하고 새로 구성.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+objJSON||XMLY새로 구성할 gridViewItemset에 대한 정보를 담은 객체. (JSON 혹은 XML 객체만 가능.)
+ obj.nodeset : DataList의 id. "data:"로 시작해야 함.
+ obj.label : label로 지정할 컬럼의 ID.
+ obj.value : value로 지정할 컬럼의 ID.
+ obj.width : gridViewItemset의 가로 길이.
+ obj.height : gridViewItemset의 세로 길이.
+ obj.item : 각 컬럼의 설정을 담은 JSON 배열.
+
+
+
+Sample
+var obj = {
+"nodeset" : "data:dataList2",
+"label" : "col1",
+"value" : "col2",
+"width" : 400,
+"height" : 300, 
+"item" : [{"ref" : "col1", "header" : "label"},{"ref" : "col2", "header" : "value"},{"ref" : "col3", "header" : "dummy"}]
+};
+autoComplete1.setGridItemset(obj);
+
+
+setInitStyle(
+									  property
+										)
+							
+
+컴포넌트의 초기 스타일을 복구한다. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다 (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyStringNCSS 속성 (지정하지 않으면 모든 속성의 초기 값으로 복구.)
+
+
+
+Sample
+// (예제)
+group1.setInitStyle();
+
+
+setItem(
+									  label
+									       , 
+									       value
+									       , 
+									       nodest
+									       , 
+									       index
+										)
+							
+
+주어진 값으로 선택 항목을 설정
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY설정할 항목의 label 값
+
+
+valueStringY설정할 항목의 value 값
+
+
+nodestElementY설정할 항목의 nodeset 값
+
+
+indexNumberY설정할 항목의 index 값
+
+
+
+
+
+
+setItemSet(
+									  nodeset
+									       , 
+									       label
+									       , 
+									       value
+										)
+							
+
+선택 항목 목록을 설정. 현재 사용자가 선택(입력)된 값은 그대로 유지되고, 선택 항목 목록만 새로 설정됨.interactionMode="true"인 경우, xforms-submit-done 이벤트에서 사용되어야 함.
+ (관련 속성)
+ interactionMode="true"
+
+
+Parameter
+
+nametyperequireddescription
+
+
+nodesetStringN변경 대상 nodeset
+
+
+labelStringN선택 항목 목록의 label로 새로 설정할 경로
+
+
+valueStringN선택 항목 목록의 value로 새로 설정할 경로
+
+
+
+Sample
+// (예제)
+// (1) id가 "dc_tmpSearchList"인 DataList 선택 항목(itemSet)과 바인딩.
+// (2) disp 컬럼을 label로 code 컬럼을 value로 설정
+
+autoComplete1.setItemSet("data:dc_tmpSearchList","disp","code");
+
+
+setMaxLength(
+									  maxlength
+										)
+							
+
+maxlength를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+maxlengthNumberY설정할 maxlength 값
+
+
+
+Sample
+// 사용 예
+autoComplete1.setMaxLength(7);
+autoComplete1.setMaxLength(""); // maxlength 제한을 해제.
+
+
+setNextTabID(
+									  componentID
+									       , 
+									       componentScope
+										)
+							
+
+nextTabID 속성을 설정.두번째 인자로 nextTabID에 해당하는 컴포넌트가 위치한 frame의 ID를 넘겨주면 scope를 설정할 수 있음.
+(관련 속성)
+nextTabID
+
+
+Parameter
+
+nametyperequireddescription
+
+
+componentIDStringYnextTabID로 설정할 컴포넌트의 ID
+
+
+componentScopeStringNnextTabID로 설정할 컴포넌트의 scope
+
+
+
+Sample
+// 사용 예
+autoComplete1.setNextTabID("input2", "wframe1");
+
+
+setNodeSet(
+									  nodeset
+									       , 
+									       label
+									       , 
+									       value
+										)
+							
+
+선택 항목 목록을 설정. DataList와 바인딩할 경우 nodeset 파라미터는 "data:"로 시작해야 함.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+nodesetStringYDataList의 ID. "data:"로 시작해야 함. (혹은 InstanceData의 XPath)
+
+
+labelStringNlabel로 설정할 컬럼의 ID. 할당하지 않으면 기존 값이 그대로 적용됨. (혹은 label에 설정할 nodeset 하위의 XPath)
+
+
+valueStringNvalue로 설정할 컬럼의 ID. 할당하지 않으면 기존 값이 그대로 적용됨. (혹은 value에 설정할 nodeset 하위의 XPath)
+
+
+
+Sample
+// DataList 정의.
+
+
+
+
+
+
+
+
+zero
+0
+
+
+one
+1
+
+
+
+
+// (예제 1) DataList1과 바인딩하고 label은 lbl 컬럼을, value는 code컬럼을 사용.  
+autoComplete1.setNodeSet('data:dataList1','lbl','code');
+
+// (예제 2) DataList2와 바인딩하고 label 및 value는 예전 컬럼 정보를 사용. 
+autoComplete1.setNodeSet('data:dataList2'); 
+// (결과) 기존에 할당된 label의 lbl과 value의 code는 그대로 유지되고 dataList만 변경됨.
+
+
+setOpacity(
+									  value
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS 속성인 opacity(불투명도)를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYOpacity 값 (0과 1 사이의 실수)
+
+
+
+Sample
+// (예제) 불투명도를 0.45로 설정
+componentId.setOpacity(0.45);
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberY설정할 left 위치 값 또는 null.
+
+
+topNumberY설정할 top 위치 값 또는 null.
+
+
+modeStringN위치 설정 방법. [default: absolute, delta] 
+absolute: 입력된 값을 위치로 설정.
+delta: 현재 위치에 입력된 left 및 top 값을 추가.
+
+
+
+Sample
+// (예제) 컴포넌트의 top만 100px로 설정.
+componentId.setPosition(null, 100);
+
+
+setReadOnly(
+									  readOnly
+										)
+							
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+readOnlyBooleanYreadOnly 속성 활성화 여부. ( "true" : 활성화, "false" : 비활성화)
+
+
+
+Sample
+// 컴포넌트의 readOnly 속성을 true로 설정하는 예.
+componentId.setReadOnly(true);
+
+
+setRef(
+									  path
+										)
+							
+
+ref 속성을 설정. DataCollection과 연동시 "data:"라는 prefix를 꼭 붙여야 함.명시하지 않을 경우, InstanceData의 XPath로 인식됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+pathStringYref의 경로
+
+
+
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+							
+
+명시한 스타일을 주어진 값으로 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY설정하려는 스타일 명
+
+
+valueStringY설정할 값
+
+
+
+Sample
+// (예시) width를 변경
+componentId.setStyle("width", 100);
+
+// 픽셀 단위를 기본으로 하며, componentId.setStyle("width", "100px"); 과 동일.
+// %단위를 사용하려면, componentId.setStyle("width", "100%"); 로 명시.
+
+
+setText(
+									  label
+									       , 
+									       isOriginal
+										)
+							
+
+인자로 받은 label에 해당하는 항목을 선택.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+labelStringY선택하려는 항목의 label
+
+
+isOriginalBooleanN[default: false, true] label을 포맷팅이 적용되지 않은 원래 값으로 찾을 것인지에 대한 여부.
+ "false" (기본 값) 포매팅이 적용된 값을 반환.
+ "true" 원래 값을 반환.
+
+
+
+Sample
+// DataList 정의
+
+
+
+
+
+
+
+
+네덜란드
+0016
+
+
+대한민국
+0022
+
+
+덴마크
+0023
+
+
+
+
+// (1) AutoComplete와 위에 정의한 DataList(dc_tmpList) 바인딩
+// (2) label과 value를 함께 표현하기 위해 아래 설정을 적용 
+//     (설정 1) displayMode="label delim value"
+//     (설정 2) delimiter="::"
+
+
+
+
+
+
+
+
+
+
+// (예시 1) "대한민국" label 항목을 선택할 때 - 화면에 표현된 label의 값으로 선택
+autoComplete1.setText("대한민국::0022");
+// (화면 표시) "대한민국::0022" 
+
+// (예시 2) "대한민국" label 항목을 선택 - isOriginal 파라미터를 true로 설정하여 원래 값으로 선택
+autoComplete1.setText("대한민국",true);
+// (화면 표시) "대한민국::0022" 
+
+// (예시 3) "대한민국" label 항목을 선택 - isOriginal 파라미터를 주지 않을 경우
+autoComplete1.setText("대한민국");
+// (화면 표시) 항목이 선택되지 않는다.
+
+
+setTitle(
+									  title
+										)
+							
+
+컴포넌트의 title 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+titleStringY속성으로 설정할 값.
+
+
+
+Sample
+ // title 속성을 "test"로 설정하는 예제
+
+ autoComplete1.setTitle("test");
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 컴포넌트에 설정 가능한 key를 입력해야 함. 설정 가능한 key가 아닌 경우, 해당 내용이 로그에 출력됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY설정할 데이터의 key
+
+
+valueStringY설정한 데이터의 value
+
+
+
+Sample
+// 컴포넌트에 'data'라는 key로 'WebSquare'라는 value를 설정하는 예제.
+
+componentId.setUserData("data", "WebSquare");
+
+// 컴포넌트에 설정이 불가능한 key를 임력할 경우, key 설정이 불가능. 
+ 
+componentId.setUserData("title", "WebSquare");
+// 아래와 같이 로그가 출력됨. 
+// !!!WARNING - [title] can't be defined as UserData.
+
+
+setValue(
+									  value
+										)
+							
+
+인자로 받은 value에 해당하는 값을 갖는 항목을 선택.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueStringY선택하려는 항목의 값
+
+
+
+Sample
+// DataList 정의
+
+
+
+
+
+
+
+
+네덜란드
+0016
+
+
+대한민국
+0022
+
+
+덴마크
+0023
+
+
+
+
+// AutoComplete를 위에 정의한 dataList(dc_tmpList)와 바인딩
+
+
+
+
+
+
+
+
+
+
+// (예제) "대한민국"을 label로 갖는 항목을 선택
+
+autoComplete1.setValue("0022");
+
+
+setVisibleColumn(
+									  columnId
+									       , 
+									       visibleColumnFalseValue
+										)
+							
+
+visibleColumn 속성을 동적으로 설정.visibleColumn 속성으로 설정된 컬럼은 AutoComplete와 바인딩된 DataList의 컬럼 중 선택 항목으로의 표시 여부에 대한 설정 값을 가지고 있음.visibleColumn 속성은 AutoComplete의 선택 항목 목록 중 특정 항목을 감추기 위한 용도로 사용됨.selectedIndex는 영향을 받지 않고 항상 전체 목록을 기준으로 동작.
+(관련 속성)  
+ visibleColumn
+ visibleColumnFalseValue
+
+
+Parameter
+
+nametyperequireddescription
+
+
+columnIdStringYvisibleColumn으로 설정할 컬럼의 ID. (감출 항목에 대한 데이터를 가지고 있는 컬럼)
+
+
+visibleColumnFalseValueStringN목록을 감추기 위한 조건에 해당하는 값.
+
+
+
+Sample
+// AutoComplete는 DataList와 바인딩되어 있음.
+autoComplete1.setVisibleColumn(col3, false);
+// (실행 결과) DataList에서 col3 컬럼의 값을 false로 갖는 행은 AutoComplete의 선택 목록에 표시되지 않음.
+
+
+show(
+									  displayType
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)CSS display 속성을 주어진 값으로 설정하고 "visibility: show;"를 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+displayTypeStringN적용할 CSS display 속성의 값.   
+block : display: block;을 적용. (기본 값)
+inline : display: inline;을 적용.
+none : display: none;을 적용.
+"" : show 수행 이전의 display 속성 값으로 복구.
+
+
+
+Sample
+// (예제) display: block; CSS를 설정.
+componentId.show();  
+
+// (예제) 위제 설정한 display 속성 값을 취소하고 원래의 display 값을 복구.
+componentId.show("");
+
+
+toggleClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)웹스퀘어 컴포넌트가 파라미터로 주어진 class를 포함한 경우, 해당 class를 제거. 웹스퀘어 컴포넌트에 파라미터로 주어진 class가 없는 경우, 해당 class를 추가. 기본적으로 addClass를 통해 추가된 class만 삭제 가능. 웹스퀘어 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가. 
+ // config.xml 파일에 아래 설정 추가
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가/삭제할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+//config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// tmpInputClass class를 삭제.
+input1.toggleClass("tmpInputClass");
+
+// (위에서 삭제된) tmpInputClass class를 다시 추가.
+input1.toggleClass("tmpInputClass");
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+컴포넌트에서 특정 이벤트를 발생시킴. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트
+
+
+arrayArrayN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+// (예제 1)
+// input1 컴포넌트에 onclick 이벤트를 발생시킴.
+input1.trigger("onclick");
+
+// (예제 2)
+// input1에 onviewchange 이벤트를 발생시키고 핸들러 함수에 (1,2) 인자를 전달하여 호출.
+input1.trigger("onviewchange", [1,2]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+컴포넌트에서 이벤트를 제거. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트. (생략할 경우 해당 컴포넌트의 모든 이벤트를 제거.)
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. (생략할 경우 해당 위에 지정한 이벤트에 등록된 모든 핸들러 함수를 제거.)
+
+
+
+Sample
+// (예제 1)
+// input1에 등록된 모든 이벤트를 제거.
+input1.unbind();
+
+// (예제 2)
+// input1의 onviewchange 이벤트에 대한 모든 핸들러 함수를 제거.
+input1.unbind("onviewchange");
+
+// (예제 3)
+// input1의 onviewchange 이벤트에 대한 func1 이벤트 핸들러 함수를 제거.
+input1.unbind("onviewchange", func1);
+
+
+unbindRef(
+									  
+										)
+							
+
+ref 바인딩을 해제.
+
+
+
+
+
+validate(
+									  
+										)
+							
+
+컴포넌트의 유효성 관련 속성값을 통해 유효성 검사를 실행.단, interactionMode="true"인 경우 항상 true를 반환.  
+(유효성 검증 속성)
+ mandatory 
+(관련 속성)
+ interactionMode="true"
+
+
+
+Return
+
+typedescription
+
+
+Boolean검증 결과 (true/false)
+
+
+Sample
+// mandatory 속성을 지정.
+
+
+var returnValue = autoComplete1.validate();
+// (반환 값) - false (선택된 값이 없을 경우) 
+// (반환 값) - true (선택된 값이 있을 경우)
+
+
+validateObject(
+									  
+										)
+							
+
+컴포넌트에 정의된 유효성 관련 속성값을 통해 유효성 검사를 실행.
+(유효성 관련 속성)
+ mandatory
+
+
+
+Return
+
+typedescription
+
+
+Object유효성 검사 결과 객체
+    object.callerId 유효성 검사 대상 컴포넌트 ID
+    object.type 유효성 검사 항목
+   object.value 유효성 검사 결과 값
+
+
+Sample
+// mandatory 속성을 지정.
+
+
+
+
+
+
+
+
+
+// (예제)
+var returnObj = autoComplete1.validateObject();
+// (반환 값 - AutoComplete에 값이 없을 경우) returnObj 객체 반환
+returnObj.callerId = "autoComplete1" returnObj.type = "mandatory" returnObj.value = ""
+// (반환 값 - AutoComplete에 값이 있을 경우) 비어있는 객체가 반환
+
+
+visible(
+									  flag
+										)
+							
+
+[deprecated] show/hide 혹은 setStyle 사용을 권장.엔진 내부적으로 CSS visibility 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY설정할 CSS visibility 속성 값 
+true : visibility: visible;
+false : visibility: hidden;
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

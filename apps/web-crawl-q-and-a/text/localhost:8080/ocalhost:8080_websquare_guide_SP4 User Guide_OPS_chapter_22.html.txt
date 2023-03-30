@@ -1,0 +1,113 @@
+
+DataCollection22.DataCollection22.1DataCollection정의브라우저의 메모리에 할당되는 JavaScript 데이터 객체.DataCollectionDataCollection은 다양한 종류의 방대한 데이터를 웹 브라우저에서 쉽게 제어하기 위해 WebSquare5가 사용하는 데이터 모델.종류DataMap: 단건 데이터 객체DataList: 다건 데이터 객체LinkedDataList: DataList 객체에 Filter/Sort를 적용한 결과표 22-1.DataCollection 모델모델설명dataMapkey/value 형태의 단일 데이터로 구성된 객체dataList리스트 형태의 다건의 데이터로 구성된 객체linkedDataListdataList를 필터링/정렬한 후, 그 결과만 제공기능 서버에 전달할 데이터 규격을 정의 (Reference)서버로 부터 받을 데이터 규격을 정의 (Target)브라우저와 서버 간의 통신은 DataCollection 데이터 모델과 Submission을 통해 설정합니다.주요 용도화면에서 사용하고자 하는 임시 데이터UI컴포넌트와 연동서버로 부터 받은 단일형(DataMap) 혹은 목록형(DataList) 데이터를 브라우저에 출력웹 브라우저로부터 원격의 서버에 존재하는 데이터를 (추가, 삭제, 편집 등) 관리할 수 있는 인터페이스 제공특징DataCollection은 XML 구조와 XPath에 대한 이해 없이도 데이터 구조를 이해할 수 있는 직관적인 인터페이스를 제공. DataCollection 뷰에서 설정한 DataCollection의 코드는 Source 탭에 자동 생성됨.각 데이터 객체의 id는 필수값.JSON, XML, JSON Array포맷으로 설정(set)하거나 또는 반환(get) 받을 수 있다.(LinkedDataList는 반환만 가능.)초기값을 정의할 수 있다. (LinkedDataList 제외)동적(Script)으로 생성 가능.데이터의 상태(추가/수정/삭제)값을 관리.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/dataList_dataMap_linkedDataList.xml)그림 22-1.YouTube 동영상 (https://youtu.be/bGIxYMKQlCA)22.2DataMapDataMap아래는 개발자가 DataCollection 뷰에서 DataMap을 생성할 때 Source 탭에 자동 생성되는 코드입니다. 아래의 예에서 key/value 형태의 데이터 "이름/홍길동, 주소/서울시 구로구, 이메일/user2@mail.com" 한 건 존재합니다.코드 22-1.DataMap<head>
+<xf:model>
+  <w2:dataCollection baseNode="map">
+    <w2:dataMap id="dataMap1" baseNode="userInfo">
+      <w2:keyInfo>
+        <w2:key id="name" name="이름" dataType="text"/>
+        <w2:key id="addr" name="주소" dataType="text"/>
+        <w2:key id="email" name="이메일" dataType="text"/>
+      </w2:keyInfo>
+      <w2:data use="true">
+        <name>홍길동2</name>
+        <addr>서울시 구로구</addr>
+        <email>user2@mail.com</email>
+      </w2:data>
+    </w2:dataMap>
+  </w2:dataCollection>
+</xf:model>
+</head>표 22-2.DataMap 하위 노드하위노드설명<w2:keyInfo>key 정보<w2:key>key 값idID고유값get/set은 사용할 수 없습니다.namekey 이름dataType데이터 타입 (number, text, date) 기본값: text<w2:data>실제 데이터usetrue: 입력된 데이터를 실제 초기값으로 사용false: WebSquare5 Studio의 Design 탭에만 입력된 데이터를 표시함.데이터각각의 키에 대한 값을 입력합니다.22.2.1생성Outline – Head 뷰를 선택합니다.DataCollection을 우클릭한 후, DataMap을 선택합니다.그림 22-2.DataMap 추가아래와 같은 창이 표시되면, 행 추가 버튼을 클릭하여 Key 정보를 입력합니다. (이미 데이터가 존재할 경우 복사하기-붙여넣기를 하십시오.)그림 22-3.DataMap 정의데이터 통신 없이 브라우저에 기본값을 표시할 경우 Data 탭을 선택한 후 use data 옆의 첫번째 버튼을 클릭합니다.데이터 통신 없이 브라우저에 기본값을 표시할 경우 use data를 선택하고, Key 정보에 따라 데이터를 입력합니다.DataMap에 정의된 형태의 데이터를 출력할 화면을 Design 탭에서 구성합니다.Key Info 부분에서 Key를 클릭한 후 해당 Key의 바인딩할 컴포넌트로 드래그-앤-드롭합니다.바인딩된 컴포넌트에 초록색 표시가 나타나는지 확인합니다.그림 22-4.바인딩미리 보기 버튼을 클릭합니다.위의 6 ~ 8 단계에서 입력한 데이터가 표시되는지 확인합니다.그림 22-5.실행 화면예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/Submission/executeSubmission_$p_DataMap/)그림 22-6.YouTube 동영상 (https://youtu.be/pyXekdDpfOI)22.2.2이벤트22.2.2.1onbeforemodelchangeonbeforemodelchange 이벤트는 데이터 값이 변경되기 직전에 발생하며, rowIndex, colID, oldValue, newValue 값을 JSON 형식으로 받습니다. 이벤트 핸들러가 false를 반환하면, 데이터 변경을 취소하고 예전 값으로 돌아가고, 이외의 경우에는 입력된 값으로 데이터가 변경됩니다.코드 22-2.이벤트 핸들러 예시scwin.dataMap1_onbeforemodelchange = function(info) {
+  if (info.newValue == "No_Use") {
+    return false;
+  } else {
+    return true;
+  }
+};예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/onbeforemodelchange_DataMap.xml)그림 22-7.YouTube 동영상 (https://youtu.be/ZQtSdorGgBk)22.3DataList아래는 개발자가 DataCollection 뷰에서 DataList을 생성할 때 Source 탭에 자동 생성되는 코드입니다. 아래 예에서 "이름, 주소, 이메일" 칼럼에 대해 "홍길동, 서울시 구로구, user2@mail.com"와 "이태백, 서울 강남구, user2@mail.com" 두 건의 데이터 존재합니다.코드 22-3.DataList<head>
+<xf:model>
+  <w2:dataCollection baseNode="map">
+    <w2:dataList id="dataList1" baseNode="vector" repeatNode="map" valueAttribute="">
+      <w2:columnInfo>
+        <w2:column id="name" name="이름" dataType="text" />
+        <w2:column id="addr" name="주소" dataType="text" />
+        <w2:column id="email" name="이메일" dataType="text" />
+      </w2:columnInfo>
+    <w2:data use="true"  xmlns="">
+    <w2:row>
+      <name>홍길동</name>
+      <addr>서울 구로구</addr>
+      <email>user1@mail.com</email>
+    </w2:row>
+    <w2:row>
+      <name>이태백</name>
+      <addr>서울 강남구</addr>
+      <email>user2@mail.com</email>
+    </w2:row>
+    </w2:data>
+    </w2:dataList>
+  </w2:dataCollection>
+</xf:model>
+</head>표 22-3.dataList 하위 노드하위노드설명<w2:columnInfo>열 정보<w2:column>열 정보id열 ID고유값get/set은 사용할 수 없습니다.name열 이름dataType데이터 타입 (number, text, date) 기본값: text<w2:data>실제 데이터usetrue: 입력된 데이터를 실제 초기값으로 사용.false: WebSquare5 Studio의 Design 탭에만 입력된 데이터를 표시함.row반복 데이터를 구분하는 노드데이터각각의 열에 대한 값을 설정합니다.22.3.1생성Outline – Head 뷰를 선택합니다.DataCollection을 우클릭한 후, DataList를 선택합니다.그림 22-8.DataList 추가아래와 같은 창이 표시되면, 행 추가 버튼을 클릭하여 데이터를 입력합니다. (이미 데이터가 존재할 경우 복사하기-붙여넣기를 하십시오.)그림 22-9.DataList 정의데이터 통신 없이 브라우저에 기본값을 표시할 경우 Data 탭을 선택한 후 use data를 선택하고, 컬럼 별 데이터를 입력합니다.그림 22-10.데이터 입력DataList에 정의된 형태의 데이터를 출력할 GridView를 Design 탭에 그립니다.Outline – Head – DataCollection 선택 후 바인딩할 DataList를 GridView로 드래그-앤-드롭합니다.그림 22-11.DataList를 GridView로 드래깅하여 바인딩하기아래와 같은 창이 나타나면 OK를 클릭합니다.그림 22-12.GridView와 바인딩하기GridView 상의 툴팁 혹은 dataList 속성 설정을 통해 바인딩 상태를 확인할 수 있습니다.그림 22-13.GridView 툴팁그림 22-14.GridView의 dataList 속성 확인혹은 Outline – Head 뷰에서 DataList를 우클릭한 후 Search bound component를 클릭하여 해당 DataList와 바인딩된 컴포넌트를 확인할 수 있습니다.그림 22-15.DataList와 바인딩된 컴포넌트 확인그림 22-16.바인딩된 컴포넌트 검색 결과브라우저에서 Page 화면을 실행하여 정상적으로 바인딩 되었는지 확인합니다.그림 22-17.실제 실행 화면22.4LinkedDataListLinkedDataList는 DataList의 데이터를 필터링하거나 정렬한 결과만을 저장하는 객체입니다. DataList 데이터를 필터링하여 아래와 같은 컴포넌트의 선택항목으로 표시할 때 LinkedDataList를 사용하십시오AutoCompleteCheckBoxCheckComboBoxMultiSelectRadioSelectBox22.4.1권장 사용법예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/recommended_use_LinkedDataList.xml)그림 22-18.YouTube 동영상 (https://youtu.be/rY_cNEi3exY)권장 사용법DataList의 데이터는 1,000 건 이하를 권장하며 최대 10,000건까지 지원합니다.LinkedDataList는 행 추가, 데이터 일괄 추가, 데이터 전체 삭제 기능을 제외한 DataList에서 지원하는 함수를 모두 지원합니다.코드 22-4.linkedDataList 예제<head>
+    <xf:model>
+    <w2:dataCollection baseNode="map">
+        <w2:linkedDataList id="linkedDataList1" baseNode="vector" repeatNode="map" valueAttribute="" bind="dataList1"/>
+            <w2:condition type=”filter”><![CDATA[ col1 ==”1” ]]></w2:condition>
+            <w2:condition type=”sort”><![CDATA[DESC('Id')]]>
+</w2:condition>
+    </w2:dataCollection>
+</xf:model></head>표 22-4.linkedDataList 속성속성설명bind원본 데이터가 저장된 DataListfilterCondition피리터링 조건식sortCondition정렬 조건식22.4.2생성위의 에서 설명한 방법으로 DataList를 생성합니다. DataCollection을 우클릭한 후 [Add]를 클릭합니다.[LinkedDataList 추가하기]를 선택합니다.정렬 조건이나 필터링 조건을 입력합니다.LinkedDataList의 bind 속성을 위에서 생성한 DataList로 지정합니다.위의 DataList에서 설명한 것과 동일한 방법으로 컴포넌트를 그리고 생성한 LinkedDataList와 바인딩합니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/create_LinkedDataList.xml)그림 22-19.YouTube 동영상 (https://youtu.be/rpn_YyAgUeg)22.4.3정렬 및 필터링 조건 설정 (setCondition())setCondition() 함수를 사용하여 LinkedDataList의 정렬 및 필터링 조건을 설정할 수 있습니다.22.4.3.1정렬조건식 Oracle의 DB SQL문과 동일합니다.초기 생성LinkedDataList 생성 시 Sort Condition으로 지정.함수setCondition 함수를 사용.코드 22-5.Sort 예제 (1)linkedDataList1.setCondition("sort", "ASC('col0')");코드 22-6.Sort 예제 (2)linkedDataList1.setCondition("sort","DESC(‘col0’)");코드 22-7.Sort 예제 (3)linkedDataList1.setCondition("sort","DESC(‘col0’) && DESC(‘col1’)");22.4.3.2필터링초기 생성LinkedDataList 생성 시 Filter Condition으로 지정.함수setCondition 함수를 사용.코드 22-8.Filter 예제var condition = "col1>=2 && col2=='b'" ; 
+$p.data.create( { "id" :"linkedDataList1" , 
+                     "type" : "linkedDataList" , 
+                     "option" : { "baseNode" : "vactor", 
+                                  "repeatNode" : "list", "valueAttribute" : "",
+                                  "bind" : "dataList1", 
+                                  "filterCondition" : condition 
+                                 }
+                      } );표 22-5.필터링 조건 설정필터함수 조건식설명valBno==val('selectbox1')bind된 data가 selectBox1의 value와 같은 데이터만 표현refBno == ref('data:dataList1.Bno')bind된 data가 dataList1의 colId ‘Bno’의 데이터 값과 같은 데이터만 표현dafaultBno == “1”bind된 data의 colId ‘Bno’가 1인 데이터만 표현표 22-6.비교문 관계 & 논리 연산자비교문 조건식설명A == BA와 B가 일치하는 데이터 반환A != BA와 B가 일치하지 않는 데이터 반환A >= B A가 B보다 크거나 같은 데이터 반환A <= BA가 B보다 작거나 같은 데이터 반환A > BA가 B보다 큰 데이터 반환A < BA가 B보다 작은 데이터 반환(A) && (B)A 조건과 B 조건이 모두 참인 데이터 반환(A) || (B)A 조건 또는 B 조건 둘 중 어느 하나가 참이면 데이터 반환22.4.3.3예제 (1)LinkedDataList의 필터링 및 정렬 조건을 설정하는 예제입니다.그림 22-20.YouTube 동영상 (https://youtu.be/aaB2U-mlFXA)22.4.3.4예제 (2)Radio와 바인딩된 LinkedDataList의 정렬 및 필터링 조건을 설정하는 예제입니다.코드 22-9.사용 예 (정렬 조건 설정)linkedDataList1.setCondition(
+    "sort", "DESC('ID')"
+);코드 22-10.사용 예 (필터링 조건 설정)linkedDataList1.setCondition(
+    "filter", "Region == 'Seoul'"
+);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/setCondition_LinkedDataList_Radio/)그림 22-21.YouTube 동영상 (https://youtu.be/ryTUYKFiHx8)22.4.4setColumnFilter()setColumnFilter() 함수를 사용하여 LinkedDataList의 데이터를 필터링할 수 있습니다.코드 22-11.사용 예 (Hobby 컬럼의 값이 "Movie"인 데이터만 필터링)linkedDataList1.setColumnFilter({
+    type: ‘row’,
+    colIndex: ‘Hobby’,
+    key: ‘Movie’,
+    condition: ‘and’
+});예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/setColumnFilter_LinkedDataList/)그림 22-22.YouTube 동영상 (https://youtu.be/J_Nx89_G3FM)22.5Studio에서 생성하고 디버깅 메뉴로 확인하기Studio에서 DataList, DataMap, LinkedDataList를 생성한 후, 웹스퀘어가 제공하는 디버깅 메뉴를 이용하여 생성한 DataList, DataMap, LinkedDataList의 데이터를 확인할 수 있습니다.Studio의 Outline 뷰 – Head 탭에서 DataCollection을 우클릭한 후, 각 메뉴를 선택하여 DataMap, DataList, LinkedDataList를 생성할 수 있습니다.DataMap, DataList, LinkedDataList를 생성한 페이지를 브라우저에 로딩한 후, Ctrl 버튼을 누른채로 마우스를 우클릭하면 아래와 같이 디버깅 메뉴가 표시됩니다. View dataCollection 메뉴를 선택하여 생성한 DataMap, DataList, LinkedDataList를 확인할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/dataList_dataMap_linkedDataList.xml)그림 22-23.YouTube 동영상 (https://youtu.be/bGIxYMKQlCA)22.6동적 생성$p.data.create(); 함수를 사용하여 DataCollection을 동적으로 생성할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/$p/_General/data_create_$p_setData_DataList_mutipleDataListDownload_WebSquare_util.xml)그림 22-24.YouTube 동영상 (https://youtu.be/wuQ4Fanmepk)22.7복사 및 삭제특정 Page의 DataCollection을 복사해서 다른 Page 에서 사용하는 것이 가능합니다.Outline – Head 뷰를 선택 후, 복사/삭제할 DataCollection을 클릭한 후 해당 메뉴를 선택하십시오.그림 22-25.Outline – Head – DataCollection 우클릭 시예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/introduction_DataList.xml)그림 22-26.YouTube 동영상 (https://youtu.be/Anng4uPDCB8)22.8주요 APIJavaScript에 익숙한 사용자의 경우 API를 통해 아래와 같은 기능을 직접 사용할 수 있습니다.표 22-7.기능 요약분류기능 설명공통여러 개의 DataList와 DataMap 값을 한번에 조회, 설정DataList 및 DataMap을 생성, 삭제DataMap특정 key 혹은 index에 해당하는 데이터를 반환, 설정전체 데이터를 JSON 객체, Array, XML로 변환JSON 객체, Array, XML로 부터 DataMap 생성데이터 갯수 반환DataList(단일, 복수) 행 조회 및 삽입(단일, 복수) 열 조회 및 삽입(단일, 복수) 셀 조회 및 삽입데이터 정렬 및 필터링연산 (합, 평균, 최소값, 최대값 등)전체 API에 대한 자세한 설명은 API 가이드를 참고하십시오.22.8.1여러 DataList를 Excel 파일로 다운로드DataList 여러 개 → Excel 다운로드 참조.22.8.2getAllDataCollection()표 22-8.getAllDataCollection설명한 화면 내에 있는 모든 DataCollection 목록을 반환. 형식$p.data.getAllDataCollection();반환 값모든 DataCollection ID를 담은 배열.(예: ["dataList1","dataList2"])참고getAllDataCollection("object") 로 호출할 경우, DataCollection 객체 자체를 직접 배열에 담아 반환.코드 22-12.사용 예 (ID를 반환)var ret = $p.data.getAllDataCollection();
+
+// 반환 값 (각 객체의 id를 배열에 담아 반환)
+//  ret == ["dataList1","dataList2"]코드 22-13.사용 예 (객체 자체를 반환)var ret = $p.data.getAllDataCollection("object");
+
+// 반환 값 ("object"라는 인자를 넣어서 호출하면 객체 자체를 반환) 
+// ret == [dataList1,dataList2]22.8.3getAllJSON()DataList의 전체 데이터를 JSON으로 변환하여 1차원 배열로 반환할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/getAllJSON_DataList/)그림 22-27.YouTube 동영상 (https://youtu.be/112opc0Mxow)22.8.4getFilterList()DataList가 필터링된 경우, DataList 각 칼럼의 필터링 상태를 반환하는 함수입니다. 사용 방법은 아래와 같습니다.표 22-9.getFilterList형식dataList1.getFilterList();반환 값dataList에 적용된 필터들을 배열로 저장한 객체관련 함수setColumnFilter아래는 현재 필터링 상태를 저장한 후, 필터링을 해제하고 다시 이전 필터링 상태로 돌아가는 예제입니다.코드 22-14.사용 예<script type="text/javascript"><![CDATA[
+            var data = [];
+            for(var i = 0; i < 20*3 ; i++){
+                data.push(i);
+            }
+            dataList1.setData(data);
+            scwin.tempFilter = [];
+        
+    scwin.trigger1_onclick = function(e) {
+        dataList1.clearFilter();
+    };
+    
+    scwin.trigger2_onclick = function(e) {
+        scwin.tempFilter = dataList1.getFilterList();
+    };
+    
+    scwin.trigger3_onclick = function(e) {
+        for(var i = 0; i < scwin.tempFilter.length; i++){
+            dataList1.setColumnFilter(scwin.tempFilter[i]);
+        }
+    };
+]]></script>예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/getFiterList_clearFilter_setColumnFilter_DataList/)그림 22-28.YouTube 동영상 (https://youtu.be/n8MHpWaVKaU)22.8.5getFilteredRowIndex()getFilteredRowIndex( realRowIndex ); 함수를 통해 필터링 후 행의 변경된 인덱스를 확인할 수 있습니다.그림 22-29.YouTube 동영상 (https://youtu.be/xbtkTRYbHq4)22.8.6데이터 설정22.8.6.1setJSON()예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/setJSON_DataList/)그림 22-30.YouTube 동영상 (https://youtu.be/zuvoxK3H8OI)22.8.6.2setJSON() & setData() & setXML()예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/setData_setJSON_setXML_DataList.xml)그림 22-31.YouTube 동영상 (https://youtu.be/caCW-DB97EI)22.8.7getRowCount()그림 22-32.YouTube 동영상 (https://youtu.be/sCLgNsCz6pc)22.8.8getCellData()예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/getCellData_DataList/)그림 22-33.YouTube 동영상 (https://youtu.be/FvUomki6wcg)22.8.9getUserData() & setUserData()setUserData() 및 getUserData() 함수를 이용하여 DataList의 userData1, userData2, 혹은 userData3 속성 값을 설정하거나 반환할 수 있습니다. 모든 DataCollection 컴포넌트(aliasDataMap, aliasDataList, aliasLinkedDataList, dataMap, linkedDataList 포함)에 대해 동일하게 사용할 수 있습니다.코드 22-15.사용 예dataList1.setUserData(
+  “userData1”, “12345”
+);
+
+dataList1.getUserData(
+  “userData1”
+);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/setUserData_getUserData_DataList.xml)그림 22-34.YouTube 동영상 (https://youtu.be/oEbMw_9xGaQ)22.8.10dataList.column - importFormatterdataList.column의 importFormatter 속성으로 사용자 정의 함수를 지정한 후, 해당 함수를 통해 컬럼의 데이터를 변경할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/importFormatter_dataList_column.xml)그림 22-35.YouTube 동영상 (https://youtu.be/0rb9R-itwAQ)22.9이벤트 추가표 22-10.DataCollection 이벤트이벤트설명onbeforecelldatachange셀 데이터가 변경되기 전에 발생oncelldatachange셀 데이터가 변경될 때 발생dataList.setCellData()가 호출될 경우 발생onbeforerowpositionchange행의 위치가 변경되기 전에 발생onrowpositionchange행의 위치가 변경될 때 발생oninsertrow행이 삽입된 후 발생onremoverow행이 삭제된 후 발생ondataload데이터가 새로 설정될 때 발생22.9.1ondataload그림 22-36.ondataload예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/ondataload_DataList/)그림 22-37.YouTube 동영상 (https://youtu.be/TvPxybxF8ec)22.9.2onbeforecelldatachange그림 22-38.onbeforerowpositionchange & oncelldatachange코드 22-16.사용 예scwin.dataList1_onbeforecelldatachange = function(info) {
+    if (info.colID == "Hobby") {
+        if(info.newValue == "") {
+        return false;
+        }
+    }
+};예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/_DataCollection/onbeforecelldatachange_DataList/)그림 22-39.YouTube 동영상 (https://youtu.be/XhFwyrwOh6I)22.9.3onbeforerowpositionchange & onrowpositionchange그림 22-40.onbeforerowpositionchange & onrowpositionchange22.9.4oninsertrow그림 22-41.oninsertrow22.9.5onremoverow그림 22-42.onremoverow

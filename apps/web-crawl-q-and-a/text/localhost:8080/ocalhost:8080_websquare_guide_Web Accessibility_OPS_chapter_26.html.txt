@@ -1,0 +1,71 @@
+
+SelectBox26.SelectBox26.1SelectBox렌더링되는 레이아웃 구조에 따라 “component”, “native”, “select” 세가지 renderType 속성을 지원합니다. 이 renderType 속성값에 따라 접근성을 지원하기 위한 사용법이 조금씩 달라지는데, 이를 설명하면 다음과 같습니다.<Check Point>√ 포커스 상태의 테두리(outline)가 명확하게 나타나는가?√ selectbox에 대응하는 title 또는 label을 제공하고 있는가?√ Onchange, onViewChange 등의 이벤트에 사용자가 의도하지 않은 동작(새 창, 초점에 의한 맥락 변화 등)이 실행되지 않는가?관련 지침 : 2.1.2. 초점 이동, 3.2.1. 사용자 요구에 따른 실행 , 3.4.1. 레이블 제공<Config.xml source><selectbox>
+    <visibleRowNum value="5" />
+    <renderType value="component" /> <!-- 원하는 renderType 설정 : component, native, select -->
+    <tableRender value="ul" /> <!-- ul, li 형태로 사용할 경우만 설정 -->
+</selectbox>26.1.1renderType=”component” tableRender=”ul”renderType=”component”에 tableRender=”ul” 속성을 함께 사용하면 드롭다운 목록형태의 리스트(ul, li)태그로 랜더링 되어 css3의 appearance 속성을 지원하지 않는 브라우저에서도 동일한 디자인을 적용할 수 있고 <a> 태그로 랜더링되어 <label> 태그와 연계하지 않아도 무방 합니다.<Xml source><xf:select1 disabledClass="w2selectbox_disabled" appearance="minimal" direction="auto" chooseOption="" id="" style=" " displayMode="label" selectedData="true" optionOrder="false" allOption="" disabled="false" submenuSize="auto" renderType="component" tableRender="ul">
+    <xf:choices>
+        <xf:item>
+            <xf:label><![CDATA[한국어]]></xf:label>
+            <xf:value><![CDATA[kr]]></xf:value>
+        </xf:item>
+        <xf:item>
+            <xf:label><![CDATA[영어]]></xf:label>
+            <xf:value><![CDATA[en]]></xf:value>
+        </xf:item>
+    </xf:choices>
+</xf:select1>26.1.2renderType=”native”Native selectbox를 사용하며 모든 브라우저 환경에서 완벽하게 동일한 모양과 기능을 제공하며 label이나 title 속성을 제공한다면 접근성 지원에도 전혀 문제가 없는 사용법입니다.<Xml source>Selectbox와 Label을 적용한 형태
+<w2:textbox id="textbox1" label="언어선택" tagname="label" for="selectbox1"></w2:textbox>
+<xf:select1 disabledClass="w2selectbox_disabled" appearance="minimal" direction="auto" chooseOption=""style=" " displayMode="label" selectedData="true" optionOrder="false" allOption="" disabled="false" submenuSize="auto" id=" selectbox1" renderType="native">
+    <xf:choices>
+        <xf:item>
+            <xf:label><![CDATA[한국어]]></xf:label>
+            <xf:value><![CDATA[kr]]></xf:value>
+        </xf:item>
+        <xf:item>
+            <xf:label><![CDATA[영어]]></xf:label>
+            <xf:value><![CDATA[en]]></xf:value>
+        </xf:item>
+    </xf:choices>
+</xf:select1>
+
+Selectbox와 Title을 적용한 형태
+<xf:select1 disabledClass="w2selectbox_disabled" appearance="minimal" direction="auto" chooseOption=""style=" " displayMode="label" selectedData="true" optionOrder="false" allOption="" disabled="false" submenuSize="auto" id="" renderType="native" title=”언어선택”>
+    <xf:choices>
+        <xf:item>
+            <xf:label><![CDATA[한국어]]></xf:label>
+            <xf:value><![CDATA[kr]]></xf:value>
+        </xf:item>
+        <xf:item>
+            <xf:label><![CDATA[영어]]></xf:label>
+            <xf:value><![CDATA[en]]></xf:value>
+        </xf:item>
+    </xf:choices>
+</xf:select1>26.1.3renderType=”select”<Xml source>Selectbox와 Label을 적용한 형태
+<w2:textbox id="textbox1" label="언어선택" tagname="label" for="selectbox1"></w2:textbox>
+<xf:select1 disabledClass="w2selectbox_disabled" appearance="minimal" direction="auto" chooseOption=""style=" " displayMode="label" selectedData="true" optionOrder="false" allOption="" disabled="false" submenuSize="auto" id=" selectbox1" renderType="select">
+    <xf:choices>
+        <xf:item>
+            <xf:label><![CDATA[한국어]]></xf:label>
+            <xf:value><![CDATA[kr]]></xf:value>
+        </xf:item>
+        <xf:item>
+            <xf:label><![CDATA[영어]]></xf:label>
+            <xf:value><![CDATA[en]]></xf:value>
+        </xf:item>
+    </xf:choices>
+</xf:select1>
+
+Selectbox와 Title을 적용한 형태
+<xf:select1 disabledClass="w2selectbox_disabled" appearance="minimal" direction="auto" chooseOption=""style=" " displayMode="label" selectedData="true" optionOrder="false" allOption="" disabled="false" submenuSize="auto" id=" selectbox1" renderType=”" title=”언어선택”>
+    <xf:choices>
+        <xf:item>
+            <xf:label><![CDATA[한국어]]></xf:label>
+            <xf:value><![CDATA[kr]]></xf:value>
+        </xf:item>
+        <xf:item>
+            <xf:label><![CDATA[영어]]></xf:label>
+            <xf:value><![CDATA[en]]></xf:value>
+        </xf:item>
+    </xf:choices>
+</xf:select1>

@@ -1,0 +1,12 @@
+
+TabControl(체크)28.TabControl(체크)28.1TabControl탭버튼 영역과 컨텐츠 영역으로 나뉘어져 있으며 각 탭버튼은 해당하는 컨텐츠 페이지로 바로 갈수 있는 앵커를 제공하는 컴포넌트입니다. 탭버튼은 closable=”true” 설정으로 동적으로 탭을 삭제하는 버튼을 추가할 수 있으며 이 경우 useATagBtn=”true”속성을 함께 사용하면 닫기 버튼이 <a> 태그로 랜더링 됩니다.<Check Point>√ 포커스 상태의 테두리(outline)가 명확하게 나타나는가?√ useTabKeyOnly 속성은 true(기본값)로 설정되어 있는가?√ closable=”true”인 경우 useATagBtn=”true”로 설정되어 있는가?√ 각 컨텐츠 영역에 적당한 title 값이 입력되어 있는가? (frameMode=”iframe”인 경우 필수 입력)관련 지침 : 2.1.2. 초점 이동, 1.3.5. 콘텐츠 간의 구분, 2.1.1. 키보드 사용 보장, 2.1.2. 초점 이동<Xml source><w2:tabControl id="tabControl1" closable="" style="" confirmTrueAction="exist" class="" useConfirmMessage="false" confirmFalseAction="new" useTabKeyOnly="true" closable="true" useATagBtn="true" alwaysDraw="false" tabScroll="">
+    <w2:tabs id="tabs1" closable="" style="height:30px;" label="Tab메뉴 1" disabled="" tabType=""></w2:tabs>
+    <w2:tabs id="tabs2" closable="" style="height:30px;" label="인스웨이브" disabled="" tabType=""></w2:tabs>
+    <w2:content id="content1" style="" alwaysDraw="false">
+        <w2:anchor id="anchor1" style="" href="#">
+            <xf:label>Tab메뉴 1</xf:label>
+        </w2:anchor>
+    </w2:content>
+    <w2:content id="content2" style="" alwaysDraw="false" frameMode=”iframe” src=http://inswave.com/ title=”인스웨이브 홈페이지”>
+    </w2:content>
+</w2:tabControl>

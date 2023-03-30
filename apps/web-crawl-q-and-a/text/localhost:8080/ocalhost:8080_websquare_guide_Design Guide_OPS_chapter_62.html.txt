@@ -1,0 +1,47 @@
+
+ScheduleCalendar62.ScheduleCalendar수정 일자 버전 (SP2)WebSquare5 Studio : 20180117_1349_x86_BWebSquare5 Engine : 5.0_2.2982B.20180223.154326_1.5ScheduleCalendar는 'FullCalendar 외부 라이브러리'를 연동하여 일정을 calendar에 출력하는 컴포넌트입니다.WebSquare5에서는 이를 Customizing 할 수 있도록 API를 지원합니다.FullCalendar 에 대한 자세한 Properties & API는 아래의 공식 홈페이지를 참조하시기 바랍니다.https://fullcalendar.io/62.1PropertyPropertyDescriptionclass SP2사용자가 임의의 class를 정의할때 사용한다.cssRenderOrder SP2[default:false, true]scheduleCalendar에서 css 파일을 document head에 link태그로 랜더링되는 순서가 stylesheet_ext.css 팡ㄹ에 해당하는 link태그 바로 다음으로 조정하는 속성 (5.0_2.2982B.20180223.154326_1.5 부터 추가됨)dataList SP2[defulat:""]scheduleCalendar에 바인딩될 dataList. scheduleCalendar에서 필요한 dataList의 컬럼 종류는 다음과 같다. "idCol", "startCol", "endCol", "titleCol" 으로 4종류이다.(컬럼ID는 변경해도 무관). scheduleCalendar컴포넌트의 dataList속성에 생성한 dataList ID를 설정하고 그 외에 "idColumn" 속성 및 "startColumn" 속성 등에는 생성한 dataList의 "컬럼ID"값들을 설정해준다. 예를 들어서, 생성된 dataList의 ID는 "dataList1"이다. "dataList1"에 추가된 컬럼은 총 4개이며, 컬럼 ID는 "idCol", "startCol", "endCol", "titleCol"으로 되어 있다. scheduleCalendar에는 다음과 같이 설정한다. dataList = "dataList1" idColumn = "idCol" startColumn = "startCol" endColumn = "endCol" titleColumn = "titleCol"defaultDate SP2[default:""]component 로딩후 초기화면에 설정된 날짜, ioFormat와 포맷이 일치해야됨.editable SP2[default:false, true] scheduleCalendar에 기 적용되어 있는 일정을 마우스 드래그 앤 드랍으로 옮겨서 start와 end 날짜를 변경할 수 있는 기능을 설정한다.endColumn SP2[default:""]scheduleCalendar에 입력하는 일정의 '종료 날짜' 값으로 사용될 dataList의 column idheaderLeftBtn SP2[default:true, false]scheduleCalanedar의 header 좌측버튼이 보이도록 설정[show, hide]headerRightBtn SP2[default:true, false]scheduleCalanedar의 header 우측버튼이 보이도록 설정show, hide]headerTitle SP2[default:true, false]scheduleCalanedar의 header 중앙 title이 보이도록 설정[show, hide]id SP2컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.idColumn SP2[default:""]scheduleCalendar에 입력하는 일정의 고유한 'id'값으로 사용될 dataList의 column idioFormat SP2[default:yyyyMMdd,MMddyyyy,ddMMyyyy]start ,end column에 입력된 날짜포멧을 설정lang SP2 [default:ko, en]scheduleCalanedar에서 사용될 언어를 설정한다.selectable SP2 [default:false, true]scheduleCalendar에서 특정 날짜를 선택해서 일정을 입력할 수 있다.(prompt창 발생) 여러 날짜를 마우스로 드래그해서 다중 선택 후, 기간으로 일정을 입력할 수 있다.startColumn SP2[default:""]scheduleCalendar에 입력하는 일정의 '시작 날짜' 값으로 사용될 dataList의 column idstyle SP2사용자 정의 스타일시트tabIndex SP2[default:""]Tab Key를 이용 한 컴포넌트의 포커스 순서로 HTML의 tabindex속성과 동일한 기능을 제공한다.titleColumn SP2[default:""]scheduleCalendar에 입력하는 일정의 title 값을 설정한다.version SP2[default:2.3, 3.6]scheduleCalendar에서 사용할 버전을 설정. 디폴트로 fullCalendar 2.3.2 버젼이 로딩되고 "3.6"을 선택하면 3.6.2 버젼이 로딩된다.62.2브라우저 캡쳐화면그림 62-1.ScheduleCalendar default 스타일62.3class 적용과 스타일 변경그림 62-2.ScheduleCalendar default 스타일웹스퀘어에서는 xml파일의 ScheduleCalendar 컴포넌트를 html로 랜더링 되는 과정에 엔진에서 w2scheduleCalendar 라는 class를 파싱합니다,(w2로 시작하는 클래스는 웹스퀘어 엔진에서 사전에 정의되어 있습니다.)ScheduleCalendar 컴포넌트는 FullCalendar 외부 라이브러리와 연동되어 있기 때문에, fc 라는 class 로도 파싱됩니다. 컴포넌트를 구성하는 하위 요소들 또한 fc 로 시작하는 class로 정의되어 있습니다.위에 예제는 ScheduleCalendar 컴포넌트의 Property속성 중 class명을 schedule_sample으로 주었습니다. html 로 랜더링 시 w2scheduleCalendar 바로 뒤에 연결되며 후 순위로 적용됩니다.여기서 css 적용 우선순위를 주의하셔야 합니다.기본적으로 웹스퀘어의 공통 외부 스타일시트 파일인 stylesheet_ext.css 파일이 가장 먼저 로딩됩니다. 이후 사용자는 인라인 방식이나 외부 스타일시트 파일을 참조하여 기본 class를 overriding할 수 있었습니다.ScheduleCalendar에서는 stylesheet_ext.css -> 사용자 정의 외부 스타일시트 -> (마지막) fullcalendar.css 와 같은 순서로 로딩됩니다. FullCalendar의 공통 css 후에 사용자 정의 외부 스타일시트가 로딩되어야 할 경우 Property 창에서 cssRenderOrder 속성을 true 로 설정하시면 됩니다. (해당 속성은 5.0_2.2982B.20180223.154326_1.5 부터 적용됨)해당 속성을 이용하지 않을 경우에는 !important 를 이용하여 우선순위를 조정하시면 됩니다..schedule_sample {
+    font-family:sans-serif;
+}
+.schedule_sample button {
+    padding:0 .4em;
+    border-radius:30px !important;
+}
+.schedule_sample .fc-highlight {
+    background:#ffef62;
+}
+.schedule_sample .fc-state-default {
+    background:#fff;
+    box-shadow:none;
+    margin-left:5px;
+}
+.schedule_sample .fc-state-active {
+    background:#f3f3f3;
+}
+.schedule_sample .fc-today-button {
+    background:#f3f3f3;
+    color:#4a4a4a;
+}
+.schedule_sample .fc-head .fc-row {
+    border-bottom:5px solid #3b94dc;
+}
+.schedule_sample .fc-head .fc-day-header {
+    height:30px;
+    vertical-align:middle;
+    background-color:#fdfdfd;
+    border-left:0;
+    border-right:0;
+}
+.schedule_sample .fc-body .fc-day {
+    border-color:#f9f9f9;
+}
+.schedule_sample .fc-body .fc-bg .fc-today {
+    background:transparent;
+}
+.schedule_sample .fc-body .fc-content-skeleton .fc-today {
+    background:url(/images/icon/bg_calendar_today.png) no-repeat right center;
+}
+.schedule_sample .fc-body .fc-content-skeleton .fc-day-number {
+    padding-top:6px;
+    padding-bottom:6px;
+    padding-right:7px;
+}62.4CSS Overriding그림 62-3.06NoClassDescription1w2scheduleCalendarw2scheduleCalendar는 웹스퀘어 엔진에서 정의된 클래스입니다, 기본적으로 html 로 떨구는 시점에서 자동으로 부여됩니다. scheduleCalendar 전체를 감싼 태그 입니다.2fc-toolbarfc-toolbar 상단 년,월,주,일 등 툴바 영역을 감싸는 클래스3fc-left좌측 페이징 영역4fc-right우측 월,주,일 필터 영역5fc-center년도,월 표시 영역6fc-view-container스케쥴 달력UI 컨테이너 영역7fc-view스케쥴 달력UI table을 감싸는 영역8fc_headthead의 요일을 나타낸는 영역9fc-bodytbody의 일자별 컨텐츠 영역

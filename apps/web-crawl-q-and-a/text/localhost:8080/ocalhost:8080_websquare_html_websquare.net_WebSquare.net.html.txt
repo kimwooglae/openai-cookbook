@@ -1,0 +1,323 @@
+
+
+
+WebSquare.net 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.net - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+WebSquare.net Package
+
+Type
+
+
+engine
+
+Property Summary
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+
+ajax(
+									  options
+										)
+								
+
+ajax 통신용 함수
+
+
+
+download(
+									  actionUrl
+									       , 
+									       XML
+									       , 
+									       sendMethod
+									       , 
+									       isXHR
+										)
+								
+
+서버에서 파일을 다운로드 받는 함수
+
+
+
+getAllBASE64Parameter(
+									  
+										)
+								
+
+Base64로 Encoding 된 get방식의 전체 parameter를 Base64 Decoding하여 JSON 형태로 반환합니다
+
+
+
+getAllParameter(
+									  
+										)
+								
+
+전체 parameter를 JSON 형태로 반환합니다
+
+
+
+getBASE64Parameter(
+									  param
+										)
+								
+
+Base64로 Encoding 된 get방식의 parameter(param)를 Base64 Decoding하여 반환합니다
+
+
+
+getParameter(
+									  param
+										)
+								
+
+get방식으로 넘어온 parameter를 String으로 반환합니다
+
+
+
+Property Detail
+
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+ajax(
+									  options
+										)
+							
+
+ajax 통신용 함수
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionsObjectYJSON형태 객체
+options.action : ajax 요청 주소
+options.mode : asynchronous(default)/synchronous
+options.mediatype : application/x-www-form-urlencoded, application/json, application/xml, text/xml
+options.method : get/post/put/delete
+options.requestData : 요청 본문.
+options.requestHeader : 요청 헤더에 임의로 추가할 내용. (필요한 경우에만 사용.)
+options.timeout : ajax 요청 후 timeout 시간. 이 시간 내에 응답이 없는 경우, error callback 함수를 실행.
+options.type : xml/json. xml인 경우 success callback함수의 인자객체의 responseBody속성에 xml객체가 설정된고, json인 경우 자바스크립트 객체가 설정된다. 나머지 경우는 text 형식이 설정.
+options.beforeAjax : 요청전에 실행되는 함수로 이 함수내에서 false를 return하면 ajax 요청을 하지 않는다.
+options.success : 요청이 성공한 경우 실행되는 callback 함수.
+options.error : 요청이 실패한 경우 실행되는 callback 함수.
+options.externalHandler : 암복호화 연계와 같이 외부 데이터 연계시 데이터 변환을 담당하는 사용자 함수. 인자로 option 객체를 전달 하며, option.requestData로 데이터에 접근 할수 있다. 사용자 함수는 데이터 변환 후 String을 반환해야 한다.
+
+
+
+Sample
+//위의 예시 중 options.success에 지정 한 callback Function 정의 형태.
+doSucess = function(e) {
+//e는 웹스퀘어 엔진에서 통신 후 결과를 담을 JSON 객체이다.
+//e.resourceUri - 통신 URI 반환
+//e.responseHeaders - Response Headers 내용 반환
+//e.responseStatusCode - Response Status Code 반환
+//e.responseReasonPhrase - Response Status Text 반환
+//e.responseBody - Response Data를 XML 데이터로 parse 한 XML 객체 반환.( Response Content-Type이 JSON 인 경우 json객체를 XML로 parse)
+//e.responseText - Response Data 원본으로 String 형태 반환
+    
+//responseText를 alert으로 출력.
+alert("success\n" + e.responseText);
+};
+    
+doError = function(e) { //functoin을 직접 정의 한 경우.
+//e.errorType - "target-error" 고정값 반환
+//e.resourceUri - 통신 URI 반환
+//e.responseHeaders - Response Headers 내용 반환
+//e.responseStatusCode - Response Status Code 반환
+//e.responseReasonPhrase - Response Status Text 반환
+//e.requestBody - Request Data로 String 형태 반환
+//e.responseText - Response Data 원본으로 String 형태 반환
+
+//satus code alert으로 출력.
+alert("errorCode:" + e.responseStatusCode);
+};  
+
+var options = {};
+options.action = "../$p/extra/test.jsp";
+options.mode = "asynchronous";
+options.mediatype = "text/xml";
+options.method = "post";
+options.requestData = "";
+options.requestHeader = {"temp1":"hello", "temp2":"world"}; // temp1 및 temp2 헤더를 요청 헤더에 추가
+options.success = doSucess;
+options.error = doError;
+WebSquare.net.ajax( options );
+
+
+download(
+									  actionUrl
+									       , 
+									       XML
+									       , 
+									       sendMethod
+									       , 
+									       isXHR
+										)
+							
+
+서버에서 파일을 다운로드 받는 함수.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+actionUrlStringY파일을 다운 받기 위해서 접속해야 하는 주소
+
+
+XMLStringY문자열은 xmlValue라는 이름으로 서버로 올라간다. 값을 지정하지 않은 경우(undefined인 경우) xmlValue라는 값은 제외하고 서버로 전송한다.
+
+
+sendMethodStringYget, post와 같은 전송 방식, 기본값은 post이다.
+
+
+isXHRStringYxhr 통신 유무 (기본값은 false)
+
+
+
+Sample
+
+ WebSquare.net.download( url, "", "post" );
+
+
+
+getAllBASE64Parameter(
+									  
+										)
+							
+
+Base64로 Encoding 된 get방식의 전체 parameter를 Base64 Decoding하여 JSON 형태로 반환합니다.
+
+
+Sample
+
+WebSquare.net.getAllBASE64Parameter();
+
+
+getAllParameter(
+									  
+										)
+							
+
+전체 parameter를 JSON 형태로 반환합니다.
+
+
+Sample
+
+WebSquare.net.getAllParameter();
+
+
+
+getBASE64Parameter(
+									  param
+										)
+							
+
+Base64로 Encoding 된 get방식의 parameter(param)를 Base64 Decoding하여 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+paramStringN값을 가져올 uri에서 지정된 param
+
+
+
+
+Return
+
+typedescription
+
+
+Stringparam 문자열 반환
+
+
+Sample
+
+WebSquare.net.getBASE64Parameter("name");
+
+
+
+getParameter(
+									  param
+										)
+							
+
+get방식으로 넘어온 parameter를 String으로 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+paramStringN값을 가져올 uri에서 지정된 param
+
+
+
+
+Return
+
+typedescription
+
+
+Stringparam 문자열
+
+
+Sample
+
+WebSquare.net.getParameter("name");
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

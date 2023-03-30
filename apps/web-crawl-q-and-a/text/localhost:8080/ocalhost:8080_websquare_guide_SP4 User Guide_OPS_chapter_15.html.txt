@@ -1,0 +1,263 @@
+
+Container15.Container15.1FloatingLayer표 15-1.컴포넌트 설명요약화면 안에 팝업 형태로 출력되는 새로운 창을 생성기능 및 특징화면 최상위 층에 출력 (useModal)이동 제어 (movable)주요 용도팝업 창그림 15-1.FloatingLayer표 15-2.주요 APIAPI설명useModaluseModal="true"로 설정정하면 FloatingLayer 컴포넌트는 항상 모든 컴포넌트보다 앞에 표시됨.documentTitle브라우저 제목 지정. documentTitle="true"로 설정할 경우 title 속성에 설정한 제목을 브라우저 제목으로 사용 가능. FloatingLayer의 탭을 클릭하면 title 설정이 브라우저 제목으로 변경됨.그림 15-2.documentTitle="true" Vs. documentTitle="false"15.2Generator표 15-3.컴포넌트 설명요약여러 컴포넌트로 구성된 컴포넌트 그룹을 한번에 생성하기 위한 컴포넌트기능 및 특징여러 개의 컴포넌트로 구성된 컴포넌트 그룹을 동시에 생성반복 생성할 그룹에 동적으로 컴포넌트를 추가 및 삭제API를 통해 그룹에 포함된 컴포넌트를 제어주요 용도여러 컴포넌트로 구성된 웹 UI를 생성하는 인터페이스 (예: 입력 상자 추가)그림 15-3.Generator표 15-4.주요 APIAPI설명getChild(index, id)Generator의 index 번째 반복부에서 id에 해당하는 웹스퀘어 컴포넌트를 반환getLength()Generator가 몇 개의 반복부를 가지고 있는지를 반환insert()Generator의 반복부에 해당하는 부분을 맨 뒤에 하나 더 추가removeAll()Generator로 출력된 항목을 모두 삭제하고 초기화아래 컴포넌트는 Generator를 통해 반복 생성할 수 없습니다.ChartGridViewMenuSwitchTabControlTreeViewWindowContainerRepeat 컴포넌트와의 차이Generator: 그룹을 구성하는 컴포넌트의 동적인 추가 및 삭제를 지원Repeat: 컴포넌트 그룹을 정적으로 생성 웹 UI의 반복 생성이 필요한 대부분의 경우, Generator 사용을 권장합니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Generator/insertChild_Generator.xml)그림 15-4.YouTube 동영상 (https://youtu.be/8xNf3eVmV84)15.3Group표 15-5.컴포넌트 설명요약여러 컴포넌트를 그룹핑하는 컴포넌트. 기능 및 특징그룹에 속한 컴포넌트 전체를 초기화 그룹에 속한 컴포넌트 전체에 대한 함수 호출HTML5 tag 지정 주요 용도전체 레이아웃을 구성복잡한 계층 구조 구현표 15-6.주요 APIAPI설명init();Group 컴포넌트 내에 있는 컴포넌트들의 값을 초기화사용 예: group1.init();invoke();Group 컴포넌트 하위의 모든 컴포넌트의 함수를 동일하게 호출사용 예: group1.invoke("setValue", "WebSquare");15.3.1이벤트15.3.1.1onmouseleave & onmouseent예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Group/onmouseleave_onmouseenter_Group.xml)그림 15-5.YouTube 동영상 (https://youtu.be/F6d6zU6mmtU)15.3.2스타일링여러 컴포넌트를 Group으로 감싼 후에, Group에 일괄적으로 스타일링을 적용할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/Group/styling_Group.xml)그림 15-6.YouTube 동영상 (https://youtu.be/N7kfGHs-CR4)15.4ScrollView표 15-7.컴포넌트 설명요약모바일 전용 터치 스크롤링을 제공.기능 및 특징Group 컴포넌트처럼 하위에 여러 컴포넌트를 포함.그림 15-7.ScrollView15.5SlideHide표 15-8.컴포넌트 설명요약슬라이딩을 통한 숨김/표시 기능을 제공. 기능 및 특징이벤트에 따라 특정 layer를 animation으로 표시하는 컴포넌트.처음에는 정해진 크기(showSize)만큼만 표시.이후 마우스 오버 등 특정 이벤트(slideEvent)가 발생할 경우, 정해진 방향(slideDirection)으로 정해진 크기(moveSize)만큼 이동하면서 내부 내용을 표시.주요 용도퀵 메뉴와 같이 마우스를 올리면 UI를 잠시 표시하는 상황에서 사용.그림 15-8.SlideHide15.6Switch표 15-9.컴포넌트 설명요약여러 상황이 가능한 경우, 각 상황에 대한 화면을 구성하고 해당 상황에 맞는 화면을 출력기능 및 특징각 상황 별 동적 화면 표시슬라이딩 효과기본 표시 화면 설정 가능드래그 앤 드롭 (브라우저)터치 (모바일)주요 용도페이지 이동, 목록 이동 등응용모바일 접근성그림 15-9.Switch15.7TabControl표 15-10.컴포넌트 설명요약탭 형태의 화면을 구성. TabControl 컴포넌트를 그리면 최초 1개의 Tab과 해당 Content 영역이 생성됨. 각 Content는 Group처럼 하위에 컴포넌트를 포함할 수 있음.기능 및 특징src 속성을 이용하여 외부의 XML을 포함 가능addTab 함수로 탭 추가시 프레임 종류 (IFrame 혹은 WFrame) 선택 가능탭 닫기 버튼 웹 접근성 지원키보드 제어 지원주요 용도여러 탭으로 이루어진 화면 구성관련 동영상TabControl15.7.1탭 프레임 종류 (frameMode)표 15-11.frameMode 설정옵션설명frameMode="iframe"IFrame으로 탭을 생성.Scope 기능 사용할 수 없음. frameMode="wframe"WFrame으로 탭을 생성.Scope 기능 지원.frameMode="wframePreload"WFrame으로 탭을 생성.Scope 기능 지원. wframe vs. wframePreloadalwaysDraw="false" 설정을 사용할 경우, 두 경우 모두 탭 활성화 시에만 해당 탭의 컨텐츠가 로딩되어 로딩 이벤트가 발생합니다. 단, 아래와 같은 차이가 있습니다. frameMode="wframe"(1) 탭 활성화 시에만 객체를 생성.(2) 비활성화된 탭에 포함된 객체는 참조 불가능.frameMode="wframePreload"  (1) src 속성으로 지정된 화면을 로딩하여 객체를 생성. (2) 렌더링은 하지 않음. (즉, 배경색 변경 같은 렌더링 관련 API는 동작 불가.) (3) 그 결과, 탭이 비활성화된 상태에서도 해당 탭에 포함된 객체 참조는 가능.표 15-12.wframe vs. wframePreload (alwaysDraw="false")항목wframewframePreload탭 로딩 및 화면 렌더링첫번째 탭로딩: 초기렌더링: 초기로딩: 초기렌더링: 초기나머지 탭로딩: 탭 선택 시렌더링: 탭 선택 시로딩: 초기렌더링: 탭 선택 시탭에 포함된 객체 생성탭이 활성화될 때.탭 로딩 시.탭에 포함된 객체 참조활성화된 탭의 객체만 참조 가능.비활성화된 탭의 객체도 참조 가능.코드 15-1.사용 예// 아래는 단순 예제입니다 
+// TabControl 내에서는 동일한 frameMode 사용을 권장합니다.
+
+<w2:tabControl id="tabControl1">
+    <w2:tabs label="tab_iframe" id="tabs1"></w2:tabs>
+    <w2:tabs label="tab_wframe" id="tabs2"></w2:tabs>
+    <w2:tabs label="tab_wframePreload" id="tabs3"></w2:tabs>
+        <w2:content id="content1" alwaysDraw="false" src="sub.xml" 
+            frameMode="iframe"></w2:content>
+        <w2:content id="content2" alwaysDraw="false" src="sub2.xml" 
+            frameMode="wframe" scope="true"></w2:content>
+        <w2:content id="content3" alwaysDraw="false" src="sub3.xml" 
+            frameMode="wframePreload" scope="true"></w2:content>
+</w2:tabControl>15.7.2이벤트 로딩 순서표 15-13.스크립트 실행 순서화면initScriptpostScriptonpageloadontabloadTabControl4Tab (WFrame)13화면 파일 (XML)2w2:content 속성 중 initScript/postScript는 deprecated 되었습니다.15.7.3탭 생성 (addTab)기존 방식으로 WFrame 탭을 생성할 수 있습니다. 단, scope 속성을 추가해야 합니다.dataObject 옵션에 JSON 객체를 지정하여 탭 생성시 호출할 페이지의 파라미터를 전달할 수 있습니다.호출된 페이지는 $p.getParameter(name);으로 반환할 수 있습니다. 아래 예제의 경우 $p.getParameter("pageParam"); 함수를 사용하여 호출된 페이지의 name 정보를 반환할 수 있습니다.코드 15-2.동적 탭 생성 (예제)tabControl1.addTab("cmcm011", {
+    "label": "공통코드등록",
+    "title": "공통코드등록",
+    "openAction": "exist",
+    "closable": "true"
+}, {
+    "src": "CodeManage.xml",
+    "frameMode": "wframePreload"
+    "scope": true,
+    "alwaysDraw": "true",
+    "dataObject": {
+        "type": "json",
+        "name": "pageParam",
+        "data": {
+            "name": "WebSquare",
+            "addr": "서울시"
+        }
+    }
+});15.7.4dataObject를 통한 파라미터 전달addTab() 함수로 추가하는 탭에 dataObject를 통해 파라미터를 전달할 수 있습니다. 생성된 탭에서는 $p.getParameter() 함수를 통해 전달받은 파라미터 확인 가능합니다.코드 15-3.addTab() 함수로 탭을 생성할 때 파라미터 전달 (예시)var rowJSON = {
+  "Product Info": {
+    "Origin": "Korea",
+    "Manufacturer": "Inswave",
+    "Type": "Software"
+  },
+  "Region": "Seoul",
+  "Carrier": true
+};
+
+var dataObject = {
+  "type": "json",
+  "name": "param",
+  "data": rowJSON
+};
+
+tabControl1.addTab("tab_01", {
+  "label": "New",
+  "title": "dataObject",
+  "openAction": "exist",
+  "closable": "true"
+}, {
+  "src": "src.xml",
+  "frameMode": "wframePreload",
+  "scope": "true",
+  "dataObject": dataObject
+});코드 15-4.탭에서 전달받은 파라미터 확인 (예시)var paramData = $p.getParameter("param");
+var data = JSON.stringify(paramData);
+alert(data);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/getParameter_$p_addTab_TabControl/)그림 15-10.YouTube 동영상 (https://youtu.be/R_Gx8twsrp0)15.7.5서브미션 상태창 표시15.7.5.1상태창 표시WFrame으로 생성한 탭의 src 화면이 서브미션을 포함할 경우, 서브미션 실행 시 표시되는 상태창을 WFrame 탭 내부에 표시할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/processMsgFrame_TabControl/)그림 15-11.YouTube 동영상 (https://youtu.be/81GMTGsBQ8U)15.7.5.2상태창 소스 변경Config.xml 파일의 설정을 변경하여 해당 상태창의 소스를 변경할 수도 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/processMsgFrameURL_config_processMsgFrame_TabControl/)그림 15-12.YouTube 동영상 (https://youtu.be/4wbUEkA0uM4)15.7.6Scope 참조WFrame으로 생성한 탭은 getWindow와 $p.parent API를 통해 참조할 수 있습니다.표 15-14.tab1의 scwin.test1(); 실행하기스크립트 위치접근 방법maintabControl1.getWindow("tab1").scwin.test();wframe1$p.parent().tabControl1.getWindow("tab1").scwin.test();15.7.7src 변경content에 지정된 페이지의 경로를 동적으로 바꿀 경우 getFrame API를 이용하십시오.코드 15-5.예제tabControl1.getFrame("tab1").setSrc(
+        "/ui/tab2.xml", {
+            "dataObject": {
+                "type": "json",
+                "name": "pageParam",
+                "data": {
+                    "name": "WebSquare",
+                    "addr": "서울시"
+                }
+            }
+        );15.7.8탭이 여러 개인 경우15.7.8.1탭 위치 지정 (tabPosition)탭이 여러 개인 경우,화면 디자인에 따라 tabPosition 속성을 통해 탭을 표시할 위치를 설정하십시오.그림 15-13.tabPosition="top"그림 15-14.tabPosition="left"그림 15-15.tabPosition="right"그림 15-16.tabPosition="bottom"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabContrl/tabPosition_TabControl/)그림 15-17.YouTube 동영상 (https://youtu.be/HXLexQKZUTU)15.7.8.2스크롤 및 탭목록 버튼 표시 (tabScroll="true")탭을 여러 개 생성할 경우 tabScroll="true" 설정을 추가하면 상단에 스크롤과 탭 목록을 표시할 수 있습니다.그림 15-18.tabScroll="false"그림 15-19.tabScroll="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/tabScroll_tabPosition_TabControl/)그림 15-20.YouTube 동영상 (https://youtu.be/G2NKZg9n_eM)15.7.8.3탭 스크롤 버튼을 통한 탭 활성화 (changeActiveTab="true")tabScroll="true" 설정을 통해 탭 스크롤 버튼을 표시할 경우, 스크롤 버튼을 클릭하면 탭 목록만 스크롤 됩니다. 이 경우 changeActiveTab="true" 설정을 추가할 경우 스크롤 버튼을 통해 선택한 탭을 활성화할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/tabScroll_changeActiveTab_TabControl/)그림 15-21.YouTube 동영상 (https://youtu.be/srqwDbr70FM)15.7.8.4탭을 닫을 경우 남은 탭을 자동으로 앞으로 이동 (tabScrollAuto="true")또한 tabScrollAuto="true" 설정을 추가할 경우 마지막 탭 닫은 자리를 앞의 탭으로 채워서 상단에 최대한 많은 탭을 표시할 수 있습니다.그림 15-22.tabScrollAuto="false"그림 15-23.tabScrollAuto="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabScroll/tabScroll_tabScrollAuto_TabControl/)그림 15-24.YouTube 동영상 (https://youtu.be/nt3DExi4iTs)15.7.9자식 탭의 비활성화 상태를 유지또한 keepDisabledTab="true" 설정을 추가할 경우 부모 탭의 활성화 여부에 상관없이 자식 탭의 비활성화 상태를 유지할 수 있습니다.즉, 부모 TabControl의 탭이 또 다른 TabControl을 포함한 경우, 자식 TabControl의 탭 비활성화 상태를 부모 TabControl 탭의 활성화 상태에 상관없이 유지할 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/keepDisabledTab_TabControl/)그림 15-25.YouTube 동영상 (https://youtu.be/5BCe5c4avtM)15.7.10팝업15.7.10.1지정한 프레임 영역에 팝업 표시frameMode="wframe" 혹은 frameMode="wframePreload"로 생성한 WFrame 탭에서 $open.popUp() 함수를 통해 팝업을 생성할 경우, 팝업을 표시한 프레임을 지정할 수 있습니다. $open.popUp() 함수의 options.frameModal 옵션을 사용하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/TabControl/frameMode_tabControl_content_openPopup_frameModal_$p/)그림 15-26.YouTube 동영상 (https://youtu.be/dGoIpOaHJcA)참고 자료프레임 모달 팝업 (options.frameModal) 참고.15.7.10.2부모 – 자식 팝업 닫기$p.openPopup() 함수를 사용하여 탭 화면에서 팝업을 생성하고, 부모 팝업과 해당 부모에 속하는 모든 자식 팝업을 함께 닫을 수 있습니다.단, WFrame 탭에서만 동작합니다. frameMode="wframe" 혹은 frameMode="wframePreload"로 탭을 생성하십시오.TabControl의 frameModal 속성을 "true"로 설정하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TabControl/frameModal_TabControl/)그림 15-27.YouTube 동영상 (https://youtu.be/eA6lQkcBGsY)15.7.11이벤트15.7.11.1스크롤 바 버튼을 클릭할 때 호출되는 이벤트tabScroll="true" 속성 설정을 적용할 경우, 아래와같이 스크롤 바에 3개의 버튼이 표시되고, 각 버튼을 클릭할 때마다 이벤트가 발생합니다.그림 15-28.tabScroll="true"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/TabControl/onscrollleftbtnclick_onscrollrightbtnclick_onsubmenubtnclick_TabControl.xml)그림 15-29.YouTube 동영상 (https://youtu.be/81mP-CegE6k)15.7.11.1.1onscrollleftbtnclick그림 15-30.왼쪽 스크롤 버튼15.7.11.1.2onscrollrightbtnclick그림 15-31.오른쪽 스크롤 버튼15.7.11.1.3onsubmenubtnclick그림 15-32.탭 목록 버튼15.7.12주요 API표 15-15.주요 APIAPI설명useConfirmMessagetrue로 설정하면 탭 추가 시 확인 창 출력 가능.confirmTrueAction'확인' 을 선택했을 때의 동작을 설정.exist: 동일한 tab을 사용하여 표시new : 항상 새로운 tab으로 표시select : id가 동일한 tab이 있으면 그 tab을 선택confirmFalseAction'취소' 를 선택했을 때의 동작을 설정. (exist, new, select)confirmMessage확인 메시지를 설정.closable탭 닫기 기호를 표시 (true/false) 전체 탭 혹은 개별 탭에 설정 가능tabMovetabMove="true" 설정을 통해 드래그-앤-드롭으로 탭 순서 변경 가능.addTabid를 사용하여 탭을 추가하고, 생성된 탭의 id를 반환deleteTab지정한 인덱스의 탭을 삭제enableTab지정한 인덱스의 탭을 사용할 수 있게 허용getSelectedTabID선택된 탭의 ID를 반환getSelectedTabIndex선택된 탭의 인덱스를 반환getTabIndex탭 ID에 해당하는 인덱스를 반환getWindow탭 인덱스에 해당하는 window content를 반환. 인덱스가 없으면 현재 선택된 탭의 window content를 반환.setSelectedTabIndex지정한 인덱스에 해당하는 탭을 선택 deleteAllTabs모든 탭을 한번에 닫음 onchange(tabID, idx)탭이 바뀐 경우 발생ontabclick탭이 클릭된 경우 발생ontabclose탭의 닫기 버튼이 클릭된 경우 발생15.8TableLayout표 15-16.컴포넌트 설명요약Group 컴포넌트의tagname속성에 HTML5 태그(<colgroup>, <tr>, <td>, <th>)를 추가하여 <table> 태그로 묶음기능 및 특징각 셀에 컴포넌트 추가 가능테이블 편집이 용이주요 용도폼 양식 구성15.8.1그리기예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TableLayout/introduction_TableLayout.xml)그림 15-33.YouTube 동영상 (https://youtu.be/FgJIBcSgqTI)15.8.2적응형 웹예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/TableLayout/adaptive_adaptiveThreshold_TableLayout.xml)그림 15-34.YouTube 동영상 (https://youtu.be/q8tQ06AF3G8)15.8.3DataCollection 바인딩 및 컴포넌트 자동 추가TableLayout을 생성합니다.아래와 같이 DataMap을 생성합니다.그림 15-35.DataMapOutput 탭의 DataMap 키를 Design 탭 상의 TableLayout 셀로 드래깅합니다.아래와 같은 팝업 창이 나오는지 확인합니다.DataMap을 바인딩할 컴포넌트 종류를 선택합니다.그림 15-36.컴포넌트 선택아래는 각 셀에 컴포넌트를 바인딩한 모습입니다. 컴포넌트 키 값(Name, Nationality, 등)이 자동 입력되며, DataMap의 데이터가 자동 표시됩니다.그림 15-37.바인딩 후15.9WidgetContainer표 15-17.컴포넌트 설명요약여러 개의 웹 위젯을 한 화면에서 화면에서 제공하는 컴포넌트. 서버 통신 등을 포함한 업무 화면을 웹 위젯으로 사용.업무 화면 및 유틸리티 사용 환경을 개인화.기능좌표계를 바탕으로 위젯 위치 결정 동적 위젯 생성/추가 (addWidgets)위젯 위치 및 크기 제어 (이동, 고정, 리사이징, 최대화/최소화)위젯 추가/내보내기importWidgetsexportWidgetsimportWidgetexportWidget기능 및 특징각 위젯은 서로 다른 URL을 통해 관리.사용자가 원하는 컨텐츠만 한 화면에 배치 가능.위젯 이동, 리사이징, 최대화/최소화 가능. WFrame 사용으로 SPA 구현 및 효율적인 리소스 관리 가능.관련 컴포넌트WFrame관련 동영상WidgetContainer15.9.1위젯위젯의 기본 구조는 아래와 같습니다. content 영역은 WFrame으로 구성되며 위젯을 추가할 때 지정한 XML 페이지(src 옵션)가 표시됩니다.그림 15-38.위젯 구조15.9.2좌표계WidgetContainer는 2차원 좌표계를 생성하여 위젯을 추가하고, 모든 위젯의 위치 및 크기는 좌표계를 기준으로 결정됩니다.그림 15-39.좌표계 및 좌표계 상에 위젯 생성WidgetContainer는 아래의 세가지 방법으로 2차원 좌표계를 생성합니다.cols 및 unitHeightPixel 속성 사용rows 및 unitWidthPixel 속성 사용cols 및 rows 속성 사용15.9.2.1cols & unitHeightPixel아래는 단위 높이가 300픽셀(unitHeightPixel="300")인 열 4개(cols="4")로 2차원 좌표계를 구성한 모습입니다.그림 15-40.cols="4" unitHeightPixel="300"그림 15-41.YouTube 동영상 (https://youtu.be/dlKWj8jXlTY)15.9.2.2rows & unitWidthPixel아래는 단위 너비가 200픽셀(unitWidthPixel="200")인 행 3개(rows="3")로 2차원 좌표계를 구성한 모습입니다.그림 15-42.rows="3" unitWidthPixel="200"15.9.2.3cols & rows아래는 열 3개(cols="3")와 행 4개(rows="4")로 2차원 좌표계를 구성한 모습입니다. 이 경우 unitHeightPixel 및 unitWidthPixel 속성은 지정하지 않습니다.그림 15-43.cols="3" rows="4"15.9.3위젯의 이동 방향15.9.3.1cols & unitHeightPixelcols 및 unitHeightPixel 속성으로 구성한 좌표계에서 mode="pushpull" 속성 설정을 사용할 경우, 위젯의 이동 방향은 아래 그림과 같습니다. 즉, 좌표계의 열의 개수는 고정된 상태에서, 행 개수만 증가합니다.그림 15-44.cols 및 unitHeightPixel 속성으로 구성한 좌표계에서 위젯의 이동15.9.3.2rows & unitWidthPixelrows 및 unitWidthPixel 속성으로 구성한 좌표계에서 mode="pushpull" 속성 설정을 사용할 경우, 위젯의 이동 방향은 아래 그림과 같습니다. 즉, 좌표계의 행의 개수는 고정된 상태에서, 열 개수만 증가합니다.그림 15-45.rows 및 unitWidthPixel 속성으로 구성한 좌표계에서 위젯의 이동15.9.4위젯 추가 (addWidgets())위젯은 WidgetContainer의 addWidgets 함수를 통해서만 동적으로 생성할 수 있습니다. (XML 상에서 위젯을 추가할 수 없습니다.)관련 함수addWidgets( optionsArr ): 생성하려는 위젯을 options 객체 혹은 배열로 지정하여 해당 위젯을 생성.표 15-18.optionsArr 설명Property설명필수unitHeight좌표 상의 위젯 높이 OunitWidth좌표 상의 위젯 너비 Ox위젯의 좌표 (x 값)Oy위젯의 좌표 (y 값)ObuttonFormatter위젯 타일틀 버튼을 설정. useDefault: 설정된 경우 기본 버튼을 사용. (기본 버튼은 고정, 최소화, 최대화, 닫기 기능을 제공.)id, className, useAPI, isCustom: useDefault가 설정되지 않은 경우 해당 ID(id)와 클래스(className)의 버튼이 생성되어 버튼을 클릭할 경우 useAPI에 지정한 함수를 실행. isCustom="true"인 경우 WidgetContainer에 onclickcustombtn 이벤트가 생성되어 개발자는 실행할 동작을 정의 가능. fixed위젯의 고정 여부. (기본 값: false)고정된 위젯은 그 위치나 크기를 변경할 수 없다.hasTitleBar위젯의 타이틀바 생성 여부. true: 생성. false: 생성하지 않음. 타이틀바가 없기 때문에 타이틀바를 통한 이동 및 버튼을 사용할 수 없음. 또한 setTitle 또는 getTitle을 통한 접근도 불가능.id위젯 ID. WidgetContainer 내부의 위젯들은 모두 고유한 ID를 가져야 함. 단, scope="true"인 경우 '_'는 사용 불가. ID를 설정하지 않을 경우 WidgetContainer가 ID를 부여. maximized위젯의 최대화 여부. maximizeFormatter가 반환한 설정에 따라 최대화 수행. 최대화된 위젯은 고정 상태로 전환하여 다른 위젯들 위에 표시. 이 경우, 최대화된 위젯과 덮인 위젯들은 서로 상호 작용할 수 없음.maximizeFormatter위젯의 최대화 설정을 반환할 함수 또는 함수의 이름. 최대화 설정 형식은 'top', 'bottom', 'left', 'right' 라는 속성을 가진 객체로 각각의 속성값은 해당 방향으로 늘어날 칸 수를 의미. 단, 속성값이 설정되어 있지 않거나 -1이라면, 해당 방향으로 최대 확장.주어진 속성값이 해당 방향의 경계를 초과할 경우, 초과분만큼 반대쪽으로 확장(기본 값: {top: -1, bottom: -1, left: -1, right: -1})maximizeonfixedtrue인 경우, fixed: true로 설정된 경우에도 우측 상단 버튼을 통한 화면 최대화가 가능minimized위젯의 최소화 여부. 최소화할 경우 타이틀만 표시됨. minimizeonfixedtrue인 경우, fixed: true로 설정된 경우에도 우측 상단 버튼을 통한 화면 최소화가 가능.params위젯 객체에 저장할 사용자 정의 데이터. (기본 값: undefined)export 시에 같이 추출되어 후에 import 할 때 다른 위젯 설정들과 함께 복구됨.scope위젯 내부 WFrame의 scope 속성. (기본 값: false)src위젯 내부 WFrame에 표시할 내용. (XML 파일)값을 지정하지 않을 경우 빈 화면이 표시됨. title위젯의 타이틀titleClass위젯의 타이틀의 스타일 제어를 위한 클래스 명코드 15-6.사용 예widgetContainer.addWidgets({
+    id: "001",
+    title: "Widget_Added",
+    src : "widget.xml",
+    scope: true,
+    x: 0,
+    y: 0,
+    unitWidth: 1,
+    unitHeight: 1
+});예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WidgetContainer/addWidgets_WidgetContainer/)그림 15-46.YouTube 동영상 (https://youtu.be/6Oj9R8gLqL8)15.9.5Import, Export, 삭제15.9.5.1전체 위젯15.9.5.1.1importWidgets() & exportWidgets()현재 존재하는 위젯 전체를 export하거나, 새로운 위젯 여러 개를 추가할 수 있습니다.관련 함수importWidgets( jsonArr , clearFlag ): 현재 존재하지 않는 여러 개의 위젯을 WidgetContainer에 추가.exportWidgets: 현재 WidgetContainer에 포함된 모든 위젯을 내보냄.코드 15-7.exportvar jsonArr = widgetContainer1.exportWidgets();15.9.5.1.2exportWidgets() & removeWidgetsAll()exportWidgets(); 및 removeWidgetsAll(); 함수를 사용하여 현재 생성된 모든 위젯을 반환하거나 삭제할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WidgetContainer/exportWidgets_removeWidgetsAll_WidgetContainer.xml)그림 15-47.YouTube 동영상 (https://youtu.be/ECZlRXxpNC0)15.9.5.2개별 위젯기존에 존재하는 위젯 한 개를 export하거나 역시 이미 존재하는 위젯 한 개를 import할 수도 있습니다.관련 함수exportWidget(<widget ID>') : 해당 ID의 위젯을 내보냄.importWidget( <Widget id>, JSON ): 현재 존재하는 위젯 ID와 위젯의 정보를 JSON으로 받아 WidgetContainer에 추가.코드 15-8.사용 예widgetContainer.importWidget('widget1',  { 
+    id: 'widget1',
+    src:"widget.xml",
+    scope:true,
+    x:0,
+    y:0,
+    title:"개별 import",
+    }
+);15.9.6접근15.9.6.1개별 접근관련 함수getWidgetById: ID에 해당하는 위젯을 반환. (존재하지 않은 경우 null을 반환.)getWidgetByTitle: Title에 해당하는 위젯을 반환. (존재하지 않은 경우 null을 반환.)코드 15-9.사용 예var widget0 = widgetContainer1.getWidgetById('widget0');코드 15-10.사용 예var widget0 = widgetContainer1.getWidgetByTitle('위젯0');15.9.6.2위젯 내부 객체에 접근아래의 위젯 함수를 사용하여 위젯 내부 객체에 접근할 수 있습니다.관련 함수 setSrcgetObjgetObjList사용법은 아래와 같습니다.코드 15-11.사용 예var widget0 = widgetContainer1.getWidgetById('widget0');
+widget0.setSrc('other_page.xml');
+var myObj = widget0.getObj('myObj');
+var objList = widget0.getObjList();
+console.log(myObj);
+console.log(objList);15.9.6.3상호 참조WFrame의 scope="true" 설정을 사용할 경우 WidgetContainer 및 포함된 위젯 간의 상호 참조가 가능합니다.$p.widget 객체는 위젯을 위한 전용 함수입니다. 위젯으로 사용되는 화면에 대해서만 이 객체가 존재하며 아래 함수를 통해 위젯으로 사용된 화면의 정보를 얻을 수 있습니다.관련 함수$p.widget.getWidgetId(): 화면이 위젯으로 사용된 경우 사용된 위젯 ID를 반환.$p.widget.getWidgetContainerId(): 해당 위젯을 관리하는 WidgetContainer의 ID를 반환.$p.widget.getWidgetContainer(): 해당 위젯을 관리하는 WidgetContainer 객체를 반환.if($p.widget) {
+        dataMap1.set( "key1" , $p.widget.getWidgetId() );
+    } else {
+        dataMap1.set( "key1" , "widget아님" );
+    }자주 사용하는 함수$p;: Utility 성격의 기능 제공.$p.data;: DataCollection을 제어.아래는 WFrame의 scope="true" 설정을 사용할 때 위젯 내에서 Submission을 실행하는 예제입니다. 즉, $p.xxx 형태의 함수를 사용하십시오. $p.xxx 형태의 함수를 사용하면 메인 영역에서 submission을 탐색합니다.코드 15-12.위젯 내부의 Submission 실행 (예)scwin.startInit = function() {
+    $p.executeSubmission("submission1");
+};
+
+scwin.submission1_submitdone = function(e) {
+    alert('done');
+};
+
+scwin.startInit();15.9.7타이틀15.9.7.1텍스트 동적 변경아래의 함수를 사용하여 텍스트를 동적으로 변경할 수 있습니다.관련 함수getTitlesetTitle코드 15-13.사용 예var widget0 = widgetContainer1.getWidgetByTitle('widget0');
+var title = widget0.getTitle();  // 'widget0'
+title += '_MODIFIED';
+widget0.setTitle(title);  // 'widget0_MODIFIED'15.9.7.2스타일 적용<style> 태그에 스타일을 정의하고 addWidgets을 통해 위젯을 추가할 때 titleClass 속성에 추가한 스타일을 지정하여 각 위젯 별로 서로 다른 스타일을 적용할 수 있습니다.코드 15-14.타이틀 스타일 적용 (예)<head>
+...
+<script type="text/javascript"><![CDATA[
+    widgetContainer1.addWidgets({
+            title : "위젯  0",
+            ...
+            titleClass : "w2widget_red",
+    });
+
+    widgetContainer1.addWidgets({
+        title : "위젯  1",
+        ...
+        titleClass : "w2widget_red",
+    });
+
+    widgetContainer1.addWidgets({
+        title : "위젯  2",
+        ...
+        titleClass : "w2widget_red",
+    });
+
+ ]]></script>
+</head>
+<style>
+    .w2widget_red{
+        background-color: red;
+        height: 50px;
+        font-size: 30px;
+        color: white;
+    }
+    
+    .w2widget_orange{
+        background-color: orange;
+    }
+    
+    .w2widget_green{
+        background-color: green;
+    }
+</style>그림 15-48.스타일 적용 후15.9.7.3표시하기/숨기기아래의 API를 사용하여 WidgetContainer에 포함된 전체 및 개별 위젯의 타이틀 표시 여부를 제어할 수 있습니다.코드 15-15.개별 위젯 정적 제어addWidgets([{
+    ...
+    hasTitleBar: false,
+    ...
+}]);코드 15-16.개별 위젯 동적 제어showTitle();코드 15-17.전체 위젯 동적 제어enableWidgetTitle();15.9.8최대화/최소화각 위젯의 타이틀을 더블 클릭할 경우 화면이 최대화되거나 최소화됩니다. 단, 고정핀이 활성화된 위젯의 크기는 변경되지 않습니다.15.9.8.1위젯 최대화 금지preventMaximizeByTitle="true" 속성 설정을 추가하면, 사용자가 타이들을 더블-클릭할 때 위젯이 최대화되는 것을 방지할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WidgetContainer/preventMaximizeByTitle_WidgetContainer.xml)그림 15-49.YouTube 동영상 (https://youtu.be/OCNR2LEB0Hg)15.9.9타이틀 표시 & 이동 & 리사이징WidgetContainer에 포함된 모든 위젯의 이동 여부를 제어할 수 있습니다.표 15-19.관련 API개별 위젯WidgetContainer 내 전체 위젯정적 제어N/AwidgetMove동적 제어N/AenableWidgetMove();아래의 API를 사용하여 WidgetContainer에 포함된 전체 및 개별 위젯의 리사이징 허용 여부를 결정할 수 있습니다.표 15-20.관련 API개별 위젯WidgetContainer 내 전체 위젯정적 제어N/AwidgetResize동적 제어setResizable();enableWodgetResize();그림 15-50.YouTube 동영상 (https://youtu.be/2-K7dD7OVHs)15.9.10위젯 버튼예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WidgetContainer/move_resize_widgets_WidgetContainer.xml)그림 15-51.YouTube 동영상 (https://youtu.be/Jb1I-52zSl0)15.9.11예제위젯을 추가하기 전 WidgetContainer의 ID를 지정하고, 좌표계를 생성하기 위해 cols와 unitHeightPixel을 정의하십시오.코드 15-18.WidgetContainer 정의 (예)<w2:widgetContainer id="widgetContainer1" minUnitWidth="1" widgetMove="" cols="8" horizontalMargin="0" verticalMargin="0" params="false" widgetResize=""mode="pushpull"threshold="null"style="width:100%;height:100%;margin: 20px;" unitHeightPixel="200"></w2:widgetContainer>cols="8" & unitHeightPixel="200"인 경우 아래와 같은 좌표계가 생성됩니다.그림 15-52.생성된 좌표계 (cols="8" & unitHeightPixel="200")<script> 탭에 아래와 같은 스크립트를 작성하여 위젯을 추가합니다.코드 15-19.추가 예<script type="text/javascript">
+    <![CDATA[
+        widgetContainer1.addWidgets({
+                id : "widget0",
+                title : "위젯 0",
+                src : "widget0.xml",
+                scope : true,
+                x : 0,
+                y : 0,
+                unitWidth : 2,
+                unitHeight : 1
+            });
+
+            widgetContainer1.addWidgets({
+                id : "widget1",
+                title : "위젯  1",
+                src : null,
+                scope : true,
+                x : 1,
+                y : 1,
+                unitWidth : 1,
+                unitHeight : 1
+            });
+
+            widgetContainer1.addWidgets({
+                id : "widget2",
+                title : "위젯  2",
+                 src : "widget.xml",
+                scope : true,
+                x : 3,
+                y : 0,
+                unitWidth : 2,
+                unitHeight : 2
+            });
+    ]]>
+</script>저장 후 브라우저를 갱신하여 위젯이 추가되는지 확인하십시오.그림 15-53.WidgetContainer 생성 결과 (세 개의 위젯 포함)각 위젯 우측 상단의 버튼을 이용하여 아래와 같은 위제 제어 동작이 가능한지 확인합니다.위치 고정최대화/최소화닫기이동 (탭을 클릭하여 드래깅)리사이징 (우측 하단 모서리를 드래깅)15.10WindowContainer표 15-21.컴포넌트 설명요약툴바를 이용하여 여러 개의 윈도우를 제어기능 및 특징하나의 부모 윈도우가 여러 개의 자식 윈도우가 포함하고, 윈도우간 계층 구조를 갖는 MDI(Multiple Document Interface)를 지원관련 동영상WindowContainer15.10.1윈도우 생성15.10.1.1윈도우 생성예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/createWindow_WindowContainer/)그림 15-54.YouTube 동영상 (https://youtu.be/h16_o7szqik)15.10.1.2윈도우 프레임 종류 (frameMode)createWindow 함수를 사용하여 새 창을 생성할 경우 아래와 같이 frameMode 옵션을 통해 새로 지정하는 창의 프레임 종류를 결정할 수 있습니다.사용 형식createWindow( title , iconUrl , src , windowTitle , windowId , openAction , closeAction , windowTooltip, frameMode );설명새 창 생성 시 사용할 프레임 종류 지정 (frameMode)iframewframe표 15-22.frameMode 설정옵션설명frameMode="iframe"IFrame으로 window를 생성.Scope 기능 사용할 수 없음. frameMode="wframe"WFrame으로 window를 생성.Scope 기능 지원. (window는 scope로 분리되어 생성됨.)15.10.1.3윈도우 생성 및 고정표 15-23.윈도우 생성 및 고정항목설명관련 함수생성: createWindow()고정: fixWindow()고정 취소: unfixWindow()고정한 채로 생성: createWindow() – options.fixed="true"그림 15-55.YouTube 동영상 (https://youtu.be/60Az2lCc_10)dataObject 옵션에 JSON 객체를 지정하여 Window 생성시 호출할 페이지의 파라미터를 전달할 수 있습니다. 호출된 페이지는 $p.getParameter(name);으로 반환할 수 있습니다. 아래 예제의 경우 $p.getParameter("pageParam"); 함수를 사용하여 호출된 페이지를 반환할 수 있습니다.코드 15-20.동적 Window 생성var obj = {
+    "title": "wframeWindow1",
+    "windowId": "window1",
+    "src": "/ui/window1.xml",
+    "frameMode": "wframe",
+    "dataObject": {
+        "type": "json",
+        "name": "pageParam",
+        "data": {
+            "name": "WebSquare",
+            "addr": "서울시"
+        }
+    }
+};
+windowContainer1.createWindow(obj);15.10.1.4src 변경호출할 페이지의 경로를 동적으로 바꿀 경우 getFrame API를 이용하십시오.코드 15-21.예제windowContainer1.getFrame("window1").setSrc(
+        "/ui/tab2.xml", {
+            "dataObject": {
+                "type": "json",
+                "name": "pageParam",
+                "data": {
+                    "name": "WebSquare",
+                    "addr": "서울시"
+                }
+            }
+        );15.10.1.5윈도우 기본 크기 지정createWindow() 함수를 사용하여 윈도우를 생성할 경우, defaultWidth 옵션 및 defaultHeight 옵션을 사용하여 기본 너비 빛 높이를 지정할 수 있습니다.코드 15-22.사용 예var winObj = {
+    ...
+    defaultWidth: "600",
+    defaultHeight: "300",
+    ...
+}
+windowContainer1.createWindow(winObj);처음 윈도우를 생성할 경우, 아래와 같이 최대 크기의 윈도우가 생성됩니다.그림 15-56.초기 생성 시윈도우 크기 복원 아이콘을 클릭할 경우, 아래와 같이 defaultWidth 및 defaultHeight 옵션으로 지정한 크기로 조정됩니다.그림 15-57.윈도우 크기 복원 아이콘 클릭 후예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/createWindow_defaultWidth_defaultHeight_WindowContainer/)그림 15-58.YouTube 동영상 (https://youtu.be/gx3a9cI8WRg)15.10.2dataObject를 통한 파라미터 전달createWindow() 함수를 통해 추가하는 윈도우에 dataObject를 통해 파라미터를 전달할 수 있습니다. 생성된 윈도우에서는 $p.getParameter() 함수를 통해 전달받은 파라미터 확인 가능합니다.코드 15-23.createWindow() 함수로 윈도우를 생성할 때 파라미터 전달 (예시)var rowJSON = {
+  "Product Info": {
+    "Origin": "Korea",
+    "Manufacturer": "Inswave",
+    "Type": "Software"
+  },
+  "Region": "Seoul",
+  "Carrier": true
+};
+
+var dataObject = {
+  "type": "json",
+  "name": "param",
+  "data": rowJSON
+};
+
+var obj = {
+  "title": "Test",
+  "windowID": "001",
+  "frameMode": "wframe",
+  "src": "src.xml",
+  "dataObject": dataObject
+};
+
+windowContainer1.createWindow(obj);코드 15-24.윈도우에서 전달받은 파라미터 확인 (예시)var paramData = $p.getParameter("param");
+var data = JSON.stringify(paramData);
+alert(data);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/getParameter_$p_createWindow_WindowContainer/)그림 15-59.YouTube 동영상 (https://youtu.be/hgfUlUyt31Y)15.10.3IFrame 윈도우의 뒤로가기(History) 제어WindowContainer가 IFrame을 포함할 경우, IFrame 화면의 뒤로가기를 제어할 수 있습니다. spaReplaceHistory="true"로 설정할 경우 뒤로 가기 버튼을 클릭하면 각 IFrame에 담긴 화면이 아닌 브라우저 전체가 이젠 페이지를 표시합니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/frameMode_spaReplaceHistory_WindowContainer/)그림 15-60.YouTube 동영상 (https://youtu.be/OfsxRRlZ8cI)15.10.4다른 윈도우 참조WFrame으로 생성한 window는 getWindow (기존의 getWindowbyWindowID와 동일) 및 $p.parent API를 통해 참조할 수 있습니다.표 15-24.window1의 scwin.test1(); 실행하기스크립트 위치접근 방법mainwindowContainer1.getWindow("window1").scwin.test();wframe1$p.parent().windowContainer1.getWindow("window1").scwin.test();15.10.5윈도우 인덱스 확인getSelectedIndex() 함수를 사용하면 선택한 윈도우의 인덱스를 확인할 수 있습니다. createWindow() 함수를 이용하여 윈도우를 생성할 경우, 윈도우를 생성할 때마다 인덱스가 "1"씩 증가하고, 윈도우를 닫으면 인덱스가 초기화됩니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/getSelectedIndex_WindowContainer.xml)그림 15-61.YouTube 동영상 (https://youtu.be/AteLPAoIYK8)15.10.6특정 윈도우에 포커스 주기setFocus() 함수를 사용하면 윈도우 ID나 윈도우 인덱스를 파라미터로 지정하여, 해당 윈도우에 포커스를 줄 수 있습니다. 윈도우 ID 및 윈도우의 인덱스는 getSelectedWindowId() 함수와 getSelectedIndex() 함수를 사용하여 확인할 수 있습니다.코드 15-25.사용 예// index="0" 윈도우에 포커스 주기
+windowContainer1.setFocus(0);
+
+// windowId="window_1" 윈도우에 포커스 주기
+windowContainer1.setFocus("window_1");예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/setFocus_WindowContainer.xml)그림 15-62.YouTube 동영상 (https://youtu.be/Q7pDyJzoClY)15.10.7팝업15.10.7.1지정한 프레임 영역에 팝업 표시frameMode="wframe"로 생성한 WFrame 윈도우에서 $open.popUp() 함수를 통해 팝업을 생성할 경우, 팝업을 표시한 프레임을 지정할 수 있습니다. $open.popUp() 함수의 options.frameModal 옵션을 사용하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/frameMode_windowContainer_window_openPopup_frameModal_$p/)그림 15-63.YouTube 동영상 (https://youtu.be/Ch-k_-Vo8Kk)참고 자료프레임 모달 팝업 (options.frameModal) 참고.15.10.7.2부모 – 자식 팝업 닫기$p.openPopup() 함수를 사용하여 탭 화면에서 팝업을 생성하고, 부모 팝업을 속하는 모든 자식 팝업과 함께 닫을 수 있습니다.단, WFrame 윈도우에서만 동작합니다. 윈도우 생성 시 frameMode="wframe"으로 생성하십시오. 윈도우의 frameModal 속성을 "true"로 설정하십시오.코드 15-26.WFrame 윈도우 생성 예windowContainer1.createWindow({
+    "title": "PopUp Closing",
+    "windowTitle": "PopUp Closing",
+    "src": "01_wframe_frameModal.xml",
+    "windowId": "window01",
+    "frameMode": "wframe",
+    "frameModal": "true"
+});예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/createWindow_frameModal_WindowContainer/)그림 15-64.YouTube 동영상 (https://youtu.be/kTIlquVF8yw)15.10.8서브미션 상태창 표시15.10.8.1상태창 표시WFrame으로 생성한 윈도우의 src 화면이 서브미션을 포함할 경우, 서브미션 실행 시 표시되는 상태창을 WFrame 탭 내부에 표시할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/processMsgFrame_WindowContainer/)그림 15-65.YouTube 동영상 (https://youtu.be/bXRYOzQY6jk)15.10.8.2상태창 소스 변경Config.xml 파일의 <processMsgFrameURL> 항목 설정을 변경하여 해당 상태창의 소스를 변경할 수도 있습니다.코드 15-27.config.xml 설정 예<WebSquare>
+  ...
+      <processMsgFrameURL value="/message/processMsg.xml"/> 
+  ... 
+</WebSquare>예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/processMsgFrameURL_config_processMsgFrame_WindowContainer/)그림 15-66.YouTube 동영상 (https://youtu.be/QdjUZ_RjPxk)15.10.9윈도우 표시15.10.9.1정렬 (setArrangeWindows())setArrangeWindows(); 함수를 사용하여 윈도우를 네 가지(vertical, horizontal, cascade, sequential) 방법으로 정렬할 수 있습니다.코드 15-28.사용 예// (예제 1) 
+// 세로로 window1, window3, window2가 하나씩 열림
+windowContainer1.setArrangeWindows("vertical", ["window1", "window3", "window2"]);
+
+
+// (예제 2) 
+// 가로로 window2, window1, window3가 하나씩 열림
+windowContainer1.setArrangeWindows("horizontal", ["window2", "window1", "window3"]);예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/setArrangeWindows_WindowContainer/)그림 15-67.YouTube 동영상 (https://youtu.be/y9X0k0WffSQ)15.10.9.2자동 정렬 (autoArrange)WindowContainer에서 여러 개의 윈도우를 정렬해서 표시한 후 특정 윈도우를 닫을 경우, 남아 있는 윈도우를 다시 정렬할 수 있습니다. autoArange 속성을 사용하십시오.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/autoArrange_WindowContainer/)그림 15-68.YouTube 동영상 (https://youtu.be/ZuPDYmLdMM0)15.10.9.3정렬 아이콘 위치 설정 (controlIconPosition)controlIconPosition 속성을 사용하여 윈도우 정렬 아이콘의 표시 위치를 결정할 수 있습니다. 단, controlIconPosition 속성을 사용할 경우, useNameContainer="true" 설정을 추가해야 합니다.controlIconPosition"left" (기본 값) : 스크롤링 화살표는 양 옆에, 정렬 아이콘은 왼쪽에 표시. "right" : 스크롤링 화살표는 양 옆에, 정렬 아이콘은 오른쪽에 표시. "allright" : 스크롤링 화살표 모두 오른쪽에, 정렬 아이콘 역시 모두 오른쪽에 표시.그림 15-69.윈도우 정렬 아이콘 (controlIconPosition="allright")예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/controlIconPosition_useNameContainer_WindowContainer.xml)그림 15-70.YouTube 동영상 (https://youtu.be/UX4YEp2obi8)15.10.9.4최대 윈도우 수 동적 변경 (setWindowMaxNum())setWindowMaxNum() 함수를 이용하면 WindowContainer에서 열 수 있는 최대 윈도우 개수를 동적으로 변경할 수 있습니다.15.10.9.5윈도우를 항상 열린 상태로 유지 (stopMinimizeOnNameLayer)stopMinimizeOnNameLayer="true" 설정을 적용하면, 네임레이어 클릭에 상관 없이 윈도우를 항상 열린 상태로 유지할 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/stopMinimizeOnNameLayer_WindowContainer/)그림 15-71.YouTube 동영상 (https://youtu.be/edaFIQq9muU)15.10.9.6윈도우 최대화WindowContainer에서 생성한 윈도우는 최대화 버튼을 클릭하거나 윈도우 타일을 더블-클릭하여 최대화할 수 있습니다.그림 15-72.최대화 버튼 및 윈도우 타일예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/window_maximization_WindowContainer.xml)그림 15-73.YouTube 동영상 (https://youtu.be/HlxA08cFll4)15.10.9.7윈도우 최소화WindowContainer에서 생성한 윈도우는 최소화 버튼을 클릭하거나 네임 레이어를 클릭하여 최소화할 수 있습니다.그림 15-74.최소화 버튼 및 네임 레이어예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/window_minimization_WindowContainer.xml)그림 15-75.YouTube 동영상 (https://youtu.be/5VsjK7ob3qI)15.10.9.8윈도우 드래깅 시 윈도우 표시 (windowMoveType)windowMoveType="overflow"인 경우, WindowContainer 밖으로 윈도우를 드래깅 하고 마우스 커서 위치에 따라 윈도우를 표시할 수 있습니다. 혹은, windowMoveType="restrict" 설정을 사용할 경우, WindowContainer 내에서만 윈도우를 드래깅할 수 있습니다.표 15-25.windowMoveType구분마우스 드래깅을 통해 윈도우가 WindowContainer 밖으로 나갈 때, 드래깅된 윈도우의 위치를 결정. 설명"restrict" (기본 값) : 영역 밖으로 나가지 않고 영역 안쪽으로 제한. "overflow" : 영역 밖의 위치로 이동.그림 15-76.windowMoveType="overflow"그림 15-77.windowMoveType="restrict"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/windowMoveType_WindowContainer/)그림 15-78.YouTube 동영상 (https://youtu.be/bRaPG5A6s9U)15.10.9.9현재 선택된 윈도우 구분w2window_selected 스타일 클래스를 지정하여 선택된 윈도우를 나머지 윈도우로부터 구분하는 스타일을 지정할 수 있습니다.코드 15-29.사용 예<style>.w2window_selected {border: solid 2px green;}</style>위의 스타일을 적용하면 아래와 같이 선택한 윈도우가 초록색 선으로 구분됩니다.그림 15-79.사용 예 – .w2window_selected {border: solid 2px green;}예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/w2window_selected_WindowContainer.xml)그림 15-80.YouTube 동영상 (https://youtu.be/IwIiNZJvo1c)15.10.10윈도우 닫기15.10.10.1전체 윈도우 닫기항목설명관련 속성closeType: 전체 창 닫기를 할 경우 고정된 창은 제외하고 전체 닫기를 수행.useFixButton: 고정핀 생성.그림 15-81.YouTube 동영상 (https://youtu.be/8Hx2sBDwxRE)15.10.10.2특정 윈도우를 제외한 나머지 윈도우 닫기 (closeOthers())closeOthers() 함수를 사용하여 현재 활성화된 윈도우, 혹은 주어진 windowID나 uniqueID에 해당하는 윈도우를 제외한 모든 윈도우를 닫을 수 있습니다.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/closeOthers_WindowContainer.xml)그림 15-82.YouTube 동영상 (https://youtu.be/456lXCr-O0Y)15.10.10.3윈도우 닫기 방지useFixButton="true" 설정을 사용할 경우 네임 레이어에 표시되는 각 창의 이름 옆에 창 닫기 방지 버튼을 표시할 수 있습니다.또한 useFixbutton="true"와 closeType="noneFixedWindow" 속성과 함께 사용할 경우, 전체 창닫기 버튼을 통해 창 닫는 방법을 설정할 수 있습니다. 즉, 전체 창닫기 버튼을 클릭해도 닫히지 않을 창을 창 닫기 받지 버튼으로 설정할 수 있습니다.fixWindow 및 unfixWindow함수를 사용할 경우, 창 닫기 방지 버튼을 동적으로 활성화/비화성화할 수 있습니다.15.10.11네임 레이어15.10.11.1윈도우 순서 변경 (nameLayerMove)표 15-26.네임레이어 이동항목설명관련 속성nameLayerMove="false" (기본 값) : 네임 레이어 상의 윈도우 순서 변경 불가능.nameLayerMove="true" : 네임 레이어 상의 윈도우 순서 변경 가능.그림 15-83.YouTube 동영상 (https://youtu.be/Cnp_VCf7WN8)15.10.11.2윈도우 고정 (nameLayerMove & nameLayerRearrange)nameLayerMove="true" 및 nameLayerRearrange="true" 설정을 추가할 경우, 핀 버튼(useFixButton="true")으로 고정한 윈도우를 네임레이어의 맨 앞으로 이동할 수 있습니다.윈도우를 고정하지 않은 상태에서는 아래와 같이 "aaa" "bbb" "ccc" 순서로 윈도우 타이틀이 표시됩니다.그림 15-84.고정된 윈도우가 없는 경우위의 사태에서 "bbb" 윈도우를 핀으로 고정하면 "bbb" 윈도우 타이틀이 네임레이어 상에서 제일 앞으로 이동합니다.그림 15-85."bbb" 윈도우를 핀으로 고정한 경우예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/useFixButton_nameLayerRearrange_WindowContainer.xml)그림 15-86.YouTube 동영상 (https://youtu.be/BX23wkAgGtQ)15.10.11.3스크롤 버튼을 통한 윈도우 활성화 (changeActiveWindow="true")changeActiveWindow="true" 속성 설정을 적용하면 네임 레이어 상의 스크롤 버튼을 클릭하여 윈도우를 선택하고 활성화할 수 있습니다.그림 15-87.네임 레이어 상의 스크롤 버튼예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기 (/WindowContainer/changeActiveWindow_WindowContainer.xml)그림 15-88.YouTube 동영상 (https://youtu.be/Qcdc1Xg2Gx8)15.10.12툴바15.10.12.1윈도우 목록 확인용 버튼 (useWindowScrollButton)useWindowScrollButton 속성을 사용하여 현재 윈도우 목록을 확인할 수 있는 버튼을 툴바에 표시할 수 있습니다. 또한, useWindowScrollButton="true" 설정을 통해 목록을 표시할 경우, windowScrollVisibleRowNum 속성을 통해 목록에 표시할 항목 수를 지정할 수 있습니다그림 15-89.useWindowScrollButton="true" windowScrollVisibleRowNum="4"예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/useWindowScrollButton_windowScrollVisibleRowNum_WindowContainer.xml)그림 15-90.YouTube 동영상 (https://youtu.be/woovMy277dg)예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/useWindowScrollButton_WindowContainer.xml)그림 15-91.YouTube 동영상 (https://youtu.be/QyALhNlbbWk)15.10.13이벤트15.10.13.1이벤트 로딩 순서WindowContainer는 onwindowload/onwindowunload 이벤트를 지정할 수 있습니다. WindowContainer의 onwindowload 이벤트는 window 화면의 initScript와 postScript 호출 이후에 발생합니다.15.10.13.2onminimizebtnclickonminimizebtnclick 이벤트는 창 크기 최소화 버튼을 클릭할 때 발생하며, 아래의 info 오브젝트를 반환합니다.info.src : 윈도우의 src 속성 값info.title : 윈도우의 title 속성 값info.windowTitle : 윈도우의 windowTitle 속성 값info.id : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값info.windowId : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값그림 15-92.창 크기 최소화 버튼예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK의 GUIDE 프로젝트에서 보기(/WindowContainer/onminimizebtnclick_onrestorebtnclick_WindowContainer/)그림 15-93.YouTube 동영상 (https://youtu.be/wC8QoEawA0Y)15.10.13.3onrestorebtnclickonrestorebtnclick 이벤트는 윈도우의 창 크기 복원 버튼을 클릭할 때 발생하며, 아래의 info 오브젝트를 반환합니다.info.src : 윈도우의 src 속성 값info.title : 윈도우의 title 속성 값info.windowTitle : 윈도우의 windowTitle 속성 값info.id : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값info.windowId : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값그림 15-94.창 크기 복원 버튼

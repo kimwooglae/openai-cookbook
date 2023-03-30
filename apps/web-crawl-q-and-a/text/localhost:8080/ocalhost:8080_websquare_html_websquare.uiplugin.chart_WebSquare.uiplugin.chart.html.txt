@@ -1,0 +1,2840 @@
+
+
+
+WebSquare.uiplugin.chart 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.chart - 5.0_5.4617M.20220324.084547
+
+
+
+
+
+차트. XML 정보를 차트로 표시. 
+ 다양한 통계를 출력할 수 있는 컴포넌트로 type 속성을 이용하여 차트의 타입 변경이 가능.
+ ColumnChart, BarChart, LineChart, RadialChart, PieChart를 지원. 
+ ColumnChart, BarChart, LineChart, RadialChart, PieChart외 3D 타입 등 대략 22종 정도를 지원. 
+ 두 가지 타입의 차트를 적용하는 2중 차트도 지원. 
+ 모바일 환경에서는 Chart 대신 FusionChart 컴포넌트 사용을 권장.
+ 최상위는 HTML의 <div>를 사용하며 하위에 다양한 태그를 사용.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+axis3dBackgroundColor
+
+X,Y축의 배경의 색상값으로 type속성의 값이 3D 차트인 경우만 적용된다
+
+
+
+axis3dBorderColor
+
+X,Y축의 선의 색상값으로 type속성의 값이 3D 차트인 경우만 적용된다
+
+
+
+backgroundBorderColor
+
+컴포넌트 상위 테두리의 선의 색상값
+
+
+
+backgroundBorderWidth
+
+컴포넌트 상위 테두리의 선의 굵기값
+
+
+
+backgroundGradient
+
+[default:true, false]상위 레이아웃의 배경 그라데이션의 사용 여부
+
+
+
+bgColorPalette
+
+[default:#ECEDED #FFFFFF]상위 레이아웃의 배경 그리드(가이드라인)의 홀/짝의 배경 색상값으로 공백으로 구분하여 정의한다.
+
+
+
+dataAxisChanged
+
+[default:false, true]series의 묶음 기준을 데이터 기반으로 표현할지의 여부
+
+
+
+displayFormat
+
+데이터에 적용할 format으로 화면에 표현되는 데이터의 label에 적용된다
+
+
+
+displayFormatter
+
+화면에 표현되는 데이터의 label에 format을 적용할 Function명
+
+
+
+displayXAxis
+
+[default:true, false]X축의 label을 표시할지의 여부
+
+
+
+displayYAxis
+
+[default:true, false]Y축의 label을 표시할지의 여부
+
+
+
+elementTitle
+
+차트가 표현되는 영역에 HTML의 title속성을 정의한다.
+
+
+
+fitGuidLine
+
+[default:false, true]가이드라인의 영역(갯수)을 타이트하게 구성하여 차트를 그릴지의 여부
+
+
+
+gradientColorPalette
+
+[default:#d8dfe0 #fafdfe]상위 레이아웃의 배경에 그라데이션을 사용할 경우 그라데이션의 시작과 끝의 색상값으로 공백으로 구분하여 정의한다.
+
+
+
+guidLineStyle
+
+가이드라인 영역의 선의 색과 굵기를 설정한다
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+labelData
+
+[default:false, true]데이터가 표현되는 label에 항목의 이름(labelNode속성에 입력한 컬럼/노드의 값)을 포함할지 여부
+
+
+
+labelNode
+
+데이터의 기준축의 label로 표현될 컬럼의 ID 또는 XPath
+
+
+
+labelPerValue
+
+차트의 데이터가 muliti일 경우 내부에 표시되는 label에 Series의 백분율 값을 포함할지 여부
+
+
+
+labelSeparator
+
+차트 내부에 표시되는 label에 포함되는 값들 사이에 위치할 구분자
+
+
+
+labelSeries
+
+차트 내부에 표시되는 label에 계열(series)이름을 포함할지 여부
+
+
+
+labelValue
+
+차트 내부에 표시되는 label에 값(value)을 포함할지 여부
+
+
+
+lineStyle
+
+차트 series의 기본 라인 스타일 
+ // 사용 예
+ border-width:2px</xmp>
+
+
+
+mainGrid
+
+주축 눈금 선을 표시할지 여부
+
+
+
+mainGridLineOnly
+
+주축 눈금선만 표시(투명 그리드 배경)
+
+
+
+maxYAxis
+
+차트의 Y축의 최대값
+
+
+
+minYAxis
+
+차트의 Y축의 최소값
+
+
+
+ref
+
+dataCollection으로 chart 데이터 연동 시 사용
+
+
+
+rootNode
+
+차트에서 쓰일 데이터 xml의 xpath
+
+
+
+roundRectangle
+
+배경 둥근 모서리 사용 여부
+
+
+
+seriesBorderColor
+
+차트의 series들이 가지는 border 색상 코드 값들을 공백으로 구분한 string
+
+
+
+seriesBorderWidth
+
+차트의 series들이 가지는 border width값들을 공백으로 구분한 string
+
+
+
+seriesColor
+
+차트의 series들이 가지는 색상 코드 값들을 공백으로 구분한 string
+
+
+
+seriesPosition
+
+series 표시 위치
+
+
+
+seriesShow
+
+series 표시 유무
+
+
+
+seriesSymbol
+
+차트의 series들이 symbol의 값들을 공백으로 구분한 string
+"square" "circle" "triangle-down" "diamond" "triangle-down"</xmp>
+
+
+
+subGrid
+
+보조축 눈금선 표시 여부
+
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. 
+
+
+
+tableDisplayFormat
+
+테이블 display format string
+
+
+
+tableDisplayFormatter
+
+테이블 display 사용자 정의 formatter function name
+
+
+
+tableShow
+
+차트의 data table의 표시 유무
+
+
+
+title
+
+HTML의 title 속성과 동일
+
+
+
+titlePosition
+
+차트의 title이 가지는 css position 속성 값
+
+
+
+titleShow
+
+차트 타이틀 표시 유무
+
+
+
+titleStyle
+
+차트 타이틀 Style
+
+
+
+tooltip
+
+사용자가 컴포넌트에 마우스-오버할 때 표시되는 텍스트
+
+
+
+tooltipLocaleRef
+
+tooltip 문구가 정의되어 있을 경우 클라이언트 다국어 적용시 툴팁에 출력하는 텍스트의 key.
+
+
+
+type
+
+차트 유형
+
+
+
+usePopup
+
+popup 사용 여부
+
+
+
+valueType
+
+차트 value의 타입
+
+
+
+xAxisTitle
+
+X축 타이틀
+
+
+
+xAxisTitleShow
+
+X축 타이틀 표시 여부
+
+
+
+xAxisTitleStyle
+
+X축 타이틀 style
+
+
+
+y1AxisTitle
+
+Y축 타이틀
+
+
+
+y1AxisTitleShow
+
+Y축 타이틀 표시 여부
+
+
+
+y1AxisTitleStyle
+
+Y축 타이틀 style
+
+
+
+y1DisplayFormat
+
+Y 축 display format string
+
+
+
+y1DisplayFormatter
+
+Y 축 display 사용자 정의 formatter function name
+
+
+
+y2DisplayFormat
+
+이중 차트에서 Y 축 display format string
+
+
+
+y2DisplayFormatter
+
+이중 차트에서 Y 축 display 사용자 정의 formatter function name
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+
+addClass(
+									  className
+										)
+								
+
+컴포넌트에 CSS class를 추가
+
+
+
+appendXML(
+									  data
+									       , 
+									       maxCount
+									       , 
+									       modify
+										)
+								
+
+xml data를 입력받아 기존 data에 추가합니다
+
+
+
+applySeriesConfig(
+									  useDoubleChart
+									       , 
+									       seriesUseChk
+									       , 
+									       seriesAxisChk
+									       , 
+									       chartType
+									       , 
+									       chartType
+										)
+								
+
+chart의 series에 관한 설정을 합니다
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+								
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+deleteData(
+									  
+										)
+								
+
+chart의 데이터를 지웁니다
+
+
+
+excelDownload(
+									  options
+										)
+								
+
+차트의 데이터를 엑셀로 내려 받습니다
+
+
+
+focus(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트에 포커스를 줌
+
+
+
+getDataListInfo(
+									  
+										)
+								
+
+컴포넌트와 바인딩된 DataList를 반환
+
+
+
+getDisabled(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환
+
+
+
+getGenerator(
+									  
+										)
+								
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환
+
+
+
+getID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 ID를 반환
+
+
+
+getInitStyle(
+									  CSS
+										)
+								
+
+웹스퀘어 컴포넌트의 초기 스타일을 반환
+
+
+
+getOpacity(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getOriginalID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getPluginName(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환
+
+
+
+getPosition(
+									  positionName
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getReadOnly(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환
+
+
+
+getScope(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getSize(
+									  sizeName
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getStyle(
+									  propertyName
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환
+
+
+
+getStyleValue(
+									  style
+										)
+								
+
+[deprecated]
+
+
+
+getTitle(
+									  
+										)
+								
+
+컴포넌트의 title 속성 값을 반환
+
+
+
+getUdcHome(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUdcRoot(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUserData(
+									  key
+										)
+								
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환
+
+
+
+hasClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인
+
+
+
+hide(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)
+
+
+
+redraw(
+									  
+										)
+								
+
+chart를 다시 그립니다
+
+
+
+removeClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setAccessibility(
+									  flag
+										)
+								
+
+WebSquare Chart에 접근성을 지원합니다
+
+
+
+setChartType(
+									  chartType
+										)
+								
+
+차트의 타입을 변경합니다
+
+
+
+setDataCollection(
+									  dataList
+									       , 
+									       labelId
+									       , 
+									       append
+									       , 
+									       modify
+										)
+								
+
+주어진 dataCollection형태의 data를 chart에 반영합니다
+
+
+
+setDisabled(
+									  disabled
+										)
+								
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정
+
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+								
+
+지정한 이벤트를 중단함
+
+
+
+setInitStyle(
+									  property
+										)
+								
+
+웹스퀘어 컴포넌트의 초기 스타일을 복구
+
+
+
+setMaxYAxis(
+									  maxYaxis
+										)
+								
+
+max YAxis 값을 설정하고, 출력 합니다
+
+
+
+setMinYAxis(
+									  minYaxis
+										)
+								
+
+min YAxis 값을 설정하고, 출력 합니다
+
+
+
+setOpacity(
+									  value
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정
+
+
+
+setReadOnly(
+									  readOnly
+										)
+								
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정
+
+
+
+setSeriesAxis(
+									  seriesAxisChk
+										)
+								
+
+chart의 draw layer에 보여질 series를 설정합니다
+
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+								
+
+chart의 크기를 설정합니다
+
+
+
+setTitle(
+									  title
+										)
+								
+
+컴포넌트의 title 속성을 설정
+
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+setValue(
+									  value
+									       , 
+									       seriesIndex
+									       , 
+									       dataIndex
+										)
+								
+
+seriesIndex와 dataIndex를 받아 해당 값을 value로 설정합니다
+
+
+
+setXML(
+									  data
+									       , 
+									       append
+									       , 
+									       modify
+										)
+								
+
+주어진 XML data를 chart에 반영합니다
+
+
+
+show(
+									  displayType
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)
+
+
+
+toggleClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+컴포넌트에서 특정 이벤트를 발생시킴
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+컴포넌트에서 이벤트를 제거
+
+
+
+visible(
+									  flag
+										)
+								
+
+[deprecated] 
+
+
+
+Property Detail
+
+
+
+
+axis3dBackgroundColor
+
+X,Y축의 배경의 색상값으로 type속성의 값이 3D 차트인 경우만 적용된다.
+
+
+axis3dBorderColor
+
+X,Y축의 선의 색상값으로 type속성의 값이 3D 차트인 경우만 적용된다.
+
+
+backgroundBorderColor
+
+컴포넌트 상위 테두리의 선의 색상값.
+
+
+backgroundBorderWidth
+
+컴포넌트 상위 테두리의 선의 굵기값.
+
+
+backgroundGradient
+
+[default:true, false]상위 레이아웃의 배경 그라데이션의 사용 여부
+
+
+bgColorPalette
+
+[default:#ECEDED #FFFFFF]상위 레이아웃의 배경 그리드(가이드라인)의 홀/짝의 배경 색상값으로 공백으로 구분하여 정의한다.ex) MistyRose #fff
+
+
+dataAxisChanged
+
+[default:false, true]series의 묶음 기준을 데이터 기반으로 표현할지의 여부X축 기준을 데이터를 기반으로 표현할지의 여부 / 데이터 축 변환 여부
+
+
+displayFormat
+
+데이터에 적용할 format으로 화면에 표현되는 데이터의 label에 적용된다.
+
+
+displayFormatter
+
+화면에 표현되는 데이터의 label에 format을 적용할 Function명.
+
+
+displayXAxis
+
+[default:true, false]X축의 label을 표시할지의 여부
+
+
+displayYAxis
+
+[default:true, false]Y축의 label을 표시할지의 여부
+
+
+elementTitle
+
+차트가 표현되는 영역에 HTML의 title속성을 정의한다."$blank"로 입력 시 빈 문자열로 처리할 수 있다.
+
+
+fitGuidLine
+
+[default:false, true]가이드라인의 영역(갯수)을 타이트하게 구성하여 차트를 그릴지의 여부.
+
+
+gradientColorPalette
+
+[default:#d8dfe0 #fafdfe]상위 레이아웃의 배경에 그라데이션을 사용할 경우 그라데이션의 시작과 끝의 색상값으로 공백으로 구분하여 정의한다.backgroundGradient속성이 false로 정의된 경우 첫번째 정의된 색상값이 배경색으로 설정된다.
+
+
+guidLineStyle
+
+가이드라인 영역의 선의 색과 굵기를 설정한다. ex) border-width:2px;border-color:green;
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+labelData
+
+[default:false, true]데이터가 표현되는 label에 항목의 이름(labelNode속성에 입력한 컬럼/노드의 값)을 포함할지 여부예시 ) "1월,1000" : 데이터가 "1000"이고 labelNode속성에 정의된 컬럼의 값이 "1월"
+
+
+labelNode
+
+데이터의 기준축의 label로 표현될 컬럼의 ID 또는 XPath. 차트를 구성하기위한 필수입력값이다.
+
+
+labelPerValue
+
+차트의 데이터가 muliti일 경우 내부에 표시되는 label에 Series의 백분율 값을 포함할지 여부
+
+
+labelSeparator
+
+차트 내부에 표시되는 label에 포함되는 값들 사이에 위치할 구분자
+
+
+labelSeries
+
+차트 내부에 표시되는 label에 계열(series)이름을 포함할지 여부
+
+
+labelValue
+
+차트 내부에 표시되는 label에 값(value)을 포함할지 여부
+
+
+lineStyle
+
+차트 series의 기본 라인 스타일 
+ // 사용 예
+ border-width:2px
+
+
+mainGrid
+
+주축 눈금 선을 표시할지 여부
+
+
+mainGridLineOnly
+
+주축 눈금선만 표시(투명 그리드 배경)
+
+
+maxYAxis
+
+차트의 Y축의 최대값
+
+
+minYAxis
+
+차트의 Y축의 최소값
+
+
+ref
+
+dataCollection으로 chart 데이터 연동 시 사용. dataCollection 경로를 설정한다.labelNode 옵션과 함께 사용한다.
+
+
+rootNode
+
+차트에서 쓰일 데이터 xml의 xpath
+
+
+roundRectangle
+
+배경 둥근 모서리 사용 여부
+
+
+seriesBorderColor
+
+차트의 series들이 가지는 border 색상 코드 값들을 공백으로 구분한 string
+
+
+seriesBorderWidth
+
+차트의 series들이 가지는 border width값들을 공백으로 구분한 string
+
+
+seriesColor
+
+차트의 series들이 가지는 색상 코드 값들을 공백으로 구분한 string
+
+
+seriesPosition
+
+series 표시 위치
+
+
+seriesShow
+
+series 표시 유무
+
+
+seriesSymbol
+
+차트의 series들이 symbol의 값들을 공백으로 구분한 string
+"square" "circle" "triangle-down" "diamond" "triangle-down"
+
+
+subGrid
+
+보조축 눈금선 표시 여부
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. HTML의 tabindex 속성과 동일.
+
+
+tableDisplayFormat
+
+테이블 display format string
+
+
+tableDisplayFormatter
+
+테이블 display 사용자 정의 formatter function name
+
+
+tableShow
+
+차트의 data table의 표시 유무
+
+
+title
+
+HTML의 title 속성과 동일. 마우스 오버 시, title로 저장한 값이 툴팁으로 표시됨. 일반적으로 웹접근성 지원용으로 설정.
+
+
+titlePosition
+
+차트의 title이 가지는 css position 속성 값
+
+
+titleShow
+
+차트 타이틀 표시 유무
+
+
+titleStyle
+
+차트 타이틀 Style
+
+
+tooltip
+
+사용자가 컴포넌트에 마우스-오버할 때 표시되는 텍스트. 웹스퀘어가 제공하는 툴팁으로, 컴포넌트의 추가 정보를 명시.
+
+
+tooltipLocaleRef
+
+tooltip 문구가 정의되어 있을 경우 클라이언트 다국어 적용시 툴팁에 출력하는 텍스트의 key.key에 해당하는 텍스트가 없을 경우 "global_undefined"가 화면에 표시됨.
+
+
+type
+
+차트 유형
+
+
+usePopup
+
+popup 사용 여부
+
+
+valueType
+
+차트 value의 타입
+
+
+xAxisTitle
+
+X축 타이틀
+
+
+xAxisTitleShow
+
+X축 타이틀 표시 여부
+
+
+xAxisTitleStyle
+
+X축 타이틀 style
+
+
+y1AxisTitle
+
+Y축 타이틀
+
+
+y1AxisTitleShow
+
+Y축 타이틀 표시 여부
+
+
+y1AxisTitleStyle
+
+Y축 타이틀 style
+
+
+y1DisplayFormat
+
+Y 축 display format string
+
+
+y1DisplayFormatter
+
+Y 축 display 사용자 정의 formatter function name
+
+
+y2DisplayFormat
+
+이중 차트에서 Y 축 display format string
+
+
+y2DisplayFormatter
+
+이중 차트에서 Y 축 display 사용자 정의 formatter function name
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+addClass(
+									  className
+										)
+							
+
+컴포넌트에 CSS class를 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가할 class의 이름
+
+
+
+Sample
+// (예제)
+// input1 컴포넌트에 oddClass라는 class를 추가    
+input1.addClass("oddClass");
+
+
+appendXML(
+									  data
+									       , 
+									       maxCount
+									       , 
+									       modify
+										)
+							
+
+xml data를 입력받아 기존 data에 추가합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+dataXML DocumentYchart에 반영할 xml document
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+maxCountNumberN보여줄 데이터의 최대 수. maxCount가 chart의 데이터(기존+추가)보다 크면 처음부터 maxCountt까지의 데이터만 그린다. maxCount가 chart의 데이터(기존+추가)보다 작으면 차트의 maxCount만큼의 상위데이터를 그린다.
+
+
+modifyBooleanNmodify 여부, 기본값은 false. true면 model에서 데이터를 다시 읽어와서 chart의 data layer부분을 다시 그린다. false면 chart 전체를 다시 그린다.
+
+
+
+Sample
+예: 기존에 2001년부터 2010년까지 데이터가 있다.
+chart1.appendXML(WebSquare.ModelUtil.findInstanceNode('currentWork'), 3, false );
+데이터는 추가하여 2001년부터 2011년까지 데이터가 생성되나, maxCount를 3으로 주었으므로 2009년부터 2011년까지의 데이터가 반영된다.
+
+
+applySeriesConfig(
+									  useDoubleChart
+									       , 
+									       seriesUseChk
+									       , 
+									       seriesAxisChk
+									       , 
+									       chartType
+									       , 
+									       chartType
+										)
+							
+
+chart의 series에 관한 설정을 합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+useDoubleChartBooleanY이중 chart를 사용할지 여부. true면 이중 chart를 사용한다.
+
+
+seriesUseChkArrayYseries를 사용할지 여부를 담고 있는 배열. 각 element가 true인 경우 해당 series가 drawLayer에 나타난다.
+
+
+seriesAxisChkArrayYseries axis의 사용 여부를 'Y', 'Y1'으로 나타낸 배열.
+'Y'면 해당 series를 나타내고 'Y1'이면 해당 series를 2중 chart의 2번째 chart로 나타낸다. 이 외의 문자들에 대해서는 해당 series를 나타내지 않는다.
+
+
+chartTypeStringYchart의 타입을 나타내는 string
+COLUMN,
+ACCUMULATIVE_COLUMN,
+PERCENTAGE_ACCUMULATIVE_COLUMN,
+COLUMN_3D,
+COLUMN_3D2,
+ACCUMULATIVE_COLUMN_3D,
+PERCENTAGE_ACCUMULATIVE_COLUMN_3D,
+BAR,
+ACCUMULATIVE_BAR,
+PERCENTAGE_ACCUMULATIVE_BAR,
+BAR_3D,
+ACCUMULATIVE_BAR_3D,
+PERCENTAGE_ACCUMULATIVE_BAR_3D,
+LINE,
+POINT_LINE,
+ACCUMULATIVE_LINE,
+PERCENTAGE_LINE,
+PIE,
+DONUT,
+RADIAL,
+POINT_RADIAL,
+POINT_CIRCLE_RADIAL
+
+
+chartTypeStringY이중 chart에서 두번째 chart의 타입을 나타내는 string
+COLUMN,
+ACCUMULATIVE_COLUMN,
+PERCENTAGE_ACCUMULATIVE_COLUMN,
+COLUMN_3D,
+COLUMN_3D2,
+ACCUMULATIVE_COLUMN_3D,
+PERCENTAGE_ACCUMULATIVE_COLUMN_3D,
+BAR,
+ACCUMULATIVE_BAR,
+PERCENTAGE_ACCUMULATIVE_BAR,
+BAR_3D,
+ACCUMULATIVE_BAR_3D,
+PERCENTAGE_ACCUMULATIVE_BAR_3D,
+LINE,
+POINT_LINE,
+ACCUMULATIVE_LINE,
+PERCENTAGE_LINE,
+PIE,
+DONUT,
+RADIAL,
+POINT_RADIAL,
+POINT_CIRCLE_RADIAL
+
+
+
+Sample
+chart1.applySeriesConfig(true, [true,true,false], ['Y','Y1','Y'] , 'COLUMN', 'POINT_LINE');
+첫번째 series는 COLUMN 타입으로 차트에 표현된다.
+두번째 series는 POINT_LINE 타입으로 이중 차트에 표현된다.
+세번째 series는 COLUMN 타입으로 차트에 표현되지 않는다.
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY할당할 이벤트
+
+
+functionFunctionY이벤트에 대한 핸들러 함수.
+
+
+
+Sample
+// (예제 1)
+// input1의 onclick 이벤트에 대한 핸들러 함수를 직접 정의하여 할당. 
+input1.bind("onclick", function(e){ alert(input1.getValue();}));
+
+// (예제 2)
+// 미리 commObj.ev_click 함수를 정의.
+var commObj = {};
+commObj.ev_click = function(e){
+    alert("click :: "+this.id);
+};
+
+// input1 컴포넌트에 onclick 이벤트와 정의한 핸들러 함수를 동적으로 할당. 
+input1.bind("onclick", commObj.ev_click );
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+							
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 기본적으로 addClass를 통해 추가된 class만 변경 가능. 웹스퀘어 컴포넌트의 class 속성에 직접 정의된 class를 삭제하려면 config.xml 파일에 아래 설정을 추가해야 함. 
+// config.xml에 아래 설정을 추가. 
+<removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+oldClassNameStringY변경할 class
+
+
+newClassNameStringY새로 사용할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+// config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// class를 변경 가능. 
+// (tmpInputClass class를 tmpInputWarninClass로 변경.)
+input1.changeClass("tmpInputClass","tmpInputWarninClass");
+
+
+deleteData(
+									  
+										)
+							
+
+chart의 데이터를 지웁니다.
+
+
+Sample
+chart1.deleteData();
+
+
+excelDownload(
+									  options
+										)
+							
+
+차트의 데이터를 엑셀로 내려 받습니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+optionsObjectYJSON형태로 저장된 그리드의 엑셀 업로드 옵션	
+ options.showProcess  : 다운로드 시 프로세스 창을 보여줄지 여부
+ options.fileName      : 다운로드하려는 파일의 이름
+
+
+
+Sample
+    var options = {showProcess : true , fileName : "excel"};
+    chart1.excelDownload(options);
+
+
+focus(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트에 포커스를 줌. (웹스퀘어 컴포넌트 공통.)
+
+
+
+
+
+getDataListInfo(
+									  
+										)
+							
+
+컴포넌트와 바인딩된 DataList를 반환.
+
+
+
+Return
+
+typedescription
+
+
+Objectnodeset, label, value id를 객체로 반환
+
+
+Sample
+// 사용 예
+chart1.getDataListInfo();
+
+
+getDisabled(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Booleandisabled 속성 값
+
+
+Sample
+// 컴포넌트의 disabled 속성 값 확인 예제
+var returnValue = componentId.getDisabled();
+// (반환 값 예시) false
+
+
+getGenerator(
+									  
+										)
+							
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Object부모 Generator 객체
+
+
+Sample
+//부모 Generator가 자식으로 Trigger를 생성한 예제
+  
+
+// 아래 예제의 경우 trigger1을 클릭하면 generator1 객체가 console에 표시됨. 
+ scwin.trigger1.onclick = function(){ console.log(this.getGenerator());} 
+
+
+
+getID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 ID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트 ID
+
+
+Sample
+// 동적으로 웹스퀘어 컴포넌트를 받을 경우, 아래와 같이 ID 확인 가능.
+function fn_validCheck(tmpObj){
+    var compID = tmpObj.getID();
+}
+// 위의 예제 에서 tmpObj가 "input1" ID를 가지고 있는 경우,
+// (반환 값) "input1"
+
+
+getInitStyle(
+									  CSS
+										)
+							
+
+웹스퀘어 컴포넌트의 초기 스타일을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+CSSStringN속성 (지정하지 않으면 모든 정보 출력)
+
+
+
+
+
+
+getOpacity(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS의 opacity 속성 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+IntegerOpacity 값
+
+
+Sample
+// inputBox 컴포넌트에 opacity CSS를 적용.
+
+        
+// inputBox 컴포넌트의 opacity 값을 반환. 
+var returnValue = input1.getOpacity(); 
+// returnValue는 0 ~ 1 사이의 실수.
+// (반환 값) "0.2"
+
+
+getOriginalID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)originalID는 Scope 기능을 사용할 경우 존재. scope="true"인 WFrame를 사용할 경우, WFrame 내부의 컴포넌트 ID는 원래 사용자가 정의한 값(originalID) 앞에 prefix(wframeID + "_")가 추가되는 방식으로 변경됨.  originalID는 이 때, prefix가 추가되기 전 ID를 의미.
+
+
+
+Return
+
+typedescription
+
+
+String컴포넌트의 originalID
+
+
+Sample
+// WFrame을 사용하는 다중 화면 구조 예시
+
+// WFrame을 포함한 메인 화면 (main.xml) 
+ 
+
+// 메인 화면 WFrame에 연결되는 소스 화면 (text.xml)
+
+
+// text.xml 화면의 내부 스크립트에서 ID 및 originalID 확인하는 예제.
+// getID 실행 
+textbox1.getID(); // 실행 결과는 "wframe1_textbox1"
+ 
+// getOriginalID 실행 
+textbox1.getOriginalID(); // 실행 결과는 "textbox1"
+
+
+getPluginName(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트의 이름 (pluginName)
+
+
+Sample
+// 아래와 같이 공통 함수에서 동적으로 웹스퀘어 객체를 받는 경우, 컴포넌트 종류에 따른 분기 처리가 가능.
+var commObj = {};
+
+commObj.fn_makeReqData = function(tmpObj){
+    var tmpID = tmpObj.getID(); // 컴포넌트 ID
+    var tmpCompType = tmpObj.getPluginName();   // 컴포넌트 이름
+
+    if(tmpCompType == "input"){
+        //..로직..
+    }else if(tmpCompType == "gridView"){
+        //..로직 ..
+    }else{
+        //..로직..
+    }
+};
+
+
+getPosition(
+									  positionName
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 위치 값이 %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNameStringY[left, top] 위치 종류
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 위치 값
+
+
+Sample
+// 아래와 같이 input 컴포넌트에 CSS 속성 margin이 적용된 경우,
+
+
+// (예제) 위의 inputBox 컴포넌트의 top 값을 확인     
+var returnValue = input1.getPosition("top"); 
+
+// 픽셀 단위의 위치 값이 반환됨.
+
+// (반환 값) 10
+
+
+getReadOnly(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Boolean현재 설정되어있는 readOnly 속성
+
+
+Sample
+// 컴포넌트의 readOnly 속성 값 확인 예제
+var returnValue = componentId.getReadOnly();
+// (반환 값 예시) false
+
+
+getScope(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, null을 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체 또는 null
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+textbox1.getScope(); 
+// (반환 값) wframe11 객체
+
+
+getScopeWindow(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, 전역 window 객체를 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체의 scope 객체 또는 전역 window 객체
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+var scope = textbox1.getScopeWindow();
+scope.wframe11 === textbox1.getScope(); // true
+
+
+getSize(
+									  sizeName
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sizeNameStringY크기 값의 종류. sizeName 별 계산 방법은 아래 표를 참고. 
+height : element.clientHeight
+innerHeight : element.clientHeight + padding
+outerHeight : element.clientHeight + padding + border
+outerMarginHeight : element.clientHeight + padding + border + margin
+width : element.clientWidth
+innerWidth : element.clientWidth + padding
+outerWidth : element.clientWidth + padding + border
+outerMarginWidth : element.clientWidth + padding + border + margin
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 크기 값
+
+
+Sample
+var returnValue = componentId.getSize("width");
+// (반환 예) 100 
+// 픽셀 단위의 크기 값이 반환됨. 
+// %로 설정된 경우, 픽셀로 변환된 값이 반환됨.
+
+
+getStyle(
+									  propertyName
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY반환할 CSS 속성
+
+
+
+
+Return
+
+typedescription
+
+
+StringCSS 속성 값
+
+
+Sample
+//아래와 같이 input 컴포넌트가 정의 된 경우
+
+
+// (예제) 위의 inputBox 컴포넌트의 width 값을 확인   
+var returnValue = input1.getStyle("width");
+
+// (반환 값) "144px"
+
+
+getStyleValue(
+									  style
+										)
+							
+
+[deprecated]getStyle 사용 권장.웹스퀘어 컴포넌트에 적용된 해당 CSS 속성 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+styleStringY반환하려는 CSS 속성.
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstyle 해당 CSS 속성 값 (색을 반환하는 경우, HexCode로 반환됨.)
+
+
+
+
+
+getTitle(
+									  
+										)
+							
+
+컴포넌트의 title 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Stringtitle 속성 값.
+
+
+Sample
+// 아래와 같이 input 컴포넌트의 title 속성이 "이름 입력"으로 정의된 경우
+
+
+var tmpTitle = input1.getTitle();
+// (반환 값 예시) "이름 입력"
+
+
+getUdcHome(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)파일명은 마지막 .xml까지 포함. .xml을 제외한 경로는 getUdcRoot를 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome(); 
+// (실행 결과) /a/b/udc.xml
+
+
+getUdcRoot(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)파일명을 포함하지 않음. 파일명을 포함한 경로는 getUdcHome을 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome();    
+// (실행 결과) /a/b/
+
+
+getUserData(
+									  key
+										)
+							
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY데이터의 key
+
+
+
+
+Return
+
+typedescription
+
+
+Stringkey에 해당하는 value
+
+
+Sample
+// Input 컴포넌트에 사용자 속성(setTest)을 설정하는 예제
+
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("setTest");
+// (반환 값) "Hello"
+
+//setUserData를 통해 'valueTest'(key)와 'WebSquare'(data)로 설정하는 예제. 
+input1.setUserData("valueTest","WebSquare");
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("WebSquare");
+// (반환 값) "WebSquare"
+
+
+hasClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY검색할 class 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Booleanclass의 포함 여부
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+        
+var returnValue = input1.hasClass("tmpInputClass");
+// (반환 값) true
+
+
+hide(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)display:none; 및 visibility:hidden; CSS를 적용.
+
+
+Sample
+// (예제) 컴포넌트를 숨김
+componentId.hide();
+
+
+redraw(
+									  
+										)
+							
+
+chart를 다시 그립니다.
+
+
+Sample
+chart1.redraw();
+
+
+removeClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)기본적으로 addClass를 통해 추가된 class만 삭제 가능. 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가해야 함. 
+ // config.xml 파일에 아래 설정 추가 
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY삭제 할 class명
+
+
+
+Sample
+// inputBox의 속성으로 class가 직접 정의된 경우,
+
+
+// config.xml 파일에 아래 항목을 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// removeClass를 통해 삭제 가능. 
+input1.removeClass("tmpInputClass");
+
+
+setAccessibility(
+									  flag
+										)
+							
+
+WebSquare Chart에 접근성을 지원합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagStringY접근성지원을 on/off 하기위한값
+
+
+
+
+
+
+setChartType(
+									  chartType
+										)
+							
+
+차트의 타입을 변경합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+chartTypeStringY변환하려는 차트의 타입
+COLUMN,
+ACCUMULATIVE_COLUMN,
+PERCENTAGE_ACCUMULATIVE_COLUMN,
+COLUMN_3D,
+COLUMN_3D2,
+ACCUMULATIVE_COLUMN_3D,
+PERCENTAGE_ACCUMULATIVE_COLUMN_3D,
+BAR,
+ACCUMULATIVE_BAR,
+PERCENTAGE_ACCUMULATIVE_BAR,
+BAR_3D,
+ACCUMULATIVE_BAR_3D,
+PERCENTAGE_ACCUMULATIVE_BAR_3D,
+LINE,
+POINT_LINE,
+ACCUMULATIVE_LINE,
+PERCENTAGE_LINE,
+PIE,
+DONUT,
+RADIAL,
+POINT_RADIAL,
+POINT_CIRCLE_RADIAL
+
+
+
+Sample
+chart1.setChartType('POINT_LINE');
+
+
+setDataCollection(
+									  dataList
+									       , 
+									       labelId
+									       , 
+									       append
+									       , 
+									       modify
+										)
+							
+
+주어진 dataCollection형태의 data를 chart에 반영합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+dataListObjectY차트의 데이터를 표현한 dataList. 범례 레이블 (기존 xml의 series노드 데이터)은 label을 제외한 column에 name속성으로 등록한다. 아래 예제 참고. 
+ 
+
+
+
+
+
+
+
+
+
+ var jsonData = [{"col0":"07","col1":"18","col2":"24","col3":"42","label":"펀드자산"},{"col0":"57","col1":"31","col2":"44","col3":"75","label":"외환자산"}];
+ $p.data.dataList1.setJSON(jsonData);
+
+
+labelIdStringNdataList의 column중 label 데이터를 가지고 있는 컬럼의 아이디. 해당 컬럼의 데이터가 label로 인식되며 나머지 컬럼은 데이터로 인식된다. 값이 지정되지 않은 경우 0번 컬럼을 label로 인식한다.
+
+
+appendBooleanN이어쓰기 여부, 기본값은 false. false면 기존 데이터 삭제.
+
+
+modifyBooleanNmodify 여부, 기본값은 false. true면 data layer 부분만 다시 그린다. false면 chart 전체를 다시 그린다.
+
+
+
+Sample
+chart1.setDataCollection($p.data.dataList1, "label");
+두 번째 인자로 어떤 column이 label로 사용되는지를 column id로 알려준다. 두 번째 인자를 생략하면 0번째 컬럼(위의 샘플에서는 "label"컬럼)을 label컬럼으로 인식한다.
+세 번째 인자는 기존 데이터를 삭제할 것인지 유지한 후 새 데이터를 뒤에 이어붙일지에 대한 옵션이다. 생략하면 기존 데이터는 삭제된다.
+네 번째 인자 modify가 true인 경우, redraw 함수로 차트를 다시 그려야 변경된 데이터가 제대로 반영된다.
+
+
+setDisabled(
+									  disabled
+										)
+							
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disabledBooleanYdisabled 상태. 
+true: disabled 속성 활성화
+false: disabled 속성 비활성화
+
+
+
+Sample
+// 컴포넌트의 disabled 속성을 활성화.
+componentId.setDisabled(true);
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+							
+
+지정한 이벤트를 중단함. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+evListStringN중단할 이벤트 목록. (null을 지정할 경우 해당 컴포넌트의 모든 사용자 이벤트가 중단되거나 중단 해제됨.)
+
+
+flagBooleanY이벤트 중단 여부. 
+true: 중단
+false: 중단 해제.
+
+
+
+Sample
+// (예제 1)
+// onclick 이벤트를 중단. 
+input1.setEventPause("onclick", true); 
+
+// (예제 2)
+// onfocus 및 onblur 이벤트의 중단을 해제.
+input1.setEventPause("onfocus,onblur", false); 
+
+// (예제 3)
+// input1에 등록된 모든 사용자 이벤트를 중단.
+input1.setEventPause(null, true);
+
+
+setInitStyle(
+									  property
+										)
+							
+
+웹스퀘어 컴포넌트의 초기 스타일을 복구. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyStringNCSS 속성 (지정하지 않으면 모든 속성의 초기 값으로 복구.)
+
+
+
+Sample
+// (예제)
+group1.setInitStyle();
+
+
+setMaxYAxis(
+									  maxYaxis
+										)
+							
+
+max YAxis 값을 설정하고, 출력 합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+maxYaxisNumberY설정할 Max YAxis 값
+
+
+
+
+
+
+setMinYAxis(
+									  minYaxis
+										)
+							
+
+min YAxis 값을 설정하고, 출력 합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+minYaxisNumberY설정할 Min YAxis 값
+
+
+
+
+
+
+setOpacity(
+									  value
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS 속성인 opacity(불투명도)를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYOpacity 값 (0과 1 사이의 실수)
+
+
+
+Sample
+// (예제) 불투명도를 0.45로 설정
+componentId.setOpacity(0.45);
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberY설정할 left 위치 값 또는 null.
+
+
+topNumberY설정할 top 위치 값 또는 null.
+
+
+modeStringN위치 설정 방법. [default: absolute, delta] 
+absolute: 입력된 값을 위치로 설정.
+delta: 현재 위치에 입력된 left 및 top 값을 추가.
+
+
+
+Sample
+// (예제) 컴포넌트의 top만 100px로 설정.
+componentId.setPosition(null, 100);
+
+
+setReadOnly(
+									  readOnly
+										)
+							
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+readOnlyBooleanYreadOnly 속성 활성화 여부. ( "true" : 활성화, "false" : 비활성화)
+
+
+
+Sample
+// 컴포넌트의 readOnly 속성을 true로 설정하는 예.
+componentId.setReadOnly(true);
+
+
+setSeriesAxis(
+									  seriesAxisChk
+										)
+							
+
+chart의 draw layer에 보여질 series를 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+seriesAxisChkStringYseries axis의 체크 여부를 나타낸 string. space를 delimiter로 쓴다.'Y'면 해당 series를 나타내고 'Y1'이면 해당 series를 2중 chart의 2번째 chart로 나타낸다. 이 외의 문자들에 대해서는 해당 series를 나타내지 않는다.
+
+
+
+Sample
+chart1.setSeriesAxis("Y N Y Y1");
+redraw 함수로 차트를 다시 그려야 반영된다.
+첫번째와 세번째 series에 대하여 차트에 나타낸다.
+만약 이중 차트를 사용한다면 네번째 series는 두번째 차트에 나타낸다. 이중 차트를 사용하지 않는 경우, 첫번째와 세번째 series만 표현된다.
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+							
+
+chart의 크기를 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widthIntegerYchart의 너비
+
+
+heightIntegerYchart의 높이
+
+
+
+Sample
+chart1.setSize(500,300);
+
+
+setTitle(
+									  title
+										)
+							
+
+컴포넌트의 title 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+titleStringY속성으로 설정할 값.
+
+
+
+Sample
+ // title 속성을 "test"로 설정하는 예제
+
+ chart1.setTitle("test");
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 컴포넌트에 설정 가능한 key를 입력해야 함. 설정 가능한 key가 아닌 경우, 해당 내용이 로그에 출력됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY설정할 데이터의 key
+
+
+valueStringY설정한 데이터의 value
+
+
+
+Sample
+// 컴포넌트에 'data'라는 key로 'WebSquare'라는 value를 설정하는 예제.
+
+componentId.setUserData("data", "WebSquare");
+
+// 컴포넌트에 설정이 불가능한 key를 임력할 경우, key 설정이 불가능. 
+ 
+componentId.setUserData("title", "WebSquare");
+// 아래와 같이 로그가 출력됨. 
+// !!!WARNING - [title] can't be defined as UserData.
+
+
+setValue(
+									  value
+									       , 
+									       seriesIndex
+									       , 
+									       dataIndex
+										)
+							
+
+seriesIndex와 dataIndex를 받아 해당 값을 value로 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYchart의 값으로 입력할 value
+
+
+seriesIndexIntegerYseries의 index
+
+
+dataIndexIntegerYdata의 index
+
+
+
+
+
+
+setXML(
+									  data
+									       , 
+									       append
+									       , 
+									       modify
+										)
+							
+
+주어진 XML data를 chart에 반영합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+dataXML DocumentYchart에 반영할 xml document
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+appendBooleanN이어쓰기 여부, 기본값은 false. false면 기존 데이터 삭제.
+
+
+modifyBooleanNmodify 여부, 기본값은 false. true면 data layer 부분만 다시 그린다. false면 chart 전체를 다시 그린다.
+
+
+
+Sample
+예: 2006년 방송0건, 영화0건, 도서100건을 나타내는 차트.
+chart1.setXML(WebSquare.ModelUtil.findInstanceNode("works"), true, false); 
+append가 true인 경우, chart1.appendXML(WebSquare.ModelUtil.findInstanceNode("works")); 한 것과 동일하다.
+modify가 true인 경우, redraw 함수로 차트를 다시 그려야 변경된 데이터가 제대로 반영된다.
+
+
+show(
+									  displayType
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)CSS display 속성을 주어진 값으로 설정하고 "visibility: show;"를 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+displayTypeStringN적용할 CSS display 속성의 값.   
+block : display: block;을 적용. (기본 값)
+inline : display: inline;을 적용.
+none : display: none;을 적용.
+"" : show 수행 이전의 display 속성 값으로 복구.
+
+
+
+Sample
+// (예제) display: block; CSS를 설정.
+componentId.show();  
+
+// (예제) 위제 설정한 display 속성 값을 취소하고 원래의 display 값을 복구.
+componentId.show("");
+
+
+toggleClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)웹스퀘어 컴포넌트가 파라미터로 주어진 class를 포함한 경우, 해당 class를 제거. 웹스퀘어 컴포넌트에 파라미터로 주어진 class가 없는 경우, 해당 class를 추가. 기본적으로 addClass를 통해 추가된 class만 삭제 가능. 웹스퀘어 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가. 
+ // config.xml 파일에 아래 설정 추가
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가/삭제할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+//config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// tmpInputClass class를 삭제.
+input1.toggleClass("tmpInputClass");
+
+// (위에서 삭제된) tmpInputClass class를 다시 추가.
+input1.toggleClass("tmpInputClass");
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+컴포넌트에서 특정 이벤트를 발생시킴. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트
+
+
+arrayArrayN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+// (예제 1)
+// input1 컴포넌트에 onclick 이벤트를 발생시킴.
+input1.trigger("onclick");
+
+// (예제 2)
+// input1에 onviewchange 이벤트를 발생시키고 핸들러 함수에 (1,2) 인자를 전달하여 호출.
+input1.trigger("onviewchange", [1,2]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+컴포넌트에서 이벤트를 제거. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트. (생략할 경우 해당 컴포넌트의 모든 이벤트를 제거.)
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. (생략할 경우 해당 위에 지정한 이벤트에 등록된 모든 핸들러 함수를 제거.)
+
+
+
+Sample
+// (예제 1)
+// input1에 등록된 모든 이벤트를 제거.
+input1.unbind();
+
+// (예제 2)
+// input1의 onviewchange 이벤트에 대한 모든 핸들러 함수를 제거.
+input1.unbind("onviewchange");
+
+// (예제 3)
+// input1의 onviewchange 이벤트에 대한 func1 이벤트 핸들러 함수를 제거.
+input1.unbind("onviewchange", func1);
+
+
+visible(
+									  flag
+										)
+							
+
+[deprecated] show/hide 혹은 setStyle 사용을 권장.엔진 내부적으로 CSS visibility 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY설정할 CSS visibility 속성 값 
+true : visibility: visible;
+false : visibility: hidden;
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

@@ -1,0 +1,22 @@
+
+websquare.html38.websquare.htmlwebsqure.html은 웹스퀘어 엔진을 로드하고 구동하는 역할을 수행하는 HTML 파일입니다. 사용되는 주 언어를 기술하는 lang 속성값과 <noscript> 태그 사이의 문구를 적절히 수정하여 <예 27>과 같이 websquare.html을 구성합니다.(popup.html, websquare_sap.html 도 동일하게 수정)<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ko">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title>    WebSquare </title>
+        <script type="text/javascript" src="javascript.wq?q=/bootloader"></script>
+        <script type="text/javascript">
+            window.onload = init;
+            function init() {
+                try{
+                    WebSquare.startApplication();
+                } catch(e) {
+                    alert(e.message);
+                }
+            }
+        </script>
+        <noscript> 본 컨텐츠는 자바스크립트를 지원하는 환경에서만 제공됩니다!</noscript>
+    </head>
+<body></body>
+</html>

@@ -1,0 +1,37 @@
+
+MultiSelect50.MultiSelect수정 일자 버전 (SP2)WebSquare5 Studio : 20180117_1349_x86_BWebSquare5 Engine : 5.0_2.2982B.20180223.154326_1.5여러 항목 중에서 항목을 selectbox의 형태로 선택할 수 있는 컴포넌트입니다.50.1PropertyPropertyDescriptionclassHTML의 class속성과 동일한 기능을 제공하며 css파일 또는 style블럭에 정의 한 class를 1개 또는 공백(space)를 이용하여 다중 적용이 가능하다.dataListAutoRefresh SP2[default: false, true] multiselect의 선택 대상 목록이 DataList와 바인딩된 경우, addItem 혹은 deleteItem 함수 실행에 따른 DataList 자동 갱신 여부. true: 자동 갱신. false: 기본 값. 자동 갱신 안 함. 하위 호환을 위한 설정으로 true를 권장. (config.xml 파일에 설정하여 일괄 적용.)defaultClass멀티셀렉트에 대한 기본 클래스 입니다.disabled[default:false, true] HTML의 disabled속성과 동일한 기능을 제공하며 컴포넌트를 비활성화 시킨다.escape<>&"와 같은 특수문자를 HTML Escape 문자로 변환하여 화면에 표시한다.id컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.nextTabID SP2tab으로 이동시 이동할 컴포넌트 IDseparator선택된 항목이 여러 개일 때 구분할 구분자styleInputBox의 style 속성tabIndexTab Key를 이용 한 컴포넌트의 포커스 순서로 HTML의 tabindex속성과 동일한 기능을 제공한다.useLocaleMultiSelect에대한 다국어사용 여부를 지원합니다.50.2브라우저 캡쳐화면그림 50-1.0150.3class 적용과 스타일 변경그림 50-2.Class 를 sel_multi 라고 지정했을 경우그림 50-3.01.sel_multi {
+     height: 150px;
+}
+
+.w2multiselect_div {
+     overflow-x: hidden;
+     overflow-y: auto;     
+     display: inline-block;
+     vertical-align: middle;
+}
+
+.w2multiselect_table {
+     width: 100%;
+     border-collapse: collapse;
+     table-layout: fixed;
+     border-spacing: 0;
+     background-color: #fff;
+     border: 1px solid #b5c5d2;
+}
+
+.w2multiselect_tr {
+     cursor: default;
+}
+
+.w2multiselect_tr_over {
+     background-color: #ffe492;
+}
+
+.w2multiselect_td {
+     height: 20px;
+     font-size: 12px;
+     text-align: center;
+     vertical-align: middle;
+     padding: 0;
+     border: 1px solid #b3b3b3;
+}50.4CSS Overriding그림 50-4.02NoClassDescription1w2multiselect_divw2multiselect_div 은 웹스퀘어 엔진에서 정의된 클래스입니다, 브라우저가 파싱할때 자동으로 부여됩니다.2w2multiselect_tableMultiSelect 컴포넌트의 기본 레이아웃 구조인 테이블 레이아웃의 최상위 클래스 입니다.본 컴포넌트의 클래스는 웹스퀘어에서 자동으로 정의되는 클래스 입니다.3w2multiselect_trMultiSelect컴포넌트 테이블레이아웃 구조에서 테이블의 TR에 자동으로 부여되는 클래스 입니다.4w2multiselect_tdMultiSelect컴포넌트 테이블레이아웃 구조에서 테이블의 TD에 자동으로 부여되는 클래스 입니다.5inlinewebsquare의 style 편집기에서 해당 style을 직접 수정합니다.50.5주의사항 및 TipMultiSelect 컴포넌트를 제작했을때의 기본 레이아웃 구조는 테이블 레이아웃 으로 MultiSelect가 구성이 됩니다.

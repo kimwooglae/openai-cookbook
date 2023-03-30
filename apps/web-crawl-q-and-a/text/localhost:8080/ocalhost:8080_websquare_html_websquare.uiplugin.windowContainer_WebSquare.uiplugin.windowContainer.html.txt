@@ -1,0 +1,3727 @@
+
+
+
+WebSquare.uiplugin.windowContainer 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.uiplugin.windowContainer - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+윈도우 컨테이너. MDI 지원. 
+ 여러 화면들을 여러 윈도우에 수평배열, 수직배열, 순차배열, 균등배열 방식으로 배치.      
+ 일반적으로 MDI(multiple document interface)라고 표현.
+ 최상위는 HTML <div>로 구성.
+
+Type
+
+
+uiplugin
+
+Property Summary
+
+
+
+
+autoArrange
+
+윈도우가 정렬 상태인 상황에서 윈도우 close시 자동으로 남아있는 윈도우를 이전 정렬상태로 정렬하는 기능
+
+
+
+changeActiveWindow
+
+스크롤 좌우 버튼을 클릭할 경우 한 칸씩 윈도우를 이동하며 해당 윈도우를 활성화하는 기능 사용 여부
+
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. CSS 파일이나 style 블럭에 정의한 여러 개의 class를 공백으로 구분하여 적용 가능.
+
+
+
+closeType
+
+[default:all, fixedWindow, noneFixedWindow] 전체 창 닫기 버튼을 클릭할 때 닫지 않고 고정할 창을 지정 
+
+
+
+confirmFalseAction
+
+[default:newWindow, selectWindow, existWindow]중복 확인 confirm에서 취소(cancel)를 선택했을 때의 컨텐츠 로딩 방식.
+
+
+
+confirmMessage
+
+useConfirmMessage속성의 값이 true인 경우 적용되며 confirm창에 보여줄 메세지.
+
+
+
+confirmTrueAction
+
+[default:existWindow, selectWindow, newWindow]중복 확인 confirm에서 확인(ok)를 선택했을 때의 컨텐츠 로딩 방식.
+
+
+
+controlIconPosition
+
+windowContainer 제어 아이콘의 위치. [default:left] 
+
+
+
+customMsg
+
+window의 하단바에 추가되는 사용자정의 메세지
+
+
+
+defaultHeight
+
+[default:210px]window의 기본 높이로 px 또는 % 등의 단위를 포함한 값(css height의 속성값)을 입력한다.
+
+
+
+defaultWidth
+
+[default:300px]window의 기본 넓이로 px 또는 % 등의 단위를 포함한 값(css width의 속성값)을 입력한다.
+
+
+
+fixArrangeFullScreen
+
+[default:false, true]useFixButton속성값이 true일 경우 동작하며 현재 윈도우수가 arrangeNum(아래 관련 속성 참조)보다 작을때 화면을 전부 사용할지의 여부.
+
+
+
+frameModal
+
+popup open시 WFrame 안쪽에 팝업을 띄우고 modal을 표시할지 여부. [default: false,true] 
+
+
+
+frameMode
+
+[default:iframe, wframe] 윈도우 내부 frame을 iframe으로 생성할지 wframe으로 생성할지를 결정하는 속성
+
+
+
+hideTitleOnMaximize
+
+[default:false, true]윈도우의 타이틀 부분을 최대화시 숨길지 여부(숨겨진 경우는 maximize 또는 restore는 controlIcon에서 할 수 있다
+
+
+
+horizontalArrangeNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 수평 정렬시 정렬시킬 화면개수
+
+
+
+id
+
+컴포넌트 ID. 
+
+
+
+keepSelectedWindow
+
+[default:false, true] 윈도우 정렬 이후 현재 선택된 윈도우를 그대로 유지할 지 여부
+
+
+
+lineBreakNum
+
+[default:4]수평,수직 정렬시 window를 개행 시킬 기준 값.
+
+
+
+minimumHeight
+
+[default:150px]사용자가 마우스를 이용하여 개별 window를 리사이즈할 경우의 최소 높이로 px 또는 % 등의 단위를 포함한 값
+
+
+
+minimumWidth
+
+[default:150px]사용자가 마우스를 이용하여 개별 window를 리사이즈할 경우의 최소 넓이로 px 또는 % 등의 단위를 포함한 값
+
+
+
+nameLayerMove
+
+[default: false, true] 마우스 드래그-앤-드롭을 통해 윈도우 탭의 위치를 이동.
+
+
+
+nameLayerMoveGap
+
+[default: 110] useNameContainer 옵션 사용시 좌우 이동버튼으로 nameLayer를 이동시킬 거리 (단위:px)
+
+
+
+nameLayerRearrange
+
+[default:false, true] 네임레이어에 고정버튼이 있는 경우, 정렬 아이콘을 클릭하면 고정된 window의 name layer를 앞으로 이동시킬지 여부.
+
+
+
+processMsgFrame
+
+비동기 통신 중 processMsg를 WFrame 내부에 표시. [default: false,true] 
+
+
+
+restoreWinSize
+
+[default:false, true] 초기 window생성시 defaultHeight, defaultWidth로 설정했던 가로/세로 크기로 나타남. 
+
+
+
+sequentialArrangeColNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 바둑판 정렬시 정렬시킬 화면 열의 수
+
+
+
+sequentialArrangeRowNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 바둑판 정렬시 정렬시킬 화면 행의 수
+
+
+
+statusMsg
+
+window의 하단바에 추가되는 기본 상태 메세지
+
+
+
+stopMinimizeOnNameLayer
+
+선택된 윈도우의 네임레이어 클릭시 최소화하지 않고 윈도우의 크기 유지할지 여부
+
+
+
+stopToggleOnLast
+
+윈도우가 하나일때 선택된 윈도우의 네임레이어 클릭시 최소화하지 않고 윈도우의 크기 유지할지 여부
+
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. 
+
+
+
+toolbarPosition
+
+[default:bottom, top] 툴바의 위치
+
+
+
+toolbarWidth
+
+사용자가 툴바 width를 지정한 값
+
+
+
+tooltipDisplay
+
+[default:true, false]툴바에 생성되는 네임레이어의 툴팁 사용여부
+
+
+
+tooltipGroupClass
+
+[default:true, false]tooltipDisplay속성값이 true일 경우 w2group 스타일을 포함시킬지(true)의 여부
+
+
+
+useCloseButton
+
+[default:false, true]툴바에 생성되는 네임레이어의 닫기버튼의 사용여부
+
+
+
+useConfirmMessage
+
+[default:true, false]createWindow API로 동적으로 window를 생성할 때 사용자에게 중복체크 confirm처리를 할지의 여부로 주의사항은 아래와같다. 
+
+
+
+useControlIconTitle
+
+[default:false, true]controlIcon(수평,수직,계단,바둑판,닫기버튼)에 title속성을 넣을 것인지의 여부.
+
+
+
+useCustomMsg
+
+[default:false, false]window의 하단바의 추가되는 사용자정의 메세지를 사용할지의 여부
+
+
+
+useFixButton
+
+[default:false, true]툴바에 생성되는 네임레이어에 고정버튼을 사용할지의 여부
+
+
+
+useNameContainer
+
+[default:false] 툴바에 생성되는 네임레이어를 div로 감쌀지를 결정하는 속성
+
+
+
+userData1
+
+사용자 정의 데이터 속성
+
+
+
+userData2
+
+사용자 정의 데이터 속성
+
+
+
+userData3
+
+사용자 정의 데이터 속성
+
+
+
+useStatusMsg
+
+[default:true, false]window의 하단바의 추가되는 기본 상태 메세지를 사용할지의 여부
+
+
+
+useWindowScrollButton
+
+현재 열려있는 윈도우 목록을 표시할 수 있는 버튼을 툴바에 추가
+
+
+
+verticalArrangeNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 수직 정렬시 정렬시킬 화면개수
+
+
+
+windowAutoResize
+
+[default:false, true]setSize API 호출시 하위 윈도우들의 위치 및 크기를 재정렬할지의 여부
+
+
+
+windowMaximizeAll
+
+윈도우의 사이즈 최대화 동시 변경 사용여부
+
+
+
+windowMaxNum
+
+[default:5]createWindow API를 이용하여 생성할 window의 최대 개수
+
+
+
+windowMoveType
+
+윈도우 드래그시 영역밖으로 나갈때 동작 속성 지정
+
+
+
+windowScrollVisibleRowNum
+
+윈도우 목록 버튼을 툴바에 표시할 경우(useWindowScrollButton="true"), 목록에 표시할 항목 수를 설정
+
+
+
+windowTooltipDisplay
+
+[default:true, false]window 헤더에 추가되는 title에 툴팁을 사용할지의 여부
+
+
+
+Event Summary
+
+
+
+
+onafternamelayermove
+
+마우스 드래그-앤-드롭 후 윈도우의 위치가 변경된 직후에 발생. 
+
+
+
+onbeforecloseall
+
+윈도우 전체 닫기 버튼을 통해 모든 윈도우가 비활성화 될 때 발생
+
+
+
+onbeforenamelayermove
+
+마우스 드래그-앤-드롭 후 윈도우의 위치가 변경되기 직전에 발생. 이벤트 핸들러 함수에서 false를 반환하면 위치 변경이 취소됨. 
+
+
+
+onclosewindow
+
+각 윈도우의 닫기 버튼을 통해 해당 윈도우가 비활성화 될 때 발생
+
+
+
+oncustomcontrolclick
+
+controlIconFormatter를 통해 등록한 컨트롤 아이콘을 클릭했을 때 발생하는 이벤트
+
+
+
+oncustomcontrolout
+
+controlIconFormatter를 통해 등록한 컨트롤 아이콘에서 마우스가 나갔을 때 발생하는 이벤트
+
+
+
+oncustomcontrolover
+
+controlIconFormatter를 통해 등록한 컨트롤 아이콘에 마우스를 오버했을 때 발생하는 이벤트
+
+
+
+onmenuclick
+
+nameLayerMenu속성이 true일 때, nameLayer의 menu가 클릭된 경우에 발생하는 이벤트
+
+
+
+onminimizebtnclick
+
+각 윈도우의 창사이즈 최소화 버튼을 클릭할 때 발생
+
+
+
+onrestorebtnclick
+
+각 윈도우의 창사이즈 복원 버튼을 클릭할 때 발생
+
+
+
+onwindowchange
+
+윈도우가 활성화/비활성화 될 때 발생
+
+
+
+onwindowload
+
+새 window가 해당 window가 완전히 load되는 시점에 발생한다
+
+
+
+onwindowtabclick
+
+WindowContainer 컴포넌트가 포함한 자식 창의 탭을 클릭할 때 발생
+
+
+
+onwindowunload
+
+특정 window창의 src가 변경되거나 제거될 때 발생하는 이벤트
+
+
+Method Summary
+
+
+
+
+addClass(
+									  className
+										)
+								
+
+컴포넌트에 CSS class를 추가
+
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+								
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당
+
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+								
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+closeOthers(
+									  windowId
+										)
+								
+
+현재 활성화되어 있는 window이외의 window를 닫는다
+
+
+
+closeWindow(
+									  windowId
+										)
+								
+
+현재 활성화되어 있는 window를 닫는다.
+
+
+
+createFrame(
+									  
+										)
+								
+
+빈 iframe을 동적으로 생성한다. 단 iframe의 총 개수가 windowMaxNum 설정과 같은 경우에는 이 함수를 직접 호출하더라도 빈 iframe을 생성하지 않는다.
+
+
+
+createWindow(
+									  title
+									       , 
+									       iconUrl
+									       , 
+									       src
+									       , 
+									       windowTitle
+									       , 
+									       windowId
+									       , 
+									       openAction
+									       , 
+									       closeAction
+									       , 
+									       windowTooltip
+									       , 
+									       windowHeaderHTML
+									       , 
+									       options
+									       , 
+									       frameMode
+									       , 
+									       userIconClass
+									       , 
+									       userIconPosition
+										)
+								
+
+window를 생성(open)한다
+
+
+
+fixWindow(
+									  winInfoId
+										)
+								
+
+인자로 넘겨진 id에 해당하는 윈도우를 고정시킨다
+
+
+
+focus(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트에 포커스를 줌
+
+
+
+getDisabled(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환
+
+
+
+getFrame(
+									  windowId
+										)
+								
+
+windowId에 해당하는 window의 frame객체 (iframe 또는 wframe)을 반환한다
+
+
+
+getGenerator(
+									  
+										)
+								
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환
+
+
+
+getID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 ID를 반환
+
+
+
+getInitStyle(
+									  CSS
+										)
+								
+
+컴포넌트의 초기 스타일을 반환
+
+
+
+getOpacity(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getOriginalID(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getPluginName(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환
+
+
+
+getPosition(
+									  positionName
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getReadOnly(
+									  
+										)
+								
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환
+
+
+
+getScope(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  
+
+
+
+getScopeWindow(
+									  
+										)
+								
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getSelectedIndex(
+									  
+										)
+								
+
+선택된 window의 index를 반환한다
+
+
+
+getSelectedWindowId(
+									  
+										)
+								
+
+선택된 window의 windowId를 반환한다.
+
+
+
+getSize(
+									  sizeName
+										)
+								
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+getStyle(
+									  propertyName
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환
+
+
+
+getStyleValue(
+									  style
+										)
+								
+
+[deprecated]
+
+
+
+getTitle(
+									  
+										)
+								
+
+컴포넌트의 title 속성 값을 반환
+
+
+
+getUdcHome(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUdcRoot(
+									  
+										)
+								
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+getUniqueIdByTitle(
+									  title
+										)
+								
+
+인자로 넘겨진 title을 가진 window의 unique id를 반환한다
+
+
+
+getUniqueIdByWindowId(
+									  windowId
+										)
+								
+
+인자로 넘겨진 windowID를 가진 window의 unique id를 반환한다
+
+
+
+getUserData(
+									  key
+										)
+								
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환
+
+
+
+getWindow(
+									  title
+										)
+								
+
+인자로 넘겨진 title를 가진 window의 window 객체를 반환한다.
+
+
+
+getWindowByUniqueId(
+									  uuid
+									       , 
+									       focus
+										)
+								
+
+인자로 넘겨진 uniqueID를 가진 window의 window 객체를 반환한다
+
+
+
+getWindowByWindowId(
+									  windowId
+									       , 
+									       focus
+										)
+								
+
+인자로 넘겨진 windowID를 가진 window의 window 객체를 반환한다
+
+
+
+getWindowLabel(
+									  windowId
+									       , 
+									       type
+										)
+								
+
+인자값으로 넘어오는 type에 따라 label(text)값을 반환한다.
+
+
+
+hasClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인
+
+
+
+hide(
+									  
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)
+
+
+
+isMultiView(
+									  
+										)
+								
+
+현재 multiView(두 개의 창을 나란히 보는 모드)인지, 아닌지를 반환하는 함수
+
+
+
+removeClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)
+
+
+
+restoreWindowSize(
+									  windowId
+										)
+								
+
+입력받은 windowId에 해당하는 위도우 창을 이전 크기(defaultWidth, defaultHeight 옵션으로 설정한 크기 값)로 되돌리는 기능
+
+
+
+setAllWindowStatusMsg(
+									  msg
+										)
+								
+
+모든 window의 상태 메세지를 설정한다
+
+
+
+setArrangeWindows(
+									  type
+									       , 
+									       windowIdArray
+										)
+								
+
+윈도우를 정렬. 
+
+
+
+setDisabled(
+									  disabled
+										)
+								
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정
+
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+								
+
+지정한 이벤트를 중단함
+
+
+
+setFocus(
+									  index
+										)
+								
+
+index에 해당하는 window에 focus를 준다
+
+
+
+setInitStyle(
+									  property
+										)
+								
+
+컴포넌트의 초기 스타일을 복구한다
+
+
+
+setMenu(
+									  arrData
+									       , 
+									       height
+										)
+								
+
+nameLayerMenu 속성 사용시에 메뉴목록을 동적으로 설정합니다
+
+
+
+setMultiView(
+									  windowId
+									       , 
+									       direction
+										)
+								
+
+multiView(두 개의 창을 나란히 보는 모드)를 실행한다
+
+
+
+setOpacity(
+									  value
+										)
+								
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+								
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정
+
+
+
+setReadOnly(
+									  readOnly
+										)
+								
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정
+
+
+
+setSingleView(
+									  
+										)
+								
+
+multiView(두 개의 창을 나란히 보는 모드)를 해제한다
+
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+								
+
+컴포넌트의 크기를 조정한다
+
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정
+
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+								
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 
+
+
+
+setWindowCustomMsg(
+									  msg
+										)
+								
+
+현재 선택되어 있는 window의 사용자정의 메세지를 설정한다
+
+
+
+setWindowLabel(
+									  windowId
+									       , 
+									       type
+									       , 
+									       value
+										)
+								
+
+windowId에 해당하는 window의 type에 따른 label값을 설정한다.
+
+
+
+setWindowMaxNum(
+									  windowMaxNum
+										)
+								
+
+windowContainer에서 열 수 있는 최대 window 개수를 설정합니다
+
+
+
+setWindowPosition(
+									  left
+									       , 
+									       top
+										)
+								
+
+현재 선택되어 있는 window의 x,y 위치를 조정한다
+
+
+
+setWindowSize(
+									  width
+									       , 
+									       height
+										)
+								
+
+현재 선택되어 있는 window의 크기를 조정한다
+
+
+
+setWindowStatusMsg(
+									  msg
+										)
+								
+
+현재 선택되어 있는 window의 상태 메세지를 설정한다
+
+
+
+setZIndex(
+									  windowIndex
+										)
+								
+
+인자로 넘겨진 윈도우의 z-Index를 증가시킨다
+
+
+
+show(
+									  displayType
+										)
+								
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)
+
+
+
+toggleClass(
+									  className
+										)
+								
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+								
+
+컴포넌트에서 특정 이벤트를 발생시킴
+
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+								
+
+컴포넌트에서 이벤트를 제거
+
+
+
+unfixWindow(
+									  winInfoId
+										)
+								
+
+인자로 넘겨진 id에 해당하는 윈도우의 고정을 해제시킨다
+
+
+
+visible(
+									  flag
+										)
+								
+
+[deprecated] 
+
+
+
+Property Detail
+
+
+
+
+autoArrange
+
+윈도우가 정렬 상태인 상황에서 윈도우 close시 자동으로 남아있는 윈도우를 이전 정렬상태로 정렬하는 기능
+
+
+changeActiveWindow
+
+스크롤 좌우 버튼을 클릭할 경우 한 칸씩 윈도우를 이동하며 해당 윈도우를 활성화하는 기능 사용 여부.[default: false, true]
+
+
+class
+
+HTML의 class 속성과 동일한 기능을 제공. CSS 파일이나 style 블럭에 정의한 여러 개의 class를 공백으로 구분하여 적용 가능.Engine 내부에서 각 컴포넌트 별로 지정된 class를 적용하나, class 속성을 이용하여 컴포넌트의 CSS를 제어 가능.
+
+
+closeType
+
+[default:all, fixedWindow, noneFixedWindow] 전체 창 닫기 버튼을 클릭할 때 닫지 않고 고정할 창을 지정 all: 고정핀에 상관 없이 모든 창을 닫음. (기본 값)noneFixedWindow: 고정핀이 있는 창은 닫지 않음.fixedWindow : 고정핀이 있는 창만 닫음.관련 속성: useFixButton="true"인 경우에만 유효
+
+
+confirmFalseAction
+
+[default:newWindow, selectWindow, existWindow]중복 확인 confirm에서 취소(cancel)를 선택했을 때의 컨텐츠 로딩 방식.(newWindow:새로운 창, selectWindow:기존 창을 선택, existWindow:windowID에 해당하는 창에 src를 바꿔 로딩하고 해당 창을 선택)
+
+
+confirmMessage
+
+useConfirmMessage속성의 값이 true인 경우 적용되며 confirm창에 보여줄 메세지.기본적으로 엔진에서 window의 title값을 이용하여 중복 확인 메세지를 보여준다.
+
+
+confirmTrueAction
+
+[default:existWindow, selectWindow, newWindow]중복 확인 confirm에서 확인(ok)를 선택했을 때의 컨텐츠 로딩 방식.(newWindow: 새로운 탭, selectWindow:기존 탭을 선택, existWindow: tabID에 해당하는 탭에 src를 바꿔 로딩하고 해당 탭을 선택)
+
+
+controlIconPosition
+
+windowContainer 제어 아이콘의 위치. [default:left] 단, useNameContainer="true"인 경우 동작.  
+(옵션 설명)
+ "left" (기본 값) : 윈도우 선택을 위한 화살표들을 제외한 윈도우 제어 아이콘들만 왼쪽에 표시.  
+ "right" : 윈도우 선택을 위한 화살표들을 제외한 윈도우 제어 아이콘들만 왼쪽에 표시.
+ "allRight" : 윈도우 선택용 화살표들과 윈도우 제어 아이콘 모두 오른쪽에 표시.
+
+
+customMsg
+
+window의 하단바에 추가되는 사용자정의 메세지.
+
+
+defaultHeight
+
+[default:210px]window의 기본 높이로 px 또는 % 등의 단위를 포함한 값(css height의 속성값)을 입력한다.window가 초기에 열릴 때는 최대창으로 열리며 "창사이즈복원"에 해당하는 우측상단의 아이콘을 클릭하면 기본창크기로 축소된다.
+
+
+defaultWidth
+
+[default:300px]window의 기본 넓이로 px 또는 % 등의 단위를 포함한 값(css width의 속성값)을 입력한다.window가 초기에 열릴 때는 최대창으로 열리며 "창사이즈복원"에 해당하는 우측상단의 아이콘을 클릭하면 기본창크기로 축소된다.
+
+
+fixArrangeFullScreen
+
+[default:false, true]useFixButton속성값이 true일 경우 동작하며 현재 윈도우수가 arrangeNum(아래 관련 속성 참조)보다 작을때 화면을 전부 사용할지의 여부.arrangeNum과 관련된 속성 : verticalArrangeNum, horizontalArrangeNum, sequentialArrangeRowNum, sequentialArrangeColNum
+
+
+frameModal
+
+popup open시 WFrame 안쪽에 팝업을 띄우고 modal을 표시할지 여부. [default: false,true] createWindow();로 윈도우 생성시 "frameMode" 옵션을 "wframe"으로 적용한 경우에만 동작.단, popup의 frameModal 속성이 "top"일 경우에는 전체 화면에 표시.
+(옵션 설명)
+ "false" (기본 값)  : popup frameModal 속성에 따름.
+ "true" : WFrame 내부에 표시.
+
+
+frameMode
+
+[default:iframe, wframe] 윈도우 내부 frame을 iframe으로 생성할지 wframe으로 생성할지를 결정하는 속성
+
+
+hideTitleOnMaximize
+
+[default:false, true]윈도우의 타이틀 부분을 최대화시 숨길지 여부(숨겨진 경우는 maximize 또는 restore는 controlIcon에서 할 수 있다.)
+
+
+horizontalArrangeNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 수평 정렬시 정렬시킬 화면개수
+
+
+id
+
+컴포넌트 ID. 컴포넌트 ID는 전역 객체로 할당됨. 각 컴포넌트 ID를 통해 Script에서 해당 컴포넌트에 접근 가능.
+
+
+keepSelectedWindow
+
+[default:false, true] 윈도우 정렬 이후 현재 선택된 윈도우를 그대로 유지할 지 여부.(useFixButton false일 경우에만 동작)
+
+
+lineBreakNum
+
+[default:4]수평,수직 정렬시 window를 개행 시킬 기준 값.useFixButton속성값이 true일 경우 arrangeNum(아래 참조)과 관련 속성값이 우선된다.arrangeNum과 관련된 속성 : verticalArrangeNum, horizontalArrangeNum, sequentialArrangeRowNum, sequentialArrangeColNum
+
+
+minimumHeight
+
+[default:150px]사용자가 마우스를 이용하여 개별 window를 리사이즈할 경우의 최소 높이로 px 또는 % 등의 단위를 포함한 값.
+
+
+minimumWidth
+
+[default:150px]사용자가 마우스를 이용하여 개별 window를 리사이즈할 경우의 최소 넓이로 px 또는 % 등의 단위를 포함한 값.
+
+
+nameLayerMove
+
+[default: false, true] 마우스 드래그-앤-드롭을 통해 윈도우 탭의 위치를 이동.true: 윈도우 탭 위치 이동이 가능. false (기본 값): 윈도우 탭 위치 이동이 불가능. 비슷한 속성: TabControl의 moveTab
+
+
+nameLayerMoveGap
+
+[default: 110] useNameContainer 옵션 사용시 좌우 이동버튼으로 nameLayer를 이동시킬 거리 (단위:px)
+
+
+nameLayerRearrange
+
+[default:false, true] 네임레이어에 고정버튼이 있는 경우, 정렬 아이콘을 클릭하면 고정된 window의 name layer를 앞으로 이동시킬지 여부.단, useFixButton="true"인 경우 동작.
+
+
+processMsgFrame
+
+비동기 통신 중 processMsg를 WFrame 내부에 표시. [default: false,true] createWindow();로 윈도우 생성시 "frameMode" 옵션을 "wframe"으로 적용한 경우에만 동작.
+(옵션 설명)
+ "false" (기본 값) : 전체 화면에 표시.
+ "true" : WFrame 내부에 표시.
+(관련 함수)
+ windowContainer1.createWindow({
+    "title" : "Source", 
+    "src" : "souce.xml", 
+    "windowId" : "window1",
+    "frameMode" : "wframe"  // "frameMode" 옵션을 "wframe"으로 적용.
+ });
+
+
+restoreWinSize
+
+[default:false, true] 초기 window생성시 defaultHeight, defaultWidth로 설정했던 가로/세로 크기로 나타남. 관련 API : restoreWindowSize
+
+
+sequentialArrangeColNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 바둑판 정렬시 정렬시킬 화면 열의 수
+
+
+sequentialArrangeRowNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 바둑판 정렬시 정렬시킬 화면 행의 수
+
+
+statusMsg
+
+window의 하단바에 추가되는 기본 상태 메세지.
+
+
+stopMinimizeOnNameLayer
+
+선택된 윈도우의 네임레이어 클릭시 최소화하지 않고 윈도우의 크기 유지할지 여부
+
+
+stopToggleOnLast
+
+윈도우가 하나일때 선택된 윈도우의 네임레이어 클릭시 최소화하지 않고 윈도우의 크기 유지할지 여부
+
+
+tabIndex
+
+Tab 키를 이용하여 포커스를 변경할 경우, 해당 컴포넌트에 포커스를 주는 순서. HTML의 tabindex 속성과 동일.
+
+
+toolbarPosition
+
+[default:bottom, top] 툴바의 위치.
+
+
+toolbarWidth
+
+사용자가 툴바 width를 지정한 값.
+
+
+tooltipDisplay
+
+[default:true, false]툴바에 생성되는 네임레이어의 툴팁 사용여부.
+
+
+tooltipGroupClass
+
+[default:true, false]tooltipDisplay속성값이 true일 경우 w2group 스타일을 포함시킬지(true)의 여부.
+
+
+useCloseButton
+
+[default:false, true]툴바에 생성되는 네임레이어의 닫기버튼의 사용여부.
+
+
+useConfirmMessage
+
+[default:true, false]createWindow API로 동적으로 window를 생성할 때 사용자에게 중복체크 confirm처리를 할지의 여부로 주의사항은 아래와같다. createWindow API의 파라메터 속성 중 openAction의 값이 정의되지 않고 window의 id가 중복되었을 경우 아래의 속성과 연동하여 사용자에게 중복체크 confirm 처리한다.관련 속성 : confirmMessage, confirmTrueAction, confirmFalseAction
+
+
+useControlIconTitle
+
+[default:false, true]controlIcon(수평,수직,계단,바둑판,닫기버튼)에 title속성을 넣을 것인지의 여부.사용자가 아이콘에 마우스를 over할 경우 각 아이콘의 설명이 나온다.
+
+
+useCustomMsg
+
+[default:false, false]window의 하단바의 추가되는 사용자정의 메세지를 사용할지의 여부.
+
+
+useFixButton
+
+[default:false, true]툴바에 생성되는 네임레이어에 고정버튼을 사용할지의 여부.
+
+
+useNameContainer
+
+[default:false] 툴바에 생성되는 네임레이어를 div로 감쌀지를 결정하는 속성.
+
+
+userData1
+
+사용자 정의 데이터 속성. getUserData("userData1") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData1");
+
+
+userData2
+
+사용자 정의 데이터 속성. getUserData("userData2") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData2");
+
+
+userData3
+
+사용자 정의 데이터 속성. getUserData("userData3") API를 통해 설정한 값을 얻어올 수 있음. 
+ // 속성 값 얻어오기 예시
+ getUserData("userData3");
+
+
+useStatusMsg
+
+[default:true, false]window의 하단바의 추가되는 기본 상태 메세지를 사용할지의 여부.
+
+
+useWindowScrollButton
+
+현재 열려있는 윈도우 목록을 표시할 수 있는 버튼을 툴바에 추가.
+
+
+verticalArrangeNum
+
+[default:2]useFixButton속성값이 true일 경우 동작하며 수직 정렬시 정렬시킬 화면개수
+
+
+windowAutoResize
+
+[default:false, true]setSize API 호출시 하위 윈도우들의 위치 및 크기를 재정렬할지의 여부
+
+
+windowMaximizeAll
+
+윈도우의 사이즈 최대화 동시 변경 사용여부
+
+
+windowMaxNum
+
+[default:5]createWindow API를 이용하여 생성할 window의 최대 개수.
+
+
+windowMoveType
+
+윈도우 드래그시 영역밖으로 나갈때 동작 속성 지정.
+(옵션 설명)
+ "restrict" (기본 값) : 영역 밖으로 나가지 않도록 영역 안쪽으로 이동. 
+ "overflow" : 마우스 포인터 영역 밖으로 나간 시점 위치 그래도 고정.
+
+
+windowScrollVisibleRowNum
+
+윈도우 목록 버튼을 툴바에 표시할 경우(useWindowScrollButton="true"), 목록에 표시할 항목 수를 설정. (기본값 : "5")
+
+
+windowTooltipDisplay
+
+[default:true, false]window 헤더에 추가되는 title에 툴팁을 사용할지의 여부.
+
+
+
+
+
+Event Detail
+
+
+
+
+onafternamelayermove
+
+마우스 드래그-앤-드롭 후 윈도우의 위치가 변경된 직후에 발생. 관련 속성: nameLayerMove="true"일 때 유효.
+
+Parameter
+
+nametypedescription
+
+
+infoObjectstartWindowID, startIndex, endWindowID, endIndex를 포함한 오브젝트를 반환한다.
+  info.startIndex : nameLayer이동을 시작한 nameLayer의 index (화면기준)
+  info.startWindowID: nameLayer이동을 시작한 nameLayer의 id 
+  info.endWindowID: nameLayer이동이 끝나는 지점에 있는 nameLayer(nameLayer이동 처리 후, nameLayer이동을 시작한 nameLayer의 왼쪽에 위치할 nameLayer)의 id
+  info.endIndex : nameLayer이동이 끝나는 지점에 있는 nameLayer(nameLayer이동 처리 후, nameLayer이동을 시작한 nameLayer의 왼쪽에 위치할 nameLayer)의 index
+
+
+
+
+
+onbeforecloseall
+
+윈도우 전체 닫기 버튼을 통해 모든 윈도우가 비활성화 될 때 발생.
+
+
+
+onbeforenamelayermove
+
+마우스 드래그-앤-드롭 후 윈도우의 위치가 변경되기 직전에 발생. 이벤트 핸들러 함수에서 false를 반환하면 위치 변경이 취소됨. 관련 속성: nameLayerMove="true"일 때 유효.
+
+Parameter
+
+nametypedescription
+
+
+infoObjectstartWindowID, startIndex, endWindowID, endIndex를 포함한 오브젝트를 반환.
+  info.startIndex : nameLayer이동을 시작한 nameLayer의 index (화면기준)
+  info.startWindowID: nameLayer이동을 시작한 nameLayer의 id 
+  info.endWindowID: nameLayer이동이 끝나는 지점에 있는 nameLayer(nameLayer이동 처리 후, nameLayer이동을 시작한 nameLayer의 왼쪽에 위치할 nameLayer)의 id
+  info.endIndex : nameLayer이동이 끝나는 지점에 있는 nameLayer(nameLayer이동 처리 후, nameLayer이동을 시작한 nameLayer의 왼쪽에 위치할 nameLayer)의 index
+
+
+
+
+
+onclosewindow
+
+각 윈도우의 닫기 버튼을 통해 해당 윈도우가 비활성화 될 때 발생.
+
+Parameter
+
+nametypedescription
+
+
+eventObject닫기 버튼을 클릭할 때 발생하는 event 객체를 반환. 
+  event.src : 닫기 버튼을 통해 비활성화된 윈도우의 src 속성 값 
+  event.title : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값
+
+
+
+
+
+oncustomcontrolclick
+
+controlIconFormatter를 통해 등록한 컨트롤 아이콘을 클릭했을 때 발생하는 이벤트
+
+Parameter
+
+nametypedescription
+
+
+controlIdString추가한 컨트롤 아이콘의 Id
+
+
+
+
+
+oncustomcontrolout
+
+controlIconFormatter를 통해 등록한 컨트롤 아이콘에서 마우스가 나갔을 때 발생하는 이벤트
+
+Parameter
+
+nametypedescription
+
+
+controlIdString추가한 컨트롤 아이콘의 Id
+
+
+
+
+
+oncustomcontrolover
+
+controlIconFormatter를 통해 등록한 컨트롤 아이콘에 마우스를 오버했을 때 발생하는 이벤트
+
+Parameter
+
+nametypedescription
+
+
+controlIdString추가한 컨트롤 아이콘의 Id
+
+
+
+
+
+onmenuclick
+
+nameLayerMenu속성이 true일 때, nameLayer의 menu가 클릭된 경우에 발생하는 이벤트
+
+Parameter
+
+nametypedescription
+
+
+windowIdStringmenu가 선택된 window의 ID
+
+
+valueString선택된 menu의 값(label)
+
+
+
+
+
+onminimizebtnclick
+
+각 윈도우의 창사이즈 최소화 버튼을 클릭할 때 발생.
+
+Parameter
+
+nametypedescription
+
+
+infoObject윈도우에 대한 오브젝트를 반환한다. 
+  info.src : 윈도우의 src 속성 값 
+  info.title : 윈도우의 title 속성 값 
+  info.windowTitle : 윈도우의 windowTitle 속성 값  
+  info.id : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값 
+  info.windowId : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값
+
+
+
+
+
+onrestorebtnclick
+
+각 윈도우의 창사이즈 복원 버튼을 클릭할 때 발생.
+
+Parameter
+
+nametypedescription
+
+
+infoObject윈도우에 대한 오브젝트를 반환한다. 
+  info.src : 윈도우의 src 속성 값 
+  info.title : 윈도우의 title 속성 값 
+  info.windowTitle : 윈도우의 windowTitle 속성 값  
+  info.id : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값 
+  info.windowId : 닫기 버튼을 통해 비활성화된 윈도우의 title 속성 값
+
+
+
+
+
+onwindowchange
+
+윈도우가 활성화/비활성화 될 때 발생.
+
+Parameter
+
+nametypedescription
+
+
+oldWindowIdString비활성화된 윈도우 ID
+
+
+newWindowIdString활성화된 윈도우 ID
+
+
+
+
+
+onwindowload
+
+새 window가 해당 window가 완전히 load되는 시점에 발생한다.
+
+Parameter
+
+nametypedescription
+
+
+windowIdStringwindow의 ID
+
+
+Sample
+script의 lazy="false"로 설정 후 이벤트 사용한다.  
+ <![CDATA[
+  scwin.windowContainer1_onwindowload = function(windowId) {
+     console.log("window [" + windowId + "] load complete"); 
+  };
+ ]]>
+
+
+onwindowtabclick
+
+WindowContainer 컴포넌트가 포함한 자식 창의 탭을 클릭할 때 발생.
+
+Parameter
+
+nametypedescription
+
+
+oldWindowIdString이전에 선택한 윈도우 ID
+
+
+newWindowIdString현재 선택된 윈도우 ID
+
+
+
+
+
+onwindowunload
+
+특정 window창의 src가 변경되거나 제거될 때 발생하는 이벤트
+
+Parameter
+
+nametypedescription
+
+
+windowIdStringwindow의 ID
+
+
+Sample
+ <![CDATA[
+  scwin.windowContainer1_onwindowunload = function(windowId) {
+     console.log("window [" + windowId + "] unload complete"); 
+  };
+ ]]>
+
+
+
+Method Detail
+
+
+
+
+addClass(
+									  className
+										)
+							
+
+컴포넌트에 CSS class를 추가. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가할 class의 이름
+
+
+
+Sample
+// (예제)
+// input1 컴포넌트에 oddClass라는 class를 추가    
+input1.addClass("oddClass");
+
+
+bind(
+									  eventType
+									       , 
+									       function
+										)
+							
+
+컴포넌트에 이벤트와 핸들러 함수를 동적으로 할당. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+eventTypeStringY할당할 이벤트
+
+
+functionFunctionY이벤트에 대한 핸들러 함수.
+
+
+
+Sample
+// (예제 1)
+// input1의 onclick 이벤트에 대한 핸들러 함수를 직접 정의하여 할당. 
+input1.bind("onclick", function(e){ alert(input1.getValue();}));
+
+// (예제 2)
+// 미리 commObj.ev_click 함수를 정의.
+var commObj = {};
+commObj.ev_click = function(e){
+    alert("click :: "+this.id);
+};
+
+// input1 컴포넌트에 onclick 이벤트와 정의한 핸들러 함수를 동적으로 할당. 
+input1.bind("onclick", commObj.ev_click );
+
+
+changeClass(
+									  oldClassName
+									       , 
+									       newClassName
+										)
+							
+
+웹스퀘어 컴포넌트의 class를 변경. (웹스퀘어 컴포넌트 공통.) 기본적으로 addClass를 통해 추가된 class만 변경 가능. 웹스퀘어 컴포넌트의 class 속성에 직접 정의된 class를 삭제하려면 config.xml 파일에 아래 설정을 추가해야 함. 
+// config.xml에 아래 설정을 추가. 
+<removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+oldClassNameStringY변경할 class
+
+
+newClassNameStringY새로 사용할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+// config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// class를 변경 가능. 
+// (tmpInputClass class를 tmpInputWarninClass로 변경.)
+input1.changeClass("tmpInputClass","tmpInputWarninClass");
+
+
+closeOthers(
+									  windowId
+										)
+							
+
+현재 활성화되어 있는 window이외의 window를 닫는다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringN기준으로 할 window의 windowId 또는 id. 인자가 없을경우 현재 활성화된 window를 기준으로 한다.
+
+
+
+Sample
+//활성화된 window외의 window를 닫는다.
+windowContainer1.closeOthers();
+
+
+//windowId에 해당하는 window를 기준으로 닫을 경우
+//createWindow 호출 시 windowID를 설정하지 않은 경우 title이 windowId가 된다.
+windowContainer1.createWindow( "tmp001" , null , "/uiTestW5/test001.xml");
+
+windowContainer1.closeOthers("tmp001");
+
+ 
+//windowId가 title과 다르게 설정된 경우
+windowContainer1.createWindow( "tmp001" , "wc1" , "/uiTestW5/test001.xml");
+
+windowContainer1.closeOthers("wc1");
+
+
+
+closeWindow(
+									  windowId
+										)
+							
+
+현재 활성화되어 있는 window를 닫는다.window의 닫기 버튼을 누른 것과 동일하다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringN닫고자 하는 window의 id. 인자가 없을경우 현재 활성화된 window가 닫힌다.
+
+
+
+Sample
+//활성화된 window를 닫는다.
+windowContainer1.closeWindow();
+
+
+createFrame(
+									  
+										)
+							
+
+빈 iframe을 동적으로 생성한다. 단 iframe의 총 개수가 windowMaxNum 설정과 같은 경우에는 이 함수를 직접 호출하더라도 빈 iframe을 생성하지 않는다.(버전 정보: 5.0_2.2777B.20170904.121217 버전에서 추가)
+
+
+
+
+
+createWindow(
+									  title
+									       , 
+									       iconUrl
+									       , 
+									       src
+									       , 
+									       windowTitle
+									       , 
+									       windowId
+									       , 
+									       openAction
+									       , 
+									       closeAction
+									       , 
+									       windowTooltip
+									       , 
+									       windowHeaderHTML
+									       , 
+									       options
+									       , 
+									       frameMode
+									       , 
+									       userIconClass
+									       , 
+									       userIconPosition
+										)
+							
+
+window를 생성(open)한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+titleStringY툴바의 네임레이어에 표시되는 타이틀.
+
+
+iconUrlStringY현재는 사용되지 않으며 null로 입력한다.사용자 정의 아이콘은 userIconClass로 대체
+
+
+srcStringYwindow에 link할 페이지의 URL.
+
+
+windowTitleStringNwindow의 헤더에 표시될 타이틀로 null 이나 ""입력시 title값이 출력.
+
+
+windowIdStringNwindow ID로 null 이나 ""입력시 title이 id로 생성.
+
+
+openActionStringN[existWindow, newWindow, selectWindow]existWindow : id가 동일한 윈도우가 떠있으면 그 윈도우를 사용하여 다시 표시 / newWindow : 항상 새로운 창을 생성 / selectWindow : id가 동일한 창이 있으면 그 윈도우를 선택
+
+
+closeActionStringNwindow가 닫힐 때 동작을 지정하는 함수명(return은 boolean으로 하여야 함 false일 경우 닫기 중지, true일 경우 닫기)
+
+
+windowTooltipStringN툴바의 네임레이어에 표현될 tooltip.(미입력시 windowTitle이 tooltip으로 셋팅됨)
+
+
+windowHeaderHTMLStringNwindow 상단의 헤더 정 가운데 영역에 출력할 내용. dom element 입력이 가능하다.
+
+
+optionsObjectN창 생성시 설정할 부가 옵션들.
+   options.fixed           고정핀 활성화 여부
+   options.useNameLayer    네임레이어 표시 여부
+    options.defaultWidth    윈도우 defaultWidth
+    options.defaultHeight   윈도우 defaultHeight
+
+
+frameModeStringN창의 종류를 설정. frameMode = "iframe" 이면 iframe창 생성. frameMode = "wframe"이면 wframe창 생성.
+
+
+userIconClassStringN각 윈도우의 아이콘의 image src가 들어있는 사용자 정의 클래스명.
+
+
+userIconPositionStringN사용자 정의 아이콘이 고정핀 왼쪽에 있을지 오른쪽에 있을지 설정, "left", "right", default는 "right"
+
+
+
+Sample
+
+//CASE1 별도의 옵션이 없이 window를 생성할 경우
+windowContainer1.createWindow( "edu001" , null , "/uiTestW5/searchBox.xml" );
+//id가 edu001인 window가 생성되며 헤더의 title 및 하단 툴바의 네임레이어에 "edu001" 값이 적용된다.
+
+//CASE2 closeAction및 세부 옵션을 적용하여 window를 생성할 경우
+
+//script 블럭에 아래와 같이 window의 close 제어 function을 정의한다. - createWindow API를 호출할 때 closeAction에 사용.
+function fn_closeMsg(){
+     return confirm("do you close this window?"); // 확인, 취소 버튼이 있는 메세지 창 사용. 
+     //return false; // 무조건 닫기 취소.
+}
+
+windowContainer1.createWindow( "music" , "" , "/test/music.xml", "page001", "P0001", "existWindow", "fn_closeMsg");
+//id가 P0001인 window가 생성되며 하단 툴바의 네임레이어에는 "music", 헤더의 title에는 "page001" 값이 적용된다.
+//해당 window가 닫힐 때는 fn_closeMsg Function이 호출된다.
+
+// 새로 열릴 창에 파라미터 전달 가능 (dataObject 사용) //
+ 
+// 실제 전달할 데이터 정의 
+ var rowJSON = { 
+        "Personal Info" : { "Name": "Lee", "Age": 50, "Married" : false}, 
+        "Region": "Seoul", 
+        "Carrier": true
+        };
+        
+    
+// 창 옵션 및 전달할 데이터를 정의. (dataObject를 통해 전달 가능)           
+var obj = {
+        "title" : "Test", 
+        "windowID": "001", 
+        "frameMode" : "wframe", 
+        "src" : "popup_sub.xml",
+        "userIconClass" : "w2windowContainer_nameLayer_imageIcon1",
+        "userIconPosition" : "left",
+        "dataObject": {
+            "type" : "json", 
+            "name" : "windowParam", 
+            "data" : rowJSON
+            }
+        };
+                  
+// 창 생성.                  
+windowCon1.createWindow(obj);
+ 
+
+// 새로 영린 창에서 전달 받은 데이터를 확인하는 예제 
+
+// var paramData = $p.getParameter("windowParam");
+//  var data = JSON.stringify(paramData);
+// alert(data);
+
+
+
+
+
+fixWindow(
+									  winInfoId
+										)
+							
+
+인자로 넘겨진 id에 해당하는 윈도우를 고정시킨다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+winInfoIdStringY해당 윈도우의 id
+
+
+
+
+
+
+focus(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트에 포커스를 줌. (웹스퀘어 컴포넌트 공통.)
+
+
+
+
+
+getDisabled(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 disabled 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Booleandisabled 속성 값
+
+
+Sample
+// 컴포넌트의 disabled 속성 값 확인 예제
+var returnValue = componentId.getDisabled();
+// (반환 값 예시) false
+
+
+getFrame(
+									  windowId
+										)
+							
+
+windowId에 해당하는 window의 frame객체 (iframe 또는 wframe)을 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringYwindowId
+
+
+
+
+Return
+
+typedescription
+
+
+Objectframe 객체
+
+
+Sample
+windowContainer1.createWindow({"title" : "TEST", "src" : "sub.xml", "windowId" : "window1"});
+windowContainer1.getFrame("window1").setSrc("sub2.xml");
+
+
+getGenerator(
+									  
+										)
+							
+
+컴포넌트가 Generator에 의해 생성된 경우, 자신을 생성한 부모 Generator 객체를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Object부모 Generator 객체
+
+
+Sample
+//부모 Generator가 자식으로 Trigger를 생성한 예제
+  
+
+// 아래 예제의 경우 trigger1을 클릭하면 generator1 객체가 console에 표시됨. 
+ scwin.trigger1.onclick = function(){ console.log(this.getGenerator());} 
+
+
+
+getID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 ID를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트 ID
+
+
+Sample
+// 동적으로 웹스퀘어 컴포넌트를 받을 경우, 아래와 같이 ID 확인 가능.
+function fn_validCheck(tmpObj){
+    var compID = tmpObj.getID();
+}
+// 위의 예제 에서 tmpObj가 "input1" ID를 가지고 있는 경우,
+// (반환 값) "input1"
+
+
+getInitStyle(
+									  CSS
+										)
+							
+
+컴포넌트의 초기 스타일을 반환. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다.(웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+CSSStringN속성 (지정하지 않으면 모든 정보 출력)
+
+
+
+
+
+
+getOpacity(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 반환. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS의 opacity 속성 값을 반환.
+
+
+
+Return
+
+typedescription
+
+
+IntegerOpacity 값
+
+
+Sample
+// inputBox 컴포넌트에 opacity CSS를 적용.
+
+        
+// inputBox 컴포넌트의 opacity 값을 반환. 
+var returnValue = input1.getOpacity(); 
+// returnValue는 0 ~ 1 사이의 실수.
+// (반환 값) "0.2"
+
+
+getOriginalID(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 originalID를 반환. (웹스퀘어 컴포넌트 공통.)originalID는 Scope 기능을 사용할 경우 존재. scope="true"인 WFrame를 사용할 경우, WFrame 내부의 컴포넌트 ID는 원래 사용자가 정의한 값(originalID) 앞에 prefix(wframeID + "_")가 추가되는 방식으로 변경됨.  originalID는 이 때, prefix가 추가되기 전 ID를 의미.
+
+
+
+Return
+
+typedescription
+
+
+String컴포넌트의 originalID
+
+
+Sample
+// WFrame을 사용하는 다중 화면 구조 예시
+
+// WFrame을 포함한 메인 화면 (main.xml) 
+ 
+
+// 메인 화면 WFrame에 연결되는 소스 화면 (text.xml)
+
+
+// text.xml 화면의 내부 스크립트에서 ID 및 originalID 확인하는 예제.
+// getID 실행 
+textbox1.getID(); // 실행 결과는 "wframe1_textbox1"
+ 
+// getOriginalID 실행 
+textbox1.getOriginalID(); // 실행 결과는 "textbox1"
+
+
+getPluginName(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트의 이름(pluginName)을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+String웹스퀘어 컴포넌트의 이름 (pluginName)
+
+
+Sample
+// 아래와 같이 공통 함수에서 동적으로 웹스퀘어 객체를 받는 경우, 컴포넌트 종류에 따른 분기 처리가 가능.
+var commObj = {};
+
+commObj.fn_makeReqData = function(tmpObj){
+    var tmpID = tmpObj.getID(); // 컴포넌트 ID
+    var tmpCompType = tmpObj.getPluginName();   // 컴포넌트 이름
+
+    if(tmpCompType == "input"){
+        //..로직..
+    }else if(tmpCompType == "gridView"){
+        //..로직 ..
+    }else{
+        //..로직..
+    }
+};
+
+
+getPosition(
+									  positionName
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 반환. (웹스퀘어 컴포넌트 공통.) 위치 값이 %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+positionNameStringY[left, top] 위치 종류
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 위치 값
+
+
+Sample
+// 아래와 같이 input 컴포넌트에 CSS 속성 margin이 적용된 경우,
+
+
+// (예제) 위의 inputBox 컴포넌트의 top 값을 확인     
+var returnValue = input1.getPosition("top"); 
+
+// 픽셀 단위의 위치 값이 반환됨.
+
+// (반환 값) 10
+
+
+getReadOnly(
+									  
+										)
+							
+
+현재 웹스퀘어 컴포넌트에 설정된 readOnly 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Boolean현재 설정되어있는 readOnly 속성
+
+
+Sample
+// 컴포넌트의 readOnly 속성 값 확인 예제
+var returnValue = componentId.getReadOnly();
+// (반환 값 예시) false
+
+
+getScope(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)  scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, null을 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체 또는 null
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+textbox1.getScope(); 
+// (반환 값) wframe11 객체
+
+
+getScopeWindow(
+									  
+										)
+							
+
+scope="true"인 WFrame의 자식 컴포넌트인 경우, 부모 WFrame 객체를 반환. (웹스퀘어 컴포넌트 공통.)scope="true"인 WFrame의 자식 컴포넌트가 아닌 경우, 전역 window 객체를 반환.
+
+
+
+Return
+
+typedescription
+
+
+ObjectWFrame 객체의 scope 객체 또는 전역 window 객체
+
+
+Sample
+// (예제)
+// 메인페이지에 wframe1이 있고, wframe1 내부에 wframe11이 존재. 
+// 그리고, wframe11 내부에 textbox1이 존재.
+   
+var scope = textbox1.getScopeWindow();
+scope.wframe11 === textbox1.getScope(); // true
+
+
+getSelectedIndex(
+									  
+										)
+							
+
+선택된 window의 index를 반환한다.
+
+
+
+Return
+
+typedescription
+
+
+Number선택된 window의 index
+
+
+Sample
+//3개의 window 중 1번째 window가 선택된 경우
+var tmpRs = windowContainer1.getSelectedIndex();
+//return 예시 ) 0
+
+
+getSelectedWindowId(
+									  
+										)
+							
+
+선택된 window의 windowId를 반환한다.createWindow API를 호출 시 windowId를 설정하지 않은 경우 title의 값이 ID로 설정된다.
+
+
+Sample
+//CASE 1. 아래와 같이 widnowID를 설정하지 않고 window를 생성한 경우
+windowContainer1.createWindow( "page001" , null , "/uiTestW5/test0001.xml");
+
+var tmpRs1 = windowContainer1.getSelectedWindowId();
+//return 예시 ) "page001"
+
+//CASE 2. 아래와 같이 widnowID를 설정하여 window를 생성한 경우
+windowContainer1.createWindow( "page001" , null , "/uiTestW5/test0001.xml", "page001" , "p001");
+
+var tmpRs2 = windowContainer1.getSelectedWindowId();
+//return 예시 ) "p001"
+
+
+getSize(
+									  sizeName
+										)
+							
+
+웹스퀘어 컴포넌트의 크기(width, height)를 반환. (웹스퀘어 컴포넌트 공통.) %로 설정된 경우, 픽셀로 변환된 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sizeNameStringY크기 값의 종류. sizeName 별 계산 방법은 아래 표를 참고. 
+height : element.clientHeight
+innerHeight : element.clientHeight + padding
+outerHeight : element.clientHeight + padding + border
+outerMarginHeight : element.clientHeight + padding + border + margin
+width : element.clientWidth
+innerWidth : element.clientWidth + padding
+outerWidth : element.clientWidth + padding + border
+outerMarginWidth : element.clientWidth + padding + border + margin
+
+
+
+
+Return
+
+typedescription
+
+
+Number컴포넌트의 크기 값
+
+
+Sample
+var returnValue = componentId.getSize("width");
+// (반환 예) 100 
+// 픽셀 단위의 크기 값이 반환됨. 
+// %로 설정된 경우, 픽셀로 변환된 값이 반환됨.
+
+
+getStyle(
+									  propertyName
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY반환할 CSS 속성
+
+
+
+
+Return
+
+typedescription
+
+
+StringCSS 속성 값
+
+
+Sample
+//아래와 같이 input 컴포넌트가 정의 된 경우
+
+
+// (예제) 위의 inputBox 컴포넌트의 width 값을 확인   
+var returnValue = input1.getStyle("width");
+
+// (반환 값) "144px"
+
+
+getStyleValue(
+									  style
+										)
+							
+
+[deprecated]getStyle 사용 권장.웹스퀘어 컴포넌트에 적용된 해당 CSS 속성 값을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+styleStringY반환하려는 CSS 속성.
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstyle 해당 CSS 속성 값 (색을 반환하는 경우, HexCode로 반환됨.)
+
+
+
+
+
+getTitle(
+									  
+										)
+							
+
+컴포넌트의 title 속성 값을 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+
+Return
+
+typedescription
+
+
+Stringtitle 속성 값.
+
+
+Sample
+// 아래와 같이 input 컴포넌트의 title 속성이 "이름 입력"으로 정의된 경우
+
+
+var tmpTitle = input1.getTitle();
+// (반환 값 예시) "이름 입력"
+
+
+getUdcHome(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한 UDC 파일 경로를 파일명을 포함해서 반환. (웹스퀘어 컴포넌트 공통.)파일명은 마지막 .xml까지 포함. .xml을 제외한 경로는 getUdcRoot를 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome(); 
+// (실행 결과) /a/b/udc.xml
+
+
+getUdcRoot(
+									  
+										)
+							
+
+UDC 객체가 자신을 정의한  UDC 파일 경로를 반환. (웹스퀘어 컴포넌트 공통.)파일명을 포함하지 않음. 파일명을 포함한 경로는 getUdcHome을 사용해서 반환.UDC 객체가 아닌 컴포넌트에서 호출된 경우에는 undefined가 반환됨.
+
+
+
+Return
+
+typedescription
+
+
+StringUDC 파일 경로. (UDC가 아닌 경우, undefined가 반환됨.)
+
+
+Sample
+// 예제
+// UDC 파일 경로는 /a/b/udc.xml 
+// 화면 XML은  /a/c/main.xml 
+// UDC 객체의 ID는 udc1
+  
+udc1.getUdcHome();    
+// (실행 결과) /a/b/
+
+
+getUniqueIdByTitle(
+									  title
+										)
+							
+
+인자로 넘겨진 title을 가진 window의 unique id를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+titleStringYwindow title
+
+
+
+
+Return
+
+typedescription
+
+
+Arrayunique id
+
+
+Sample
+//title이 'sub1'인 window의 unique id를 반환한다.
+windowContainer1.getUniqueIdByTitle('sub1');
+
+
+getUniqueIdByWindowId(
+									  windowId
+										)
+							
+
+인자로 넘겨진 windowID를 가진 window의 unique id를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringYwindow ID
+
+
+
+
+Return
+
+typedescription
+
+
+Arrayunique id
+
+
+Sample
+//windowId가 'sub1'인 window의 unique id를 반환한다.
+windowContainer1.getUniqueIdByTitle('sub1');
+
+
+getUserData(
+									  key
+										)
+							
+
+setUserData로 웹스퀘어 컴포넌트에 설정한 key의 value 혹은 사용자가 직접 페이지 소스(XML)에 속성으로 정의한 value를 반환. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY데이터의 key
+
+
+
+
+Return
+
+typedescription
+
+
+Stringkey에 해당하는 value
+
+
+Sample
+// Input 컴포넌트에 사용자 속성(setTest)을 설정하는 예제
+
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("setTest");
+// (반환 값) "Hello"
+
+//setUserData를 통해 'valueTest'(key)와 'WebSquare'(data)로 설정하는 예제. 
+input1.setUserData("valueTest","WebSquare");
+
+// 위에서 설정한 setTest을 값을 반환하는 예제. 
+input1.getUserData("WebSquare");
+// (반환 값) "WebSquare"
+
+
+getWindow(
+									  title
+										)
+							
+
+인자로 넘겨진 title를 가진 window의 window 객체를 반환한다.window에 link된 WedSquare페이지의 Function 또는 컴포넌트 등에 접근할 때 사용된다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+titleStringY윈도우 title
+
+
+
+
+Return
+
+typedescription
+
+
+Objectwindow 객체
+
+
+Sample
+//"edu001"의 title을 가진 window에 있는 input1 컴포넌트에 접근하여 값을 꺼내올 경우
+
+//"eud001"의 title을 가진 window 꺼내오기
+var tmpObj = windowContainer1.getWindow("edu001");
+
+//window page내의 input1 컴포넌트의 value 꺼내오기
+var tmpRs = tmpObj.input1.getValue();
+
+
+getWindowByUniqueId(
+									  uuid
+									       , 
+									       focus
+										)
+							
+
+인자로 넘겨진 uniqueID를 가진 window의 window 객체를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+uuidStringYunique ID
+
+
+focusBooleanNwindow에 focus를 줄지의 여부
+
+
+
+
+Return
+
+typedescription
+
+
+Objectwindow 객체
+
+
+Sample
+//createWindow 호출 시 windowID를 설정하지 않은 경우에 window의 input1 컴포넌트의 value를 꺼내오는 경우 (title이 ID가 된다.)
+
+//아래와 같이 windowID를 설정하지 않고 window를 생성한다.
+windowContainer1.createWindow( "tmp001" , null , "/uiTestW5/test001.xml");
+
+// title이 "tmp001"인 window 꺼내오기
+var uniqueId = windowContainer1.getUniqueIdByTitle('tmp001');
+var tmpObj = windowContainer1.getWindowByWindowId(uniqueId[0]);
+
+
+getWindowByWindowId(
+									  windowId
+									       , 
+									       focus
+										)
+							
+
+인자로 넘겨진 windowID를 가진 window의 window 객체를 반환한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringYwindow ID
+
+
+focusBooleanNwindow에 focus를 줄지의 여부
+
+
+
+
+Return
+
+typedescription
+
+
+Objectwindow 객체
+
+
+Sample
+//createWindow 호출 시 windowID를 설정하지 않은 경우에 window의 input1 컴포넌트의 value를 꺼내오는 경우 (title이 ID가 된다.)
+
+//아래와 같이 windowID를 설정하지 않고 window를 생성한다.
+windowContainer1.createWindow( "tmp001" , null , "/uiTestW5/test001.xml");
+
+//"tmp001"의 ID을 가진 window 꺼내오기 (title의 ID로 설정되어있다.)
+var tmpObj = windowContainer1.getWindowByWindowId("tmp001");
+
+//window page내의 input1 컴포넌트의 value 꺼내오기
+var tmpRs = tmpObj.input1.getValue();
+
+
+getWindowLabel(
+									  windowId
+									       , 
+									       type
+										)
+							
+
+인자값으로 넘어오는 type에 따라 label(text)값을 반환한다.type의 종류 : toolbar(툴바에 있는 네임레이어의 값), window(헤더의 title의 값), tooltip(툴바에 있는 네임레이어에 mouse over시 나오는 tooltip)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringY반환할 window의 id
+
+
+typeStringY[toolbar, window, tooltip]label의 type
+
+
+
+Sample
+//아래와 같이 window를 생성한다.
+windowContainer1.createWindow( "edu001" , null , "/uiTestW5/searchBox.xml" , "교육자료001" , "P001" );
+
+//네임레이어의 값 꺼내오기
+var tmpRs1 = windowContainer1.getWindowLabel("P001", "toolbar");
+//return 예시 ) "edu001"
+
+//헤더의 title 값 꺼내오기
+var tmpRs2 = windowContainer1.getWindowLabel("P001", "window");
+//return 예시 ) "교육자료001"
+
+
+hasClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트가 특정 class를 포함하고 있는지 확인. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY검색할 class 이름
+
+
+
+
+Return
+
+typedescription
+
+
+Booleanclass의 포함 여부
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+        
+var returnValue = input1.hasClass("tmpInputClass");
+// (반환 값) true
+
+
+hide(
+									  
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.)display:none; 및 visibility:hidden; CSS를 적용.
+
+
+Sample
+// (예제) 컴포넌트를 숨김
+componentId.hide();
+
+
+isMultiView(
+									  
+										)
+							
+
+현재 multiView(두 개의 창을 나란히 보는 모드)인지, 아닌지를 반환하는 함수
+
+
+
+Return
+
+typedescription
+
+
+BooleanmultiView일 경우 true, singleView일 경우 false
+
+
+
+
+
+removeClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 class를 삭제. (웹스퀘어 컴포넌트 공통.)기본적으로 addClass를 통해 추가된 class만 삭제 가능. 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가해야 함. 
+ // config.xml 파일에 아래 설정 추가 
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY삭제 할 class명
+
+
+
+Sample
+// inputBox의 속성으로 class가 직접 정의된 경우,
+
+
+// config.xml 파일에 아래 항목을 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// removeClass를 통해 삭제 가능. 
+input1.removeClass("tmpInputClass");
+
+
+restoreWindowSize(
+									  windowId
+										)
+							
+
+입력받은 windowId에 해당하는 위도우 창을 이전 크기(defaultWidth, defaultHeight 옵션으로 설정한 크기 값)로 되돌리는 기능.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringY사이즈 복원시킬 window창의 ID
+
+
+
+Sample
+windowContainer에 옵션으로 defaultWidth, defaultHeight 설정 값을 각각 210px, 300px로 한다.
+window를 생성하고 사이즈를 변경한후에 restoreWindowSize API를 실행한다. 실행 후, defaultWidth, defaultHeight에서 설정한 값으로 window의 크기가 복원된다.      
+windowContainer1.restoreWindowSize("win0");
+
+
+setAllWindowStatusMsg(
+									  msg
+										)
+							
+
+모든 window의 상태 메세지를 설정한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+msgStringY상태 메세지
+
+
+
+Sample
+//모든 window의 하단 상태 메세지를 변경.
+windowContainer1.setAllWindowStatusMsg('Have a good day!');
+
+
+setArrangeWindows(
+									  type
+									       , 
+									       windowIdArray
+										)
+							
+
+윈도우를 정렬. 툴바에 있는 윈도우 정렬 아이콘과 동일한 기능을 제공.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY정렬할 타입.
+"vertical"
+"horizontal"
+"cascade"
+"sequential"
+
+
+windowIdArrayObjectN정렬할 windowId를 담은 Array (useFixButton 속성 무시)
+
+
+
+Sample
+// (예제 1) - 세로로 window1, window3, window2가 하나씩 열림
+windowContainer1.setArrangeWindows("vertical", ["window1", "window3", "window2"]);
+
+// (예제 2) -  가로로 window2, window1, window3가 하나씩 열림
+windowContainer1.setArrangeWindows("horizontal", ["window2", "window1", "window3"]);
+
+
+setDisabled(
+									  disabled
+										)
+							
+
+웹스퀘어 컴포넌트의 disabled 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+disabledBooleanYdisabled 상태. 
+true: disabled 속성 활성화
+false: disabled 속성 비활성화
+
+
+
+Sample
+// 컴포넌트의 disabled 속성을 활성화.
+componentId.setDisabled(true);
+
+
+setEventPause(
+									  evList
+									       , 
+									       flag
+										)
+							
+
+지정한 이벤트를 중단함. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+evListStringN중단할 이벤트 목록. (null을 지정할 경우 해당 컴포넌트의 모든 사용자 이벤트가 중단되거나 중단 해제됨.)
+
+
+flagBooleanY이벤트 중단 여부. 
+true: 중단
+false: 중단 해제.
+
+
+
+Sample
+// (예제 1)
+// onclick 이벤트를 중단. 
+input1.setEventPause("onclick", true); 
+
+// (예제 2)
+// onfocus 및 onblur 이벤트의 중단을 해제.
+input1.setEventPause("onfocus,onblur", false); 
+
+// (예제 3)
+// input1에 등록된 모든 사용자 이벤트를 중단.
+input1.setEventPause(null, true);
+
+
+setFocus(
+									  index
+										)
+							
+
+index에 해당하는 window에 focus를 준다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+indexNumber||StringYWindow index 또는 windowId
+
+
+
+Sample
+ windowContainer1.setFocus(0);
+ windowContainer1.setFocus("window_1");
+
+
+setInitStyle(
+									  property
+										)
+							
+
+컴포넌트의 초기 스타일을 복구한다. initStyle 속성을 true로 설정한 컴포넌트만 유효하게 동작한다 (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyStringNCSS 속성 (지정하지 않으면 모든 속성의 초기 값으로 복구.)
+
+
+
+Sample
+// (예제)
+group1.setInitStyle();
+
+
+setMenu(
+									  arrData
+									       , 
+									       height
+										)
+							
+
+nameLayerMenu 속성 사용시에 메뉴목록을 동적으로 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+arrDataArrayY메뉴목록을 설정할 array 데이터
+
+
+heightNumberN메뉴의 높이값
+
+
+
+
+
+
+setMultiView(
+									  windowId
+									       , 
+									       direction
+										)
+							
+
+multiView(두 개의 창을 나란히 보는 모드)를 실행한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringY현재 활성화된 window와 나란히 놓을 새로운 window의 id
+
+
+directionNumberN나란히 놓을 방향. 0 또는 기본값 : horizontal, 1 : vertical
+
+
+
+
+
+
+setOpacity(
+									  value
+										)
+							
+
+웹스퀘어 컴포넌트의 불투명도를 설정. (웹스퀘어 컴포넌트 공통.)엔진 내부적으로 CSS 속성인 opacity(불투명도)를 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+valueNumberYOpacity 값 (0과 1 사이의 실수)
+
+
+
+Sample
+// (예제) 불투명도를 0.45로 설정
+componentId.setOpacity(0.45);
+
+
+setPosition(
+									  left
+									       , 
+									       top
+									       , 
+									       mode
+										)
+							
+
+웹스퀘어 컴포넌트의 위치(left, top)를 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberY설정할 left 위치 값 또는 null.
+
+
+topNumberY설정할 top 위치 값 또는 null.
+
+
+modeStringN위치 설정 방법. [default: absolute, delta] 
+absolute: 입력된 값을 위치로 설정.
+delta: 현재 위치에 입력된 left 및 top 값을 추가.
+
+
+
+Sample
+// (예제) 컴포넌트의 top만 100px로 설정.
+componentId.setPosition(null, 100);
+
+
+setReadOnly(
+									  readOnly
+										)
+							
+
+웹스퀘어 컴포넌트의 readOnly 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+readOnlyBooleanYreadOnly 속성 활성화 여부. ( "true" : 활성화, "false" : 비활성화)
+
+
+
+Sample
+// 컴포넌트의 readOnly 속성을 true로 설정하는 예.
+componentId.setReadOnly(true);
+
+
+setSingleView(
+									  
+										)
+							
+
+multiView(두 개의 창을 나란히 보는 모드)를 해제한다.
+
+
+
+
+
+setSize(
+									  width
+									       , 
+									       height
+										)
+							
+
+컴포넌트의 크기를 조정한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widthNumberY컴포넌트의 폭
+
+
+heightNumberY컴포넌트의 높이
+
+
+
+Sample
+ windowContainer1.setSize(300,300);
+ width는 450px, height는 300px인 windowContainer 생성. 
+ width는 450px, height는 150px 이하로 줄일 수 없다.
+
+
+setStyle(
+									  propertyName
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트의 CSS 속성을 설정. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+propertyNameStringY설정할 CSS 속성
+
+
+valueStringY해당 CSS 속성에 적용할 값
+
+
+
+Sample
+// (예제 1) 컴포넌트의 width를 200px로 설정
+componentId.setStyle("width", "200px");
+
+// (예제 2) 배경색을 olive로 변경
+componentId.setStyle("background-color","olive");
+
+
+setUserData(
+									  key
+									       , 
+									       value
+										)
+							
+
+웹스퀘어 컴포넌트에 임의의 데이터를 설정. (웹스퀘어 컴포넌트 공통.) 컴포넌트에 설정 가능한 key를 입력해야 함. 설정 가능한 key가 아닌 경우, 해당 내용이 로그에 출력됨.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+keyStringY설정할 데이터의 key
+
+
+valueStringY설정한 데이터의 value
+
+
+
+Sample
+// 컴포넌트에 'data'라는 key로 'WebSquare'라는 value를 설정하는 예제.
+
+componentId.setUserData("data", "WebSquare");
+
+// 컴포넌트에 설정이 불가능한 key를 임력할 경우, key 설정이 불가능. 
+ 
+componentId.setUserData("title", "WebSquare");
+// 아래와 같이 로그가 출력됨. 
+// !!!WARNING - [title] can't be defined as UserData.
+
+
+setWindowCustomMsg(
+									  msg
+										)
+							
+
+현재 선택되어 있는 window의 사용자정의 메세지를 설정한다. (useCustomMsg="true"인경우)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+msgStringY상태 메세지
+
+
+
+Sample
+//선택된 window의 사용자정의 메시 설정.
+windowContainer1.setWindowCustomMsg('Have a good day!');
+
+
+setWindowLabel(
+									  windowId
+									       , 
+									       type
+									       , 
+									       value
+										)
+							
+
+windowId에 해당하는 window의 type에 따른 label값을 설정한다.type의 종류 : toolbar(툴바에 있는 네임레이어의 값), window(헤더의 title의 값), tooltip(툴바에 있는 네임레이어에 mouse over시 나오는 tooltip), all(앞의 3가지 모두).
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIdStringYwindow의 id
+
+
+typeStringY[toolbar, window, tooltip, all]설정할 label의 type
+
+
+valueStringY설정할 label의 값
+
+
+
+Sample
+//id가 window3인 window의 네임레이어, 헤더의 title, tooltip을 TestWindow로 변경
+windowContainer1.setWindowLabel("window3", "all", "TestWindow");
+
+//id가 window2인 window의 헤더 title을 "테스트 페이지" 로 변경
+windowContainer1.setWindowLabel("window2", "window", "테스트 페이지");
+
+
+setWindowMaxNum(
+									  windowMaxNum
+										)
+							
+
+windowContainer에서 열 수 있는 최대 window 개수를 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowMaxNumNumberY새로 설정할 window의 최대 개수
+
+
+
+
+
+
+setWindowPosition(
+									  left
+									       , 
+									       top
+										)
+							
+
+현재 선택되어 있는 window의 x,y 위치를 조정한다.(px단위로 적용된다.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+leftNumberYx좌표
+
+
+topNumberYy좌표
+
+
+
+Sample
+//window를 왼쪽에서 10px, 위에서 100px 아래에 위치 시킨다.
+windowContainer1.setWindowPosition('10','100');
+
+
+setWindowSize(
+									  width
+									       , 
+									       height
+										)
+							
+
+현재 선택되어 있는 window의 크기를 조정한다.(px단위로 적용된다.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+widthNumberYwindow의 넓이
+
+
+heightNumberYwindow의 높이
+
+
+
+Sample
+//선택되어진 window의 width를 200px, height를 300px로 설정한다.
+windowContainer1.setWindowSize('200','300');
+
+
+setWindowStatusMsg(
+									  msg
+										)
+							
+
+현재 선택되어 있는 window의 상태 메세지를 설정한다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+msgStringY상태 메세지
+
+
+
+Sample
+//선택된 window의 상태값 설정.
+windowContainer1.setWindowStatusMsg('Have a good day!');
+
+
+setZIndex(
+									  windowIndex
+										)
+							
+
+인자로 넘겨진 윈도우의 z-Index를 증가시킨다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+windowIndexStringY해당 윈도우 컴포넌트의 window index
+
+
+
+
+
+
+show(
+									  displayType
+										)
+							
+
+웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)CSS display 속성을 주어진 값으로 설정하고 "visibility: show;"를 적용.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+displayTypeStringN적용할 CSS display 속성의 값.   
+block : display: block;을 적용. (기본 값)
+inline : display: inline;을 적용.
+none : display: none;을 적용.
+"" : show 수행 이전의 display 속성 값으로 복구.
+
+
+
+Sample
+// (예제) display: block; CSS를 설정.
+componentId.show();  
+
+// (예제) 위제 설정한 display 속성 값을 취소하고 원래의 display 값을 복구.
+componentId.show("");
+
+
+toggleClass(
+									  className
+										)
+							
+
+웹스퀘어 컴포넌트에서 특정 class를 제거하거나 추가. (웹스퀘어 컴포넌트 공통.)웹스퀘어 컴포넌트가 파라미터로 주어진 class를 포함한 경우, 해당 class를 제거. 웹스퀘어 컴포넌트에 파라미터로 주어진 class가 없는 경우, 해당 class를 추가. 기본적으로 addClass를 통해 추가된 class만 삭제 가능. 웹스퀘어 컴포넌트의 속성으로 직접 정의된 class를 삭제하기 위해서는 config.xml 파일에 아래 설정을 추가. 
+ // config.xml 파일에 아래 설정 추가
+ <removeDefaultClass value="true" />
+
+
+Parameter
+
+nametyperequireddescription
+
+
+classNameStringY추가/삭제할 class
+
+
+
+Sample
+// inputBox 컴포넌트에 class가 속성으로 직접 정의됨.
+
+
+//config.xml 파일에 아래를 추가.
+
+    <removeDefaultClass value="true" />
+
+
+// tmpInputClass class를 삭제.
+input1.toggleClass("tmpInputClass");
+
+// (위에서 삭제된) tmpInputClass class를 다시 추가.
+input1.toggleClass("tmpInputClass");
+
+
+trigger(
+									  type
+									       , 
+									       array
+										)
+							
+
+컴포넌트에서 특정 이벤트를 발생시킴. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringY발생시킬 이벤트
+
+
+arrayArrayN이벤트 핸들러에 전달할 파라미터 배열
+
+
+
+Sample
+// (예제 1)
+// input1 컴포넌트에 onclick 이벤트를 발생시킴.
+input1.trigger("onclick");
+
+// (예제 2)
+// input1에 onviewchange 이벤트를 발생시키고 핸들러 함수에 (1,2) 인자를 전달하여 호출.
+input1.trigger("onviewchange", [1,2]);
+
+
+unbind(
+									  type
+									       , 
+									       function
+										)
+							
+
+컴포넌트에서 이벤트를 제거. (웹스퀘어 컴포넌트 공통.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+typeStringN제거할 이벤트. (생략할 경우 해당 컴포넌트의 모든 이벤트를 제거.)
+
+
+functionFunctionN제거할 이벤트의 핸들러 함수. (생략할 경우 해당 위에 지정한 이벤트에 등록된 모든 핸들러 함수를 제거.)
+
+
+
+Sample
+// (예제 1)
+// input1에 등록된 모든 이벤트를 제거.
+input1.unbind();
+
+// (예제 2)
+// input1의 onviewchange 이벤트에 대한 모든 핸들러 함수를 제거.
+input1.unbind("onviewchange");
+
+// (예제 3)
+// input1의 onviewchange 이벤트에 대한 func1 이벤트 핸들러 함수를 제거.
+input1.unbind("onviewchange", func1);
+
+
+unfixWindow(
+									  winInfoId
+										)
+							
+
+인자로 넘겨진 id에 해당하는 윈도우의 고정을 해제시킨다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+winInfoIdStringY해당 윈도우의 id
+
+
+
+
+
+
+visible(
+									  flag
+										)
+							
+
+[deprecated] show/hide 혹은 setStyle 사용을 권장.엔진 내부적으로 CSS visibility 속성을 설정.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+flagBooleanY설정할 CSS visibility 속성 값 
+true : visibility: visible;
+false : visibility: hidden;
+
+
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

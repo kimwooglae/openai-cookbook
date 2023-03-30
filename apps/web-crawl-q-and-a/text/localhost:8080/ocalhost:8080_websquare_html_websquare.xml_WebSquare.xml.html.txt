@@ -1,0 +1,1294 @@
+
+
+
+WebSquare.xml 
+
+
+
+
+
+
+
+
+
+PropertyEventMethod찾아보기
+
+WebSquare.xml - 5.0_5.4826M.20230213.171915
+
+
+
+
+
+WebSquare.xml Package
+
+Type
+
+
+engine
+
+Property Summary
+
+
+
+Event Summary
+
+
+Method Summary
+
+
+
+
+appendChild(
+									  descNode
+									       , 
+									       srcNode
+										)
+								
+
+destNode의 하위 노드로 srcNode를 추가합니다
+
+
+
+decode(
+									  s
+										)
+								
+
+decode하는 함수로써 < > ' " & \n에 해당하는 문자들은 decode합니다
+
+
+
+encode(
+									  s
+										)
+								
+
+encode하는 함수로써 & < > ' " CR LF 를 encode 합니다
+
+
+
+findNode(
+									  doc
+									       , 
+									       path
+										)
+								
+
+XPath로 검색하여 일치하는 노드 중 첫번째 노드를 반환합니다
+
+
+
+findNodes(
+									  doc
+									       , 
+									       path
+										)
+								
+
+XPath로 검색하여 일치하는 노드 목록을 Array로 반환합니다
+
+
+
+getAttribute(
+									  doc
+									       , 
+									       key
+									       , 
+									       attribute
+										)
+								
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 attribute를 조회합니다.
+
+
+
+getCDataNodeValue(
+									  element
+										)
+								
+
+element의 CData Node 값을, 존재하지 않으면 null을 반환
+
+
+
+getChildren(
+									  doc
+									       , 
+									       key
+										)
+								
+
+xpath로 노드를 검색하여 하위 노드를 반환합니다. 
+
+
+
+getChildrenByTagName(
+									  element
+									       , 
+									       name
+									       , 
+									       uri
+										)
+								
+
+element의 하위 노드 중 tagName이 인자와 일치하는 node들을 반환합니다
+
+
+
+getFirstChildElement(
+									  element
+										)
+								
+
+element에서 하위 노드들 중 첫번째 element node를 반환합니다. 
+
+
+
+getFirstChildElements(
+									  element
+										)
+								
+
+element에서 하위 노드를 배열로 반환합니다. 
+
+
+
+getString(
+									  doc
+									       , 
+									       key
+										)
+								
+
+XPath로 검색한 node element에서 value Attribute 값을 조회합니다
+
+
+
+getTextNodeValue(
+									  element
+										)
+								
+
+element의 Text Node를, 존재하지 않으면 null을 반환합니다
+
+
+
+getValue(
+									  doc
+									       , 
+									       key
+									       , 
+									       attribute
+										)
+								
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 XPath로 조회한 node의 attribute나 text노드의 값을 조회합니다.
+
+
+
+hasChildElement(
+									  domNode
+										)
+								
+
+element가 하위 노드를 가지는지 여부를 반환합니다
+
+
+
+indent(
+									  obj
+									       , 
+									       type
+										)
+								
+
+XML Document를 XML String으로 변환합니다. 
+
+
+
+parse(
+									  obj
+									       , 
+									       namespace
+										)
+								
+
+XML String을 XML Document로 변환합니다
+
+
+
+serialize(
+									  dom
+										)
+								
+
+XML Document를 XML String으로 변환합니다
+
+
+
+setAttribute(
+									  doc
+									       , 
+									       key
+									       , 
+									       value1
+									       , 
+									       value2
+										)
+								
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 attribute를 설정합니다.
+
+
+
+setString(
+									  doc
+									       , 
+									       key
+									       , 
+									       value
+										)
+								
+
+XPath로 검색한 node element에서 value Attribute 값을 설정합니다
+
+
+
+setValue(
+									  doc
+									       , 
+									       key
+									       , 
+									       value1
+									       , 
+									       value2
+										)
+								
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 XPath로 조회한 node에 attribute나 text노드를 추가합니다.
+
+
+
+Property Detail
+
+
+
+
+
+
+Event Detail
+
+
+
+
+Method Detail
+
+
+
+
+appendChild(
+									  descNode
+									       , 
+									       srcNode
+										)
+							
+
+destNode의 하위 노드로 srcNode를 추가합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+descNodeObjectY부모 노드
+
+
+srcNodeObjectY자식 노드
+
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var node1 = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var doc = WebSquare.xml.parse("J. K. Rowling");
+var node2 = WebSquare.xml.findNode(doc, "author");
+WebSquare.xml.appendChild( node1, node2 );  
+        
+node1은 다음과 같다.  
+
+Harry Potter
+29.99
+J. K. Rowling
+
+
+
+
+decode(
+									  s
+										)
+							
+
+decode하는 함수로써 < > ' " & \n에 해당하는 문자들은 decode합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sStringYdecode 대상 문자열
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstring
+
+
+Sample
+
+WebSquare.xml.decode("&");
+
+
+
+encode(
+									  s
+										)
+							
+
+encode하는 함수로써 & < > ' " CR LF 를 encode 합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+sStringYencode 대상 문자열
+
+
+
+
+Return
+
+typedescription
+
+
+Stringstring
+
+
+Sample
+
+WebSquare.xml.encode( "&" )
+
+
+
+findNode(
+									  doc
+									       , 
+									       path
+										)
+							
+
+XPath로 검색하여 일치하는 노드 중 첫번째 노드를 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+pathStringYXPath 문자열
+
+
+
+
+Return
+
+typedescription
+
+
+ObjectDocument Element(node) 또는 null
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var node = WebSquare.xml.findNode( doc, "title" );
+        
+node는 다음과 같다.
+                
+Harry Potter
+
+
+
+findNodes(
+									  doc
+									       , 
+									       path
+										)
+							
+
+XPath로 검색하여 일치하는 노드 목록을 Array로 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+pathStringYXPath
+
+
+
+
+Return
+
+typedescription
+
+
+ArrayDocument Element(node)를 담은 Array 또는 null
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore" );
+var nodes = WebSquare.xml.findNodes( doc, "book" );
+        
+nodes.length 는 2이다. 
+nodes[0]는 다음과 같다
+
+Harry Potter
+29.99
+
+nodes[1]은 다음과 같다.
+
+Learning XML
+39.95
+
+
+
+
+getAttribute(
+									  doc
+									       , 
+									       key
+									       , 
+									       attribute
+										)
+							
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 attribute를 조회합니다.마지막 인자(attribute)가 없는 경우 현재 Element(Document의 경우 최상위 Element)에 두번째 인자(key)를이용하여 attribute를 조회하고마지막 인자(attribute)가 있는 경우 두번째 인자(key)를 XPath로 사용하여 조회한 node에 세번째 인자(attribute)를 이용하여 attribute를 조회합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+keyStringYXPath. attribute가 설정되어 있지 않으면 값을 설정할 attribute로 사용됨. 이 경우 Attribute로 사용될 수 있는 문자만 지정되어야 함.
+
+
+attributeStringY값을 조회할 attribute이름.
+
+
+
+
+Return
+
+typedescription
+
+
+String조회 결과 값. 값이 없으면 빈 문자열 반환.
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var value1 = WebSquare.xml.getAttribute( doc, "idx" );
+var value2 = WebSquare.xml.getAttribute( doc, "title", "lang" );
+        
+value1는 1, value2는 eng이다.
+
+
+getCDataNodeValue(
+									  element
+										)
+							
+
+element의 CData Node 값을, 존재하지 않으면 null을 반환.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+elementObjectYDocument Element(node)
+
+
+
+
+Return
+
+typedescription
+
+
+StringCDataNode Value 또는 null
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+ <b>Stunning!</b>
+
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book/html" );
+var value =  WebSquare.xml.getCDataNodeValue( doc );
+        
+value는 Stunning!이다.
+
+
+getChildren(
+									  doc
+									       , 
+									       key
+										)
+							
+
+xpath로 노드를 검색하여 하위 노드를 반환합니다. 반환되는 값은 다음과 같은 형태입니다. [{"@tagName" : "Node" , "value" : "value1" } , {"@tagName" : "Node" , "value" : "value2" }]
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+keyStringYXPath 문자열
+
+
+
+
+Return
+
+typedescription
+
+
+ArrayXML정보가 들어있는 Oject Array
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore" );
+var dataArr = WebSquare.xml.getChildren(doc, "book");
+
+dataArr.length는 2이다.
+dataArr[0]["@tagName"]은 title, dataArr[0]["lang"]은 eng이다.
+dataArr[1]["@tagName"]은 price, dataArr[1]["value"]는 USD이다.
+
+
+
+getChildrenByTagName(
+									  element
+									       , 
+									       name
+									       , 
+									       uri
+										)
+							
+
+element의 하위 노드 중 tagName이 인자와 일치하는 node들을 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+elementDocumentYDocument 또는 Document Element(node)
+
+
+nameStringYnodeName 문자열
+
+
+uriStringYnamespace uri ( 존재 할 경우 namespace 일치 여부도 확인 )
+
+
+
+
+Return
+
+typedescription
+
+
+Array일치하는 Document Element(node) 들의 Array
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var childs =  WebSquare.xml.getChildrenByTagName( doc, "title" );
+        
+childs.length은 1이다.
+childs[0] 노드는 다음과 같다.
+Harry Potter
+
+
+
+getFirstChildElement(
+									  element
+										)
+							
+
+element에서 하위 노드들 중 첫번째 element node를 반환합니다. Element node가 존재하지 않으면 null을 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+elementObjectYDocument Element(node)
+
+
+
+
+Return
+
+typedescription
+
+
+ObjectDocument Element(node) 또는 없을 경우 null
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var child =  WebSquare.xml.getFirstChildElement( doc );
+        
+child 노드는 다음과 같다.
+Harry Potter
+
+
+
+getFirstChildElements(
+									  element
+										)
+							
+
+element에서 하위 노드를 배열로 반환합니다. Element node가 존재하지 않으면 빈 Array를 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+elementObjectYDocument Element(node)
+
+
+
+
+Return
+
+typedescription
+
+
+Array자식 Element(node)들의 Array
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var child =  WebSquare.xml.getFirstChildElement( doc );
+        
+child 노드는 다음과 같다.
+Harry Potter
+
+
+getString(
+									  doc
+									       , 
+									       key
+										)
+							
+
+XPath로 검색한 node element에서 value Attribute 값을 조회합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+keyStringYXPath 문자열
+
+
+
+
+Return
+
+typedescription
+
+
+String조회 결과 값. 값이 없으면 빈 문자열 반환.
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var value = WebSquare.xml.getString( doc, "price" );
+        
+value는 USD이다.
+
+
+getTextNodeValue(
+									  element
+										)
+							
+
+element의 Text Node를, 존재하지 않으면 null을 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+elementObjectYDocument Element(node)
+
+
+
+
+Return
+
+typedescription
+
+
+StringTextNode Value 또는 null
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book/title" );
+var value =  WebSquare.xml.getTextNodeValue( doc );
+        
+value는 Harry Potter이다.
+
+
+
+getValue(
+									  doc
+									       , 
+									       key
+									       , 
+									       attribute
+										)
+							
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 XPath로 조회한 node의 attribute나 text노드의 값을 조회합니다. 마지막 인자(attribute)가 없는 경우 Text Node나 CData Node를 조회하고, 마지막 인자가 있는 경우 attribute 값을 조회합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+keyStringYXPath 문자열
+
+
+attributeStringY값을 조회할 attribut e이름. 지정하지 않으면 Text 노드나 CData 노드에서 값을 조회한다.
+
+
+
+
+Return
+
+typedescription
+
+
+String조회 결과 값. 값이 없으면 빈 문자열 반환.
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var value = WebSquare.xml.getValue( doc, "title" );
+        
+value는 Harry Potter이다. 
+
+
+
+hasChildElement(
+									  domNode
+										)
+							
+
+element가 하위 노드를 가지는지 여부를 반환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+domNodeDocumentYDocument 또는 Document Element(node)
+
+
+
+
+Return
+
+typedescription
+
+
+BooleanchildNode 가 존재하는지 여부
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc1 = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+var doc2 = WebSquare.ModelUtil.findInstanceNode( "bookstore/book/title" );
+var hasChildYn1 = WebSquare.xml.hasChildElement(doc1);
+var hasChildYn2 = WebSquare.xml.hasChildElement(doc2);
+        
+hasChildYn1은 true, hasChildYn2는 false.
+
+
+indent(
+									  obj
+									       , 
+									       type
+										)
+							
+
+XML Document를 XML String으로 변환합니다. serialize 함수와 다르게 줄바꿈을 제공합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+objDocumentYXML String으로 변환할 문자열
+
+
+typeStringYtype을 적지 않았을 경우 WebSquare.xml.serialize을 실행하여 그 결과에 줄 바꿈 문자를 넣고, type이 'undefined'가 아닐 경우 재귀적으로 xml을 파싱한다.
+
+
+
+
+Return
+
+typedescription
+
+
+StringXML String
+
+
+Sample
+var xmlDoc = WebSquare.xml.indent("WebSquare");
+
+WebSquare
+
+
+
+parse(
+									  obj
+									       , 
+									       namespace
+										)
+							
+
+XML String을 XML Document로 변환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+objStringYXML Document로 변환할 문자열
+
+
+namespaceBooleanNnamespace를 파싱 할 지 여부
+
+
+
+
+Return
+
+typedescription
+
+
+DocumentXML Document
+
+
+Sample
+
+var xmlDoc = WebSquare.xml.parse("WebSquare", false);
+
+
+
+serialize(
+									  dom
+										)
+							
+
+XML Document를 XML String으로 변환합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+domDocumentYXML String으로 변환할 XML Document
+
+
+
+
+Return
+
+typedescription
+
+
+StringXML String
+
+
+Sample
+
+var xmlStr = WebSquare.xml.serialize(xmlDoc);
+
+
+
+setAttribute(
+									  doc
+									       , 
+									       key
+									       , 
+									       value1
+									       , 
+									       value2
+										)
+							
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 attribute를 설정합니다.마지막 인자(value2)가 없는 경우 현재 Element(Document의 경우 최상위 Element)에 속성값을 설정하고마지막 인자(value2)가 있는 경우 두번째 인자(key)를 XPath로 사용하여 조회한 node에 속성값을 설정합니다.XPath로 검색한 node element에서 Attribute를 조회합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+keyStringYXPath. value2가 설정되어 있지 않으면 값을 설정할 attribute로 사용됨. 이 경우 Attribute로 사용될 수 있는 문자만 지정되어야 함.
+
+
+value1StringY값을 설정할 attribute이름. value2가 설정되어 있지 않으면 설정할 값으로 사용됨
+
+
+value2StringY설정할 값
+
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+WebSquare.xml.setAttribute(doc, "formats" , "Hardcover");
+WebSquare.xml.setAttribute(doc, "price" , "value" , "USD");
+
+Model의 변경된 데이터는 다음과 같다.
+        
+
+
+Harry Potter
+29.99
+
+    ...중략...
+
+
+
+setString(
+									  doc
+									       , 
+									       key
+									       , 
+									       value
+										)
+							
+
+XPath로 검색한 node element에서 value Attribute 값을 설정합니다.
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+keyStringYXPath 문자열
+
+
+valueStringY설정할 값
+
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+WebSquare.xml.setString(doc, "price" , "USD");
+        
+
+
+Harry Potter
+29.99
+
+    ...중략...
+
+
+
+setValue(
+									  doc
+									       , 
+									       key
+									       , 
+									       value1
+									       , 
+									       value2
+										)
+							
+
+첫번째 인자로 주어진 Document 또는 Element를 기준으로 XPath로 조회한 node에 attribute나 text노드를 추가합니다.마지막 인자가 없는 경우 value1값을 Text Node에 추가하고, 마지막 인자가 있는 경우 value1을 attribute이름으로 사용합니다.             XPath로 조회한 node가 존재하지 않으면 생성을 시도한 다음 작업을 수행합니다. 노드를 생성하기 위해서는 XPath가 노드명으로만 구성되어야 합니다. 노드를 생성하지 못하게 되면 아무런 작업을 수행하지 않습니다.(에러도 발생하지 않습니다.)
+
+
+Parameter
+
+nametyperequireddescription
+
+
+docDocumentYDocument 또는 Document Element(node)
+
+
+keyStringYXPath 문자열
+
+
+value1StringY값을 설정할 attribute 이름. value2가 지정되어 있지 않으면 Text 노드 값으로 사용된다.
+
+
+value2StringY추가할 값. 지정하지 않으면 Text 노드나 CData 노드를 삭제한 후 value1의 값을 Text 노드에 추가
+
+
+
+Sample
+Model에 바인드된 데이터가 다음과 같다.
+
+
+Harry Potter
+29.99
+
+
+Learning XML
+39.95
+
+
+var doc = WebSquare.ModelUtil.findInstanceNode( "bookstore/book" );
+WebSquare.xml.setValue(doc, "title" , "Harry Potter and the Philosopher's Stone");
+WebSquare.xml.setValue(doc, "price" , "value" , "USD");
+
+Model의 변경된 데이터는 다음과 같다.
+        
+
+
+Harry Potter and the Philosopher's Stone
+29.99
+
+    ...중략...
+
+
+
+
+
+
+
+
+Copyrights Inswave Systems Co., Ltd.
+
+
+

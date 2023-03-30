@@ -1,0 +1,506 @@
+
+웹 접근성 가이드10.웹 접근성 가이드10.1개요사회적, 경제적, 신체적 능력에 따라 발생하는 정보격차의 문제는 최근의 현격한 정보기술의 발달로 인해 더욱 심화되고 있습니다. 정보가 곧 능력이며 자산이 되는 현대사회에서 누구나 동등하게 정보에 접근할 수 있도록 보장받아야 한다는 정보 접근권은 이제 인간의 기본권이 되었다 해도 과언이 아닐 만큼 중요한 문제로 인식하여 이미 법률적 제도가 마련되었으며 지난 2010년 9월 행정자치부는 장애인의 웹컨텐츠의 접근권을 보장하는 웹사이트 제작을 위한 한국형 웹 콘텐츠 접근성 지침 2.0을 공표하고 2013년까지 점진적으로 확대 적용하겠다고 발표했습니다. 이 문서는 웹스퀘어의 컴포넌트별 접근성 지원 현황과 앞으로 지원하게될 개선된 컴포넌트를 소개하며 이를 이용해 접근성을 지원하는 웹사이트를 제작하는 방법을 소개합니다.( 본 문서는 웹스퀘어 엔진 2.0_1.1018A.20110602.094610_1.5 버전을 기준으로 작성 됨 )10.2컴포넌트 가이드10.2.1컴포넌트의 접근성 지원 판단 기준본 문서의 가이드대로 컴포넌트를 구성하였을 때 화면낭독기 사용자의 사용 가능 기능의 범위에 따라 권장, 비권장, 사용금지 컴포넌트로 구분하였으며, 센스리더 2.0 이상, JAWS 11 이상의 가상커서 모드로 사용하는 것을 권장합니다.10.2.2화면낭독기 권장 환경 설정웹스퀘어 컴포넌트로 구성된 화면을 사용하기 위한 센스리더와 JAWS의 최적의 환경 설정을 가각 <Table 1>, <Table 2>에 나타내었습니다.표 10-1.권장 센스리더 환경 설정속성명설정값설명가상커서 자동사용선택인터넷 익스플로러를 사용할 때 자동으로 가상커서모드로 전환되는 속성자동 포커스선택웹페이지가 새로 열릴 때 자동으로 포커스를 옮겨주는 속성 새 페이지 자동 읽기선택웹페이지가 새로 열릴 때 자동으로 내용을 읽어주는 속성 숨김 내용 읽기해제Display:hidden 속성의 요소를 읽어주지 않는 속성 변경 내용 자동 구성선택웹페이지가 로드된 후 동적 업데이트를 자동 반영하는 속성표 10-2.권장 JAWS 환경 설정속성명설정값설명10.2.3권장 컴포넌트가이드대로 컴포넌트를 구성한다면 화면낭독기 사용자가 그 컴포넌트의 모든 기능을 추가적인 지식이 없이 기본적인 인터넷 사용지식만으로도 사용 가능한 컴포넌트를 의미하며, 이들 컴포넌트 목록은 <Table 3>와 같습니다. <Table 3>의 각 열이 나타내는 의미는 다음과 같습니다.키보드 화면낭독기를 사용하지 않는 사용자가 키보드만으로 컴포넌트를 네비게이션 가능하고 기능을 사용할 수 있는지를 나나태는 항목입니다. O는 사용가능, △는 일부가능, X는 사용불가, N/A는 해당없음을 나타냅니다. 센스리더 센스리더 사용자가 컴포넌트의 기능을 사용가능한지를 나타내는 항목입니다. O는 사용가능, △는 일부가능, X는 사용불가, N/A는 해당없음을 나타냅니다. JAWS JAWS 사용자가 컴포넌트의 기능을 사용가능한지를 나타내는 항목입니다. O는 사용가능, △는 일부가능, X는 사용불가, N/A는 해당없음을 나타냅니다. 속성 alt, title 같은 접근성을 지원하기 위해 추가적으로 필요한 속성이 있는지를 나타내는 항목입니다. O는 필요함, X는 필요없음, N/A는 해당없음을 나타냅니다. API 접근성을 지원하기 위해 추가적으로 필요한 API가 있는지를 나타내는 항목입니다. O는 필요함, X는 필요없음, N/A는 해당없음을 나타냅니다표 10-3.권장 컴포넌트컴포넌트명키보드센스리더JAWS속성APIanchorN/AOOON/AcalendarOOOON/AcheckboxOOOON/AgeneratorN/AN/AN/AN/AN/AgridOOOOOgroupN/AOOON/AiframeN/AOOON/AimageN/AOOON/AinputBoxN/AOOON/AinputCalendarOOOON/AoutputN/AOOON/ApageListOOOON/ApasswordN/AOOON/AradioN/AOOON/ArepeatN/AN/AN/AN/AN/AslideHideN/AOOOOsliderXOOON/AscrollViewXOON/AN/AselectBoxOOOON/AswitchN/AOOOOtabControlOOON/AN/AtagN/AN/AN/AN/AN/AtextareaN/AOON/AN/AtextboxN/AOOON/AtriggerN/AOOON/AwframeN/AN/AN/AN/AN/AxhtmlN/AN/AN/AN/AN/AxslN/AN/AN/AN/AN/A10.2.3.1anchor<a href=”#”></a> 태그를 표현하기 위해 사용하는 컴포넌트이며, 레이블 텍스트만으로 정확한 정보를 전달하지 못할 경우 title 속성에 그 내용을 기술합니다. 접근성을 위해선 순수 <a> 태그로만 렌더링하는 것이 좋은데 이를 위해서는 outerDiv 속성을 false로 설정해야 합니다. 그 외 <a> 태그에 사용할 수 있는 속성인 href, name, target 속성을 사용할 수 있습니다. 이 컴포넌트를 이용하여 ‘본문 바로가기’나 ‘메뉴 건너뛰기’를 구현할 수도 있으며 이에 대한 자세한 설명은 3.1.을 참조합니다. 아래는 접근성을 위한 anchor 컴포넌트 생성 예제 입니다.사용시 CheckpointouterDiv 속성을 ”false”로 설정하였는가? Label 내용만으로 의미를 인지하기가 쉽지 않다면 title 속성에 보충 설명을 기술하였는가?포커스될 때 테두리가 명확하게 나타나는가?<w2:anchor id="anchor2" outerDiv=”false” title="QnA 게시판 더보기" href=”#hash” > 
+ <xf:label>더보기</xf:label> 
+</w2:anchor>10.2.3.2calendar달력을 보여주고 날짜를 선택하는 기능을 제공하는 컴포넌트이며, 접근성 지원을 위해선 renderType 속성을 native로 설정하고, 달력의 의미에 맞는 명확한 title 속성을 기술합니다.사용시 CheckpointrenderType 속성을 ”native”로 설정하였는가? title 속성을 내용에 맞게 기술하였는가?포커스될 때 테두리가 명확하게 나타나는가?<w2:calendar id="calendar2" style="left: 16px;top: 278px;" 
+ renderType=”native” title="출발일자 선택"> 
+</w2:calendar>10.2.3.3checkbox렌더링되는 레이아웃 구조에 따라 “table”, “native”, “checkboxgroup” 세가지 renderType 속성을 지원합니다. 이 renderType 속성값에 따라 접근성을 지원하기 위한 사용법이 조금씩 달라지는데, 이를 설명하면 다음과 같습니다.renderType=”table” renderType 속성의 기본값으로서 <table> 태그로 레이아웃 구조를 생성하는 형태입니다. 행과 열을 rows와 cols 속성값으로 제어할수 있는 장점이 있지만, 레이아웃 용도로 <table> 태그를 사용하는 것은 접근성에 좋지 않으므로 사용을 지양해야 합니다renderType=”native”레이아웃 구조를 위한 어떠한 태그 없이 순수 <input type=”checkbox”> 태그 하나만 생성하는 형태입니다. 레이블 텍스트는 textbox 컴포넌트를 이용해 직접 생성해야 합니다. Checkbox 컴포넌트에 title 속성을 사용하지 않을 경우 반드시 <label> 태그로 렌더링되는 textbox 컴포넌트와 연계해야 합니다.<xf:select appearance="full" id="checkbox1" 
+   renderType="native" name="fruit" 
+       selectedindex="-1"> 
+       <xf:choices> 
+           <xf:item> 
+               <xf:label></xf:label> 
+               <xf:value>apple</xf:value> 
+           </xf:item>
+
+        </xf:choices> 
+</xf:select> 
+<w2:textbox id="textbox1" label="사과" tagname="label" for="checkbox1" > 
+</w2:textbox> 
+ 
+<xf:select appearance="full" id="checkbox2" 
+        renderType="native" name="fruit" title=”바나나” 
+            selectedindex="-1"> 
+            <xf:choices> 
+                <xf:item> 
+                    <xf:label></xf:label> 
+                    <xf:value>banana</xf:value> 
+                </xf:item> 
+            </xf:choices> 
+</xf:select> 
+<w2:textbox id="textbox2" label="바나나" tagname="span" > 
+</w2:textbox>renderType=”checkboxgroup”레이아웃 구조를 위한 태그를 개발자가 직접 결정하는 형태로서, tagname과 itemTagname 속성이 추가적으로 사용됩니다. tagname과 itemTagname 속성의 사용법은 아래의 예를 참고해 이해하시길 바랍니다.<xf:select appearance="full" id="checkbox1" name="fruit" 
+    renderType="checkboxgroup" tagname="ul" itemTagname="li" 
+        selectedindex="-1"> 
+        <xf:choices> 
+            <xf:item> 
+                <xf:label>사과</xf:label> 
+                <xf:value>apple</xf:value> 
+            </xf:item> 
+            <xf:item> 
+                <xf:label>바나나</xf:label> 
+                <xf:value>banana</xf:value> 
+            </xf:item> 
+        </xf:choices>10.2.3.4generator반복적인 컨텐츠를 나타내고 싶을 때 사용하는 컨테이너성 컴포넌트이며, 접근성과 직접적인 관계는 없습니다.10.2.3.5grid<focusMove=”false”>, <senseReader=”true”>, <keyMoveEditMode="true">를 공통 설정(comfig.xml)에 미리 정의하는 것을 권장합니다.keyMoveEditMode=”true”일 경우, 키 입력으로 포커스가 변경되면 수정 모드가 활성화됩니다.focusMove=”false"일 경우 그리드의 포커스 이동을 브라우저 자체의 이동 방식에 맡기며, "true"인 경우 웹스퀘어의 그리드 포커스 이동 정책에 따라 움직입니다.senseReader=”true”일 때, inputType=”text”와 “select”에 대해서 embeddedInput=”true”을 적용하게 됩니다. 해당 모드가 동작하게 되면 text 셀 내부에 직접 input이 포함되며 이를 리더기에서 “입력박스” 라고 인식합니다. Selectbox는 native한 combobox로 그려지게 됩니다.나머지 복합적인 그리드는 유형에 따라 아래의 설정들을 조합하여 응용이 가능합니다.편집용 그리드 코딩가이드focusMode="cell" focusMove="true" 로 정의합니다. Caption, summary 을 정의합니다.조회용 그리드 코딩가이드그리드 전체속성에 readOnly=”true”로 정의합니다.컬럼이 link Type이며 senseReader=”true”인 경우 자동으로 셀 안쪽 anchor에 포커스가 갑니다.컬럼이 Image Type인 경우 imageTabindex=”0”을 적용합니다.편집용 컬럼이 조회용 셀과 같이 있는경우 그리드 전체속성에 senseReader=”false”로 줍니다. focusMode="none” focusMove="false" 로 정의합니다. (config.xml 기본설정으로 포함된 경우 생략 또는 삭제) Caption, summary 을 정의합니다.<w2:grid autoFit="allColumn" baseNode="base" focusMode="cell" focusMove="true" id="grid1" 
+oddEvenColorDisplay="true" readOnly="" repeatNode="data/INFO" 
+summary="목록정렬의입금은행,입금계좌 성명,입금계좌 별명,우선순위" valueNode="value" 
+visibleRowNum="all"> 
+<w2:caption value="입금계좌목록정렬"></w2:caption> 
+<w2:header class="ce_grid_header" columnClass="ce_grid_header_column" id="header5" style="">
+<w2:row id="row9"> 
+<w2:column hidden="" id="column454" inputType="text" value="입금은행" valueType="binary" 
+width="128"></w2:column> 
+<w2:column hidden="" id="column455" inputType="text" value="입금계좌 성명" valueType="binary" 
+width="124"></w2:column> 
+</w2:row> 
+</w2:header> 
+<w2:gBody class="ce_grid_body" columnClass="ce_grid_body_column" id="gBody5" style=""> 
+<w2:row id="row10"> 
+<w2:column hidden="" id="column459" inputType="text" readOnly="true" style="" 
+valueType="binary" width="128"></w2:column> 
+<w2:column hidden="" id="column460" inputType="text" readOnly=" " style="" 
+value="1234547777" valueType="binary" width="124"></w2:column> 
+</w2:row> 
+</w2:gBody> 
+</w2:grid>샘플화면. (편집용 그리드: 컬럼편집가능)그림 10-1.accessibility10.2.3.6group여러 컴포넌트들을 담을 수 있는 컨테이너형 컴포넌트로서 주로 레이아웃 관리의 편의를 위해 주로 사용되지만, <a>, <fieldset>, 등과 같은 HTML 태그를 표현하기 위해 사용되기도 합니다. 먼저 전자의 역할로 사용될 경우에는 네비게이션바, 본문, 배너, 저작권 정보를 담는 하단과 같은 레이아웃 구성용으로 사용할 때는 시각장애인이 페이지 내에서 네비게이션을 편리하게 할 수 있도록 landmark role 속성을 사용할수도 있습니다. 이에 대한 자세한 설명은 “레이아웃 가이드”를 참조합니다. 그리고 HTML 태그를 표현하기 위해 사용할 경우에는 tagname 속성을 사용할 수 있으며 기타 추가적인 속성을 사용할 수도 있는데 그 방법은 아래의 예를 참고합니다. 이에 대한 더욱 자세한 사용법은 “HTML 태그 사용 가이드”를 참조합니다.<xf:group id="group3" class="" tagname="a"> 
+    <w2:attributes>  WebSquare |Accessibility Guidelines 13 
+        <w2:href>http://daum.net/</w2:href> 
+        <w2:target>_blank</w2:target> 
+    </w2:attributes> 
+    <xf:image id="image1" 
+         src="http://icon.daumcdn.net/w/c/10/12/37691415937798319.png"> 
+    </xf:image> 
+</xf:group>10.2.3.7iframe<iframe> 태그로 렌더링되는 컴포넌트이며, 프레임의 URL 주소의 페이지의 내용에 적합한 title 속성을 기술합니다.사용시 Checkpoint title 속성을 의미에 맞게 적절히 제공하였는가? 포커스될 때 테두리가 명확하게 나타나는가?<w2:iframe id="iframe1" scrolling="auto" src="login.html" 
+    style="width:531px; height:140px;" title="로그인 입력 창"/>10.2.3.8imagealt 속성에 대체텍스트를 의미 있게 기술하고, 그 내용이 길 경우 longdesc 속성을 사용하여 대체 텍스트 정보를 제공합니다. 마우스(onclick, onmouseover, onmouseout) 이벤트 처리 사용을 삼가 해야 합니다.사용시 Checkpoint alt나 longdesc 속성을 이용하여 적절한 대체 텍스트를 제공하였는가?<xf:image id="image2" 
+    src="https://www.inswave.com/image/image_sample_b.jpg" 
+     style="width:262px; height:172px;" alt="로고 이미지"/><xf:image id="image2" 
+    src="https://www.inswave.com/image/image_sample_b.jpg"  
+     style="width:262px; height:172px;" longdesc="company_info.html"/>10.2.3.9inputBox논리적 입력 단위는 하나인데 두 개 이상의 inputBox 컴포넌트로 구성된다면 반드시 title 속성에 그 내용14 WebSquare | Accessibility Guidelines 을 적절히 기술하고, 하나로 구성될 경우 <label> 태그와 함께 사용하거나 title 속성을 기술해야 합니다. 아래는 주민번호를 입력 받는 inputBox 컴포넌트의 예제입니다.사용시 Checkpoint title 속성을 기술하거나 또는 label로 렌더링되는 textbox 컴포넌트를 함께 제공하였는가? 포커스될 때 테두리가 명확하게 나타나는가?<w2:textbox id="output1" style="" 
+        tagname=”label” for="input1"> 
+    <xf:label>주민등록번호</xf:label> 
+</w2:textbox> 
+<xf:input id="input1" maxlength="6" style="" 
+        title="주민번호 앞자리" /> 
+- 
+<xf:input id="input2" maxlength="7" style="" 
+        title="주민번호 뒷자리" />10.2.3.10inputCalendar키보드만으로 모든 기능을 사용 가능하며 사용법은 calendar 컴포넌트와 유사합니다, 아래와 같이 renderType=”native” 속성을 반드시 사용하고, 화면낭독기 사용자가 달력 아이콘을 사용할수 있도록 해줄지에 따라 useAnchorMove와 title 속성을 의미에 맞게 적절히 사용합니다.화면낭독기 사용자에게 달력 아이콘 사용을 허가할 경우에는 아래와 같이 작성합니다.공통설정(config.xml)으로 <useAnchor value="true" />를 추가 할 경우 달력 아이콘에 anchor로 감싸지며 접근성에 위배되지 않습니다. <renderType value="native" />인 경우 달력 내에 포함된 selectbox가 native combobox로 그려집니다.<w2:inputCalendar id="inputCalendar1" style="width:167px; height:21px;" 
+ renderType=”native” useAnchorMove=”true” 
+ title="생년월일 입력 또는 달력에서 선택" />반대의 경우, 즉 달력 아이콘 사용을 불허할 경우엔 아래와 같이 작성합니다.<w2:inputCalendar id="inputCalendar1" style="width:167px; height:21px;" 
+ renderType=”native” useAnchorMove=”false” 
+ title="생년월일" />10.2.3.11output텍스트를 화면에 나타내어주는 컴포넌트로서 시멘틱(h1, h2, …, h6, label) 태그로 렌더링 되어야 할 경우에는 textbox 컴포넌트를 사용하고 그 외 동적 데이터 바인딩과 같이 어떤 데이터와 연동 되어야할 텍스트를 표현할 때에만 사용합니다. 아래는 output 컴포넌트의 생성 XML 예제입니다.사용시 Checkpoint textbox 컴포넌트를 사용해야 하는 상황인가?<xf:output id="output1" ref="/data/@value"> 
+ <xf:label>인스웨이브시스템즈</xf:label> 
+</xf:output>10.2.3.12pageList대량의 데이터를 페이지 단위로 조회할 수 있는 링크를 생성해주는 컴포넌트로서, 탭 키로 각 페이지 번호로 접근할 수 있습니다. 접근성을 위해 이미지로 표현된 버튼에는 대체 텍스트를 제공하고 있으며, 시각장애인이 페이지 목록을 인지할 수 있도록 아래와 같이 renderType 속성을 “list”로 설정하고 가능한 한 구분자를 표시하지 않도록 useDelim 속성은 false로 설정합니다.사용시 Checkpoint renderType 속성을 ”native”로 설정하였는가? 포커스될 때 테두리가 명확하게 나타나는가? 현재 페이지 번호가 다른 기본 페이지번호와 시각적으로 명확히 구분되는가?<w2:pageList displayFormat="#" id="pageList1" 
+ style="width:368px;height:37px;" pageSize="10" 
+ renderType=”list” 
+ useDelim="false" 
+ > 
+</w2:pageList>10.2.3.13password(secret)입력 받아야 할 정보의 주제를 title 속성에 기술하거나, 아래처럼 textbox 컴포넌트를 이용해 label을 명시해야 합니다.사용시 Checkpoint title 속성을 기술하거나 또는 label로 렌더링되는 textbox 컴포넌트를 함께 제공하였는가? 포커스될 때 테두리가 명확하게 나타나는가?<w2:textbox id="textbox1" 
+ label=”패스워드” tagname=”label” for="secret1"> 
+</w2:textbox> 
+<xf:secret id="secret1" maxlength="8" style="width:131px; height:25px;" 
+ title="알파벳과 영숫자로 구성된 4~8자리" /> 
+- 
+ <xf:secret id="secret2" maxlength="8" style="width:131px; height:25px;" 
+ title="확인을 위해 한번 더 입력" />10.2.3.14radio렌더링되는 레이아웃 구조에 따라 “table”, “native”, “radiogroup” 세가지 renderType 속성을 지원합니다. 이 renderType 속성값에 따라 접근성을 지원하기 위한 사용법이 조금씩 달라지는데, 이를 설명하면 다음과 같습니다.renderType=”table” renderType 속성의 기본값으로서 <table> 태그로 레이아웃 구조를 생성하는 형태입니다. 행과 열을 rows와 cols 속성값으로 제어할수 있는 장점이 있지만, 레이아웃 용도로 <table> 태그를 사용하는 것은 접근성에 좋지 않으므로 사용을 지양해야 합니다.renderType=”native” 레이아웃 구조를 위한 어떠한 태그 없이 순수 <input type=”radio”> 태그 하나만 생성하는 형태입니다. 레이블 텍스트는 textbox 컴포넌트를 이용해 직접 생성해야 합니다. radio 컴포넌트에 title 속성을 사용하지 않을 경우 반드시 <label> 태그로 렌더링되는 textbox 컴포넌트와 연계해야 합니다.<xf:select appearance="full" id="radio1" 
+ renderType="native" name="fruit" 
+ selectedindex="-1"> 
+ <xf:choices> 
+ <xf:item> 
+ <xf:label></xf:label> 
+ <xf:value>apple</xf:value> 
+
+ </xf:item> 
+ </xf:choices> 
+</xf:select> 
+<w2:textbox id="textbox1" label="사과" tagname="label" for="radio1" > 
+</w2:textbox> 
+ 
+<xf:select appearance="full" id="radio2" 
+ renderType="native" name="fruit" title=”바나나” 
+ selectedindex="-1"> 
+ <xf:choices> 
+ <xf:item> 
+ <xf:label></xf:label> 
+ <xf:value>banana</xf:value> 
+ </xf:item> 
+ </xf:choices> 
+</xf:select> 
+<w2:textbox id="textbox2" label="바나나" tagname="span" > 
+</w2:textbox>renderType=”radiogroup”레이아웃 구조를 위한 태그를 개발자가 직접 결정하는 형태로서, tagname과 itemTagname 속성이 추가적으로 사용됩니다. tagname과 itemTagname 속성의 사용법은 아래의 예를 참고해 이해하시길 바랍니다.<xf:select appearance="full" id="radio1" name="fruit" 
+ renderType="radiogroup" tagname="ul" itemTagname="li" 
+ selectedindex="-1"> 
+ <xf:choices> 
+ <xf:item> 
+ <xf:label>사과</xf:label> 
+ <xf:value>apple</xf:value> 
+ </xf:item> 
+ <xf:item> 
+ <xf:label>바나나</xf:label> 
+ <xf:value>banana</xf:value> 
+ </xf:item> 
+
+</xf:choices> 
+</xf:select>10.2.3.15repeat반복적인 컨텐츠를 나타내고 싶을 때 사용하는 컨테이너성 컴포넌트이며, 접근성과 직접적인 관계는 없지만 <table> 태그로 렌더링 되므로 사용하지 않는 편이 좋습니다.10.2.3.16slideHide마우스 입력에 따라 숨기거나 보여지는 컨테이너성 컴포넌트이지만, 아래를 참고하여 trigger 또는 anchor 컴포넌트의 클릭 이벤트를 이용해 사용해야 합니다.<script type="javascript"><![CDATA[ 
+ 
+function toggleSlide() { 
+ if (slideHide1.isOpen()) { 
+ trigger2.setLabel("메뉴바 열기"); 
+ slideHide1.startHide(); 
+ } 
+ else { 
+ trigger2.setLabel("메뉴바 닫기"); 
+ slideHide1.startSlide(); 
+ } 
+} 
+ 
+ 
+]]></script> 
+ 
+ 
+<w2:slideHide id="slideHide1" firstStatus="slide" 
+ style="position:relative;width:512px;height:225px;" 
+ slideDirection="down" > 
+ <xf:trigger type="button" id="trigger2" 
+ style="position: absolute ;left:191px;top:203px;width:80px;height:22px;"> 
+ <xf:label>메뉴바 닫기</xf:label> 
+ <script ev:event="onclick" type="javascript"><![CDATA[
+
+toggleSlide(); 
+ ]]></script> 
+ </xf:trigger> 
+</w2:slideHide>10.2.3.17slider일정 범위의 값을 입력 받는 컴포넌트로서 화면낭독기 사용자에겐 숨겨진 inputBox 컴포넌트로 제공되며 직접 값을 입력 받는 방식으로 구성되어 있습니다. 그러나 화면낭독기 없는 키보드 사용자는 사용할수 없는 컴포넌트입니다10.2.3.18scrollView특정 영역의 공간보다 나타낼 컨텐츠가 차지하는 공간이 더 커서 스크롤 기능이 필요할 때 사용하는 컨테이너성 컴포넌트이며, 접근성과 직접적인 관계는 없습니다.10.2.3.19selectBox렌더링되는 레이아웃 구조에 따라 “component”, “native”, “select” 세가지 renderType 속성을 지원합니다. 이 renderType 속성값에 따라 접근성을 지원하기 위한 사용법이 조금씩 달라지는데, 이를 설명하면 다음과 같습니다.renderType=”component”디폴트 값으로서, 내부적으로 <select> 태그를 사용하지 않고 <table> 태그로 선택항목들을 표현하므로 접근성을 위해서는 사용을 지양해야 합니다.renderType=”native”모든 브라우저 환경에서 완벽하게 동일한 모양과 기능을 제공하면서도 title 속성과 함께 제공한다면 접근성 지원에도 전혀 문제가 없는 사용법입니다.<xf:select1 appearance="minimal" 
+ id="selectbox1" renderType="native" title=”과일” 
+ style="width: 121px;height: 26px;" > 
+ <xf:choices> 
+ <xf:item> 
+ <xf:label>사과</xf:label> 
+ <xf:value>apple</xf:value> 
+ </xf:item> 
+
+<xf:item> 
+ <xf:label>오렌지</xf:label> 
+ <xf:value>orange</xf:value> 
+ </xf:item> 
+ <xf:item> 
+ <xf:label>바나나</xf:label> 
+ <xf:value>banana</xf:value> 
+ </xf:item> 
+ </xf:choices> 
+</xf:select1>renderType=”select”단순히 <select> 태그로만 렌더링되는 모드로서, 접근성 지원에는 완벽한 사용법이지만, 모든 브라우저에서 동일한 모양세로 보여지지 않는 다소 소소한 문제가 발생하는 사용법입니다.<xf:select1 appearance="minimal" 
+ id="selectbox1" renderType="select" title=”과일” 
+ style="width: 121px;height: 26px;" > 
+ <xf:choices> 
+ <xf:item> 
+ <xf:label>사과</xf:label> 
+ <xf:value>apple</xf:value> 
+ </xf:item> 
+ <xf:item> 
+ <xf:label>오렌지</xf:label> 
+ <xf:value>orange</xf:value> 
+ </xf:item> 
+ <xf:item> 
+ <xf:label>바나나</xf:label> 
+ <xf:value>banana</xf:value> 
+ </xf:item> 
+ </xf:choices> 
+</xf:select1>10.2.3.20switch어떤 한 컨텐츠를 여러 페이지로 나누어 화면에 보여주는 페이징 기능이 필요할 때 사용하는 컨테이너성 컴포넌트이며, 자동으로 화면이 바뀔 때는 사용자가 이를 중지할수 있는 인터페이스를 제공해 주어야만 합니다.10.2.3.21tabControlswitch 컴포넌트와 유사한 기능을 수행하지만, 탭버튼 목록 영역과 컨텐츠 페이지 영역으로 나뉘어져 있으며 각 탭버튼은 해당하는 컨텐츠 페이지로 바로 갈수 있는 앵커를 제공하는 컴포넌트입니다.키보드로만으로 모든 tab메뉴 및 컨텐츠 내용을 접근 가능하도록 useTabKeyOnly="true" 속성을 사용합니다.사용시 Checkpoint UseTabKeyOnly 속성을 “true”로 설정하였는가? 포커스 될 때 테두리가 명확하게 나타나는가?<w2:tabControl id="tabcontrol1" selectedIndex="0" useTabKeyOnly="true" style="width: 800px; 
+height:400px;"> 
+ <w2:tabs id="tab1" label=”Tab1” ></w2:tabs> 
+ <w2:tabs id="tab2" label=”Tab2”></w2:tabs> 
+ 
+ <w2:content id="content1"> 
+ <!-- 중략 --> 
+ </w2:content> 
+ <w2:content id="content2" > 
+ <!-- 중략 --> 
+ </w2:content> 
+</w2:tabControl>10.2.3.22tagHTML 태그를 자유롭게 사용할 수 있도록 개발된 컴포넌트입니다. 이 컴포넌트를 이용해 모든 HTML 태그를 생성할 수 있지만, 웹스퀘어가 제공하는 다른 컴포넌트들을 이용해 생성할 수 없는 경우에만 사용하는 것을 권장합니다.만일, 동적으로 변경되어야 하는 컨텐츠가 아닌 정적인 컨텐츠를 사용하는 table인 경우는 최상위 tag를 제외한 나머지 tag는 html tag를 직접 사용하여도 됩니다.예를 들어, <table> 태그를 생성하고자 한다면, 아래와 같이 작성합니다.사용시 Checkpoint 다른 웹스퀘어 컴포넌트로 제공 가능한 태그인지 확인하였는가? 포커스가 가능한 태그라면 테두리가 명확하게 나타나는가? 렌더링된 태그 또는 태그 조합이 W3C 표준에 유효한가?<w2:tag tagname="table" width="400" border="1"> 
+ <w2:tag tagname="caption">성적순위표</w2:tag> 
+ <w2:tag tagname="tr"> 
+ <w2:tag tagname="th" id="rank" > Rank </w2:tag> 
+ <w2:tag tagname="th" id="name" > 이름 </w2:tag> 
+ <w2:tag tagname="th" id="score" > 점수 </w2:tag> 
+ </w2:tag> 
+ <w2:tag tagname="tr"> 
+ <w2:tag tagname="td" header="rank" > 1 </w2:tag> 
+ <w2:tag tagname="td" header="name" > 엄친아 </w2:tag> 
+ <w2:tag tagname="td" header="score" > 100 </w2:tag> 
+ </w2:tag> 
+ <w2:tag tagname="tr"> 
+ <w2:tag tagname="td" header="rank" > 2 </w2:tag> 
+ <w2:tag tagname="td" header="name" > 엄친딸 </w2:tag> 
+ <w2:tag tagname="td" header="score" > 98 </w2:tag> 
+ </w2:tag> 
+ <w2:tag tagname="tr"> 
+ <w2:tag tagname="td" header="rank" > 3 </w2:tag> 
+ <w2:tag tagname="td" header="name" > 내친구 </w2:tag> 
+ <w2:tag tagname="td" header="score" > 95 </w2:tag> 
+ </w2:tag> 
+ <w2:tag tagname="tr"> 
+ <w2:tag tagname="td" header="rank" > 4 </w2:tag> 
+ <w2:tag tagname="td" header="name" > 나 </w2:tag> 
+ <w2:tag tagname="td" header="score" > 90 </w2:tag> 
+ </w2:tag> 
+ <w2:tag tagname="tr"> 
+ <w2:tag tagname="td" header="rank" > 5 </w2:tag> 
+ <w2:tag tagname="td" header="name" > 멍청이 </w2:tag> 
+ <w2:tag tagname="td" header="score" > 80 </w2:tag> 
+ </w2:tag> 
+ <w2:tag tagname="tr">  WebSquare |Accessibility Guidelines 23
+ <w2:tag tagname="td" header="rank" > 6 </w2:tag> 
+ <w2:tag tagname="td" header="name" > 찌질이 </w2:tag> 
+ <w2:tag tagname="td" header="score" > 60 </w2:tag> 
+ </w2:tag> 
+</w2:tag>10.2.3.23textarea<textarea></textarea> 태그를 나타내기 위해 사용하는 컴포넌트이며, 용도에 적합한 title 속성을 사용하거나 <label> 태그로 렌더링 되는 textbox 또는 output 컴포넌트와 함께 연계하여 사용합니다.<w2:textbox id="textbox1" 
+ label=”메모” tagname=”label” for="textarea1"> 
+</w2:textbox> 
+<xf:textarea id="textarea1" style="width:531px; height:120px; left:10px;" 
+title=”메모 입력” />10.2.3.24textbox텍스트를 화면에 나타내어주는 컴포넌트로서 tagname 속성에 따라 div, h1, h2, …, h6, label 태그로 렌더링 됩니다. 주로 정적인 텍스트 데이터를 나타내는데 사용되며 사용자로부터 정보를 입력을 받는 컴포넌트와 연관된 항목명을 나타내기 위해 사용될 경우에는 tagname 속성에 “label”을, for 속성에는 해당하는 컴포넌트의 id를 기술합니다. 또, 본문 언어와 다른 언어를 나타낼 경우 lang 속성을 사용합니다. 아래는 사용자로부터 주민번호를 입력 받는 예제입니다. (for 속성을 사용하는 경우 tagname=”label” 은 default 값으로 생략하여도 무방합니다.)사용시 Checkpoint tagname 속성을 사용했을 경우 “HTML 태그 사용 가이드”를 준수하였는가? tagname=”label” 로 사용했다면 for 속성을 올바로 기술하였는가? 컨텐츠의 언어가 본 언어와 다를 경우 적합한 lang 속성을 기술하였는가?<w2:textbox id="textbox1" 
+ label=”Citizen Number” tagname=”label” for="input1" > 
+ <w2:attributes> 
+ <w2:lang>_blank</w2:lang> 
+ </w2:attributes> 
+</w2:textbox> 
+
+
+<xf:input id="input1" maxlength="6" style="width:131px; height:25px;" 
+ title="주민번호 앞자리" /> 
+- 
+ <xf:input id="input2" maxlength="7" style="width:131px; height:25px;" 
+ title="주민번호 뒷자리" />10.2.3.25trigger여러 형태의 버튼 UI를 제공하는 컴포넌트이며, 버튼 형태를 결정하는 type 속성의 값으로는 ”button”만 사용해야 합니다.사용시 Checkpoint type 속성은 “button”으로 사용하였는가? 포커스될 때 테두리가 명확하게 나타나는가?<xf:trigger type="button" id="trigger1" 
+ style="259px;width: 89px;height: 66px;" > 
+ <xf:label>완료</xf:label> 
+</xf:trigger>10.2.3.26wframe어느 한 화면에서 다른 XML 파일을 함께 나타내고 싶을 때 사용하는 컨테이너성 컴포넌트이며, 접근성과 직접적인 관계는 없습니다.10.2.3.27xhtml어느 한 화면에서 외부 HTML 파일을 함께 나타내고 싶을 때 사용하는 컨테이너성 컴포넌트이며, 접근성과 직접적인 관계는 없습니다.10.2.3.28xslXML 데이터를 XSL을 이용해 반복적인 데이타를 표현하는 컴포넌트이며, 접근성과 직접적인 관계는 없습니다.10.2.4비권장 컴포넌트가이드대로 컴포넌트를 구성한다면 화면낭독기 사용자가 그 컴포넌트의 일부 기능만을 사용할 수 있거나 기본적인 인터넷 사용지식 외에 추가적인 사용법을 익힌다면 사용가능한 컴포넌트를 의미합니다. 이들 컴포넌트 목록은 <Table 4>와 같습니다.표 10-4.비권장 컴포넌트컴포넌트명키보드센스리더JAWS속성APIautoCompleteOX△ XN/AeditorO△ △ N/AN/AflipToggleXXXXN/AfloatingLayerO△△ OOpageControl△ △ △ XN/AsearchBox△△△ ON/AtreeView△△ OOspinner△△△ ON/AuploadXXXXN/A10.2.4.1autoComplete화면낭독기를 사용하지 않는 사용자에게 키보드 네비게이션 기능을 제공하고 있으며, JAWS 사용자도 사용이 가능하지만 일부 제약사항이 존재합니다. 그러나 센스리더 사용자는 사용할 수없습니다.10.2.4.2chart웹스퀘어 기본 chart 컴포넌트는 접근성 지원에 많은 어려움이 있어 오픈소스인 jFreeChart와 image 컴포넌트를 적절히 연계해 사용하는 방안을 제공하고 있으며, Bar, Line, Pie, Column 형태의 차트만 구현 가능합니다.jFreeChart에 관한 자세한 정보는 아래의 URL 주소에서 얻을 수 있습니다.jFreeChart 홈페이지: http://sourceforge.net/projects/jfreechart/그리고 아래는 image 컴포넌트를 이용하여 chart를 생성하는 웹스퀘어 XML 소스 샘플입니다. longDesc에 들어갈 jsp 파일은 차트의 내용을 텍스트로 풀어 쓴 형태로 구현합니다.<xf:image id="image1" alt="컬럼 차트" longDesc="desc.html#chart1" 
+ style="position: absolute ;left: 26px;top: 39px;width: 300px;height: 250px;border: 1px solid black" 
+ src="/jfreechart/sampleColumnChart.jsp?width=300&amp;height=250"> 
+</xf:image> 
+<xf:image id="image2" alt="바 차트" longDesc="desc.html#chart2" 
+ style="position: absolute ;left:348px;top:41px;width: 300px;height: 250px;border: 1px solid black" 
+ src="/jfreechart/sampleBarChart.jsp?width=300&amp;height=250"> 
+
+</xf:image> 
+<xf:image id="image3" alt="라인 차트" longDesc="desc.html#chart3" 
+ style="position: absolute ;left:24px;top:357px;width: 300px;height: 250px;border: 1px solid black" 
+ src="/jfreechart/sampleLineChart.jsp?width=300&amp;height=250"> 
+</xf:image> 
+<xf:image id="image4" alt="파이 차트" longDesc="desc.html#chart4" 
+ style="position: absolute ;left:347px;top:357px;width: 300px;height: 250px;border: 1px solid black" 
+ src="/jfreechart/samplePieChart.jsp?width=300&amp;height=250"> 
+</xf:image>아래는 Bar Chart를 구현하는 서버단 JSP 소스코드의 샘플입니다.<%@ page contentType="charset=UTF-8" language="java" import="websquare.util.*, java.awt.*, 
+java.awt.image.*, java.io.*, java.net.*, java.text.*, javax.imageio.*, org.jfree.chart.*, org.jfree.chart.axis.*, 
+org.jfree.chart.entity.*, org.jfree.chart.plot.*, org.jfree.chart.renderer.category.*, org.jfree.chart.title.*, 
+org.jfree.data.category.*, org.jfree.data.general.*, org.jfree.ui.*" 
+%><% 
+ OutputStream os = null; 
+ try { 
+ int width = Integer.parseInt(HttpUtil.getParameter(request,"width","0")); 
+ int height = Integer.parseInt(HttpUtil.getParameter(request,"height","0")); 
+ 
+ //1. 데이터 추출 
+ String[] row = {"남자","여자"}; 
+ String[] col = {"사과","배","딸기","포도","바나나"}; 
+ 
+ //2. 차트 데이터 생성 
+ DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
+ for(int i=0 ; i<row.length ; i++){ 
+ for(int j=0 ; j<col.length ; j++){ 
+ dataset.addValue(Math.random()*100,row[i],col[j]); 
+ } 
+ } 
+ 
+ //3. 차트 Renderer 생성 
+ BarRenderer render = new BarRenderer(); 
+
+//4. X축 title 지정 
+ CategoryAxis xAxis = new CategoryAxis("X축 타이틀"); 
+ 
+ //5. Y축 title 지정 
+ ValueAxis yAxis = new NumberAxis("Y축 타이틀"); 
+ 
+ //6. 패턴이미지 적용 
+ for( int i=0; i < row.length ; i++ ) { 
+ URL url = new URL("http://localhost:8090/jfreechart/pattern/pattern" + (i+2) + ".png"); 
+//pattern1~13.png 
+ BufferedImage bufferedImage = ImageIO.read(url); 
+ Rectangle imageRect = new Rectangle(0, 0, 6, 6 ); 
+ TexturePaint tp = new TexturePaint(bufferedImage, imageRect); 
+ render.setSeriesPaint(i, tp); 
+ } 
+ 
+ render.setBarPainter(new StandardBarPainter()); 
+ render.setShadowVisible(false); 
+ 
+ //7.plot 생성 
+ CategoryPlot plot = new CategoryPlot(dataset,xAxis,yAxis,render); 
+ plot.setOrientation(PlotOrientation.HORIZONTAL); 
+ plot.setRangeAxisLocation(AxisLocation.BOTTOM_OR_LEFT); 
+ JFreeChart chart = new JFreeChart("샘플 바 차트", new Font("굴림", Font.ITALIC, 15), plot, true); 
+ 
+ //디자인 
+ chart.setBackgroundPaint(Color.white); //배경 색상 
+ plot.setRangeGridlinePaint(Color.white); //수평 그리드 라인 색상 
+ plot.setDomainGridlinesVisible(false); //수직 그리드 라인 숨김 여부 
+ plot.setOutlineVisible(false); //테두리 
+ 
+ //x축 
+ CategoryAxis axis = plot.getDomainAxis(); 
+ axis.setLabelFont(new Font("굴림", Font.PLAIN, 12)); 
+ axis.setLowerMargin(0.03);
+
+axis.setUpperMargin(0.03); 
+ axis.setCategoryLabelPositions(CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 6.0)); 
+ 
+ //Y축 
+ NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis(); 
+ rangeAxis.setLabelFont(new Font("굴림", Font.PLAIN, 12)); 
+ 
+ BarRenderer renderer = (BarRenderer) plot.getRenderer(); // BarRenderer를 구한다. 
+ renderer.setItemMargin(0.1); // 봉과 봉사이의 여백을 
+정한다. 
+ renderer.setDrawBarOutline(true); // 봉의 경계선 표시를 설정 
+ 
+ //범례 
+ LegendTitle legend = (LegendTitle)chart.getSubtitle(0); 
+ legend.setItemFont(new Font("굴림", Font.PLAIN, 12)); 
+ legend.setPosition(RectangleEdge.BOTTOM); // 범례 위치 
+ legend.setVerticalAlignment(VerticalAlignment.CENTER); // 범례 정렬 
+ legend.setBorder(0, 0, 0, 0); // 범례 Border(top, left, bottom, 
+right) 
+ legend.setMargin(0, 0, 4, 0); // 범례 Margin(top, left, bottom, 
+right) 
+ //8. response write 
+ response.setContentType("image/png"); 
+ os = response.getOutputStream(); 
+ ChartUtilities.writeChartAsPNG(os, chart, width, height); 
+ } catch (Exception e) { 
+ e.printStackTrace(); 
+ return; 
+ } finally { 
+ try { 
+ if(os != null) os.flush(); 
+ } catch( Exception e ) {} 
+ try { 
+ if(os != null) os.close(); 
+ } catch( Exception e ) {} 
+
+} 
+%>10.2.4.3editor외부 라이브러리인 ckEditor v3.4.1을 사용하고 있습니다. 사용자가 editor를 통해 제작한 컨텐츠에도 접근성용 속성을 지원할수 있습니다.10.2.4.4flipToggle현재 키보드 네비게이션을 포함한 모든 화면낭독기를 지원하지 않는 컴포넌트입니다. 그러나 개선의 여지가 많은 컴포넌트라는 이유로 비권장 컴포넌트로 분류되었습니다.10.2.4.5floatingLayer화면에서 팝업 형태로 띄우는 layer 컴포넌트이며 키보드 접근으로 이동 가능합니다. 그러나 센스리더 나 JAWS 사용자에게는 일부 제약사항이 존재합니다.10.2.4.6pageControl모바일 페이지 출력용 권장 컴포넌트이며 브라우저에서도 사용이 가능하나 접근성을 위한 일부 기능은 지원 안되므로 비권장 컴포넌트로 분류되었습니다.10.2.4.7searchBox입력된 정보 전체를 지울 수 있는 인터페이스를 제공합니다, 텍스트를 입력하는 순간 전체 내용을 지울 수 있는 버튼이 활성화 되며, 이의 키보드 접근이 안되고 센스리더와 JAWS의 일부 기능이 지원 안되어서 비 권장 컴포넌트로 분류되었습니다.10.2.4.8treeView계층형 데이터구조를 표현하기 위해 사용되는 컴포넌트로서 특별히 접근성을 위한 accessibility 속성을 지원하고 있지만 JAWS 11 이상의 버전에서만 지원되는 컴포넌트입니다. accessibility 속성은 Boolean 타입으로서 true일 때만 키보드 네비게이션이 가능하며, 포커스 된 이후엔 방향키를 이용해 트리의 노드들을 탐색할 수 있습니다. 아래는 접근성을 위한 treeview 생성 XML 소스의 일부입니다.<w2:treeview 
+ style="border:solid 1px black;width:200px;height:503px;" 
+ id="treeview1" 
+ accessibility="true" 30 WebSquare | Accessibility Guidelines
+
+ title="사이드 메뉴" 
+ dataType="listed"> 
+ 
+ <!-- 중략 --> 
+ 
+</w2:treeview>10.2.4.9spinnerHTML5의 <input type=”range” > 태그로 렌더링되는 UI와 유사한 형태의 인터페이스와 기능을 모든 브라우저에서 동일하게 제공하는 컴포넌트입니다. 탭 키로 접근은 가능하지만 InputReadOnly 속성이 true일 경우에는 입력 값을 수정할 수 있는 방법이 없으므로 접근성을 고려해야 한다면, InputReadOnly 속성을 false로 설정하는 것을 권고합니다.10.2.4.10upload파일 업로드를 위해 사용되는 컴포넌트로서 화면낭독기 사용자가 사용할 수는 있지만 조금 불편함이 따릅니다. 반면 화면낭독기를 사용하지 않는 일반사용자는 포커스 여부를 인지할수 없어 사용이 불가능합니다.10.2.5사용금지 컴포넌트화면낭독기 사용자가 컴포넌트를 사용할수 있도록 구성할 방법을 제공하지 않는 컴포넌트를 의미합니다.이들 컴포넌트 목록은 <Table 5>와 같습니다.표 10-5.사용금지 컴포넌트컴포넌트명사용금지 사요activeXW3C 표준이 아니며 사용되는 ActiveX 컴포넌트에 따라 접근성 정도가 달라집니다. applet<applet> 태그를 지원하는 브라우저가 거의 없는 수준이며 W3C 표준 태그가 아닙니다.chart웹스퀘어 기본 chart 컴포넌트는 접근성 지원에 많은 어려움이 있어 오픈소스인 jFreeChart와 image 컴포넌트를 적절히 연계해 사용하는 방안을 제공하고 있습니다 .flash임베드할 플래시의 접근성 구현 정도에 의존해야 하며, W3C 표준이 아닙니다.menu접근성 지원이 어려운 상황의 컴포넌트이며, tag 컴포넌트를 이용해 직접 구현하는 것을 권고합니다.multiSelect접근성 지원이 어려운 상황의 컴포넌트이며, checkbox 컴포넌트로 대체해 사용하는 것을 권고합니다.multiUpload내부적으로 플래시를 사용하는 구조입니다. 여러개의 upload 컴포넌트로 대체해 사용하는 것을 권고합니다. popup새 창을 여는 것은 접근성에 좋지 않으므로 floatingLayer로 대체해 사용하는 것을 권고합니다.tabContainertabController로 대체해 사용하는 것을 권고합니다.windowContainer현재 화면낭독기 기술로는 사용하는데 무리가 따르는 컴포넌트입니다.10.3레이아웃 가이드10.3.1레이아웃 공통웹스퀘어를 이용해 접근성 있는 웹사이트 화면을 개발하기 위해서 반드시 지켜야 할 공통 지침은 아래의 5가지 입니다절대좌표(Absolute Positioning) 방식은 사용하지 마세요.컴포넌트의 위치를 설정하기 위해서 CSS Style의 position 속성을 absolute로 설정해서 절대좌표로 위치를 정하게 되면 논리적인 TabIndex의 순서가 예측 불가능하게 되므로 사용자에게 혼란을 끼치게 됩니다.인위적으로 TabIndex를 설정하지 마세요.Wframe 컴포넌트를 이용해 여러 개의 웹스퀘어 XML 파일을 하나의 화면에 담는 구조로 구성한다면 인위적으로 설정한 TabIndex로 인하여 사용자에게 혼란을 끼치게 됩니다.비슷한 내용이 여러 회 반복되는 콘텐츠 앞에는 건너뛰기 링크를 제공하세요.메뉴나 비슷한 형식이 여러 번 반복되는 링크 묶음의 앞에 그것들을 건너뛸 수 있는 링크가 제공되지 않는다면 키보드 사용자는 그 반복되는 링크들의 수만큼 매번 Tab키를 눌러야만 원하는 콘텐츠로 접근이 가능합니다.사용자로부터 마우스 입력을 받지 않는 컴포넌트에는 마우스 이벤트(onclick, onmouseover, onmouseout) 를 사용하지 마세요.예를 들어, div, img, span 과 같은 태그는 사용자의 입력을 받기 위해 만들어진 태그가 아니기 때문에 마우스를 사용하지 않는 사용자는 onclick 이벤트가 원천적으로 발생할 수 없으므로 의도한 기능을 사용할 수 없습니다.포커스를 시각적으로 인식할 수 있도록 테두리(outline)를 숨기지 마세요.키보드만으로 네비게이션을 하는 사용자는 현재 포커스를 받은 엘리먼트가 무엇인지 인지할 수 있어야만 합니다.10.3.2문서 구조아래는 일반적인 웹사이트 화면의 구성은 대게 상단 메뉴, 좌측 서브 메뉴, 본문 콘텐츠, 하단 메뉴로 나뉩니다. 앞으로 읽게 될 지침은 이러한 구조를 갖는 화면을 기반으로 작성되었으며, 아래는 웹스퀘어 화면 XML예입니다.WebSquare XML 예<body> 
+ <xf:group class="wrapper" id="wrapper" > 
+ <!-- 상단 메뉴 --> 
+ <w2:wframe id="header" class="header" src="header.xml"></w2:wframe> 
+ 
+ <!-- 좌측 메뉴 --> 
+ <w2:wframe id="left" class="left" src="left.xml"></w2:wframe> 
+ 
+ <!-- 본문 콘텐츠 --> 
+ <xf:group id="contents" class="content" > 
+ <!— 본문 내용 --> 
+ </xf:group> 
+ 
+ <!— 하단 메뉴 --> 
+ <w2:wframe id="tail" class="tail" src="tail.xml"></w2:wframe> 
+ </xf:group> 
+</body>위에 보이는바 대로 반드시 구성하라는 것은 아니며 여러 페이지에서 공통적으로 사용되는 화면은 독립적인 파일로 만들어놓고 필요한 화면에서 wframe 컴포넌트를 이용해 포함시키는 방식을 흔히 사용하고, 또 이러한 방식이 생산성이나 자원관리의 효율성, 등의 여러 면에서 많은 이점이 있습니다. 그리고 이 공통화면들은 group 컴포넌트가 맨 가장자리에서 묶어주는데, 이렇게 단일화된 화면들이 전체적인 화면 구성에서 어떤 역할을 하는지에 관해서 스크린리더와 같은 보조공학 소프트웨어가 시각장애인에게 알려줄 수 있도록 ARIA의 role 속성을 기술합니다. Role 속성이 가질 수 있는 값은 수십여 개가 있지만, 전체적인 화면 네비게이션 요소에 관한 role 8개를 묶어 landmark roles라고 부릅니다. 이에 포함된 role과 그에 대한 설명은 아래에 나타내었습니다.표 10-6.landmark rolesRole설명Banner페이지에 따라 변하지 않고 사이트에 대한 정보가 포함된 영역입니다. 대게 페이지의 최상단에 위치하며 사이트 내의 모든 페이지에서 동일한 내용의 콘텐츠가 포함됩니다. Navigation사이트의 네비게이션 메뉴가 포함된 영역입니다. 대게 여러 개의 링크들로 구성된 콘텐츠가 포함됩니다.Main문서 내에서 본문 콘텐츠가 포함된 영역입니다. 단, 문서 내에서 하나만 존재해야 합니다.Form사용자 입력 양식을 구성하는 콘텐츠가 포함된 전체적인 영역입니다.complementary문서의 본문(main) 영역의 보조 콘텐츠가 포함된 영역입니다. DOM 구조적으로 본문 내의 하위(child) 요소가 아니라 동위(sibling) 요소나 그 밖에 위치하며, 본문 콘텐츠가 존재하지 않아도 독립적인 의미를 가지며, 대게 본문의 왼쪽이나 오른쪽에 나타나는 서브메뉴 영역일 때가 많습니다.Searchform 영역과 상당히 유사하지만, 대게 키워드 입력과 검색을 위한 submit 버튼으로 구성된 영역입니다.Contentinfo부모 문서에 관한 정보가 포함된 인지 할 수 있을 만큼 넓은 영역입니다. 대게 페이지의 하단에 나타나는 저작권이나, 연락처, 등의 사이트에 관한 정보가 담긴 영역입니다.Application정적인 웹 문서에 반대되는 개념으로 웹어플리케이션의 영역이다. 이 영역으로 포커스가 오면 그 후부터는 탐색에 관한 제어권을 어플리케이션이 가져도 무방한 영역을 의미합니다. 위에 기술된 role들 중 application만 제외한 나머지 role들을 group 컴포넌트에 포함된 콘텐츠의 역할에 적합한 role을 선택해 아래처럼 기술합니다.WebSquare XML 예<xf:group class="" style="" role="search" > 
+ <w2:textbox id="label1" tagname="label" for="textbox1" style="" 
+ label="키워드:"> 
+ </w2:textbox> 
+ <w2:input id="keyword" title="검색 키워드 입력"></w2:input> 
+ <xf:trigger type="button" id="trigger1" 
+ style="width: 148px;height: 21px"> 
+ <xf:label>검색</xf:label> 
+ </xf:trigger> 
+</xf:group>10.3.3메뉴와 메뉴 건너뛰기 구성현재 웹스퀘어에서 제공하고 있는 메뉴 컴포넌트는 웹접근성 지원하지 않으므로, 메뉴 화면은 tag 컴포넌트, anchor 컴포넌트를 조합해 구성합니다. 아래는 메뉴 화면을 구현한 XML 소스의 일부이며 스타일과 관련된 자바스크립트는 포함되지 않았습니다.WebSquare XML 예 1<w2:anchor id="anchor1" label="" href="#contents"> 
+ <xf:label>본문 바로가기</xf:label> 
+</w2:anchor> 
+<xf:group role="navigation"> 
+ <w2:tag tagname="ul"> 
+ <w2:tag tagname="li">메뉴1</w2:tag> 
+ <w2:tag tagname="li">메뉴2</w2:tag> 
+ <w2:tag tagname="li"> 
+ 메뉴3 
+ <w2:tag tagname="ul"> 
+ <w2:tag tagname="li">메뉴3-1</w2:tag> 
+ <w2:tag tagname="li">메뉴3-2</w2:tag> 
+ <w2:tag tagname="li">메뉴3-3</w2:tag> 
+ </w2:tag> 
+ </w2:tag> 
+ </w2:tag> 
+</xf:group>10.3.4사용자 입력 양식회원 가입, 게시글 등록 같은 사용자로부터 다수의 입력 항목을 받는 화면은 각각의 입력 컴포넌트와 연관된 textbox 컴포넌트를 <label> 태그로 렌더링 해야 합니다. 이렇게 <label> 태그로 렌더링 해야 하는 이유는 각각의 입력 컴포넌트가 어느 항목인지를 시각장애인 사용자가 알 수 있어야 하기 때문입니다. 아래의 <예 26>은 이름과 주민등록번호, 성별을 입력 받는 화면 XML의 일부입니다.WebSquare XML 예 2<xf:group role="form" > 
+ <w2:textbox tagname="h1" label="회원 정보 입력" /> 
+ <w2:textbox id="textbox_name" tagname="label" for="input_name" label="이름" /> 
+ <xf:input id="input_name" style="width:131px; height:25px; " />
+
+<w2:textbox id="textbox_pid" tagname="label" for="input_pid1" label="주민등록번호" /> 
+ <xf:input id="input_pid1" maxlength="6" style="width:131px; height:25px;" 
+ title="주민번호 앞자리" /> 
+ - 
+ <xf:input id="input_pid2" maxlength="7" style="width:131px; height:25px;" 
+ title="주민번호 뒷자리" /> 
+ 
+ <w2:textbox id="textbox_sex" tagname="label" for="radio_sex" label="성별" /> 
+ <xf:select1 selectedIndex="-1" appearance="full" id="radio_sex" 
+ style="width: 107px;height: 35px;" 
+ cols="2" rows=""> 
+ <xf:choices> 
+ <xf:item> 
+ <xf:label>남</xf:label> 
+ <xf:value>F</xf:value> 
+ </xf:item> 
+ <xf:item> 
+ <xf:label>여</xf:label> 
+ <xf:value>F</xf:value> 
+ </xf:item> 
+ </xf:choices> 
+ </xf:select1> 
+ 
+</xf:group>10.3.5websquare.htmlwebsqure.html은 웹스퀘어 엔진을 로드하고 구동하는 역할을 수행하는 HTML 파일입니다. 사용되는 주 언어를 기술하는 lang 속성값과 <noscript> 태그 사이의 문구를 적절히 수정하여 <예 27>과 같이 websquare.html을 구성합니다.<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:ev='http://www.w3.org/2001/xml-events' 
+xmlns:w2='http://www.inswave.com/websquare' xmlns:xf='http://www.w3.org/2002/xforms' 
+ lang="ko" > 
+ <head> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+ <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> 
+ <title> WebSquare </title> 
+ <script type="text/javascript" src="javascript.wq?q=/bootloader"></script> 
+ <script type="text/javascript"> 
+ window.onload = init; 
+ 
+ function init() { 
+ try{ 
+ WebSquare.startApplication(); 
+ } catch(e) { 
+ alert(e.message); 
+ } 
+ } 
+ </script> 
+ <noscript> 본 컨텐츠는 자바스크립트를 지원하는 환경에서만 
+제공됩니다!</noscript> 
+ </head> 
+<body></body> 
+</html>10.3.5.1HTML 태그 및 속성 사용 가이드접근성 있는 웹사이트 화면을 개발하기 위해서는 <h1>, <h2>, <abbr>, <blockquote> 등과 같은 시멘틱 태그와 그 외 여러 태그를 사용해야만 합니다. 웹스퀘어는 HTML 표준 스펙에 포함된 이러한 태그들을 사용할 수 있도록 textbox, group 이 두 컴포넌트를 통해 지원하고 있습니다. 이 두 컴포넌트는 최적으로 제공해주는 tagname 속성이 각각 다르므로 아래 <표 5>를 참조해 주의를 기울여 사용해야 합니다.표 10-7.group, textbox 컴포넌트의 tagname 지원표태그명grouptextbox태그명grouptextbox<a>OO<kdb>OO<abbr>XO<label>XO<acronym>XO<legend>XO<address>OO<li>OO<article>OX<menu>OX<aside>OX<nav>OX<blockquote>OO<col>OO<cite>OO<p>OO<code>OO<pre>OO<dd>OO<q>OO<del>OO<samp>OO<dfn>OO<section>OX<div>OO<span>OO<dl>OO<strong>OO<dt>OO<sub>XO<em>OO<summary>XO<footer>OX<sup>XO<h1>, ..., <h6>OO<ul>OO<ins>OO상기 제시된 태그명들은 웹스퀘어 디자인뷰와 미리보기 모두에서 동일한 렌더링을 제공하나, 제시되지 않은 태그명들은 디자인뷰에서 편집을 보장할 수 없습니다. 단, 미리보기에서는 정상적으로 렌더링이 가능하나 가급적 제시되지 않은 태그들은 tag 컴포넌트의 tagname을 활용하여 작업하시기 바랍니다.10.4컴포넌트 별 관련 속성10.4.1FusionChart10.4.1.1axisnameInsert="true"웹 접근성 지원을 위해 accessibility="true" 설정을 사용할 경우, label과 value 값이 <ul> 태그로 생성됩니다.이 때 axisnameInsert="true"로 설정하면 X축 이름(xAxisName)과 Y축 이름(yAxisName)을 <ul> 태그의 label 및 value로 사용할 수 있습니다.코드 10-1.axisnameInsert="false"일 때 생성되는 ul 태그<ul>
+<li>label : 값, value : 값</li>
+</ul>코드 10-2.axisnameInsert="true"일 때 생성되는 ul 태그<ul>
+<li>xAxisName으로 지정한 X축 이름 : 값, yAxisName으로 지정한 Y축 이름 : 값</li>
+</ul>10.4.1.2setChartAttribute옵션 설정을 통해 label 및 value 값을 설정할 수 있습니다.표 10-8.setChartAttribute해당 옵션axaxisname (label로 사용할 X축 이름.)ayaxisname (value로 사용할 Y축 이름.)sayaxisname (value로 사용할 제 2의 Y축 이름.)설명<ul> 태그의 label 및 value 값을 변경. Y 축이 두 개인 경우도 지원. (sayaxisname)관련 속성accessibility="true"axisnameInsert="true"코드 10-3.사용 예function draw(){
+    var options = {
+        "caption": "Half Yearly Revenue Analysis",
+        "axaxisname": "Year", // X축 값
+        "ayaxisname": "Revenue", // Y축 값
+        "sayaxisname: "Profit". // 두 번째 Y축 값
+    };
+    chart_test_flash.setChartAttribute(options);
+    chart_test_flash.setJSONData(dataObj);
+}코드 10-4. ul 태그 생성 결과<ul>
+<li>Year : 값, Revenue : 값, Profit : 값</li>
+</ul>10.4.2GridViewGridView는 웹 접근성 지원을 위한 속성을 제공합니다. 주요 속성은 아래와 같습니다.표 10-9.주요 속성속성설명senseReader웹 접근성 지원 모드. checkboxLabelColumncheckboxLabelFormatterinputType="checkbox"인 칼럼의 웹 접근성 지원.radioLabelColumnradioLabelFormatterinputType="radio"인 칼럼의 웹 접근성 지원.summaryOnlyAuto헤더의 타이틀 텍스트만 <summary>로 지정.10.4.3InputCalendarcalendarValueType="yearMonth"인 경우, focusOnLastYear="true" 설정을 지정하면 사용자가 달력 아이콘을 클릭할 때 연도를 선택하기 위한 맨앞의 << 기호를 포커스 합니다. (false인 경우, 연도 선택 상자가 포커스 됩니다.)focusOnLastYear="true" 설정을 사용하려면 아래 속성을 지정해야 합니다. renderType="native"calendarValueType="yearMonth"10.4.4TabControluseATagBtn="true" 속성을 설정할 경우 TabControl에서 생성되는 탭의 닫기 버튼을 <a> 태그로 렌더링할 수 있습니다. 즉, 키보드를 통한 닫기 버튼 제어가 가능하여 웹 접근성 요건을 충족합니다.closable="true"일 때만 유효합니다. 웹 접근성 기능을 지원하려면 각 탭마다 이 UseATagBtn="true" 설정을 추가하십시오.

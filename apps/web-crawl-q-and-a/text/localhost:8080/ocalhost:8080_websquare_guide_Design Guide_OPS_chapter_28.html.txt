@@ -1,0 +1,2 @@
+
+Footer (HTML5)28.Footer (HTML5)<footer> 태그는 문서 또는 문장의 바닥글을 작성하기 위한 태그 입니다. footer는 일반적으로 문서의 저자, 저작권 정보, 이용약관, 연락처 등의 정보를 포함하고 있습니다.28.1PropertyPropertyDescriptionid컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.28.2브라우저 캡쳐화면그림 28-1.0128.3CSS Overriding그림 28-2.02NoClassDescription1inlinewebsquare의 style 편집기에서 해당 style을 직접 수정합니다.28.4주의사항 및 Tiphtml5에 추가 요소로서 웹스퀘어 에서의 컴포넌트 로서는 따로 속성이 없으며 필요할경우 Attribute Add로 버튼으로 속성을 추가해준다.

@@ -1,0 +1,333 @@
+
+UDC 가이드13.UDC 가이드13.1개요UDC(User Defined Component)는 WebSquare5가 제공하는 기본 컴포넌트를 조합하거나 오픈 소스(차트, 에디터, 위젯 등)를 사용하여 사용자가 원하는 컴포넌트를 정의할 수 있는 기능입니다. 본 문서는 WebSquare5 SP4를 기준으로 UDC 생성 및 활용 방법을 설명합니다.UDC 특징(1) WebSquare XML로 정의됨.(2) UDC를 상속하여 또 다른 UDC 정의 가능.(3) 하나의 페이지가 여러 개의 UDC 포함 가능.예제 파일인터넷에서 다운로드 혹은WEBSQUARE_DEV_PACK에서 보기 (/_UDC/UDC/)그림 13-1.YouTube 동영상 (https://youtu.be/ukYx3_iBlEA)13.2UDC 생성UDC는 아래의 방법으로 정의할 수 있습니다.표 13-1.UDC 생성 방법No.생성 방법설명(1)오픈 라이브러리 이용외부 라이브러리로 생성한 기능을 WebSquare 컴포넌트로 사용 가능. (예) 상용 라이브러리(예: Highcharts)를 이용한 차트 컴포넌트를 Wrapping하여 사용. (2)기존 컴포넌트 상속기존 WebSquare 컴포넌트에 기능 추가 가능. (Generator, WFrame 제외)(3)기존 컴포넌트 조합두 개 이상의 WebSquare 컴포넌트를 조합하여 UDC 생성 가능. (예) Input 컴포넌트 두 개를 사용하여 작성한 주민등록번호 입력용 UDC13.2.1오픈 라이브러리 사용UDC로 동작할 빈 Group 컴포넌트를 생성합니다. 해당 Group에 오픈 라이브러리를 이용하여 화면을 랜더링 하도록 구현합니다.13.2.2기존 컴포넌트 상속기존 컴포넌트를 상속할 경우 아래가 가능합니다.이름 지정. (단, 기존 컴포넌트의 이름은 사용 불가능.)함수 재정의 및 추가.이벤트 추가.참고상속할 컴포넌트에 대한 XML 파일이 따로 존재해야 합니다. (상속할 컴포넌트들이 정의되어 있는 파일: inherit.xml , 사용자 정의 컴포넌트 파일: main.xml)main.xml 파일에서 컴포넌트를 정의 (단, 기존 웹스퀘어 컴포넌트 이름을 사용할 수 없음)Generator, Wframe 컴포넌트는 상속할 수 없습니다.13.2.2.1예제기존 컴포넌트를 상속하여 UDC를 만드는 방법은 아래와 같습니다.Project Explorer 탭에서 프로젝트나 디렉토리를 우클릭합니다.그림 13-2.WebSquare UDC[New] - [WebSquare UDC]를 선택합니다.작성할 UDC의 XML 파일 이름을 입력하고 [Finish]를 클릭합니다.선택한 프로젝트 혹은 디렉토리 하단에 XML 파일이 생성 되고 위에 입력한 이름의 파일이 Design 탭에 표시되는지 확인합니다.Palette 탭에서 사용할 컴포넌트를 선택한 후 Design 탭에 해당 컴포넌트를 그립니다.위의 컴포넌트를 클릭합니다.툴바의 UDC Add Action 버튼()을 클릭합니다.UDC 마법사가 표시되는지 확인합니다. General 탭에서 UDC의 일반 정보를 입력합니다.기존 컴포넌트를 상속 받기 위해서는 "Inherit Component" 체크박스를 클릭합니다.UDC Wizard 의 General, Properties, Events, APIs 의 내용은 UDC와 동일합니다.그림 13-3.캡처2각 탭을 클릭하여 해당 항목을 설정합니다. Style 뷰에서 스타일을 설정합니다.style 속성은 Inherit Component를 사용할 xml의 컴포넌트 속성값이 항상 우선합니다.코드 13-1.Property 상속 (예)<w2:grid id="inheritGrid"
+  style='position:absolute;top:40px;left:30px;width:705px;height:260px;' 
+  baseNode='base' 
+  repeatNode='repeat' 
+  valueNode='value' 
+  loadCount='1' 
+  rowNumVisible='true' 
+  rowNumHeaderValue='no' autoFit="allColumn" pluginName="inswave_newGrid">
+  <w2:inheritOverride type="text/javascript"><![CDATA[
+    prototype.overrideFunc = {
+        setRowData : function() {
+            this.trigger("onbeforesetrowdata", []);
+            superComponent.setRowData.apply(this, arguments);
+            this.trigger("onaftersetrowdata", []);
+        }, 
+        newSetRowData : function() {
+            alert("This is newSetRowData method!");                     
+            superComponent.setRowData.apply(this, arguments);
+        }
+      }
+    ]]></w2:inheritOverride>
+     <script ev:event="oncreated(options)" type="javascript"><![CDATA[
+   
+    ]]></script>
+</w2:grid>13.2.3기존 컴포넌트 조합Group 컴포넌트 하부에 기존 컴포넌트를 조합한 후, UDC Wizard를 이용하여 UDC를 생성할 수 있습니다.Project Explorer 탭에서 프로젝트나 디렉토리를 우클릭합니다.새로 작성할 UDC의 XML 파일 이름을 입력하고 [Finish]를 클릭합니다.Design 탭에 기존 컴포넌트를 조합하여 UDC를 구성합니다.컴포넌트를 모두 선택하여 우클릭 후, [Group]을 선택합니다.위에서 Group으로 묶은 UDC를 선택합니다.툴바의 UDC Add Action 버튼()을 클릭합니다.UDC Wizard가 표시됩 니다.아래의 UDC Wizard 항목을 참조하여 필요한 정보를 입력하고, 속성, 이벤트, 함수를 구현합니다.13.2.3.1UDC WizardDesign 탭에서 UDC를 구성한 후, 툴바 에서  버튼을 클릭하면 UDC Wizard가 실행됩니다. UDC를 컴포넌트로 사용하려면 각 탭에서 필요한 정보를 지정해야 합니다.13.2.3.1.1일반 정보 General그림 13-4.General 탭아래와 같이 UDC 정보를 지정하십시오.표 13-2.항목 설명항목설명Plugin Name (필수)Palette에 표시될 UDC의 이름UDC Name (필수)UDC ID Company개발 회사 Developer개발자Category분류Not Supported Browser미지원 브라우저 지정. VersionUDC 버전. Width / HeightUDC의 기본 크기. (Studio에서 화면에 UDC를 그릴 때 적용됨.)IconPalette에서 사용할 아이콘. 16X16 이미지 파일을 Base64 인코딩하여 지정 가능. 미지정 시, 기본 제공되는 10개의 내장 아이콘을 순차적으로 이용. Disable IconComponent 탭에서 사용할 아이콘. 16X16 이미지 파일을 Base64 인코딩하여 지정 가능. 미지정 시, 기본 제공되는 10개의 내장 아이콘을 순차적으로 이용. DescriptionUDC 설명HTML RenderDesign 탭에서 보여줄 (body 영역을 제외한) HTML. 13.2.3.1.2속성 PropertiesProperties 탭에서 행 추가 버튼을 이용하여 새로운 속성을 추가합니다. id, style, class, ref 속성은 자동으로 생성됩니다.표 13-3.항목 설명항목설명Name속성 이름. Default기본 값. Type데이터 유형.stringnumbercomboboxbindColumnbindDataListbindDataMapOptionType이 combobox일 경우 combobox에 보여질 항목 입력Necessary필수 유무. Hidden숨김 유무. BindParentbindColumn 유형인 경우 컬럼의 부모 DataCollection 지정DescriptionProperty 설명, 풍선도움말 또는 Property view 하단에 표시됨.UDC Wizard의 Finish 버튼을 클릭한 후, Source 탭에서 <script ev:event="oncreated(options)" type="text/javascript"> 노드에 아래와 같이 속성을 정의하고 구현하십시오.코드 13-2.속성 정의 및 구현 - readOnlyBoth & disabledBoth (예)<script ev:event="oncreated(options)" type="text/javascript"><![CDATA[
+    /**
+    * //property handling
+    * $p.log("id:" + options.id);
+    * $p.log("style:" + options.style);
+    * $p.log("class:" + options.class);
+    * $p.log("ref:" + options.ref);
+    * $p.log("disabledBoth:" + options.disabledBoth);
+    * $p.log("readOnlyBoth:" + options.readOnlyBoth);
+    *
+    * //event trigger
+    */
+    (중략)
+
+    var readOnlyBoth = options.readOnlyBoth;
+    var disabledBoth = options.disabledBoth;
+                
+    if(readOnlyBoth) {
+    input1.setReadOnly(true);
+    input2.setReadOnly(true);
+    }
+            
+    if(disabledBoth) {
+    input1.setDisabled(true);
+    input2.setDisabled(true);
+    }
+
+]]></script>13.2.3.1.3이벤트 EventsEvent 탭에서 행 추가 버튼을 이용하여 이벤트를 추가합니다.표 13-4.항목 설명항목설명Name이벤트 이름Type이벤트 타입Description이벤트 설명 예numFlag: F인 경우 첫번째 inputS인 경우 두번째 inputvalue: input의 value 값curObj: 각 input 객체표 13-5.이벤트 설정 (예)NameTypeDescriptiononnumblur(numFlag,value,curObj)user각 input에서 blur이벤트가 발생하면 호출되는 이벤트 numFlag: F인 경우 첫번째 input, S인 경우 두번째 input. value: input의 value 값. curObj: 각 input 객체.표 13-6.관련 이벤트 및 변수udc_objUDC의 내부에 위치한 컴포넌트에서 상위의 UDC를 바라볼 수 있는 변수udc_obj를 이용하여 상위 UDC의 필요한 정보를 가져올 수 있습니다.udc_obj.options.ref1UDC 컴포넌트의 내의 oncreated(options) 이벤트 변수udc_obj.trigger(event)UDC에서 특정 상황 발생시, trigger 메소드를 사용하여 event를 실행할 수 있습니다.UDC Wizard의 Finish 버튼을 클릭한 후, Source 탭에서 udc_obj.trigger() API를 사용하여 이벤트를 구현하십시오.다음은 telNo1, telNo2, telNo3 컴포넌트의 onChange 이벤트를 통해 onTelChange 이벤트를 발생시키거나, setValue()로 공개한 API를 통해 onTelChange 이벤트를 발생 시키는 예제입니다.코드 13-3.udc_obj.trigger API를 이용한 onTelChange 이벤트 구현 (예)<script ev:event="oncreated(options)" type="text/javascript"><![CDATA[
+    .. 중략 ..
+        udc_obj.fireTelChange = true;
+        udc_obj.setValue = function(telno) {
+            var oldValue = udc_obj.getValue();
+            var tel1 = telno.substr(0,3);
+            var offsetTel3 = telno.length-4;
+            var tel3 = telno.substr(offsetTel3);
+            var tel2 = telno.substr(3).replace(tel3,"");
+            udc_obj.fireTelChange = false;
+            telNo1.setValue(tel1);
+            telNo2.setValue(tel2);
+            telNo3.setValue(tel3);
+            if(oldValue != telno) {
+            udc_obj.trigger("onTelChange", udc_obj.getValue());
+    }                    
+    udc_obj.fireTelChange = true;
+        }               
+
+        udc_obj.getValue = function() {
+            return telNo1.getValue() + telNo2.getValue() + telNo3.getValue();
+        }
+    ]]></script>
+    <xf:select1 id="telNo1" disabledClass="w2selectbox_disabled" appearance="minimal"
+    style="position: relative;width:71px;height:21px;" direction="auto" 
+            chooseOption="true" allOption="" displayMode="label"
+    optionOrder="false" submenuSize="auto" disabled="false"   
+            chooseOptionLabel="-선택-">
+    <xf:choices></xf:choices>
+            <script ev:event="onchange" type="text/javascript"><![CDATA[
+            if(udc_obj.fireTelChange) {
+                udc_obj.trigger("onTelChange", udc_obj.getValue());
+            }
+        ]]></script>
+    </xf:select1>
+    <w2:span id="" style="position: relative ;margin-left:5px;" label="-"></w2:span>
+    <xf:input id="telNo2" style="position:   
+        relative;height:21px;text-align:center;width:86px;margin-left:5px;" minlength=""    
+        minByteLength="4" dataType="number" maxlength="4">
+            <script ev:event="onchange" type="text/javascript"><![CDATA[
+            if(udc_obj.fireTelChange) {
+                udc_obj.trigger("onTelChange", udc_obj.getValue());
+            }
+        ]]></script>
+    </xf:input>
+    <w2:span id="" style="position: relative ;margin-left:5px;" label="-"></w2:span>
+    <xf:input id="telNo3" style="position: 
+        relative;height:21px;text-align:center;width:86px;margin-left:5px;" dataType="number" 
+        maxlength="4" minByteLength="4">
+            <script ev:event="onchange" type="text/javascript"><![CDATA[
+            if(udc_obj.fireTelChange) {
+                udc_obj.trigger("onTelChange", udc_obj.getValue());
+            }
+        ]]></script>
+    </xf:input>코드 13-4.이벤트 호출udc_obj.trigger(“이벤트명", “Parameter1”);    // 단건 파라미터 전달
+udc_obj.trigger(“이벤트명", [“Parameter1”, “Parameter2”]);    // 다건 파라미터 전달udc_objUDC의 내부에 위치한 컴포넌트에서 상위의 UDC를 바라볼 수 있는 변수.udc_obj를 이용하여 상위 UDC의 필요한 정보를 가져올 수 있습니다.예) udc_obj.options.ref1 : UDC컴포넌트의 내의 oncreated(options) 이벤트의 파라미터udc_obj.trigger(event);UDC에서 특정 상황 시, trigger 메소드를 사용하여 발생할 event를 실행시킬 수 있습니다.13.2.3.1.4함수 APIsAPIs 탭에서 행 추가 버튼을 사용하여 함수를 추가합니다.표 13-7.UDC 마법사 - APIs 탭 항목항목설명APIs InfoAPI Name메소드 이름Description메소드 설명Return Type반환값 유형Return Description반환값 설명Parameter InfoType변수 유형Name변수 이름Description변수 설명UDC Wizard의 Finish 버튼을 클릭한 후, Source 탭에서 함수를 구현하십시오.<script ev:event="oncreated(options)" type="text/javascript"> 노드에 정의해야 합니다. UDC의 함수는 oncreated 이벤트 섹션에 정의해야 하며, UDC 자신을 가리키는 udc_obj 하위에 작성해야 합니다.코드 13-5.UDC 함수 구현 예 (setValue/getValue)<script ev:event="oncreated(options)" type="text/javascript"><![CDATA[
+    .. 중략 ..
+    udc_obj.setValue = function(telno) {
+        var oldValue = udc_obj.getValue();
+        var tel1 = telno.substr(0,3);
+        var offsetTel3 = telno.length-4;
+        var tel3 = telno.substr(offsetTel3);
+        var tel2 = telno.substr(3).replace(tel3,"");
+        telNo1.setValue(tel1);
+        telNo2.setValue(tel2);
+        telNo3.setValue(tel3);
+    }               
+
+    udc_obj.getValue = function() {
+        return telNo1.getValue() + telNo2.getValue() + telNo3.getValue();
+    }
+]]></script>13.2.3.2UDC 테스트UDC Wizard에서 일반 정보, 속성, 이벤트, 함수를 모두 정의한 후 Finish를 클릭합니다.Palette 탭의 UDC 항목을 선택합니다.추가한 UDC를 우클릭하여 Open test page를 선택합니다.테스트 페이지가 열리는지 확인합니다. Design 탭으로 이동합니다. 일반 컴포넌트와 동일한 방법으로 UDC를 Design 탭에 구성합니다.Property 뷰에 위에서 추가한 속성이 해당 정보와 함께 표시되는지 확인합니다.추가한 UDC를 우클릭하여 Add Event를 선택합니다. UDC Wizard에서 추가한 이벤트가 표시되는지 확인합니다.Script 탭으로 이동합니다.UDC Wizard에서 추가한 함수를 사용할 경우 자동 완성 기능이 동작하는지 확인합니다.그림 13-5.Script 탭의 자동완성 기능13.2.3.3예제다음은 여러 컴포넌트를 조합하여 주민번호 입력 UDC를 만드는 예제를 설명합니다.Input, Span, Secret 및 Trigger 컴포넌트를 이용하여 아래와 같이 구성하십시오.그림 13-6.주민번호 입력 UDC위에서 그린 컴포넌트들을 모두 Group으로 묶습니다.그림 13-7.컴포넌트 그리기Group을 클릭하고 Toolbar의 UDC add action() 버튼을 클릭합니다.아래와 같이 UDC Wizard가 표시되는지 확인합니다.그림 13-8.General 탭General 탭을 클릭하여 UDC 정보를 입력합니다.Plugin NamePlugin Name을 정의할 때 반드시 "_"를 입력하십시오.예: [프로젝트명_컴포넌트명]Properties 탭을 클릭하여 속성을 설정합니다. (속성 Properties 참조.)그림 13-9.Properties 탭표 13-8.속성 설정NameDefaultTypeOptionNecessaryHiddenDescriptionidstringYNdescdelimiter-stringNN주민번호 입력 form에서 중앙에 보여지는 구분자failMsg유효하지 않은 주민번호입니다.stringNN주민번호 유효성 체크 실패시 alert으로 표현 될 메세지firstNumFailMsg주민번호의 앞자리는 6자리입니다.stringNN앞자리 주민번호 유효성 실패 시 alert에 표현 될 메세지secondNumFailMsg주민번호의 뒷자리는 7자리입니다.stringNN뒷자리 주민번호 유효성 실패 시 alert에 표현 될 메세지buttonShowtruestringNN주민번호 입력 form의 왼쪽에 표현되는 유효성 체크 버튼의 사용 유무buttonLabel유효성체크stringNN주민번호 입력 form의 왼쪽에 표현되는 유효성 체크 버튼의 LabelsucessMsg정상 처리되었습니다.stringNN주민번호 유효성 체크 성공시 alert으로 표현 될 메세지Events 탭을 클릭하여 이벤트를 설정합니다. (이벤트 Events 참조.)그림 13-10.Events 탭udc_objUDC의 내부에 위치한 컴포넌트에서 상위의 UDC를 바라볼 수 있는 변수.udc_obj를 이용하여 상위 UDC의 필요한 정보를 가져올 수 있습니다.예) udc_obj.options.ref1 : UDC컴포넌트의 내의 oncreated(options) 이벤트의 파라미터udc_obj.trigger(event);UDC에서 특정 상황 시, trigger 메소드를 사용하여 발생할 event를 실행시킬 수 있습니다.코드 13-6.udc_obj.trigger(event)<xf:input id="ui_num1" dataType="number" style="position: relative ;float:left;width: 100px;height: 24px;"
+  placeholder="주민번호 앞자리">
+  <script ev:event="onblur" type="javascript"><![CDATA[
+    var tmpValue = this.getValue();
+    var eventRs = udc_obj.trigger("onnumblur",["F", tmpValue , this]); 
+  ]]></script>
+</xf:input>
+<w2:textbox id="ui_delimiter" style="position: relative ;float:left;padding:0.5em;" label="~"></w2:textbox>
+<xf:secret id="ui_num2" style="position: relative ;float:left;width: 100px;height: 24px;margin-right:6px;">
+  <script ev:event="onblur" type="javascript"><![CDATA[
+    var tmpValue = this.getValue();
+    var eventRs = udc_obj.trigger("onnumblur",["S", this.getValue() , this]);
+  ]]></script>
+</xf:secret>
+<xf:trigger id="ui_validationBtn"
+  style="position: relative ;float:left;width: 90px;margin-top:1px;padding:3px 0px;display:none;" class="eduUdcCitizenBtn"
+  type="button">
+  <script ev:event="onclick" type="javascript"><![CDATA[
+    udc_obj.fn_check();
+  ]]></script>
+</xf:trigger>APIs 탭을 클릭하여 API를 정의합니다. (UDC Wizard 참조.)그림 13-11.APIs표 13-9.API 정의 (예)NameDescriptionParameter InfoReturn InfoTypeNameDescriptionReturnDescriptionfn_getValue주민번호 전체를 반환한다. ex)070101370523String7901011480350fn_setValue구분자 없이 주민번호 전체를 파라메터로 넘긴다. ex) fn_setValue(0701011370523);Stringstr구분자가 없는 주민번호 전체fn_checkinput에 입력 된 값으로 주민번호 유효성 체크.booleantrue,false 반환fn_fNumCheck첫번째 input에 입력 된 값으로 유효성 체크.booleantrue,false 반환fn_sNumCheck두번째 input에 입력 된 값으로 유효성 체크.booleantrue,false 반환oncreated(options)UDC가 생성되는 시점에 처리해야 할 로직은 'oncreated' 이벤트 태그 안에 정의해야 합니다.[Finish] 버튼을 클릭합니다.Studio 화면의 Source 탭을 클릭합니다.<body> 태그 안에 아래와 같이 UDC 주석이 생성되는지 확인합니다.코드 13-7.UDC 주석<!--/** WEBSQUARE UDC */
+  {
+  "componentName": "eduUdc_citizen",
+  "pluginName": "eduUdc_citizen",
+  "company": "",
+  "developer": "",
+  "notSupportBrowser": "",
+  "version": "",
+  "htmlRender": "",
+  "icon": "",
+  "disableIcon": "",
+  "description": "주민번호 입력 UI",
+  "width": "px",
+  "height": "px",
+  "properties": [
+  {
+  "name": "id",
+  "default": "",
+  "type": "string",
+  "option": "",
+  "necessary": "Y",
+  "hidden": "N",
+  "description": "desc"
+  },
+  {
+  "name": "delimiter",
+  "default": "-",
+  "type": "string",
+  "option": "",
+  "necessary": "N",
+  "hidden": "N",
+  "description": "주민번호 입력 form에서 중앙에 보여지는 구분자"
+  },
+  {
+  "name": "failMsg",
+  "default": "유효하지 않은 주민번호입니다.",
+  "type": "string",
+  "option": "",
+  "necessary": "N",
+  "hidden": "N",
+  "description": "주민번호 유효성 체크 실패시 alert으로 표현 될 메세지"
+  },
+  {
+  "name": "firstNumFailMsg",
+  "default": "주민번호의 앞자리는 6자리입니다.",
+  "type": "string",
+  "option": "",
+  "necessary": "N",
+  "hidden": "N",
+  "description": "앞자리 주민번호 유효성 실패 시 alert에 표현 될 메세지"
+  },
+  {
+  "name": "secondNumFailMsg",
+  "default": "주민번호의 뒷자리는 7자리입니다.",
+  "type": "string",
+  "option": "",
+  "necessary": "N",
+  "hidden": "N",
+  "description": "뒷자리 주민번호 유효성 실패 시 alert에 표현 될 메세지"
+  },
+  {
+  "name": "buttonShow",
+  "default": "true",
+  "type": "combobox",
+  "option": "[true, false]",
+  "necessary": "N",
+  "hidden": "N",
+  "description": "주민번호 입력 form의 왼쪽에 표현되는 유효성 체크 버튼의 사용 유무"
+  },
+  {
+  "name": "buttonLabel",
+  "default": "유효성체크",
+  "type": "string",
+  "option": "",
+  "necessary": "N",
+  "hidden": "N",
+  "description": "주민번호 입력 form의 왼쪽에 표현되는 유효성 체크 버튼의 Label"
+  },
+  {
+  "name": "sucessMsg",
+  "default": "정상 처리되었습니다.",
+  "type": "string",
+  "option": "",
+  "necessary": "N",
+  "hidden": "N",
+  "description": "주민번호 유효성 체크 성공시 alert으로 표현 될 메세지"
+  }
+  ],
+  "events": [{
+  "name": "onnumblur(numFlag,value,curObj)",
+  "type": "user",
+  "description": "각 input에서 blur이벤트가 발생하면 호출되는 이벤트이다. numFlag : F인 경우 첫번째 input, S인 경우 두번째 input. value : input의 value 값. curObj : 각 input 객체."
+  }],
+  "apis": [
+  {
+  "name": "fn_getValue",
+  "description": "주민번호 전체를 반환한다. ex)070101370523",
+  "params": [],
+  "return": [{
+  "type": "String",
+  "description": "7901011480350"
+  }]
+  },
+  {
+  "name": "fn_setValue",
+  "description": "구분자 없이 주민번호 전체를 파라메터로 넘긴다. ex) fn_setValue(0701011370523);",
+  "params": [{
+  "type": "String",
+  "name": "str",
+  "description": "구분자가 없는 주민번호 전체"
+  }],
+  "return": []
+  },
+  {
+  "name": "fn_check",
+  "description": "input에 입력 된 값으로 주민번호 유효성 체크.",
+  "params": [],
+  "return": [{
+  "type": "boolean",
+  "description": "true,false 반환"
+  }]
+  },
+  {
+  "name": "fn_fNumCheck",
+  "description": "첫번째 input에 입력 된 값으로 유효성 체크.",
+  "params": [],
+  "return": [{
+  "type": "boolean",
+  "description": "true,false 반환"
+  }]
+  },
+  {
+  "name": "fn_sNumCheck",
+  "description": "두번째 input에 입력 된 값으로 유효성 체크.",
+  "params": [],
+  "return": [{
+  "type": "boolean",
+  "description": "true,false 반환"
+  }]
+  }
+  ]
+  }
+-->앞서 컴포넌트에 적용한 class에 대한 style 속성을 정의합니다.코드 13-8.<w2:style><w2:style type="text/css"><![CDATA[
+  .eduUdcCitizenBox{
+    position: relative;overflow:hidden;width:240px;
+  }
+  
+  .eduUdcCitizenBox_withBtn{
+    width:340px;
+  }
+  
+  .eduUdcCitizenBox_withBtn .eduUdcCitizenBtn{
+    display:inline !important;
+  }
+  
+]]></w2:style>UDC 뷰 또는 <head> 태그 내부에 <w2:require> 태그를 이용하여 아래와 같이 UDC 컴포넌트가 작성된 udc.xml 파일을 로딩합니다.UDC View로 로딩하면 자동으로 <w2:inherit> 태그가 생성되는지 확인합니다.Add Require Tag () 버튼을 활성화 시키면 <w2:inherit> 태그가 생성됩니다.config.xml에서 UDC 태그 내부에 파일 단위로 로딩하여 사용할 경우, 화면에는 <w2:require /> 태그를 생성하지 않아도 됩니다.Design 탭에 UDC 컴포넌트를 그립니다.그림 13-12.UDC ViewUDC 컴포넌트의 속성을 설정합니다.UDC에 ID를 부여하고, 필요할 경우, 추가한 함수를 이용하여 스크립트를 작성하십시오.그림 13-13.UDC 컴포넌트 속성코드 13-9.UDC 소스<w2:eduUdc_citizen id="eduUdc_citizen2" style="margin-top: 0.5em;" buttonShow="true" buttonLabel="체크" sucessMsg="">
+</w2:eduUdc_citizen><Ctrl+S>를 누른 후, Preview 탭에서 결과물을 확인합니다.그림 13-14.결과13.3스타일 적용UDC 자체에 Style을 적용하기 위해서는 class property를 이용하고 class 정의는 <style> 태그 안에(또는 외부 CSS로 생성 후 연결하여) 정의합니다.<xf:group id="" style="height:23px;" pluginName="udc_telNo" class="defaultClass">
+     … 중략 ...
+    <w2:style type="text/css"><![CDATA[ 
+         .defaultClass {
+               background:orange;
+         }
+    ]]></w2:style>
+</xf:group>UDC를 페이지에 포함할 경우, class 오버라이딩 순서를 따릅니다. 아래 예제의 경우, udc_telNo 컴포넌트를 사용하면서 “appClass”를 정의하게 되면 class=”defaultClass appClass”로 Browser에 랜더링되며 class 오버라이딩 순서에 의해 적용됩니다.<w2:udc_telNo id="telNo" style="height:23px;" class="appClass">
+</w2:udc_telNo>13.4UDC 등록작성한 UDC는 다른 WebSquare 컴포넌트처럼 Design 탭에 그릴 수 있습니다.단, UDC를 사용하기 위해서는 해당 UDC 파일을 먼저 등록해야 합니다.등록된 UDC는 Studio의 Palette 탭의 UDC 탭 항목 표시되며, 사용자는 UDC 탭에서 사용할 UDC를 선택해서 Design 탭에 추가할 수 있습니다.13.4.1일괄 등록공통 UDC를 사용하는 대규모 프로젝트의 경우 config.xml 파일 설정을 통해 아래의 방법으로 한번에 UDC 탭으로 불러오는 것을 권장합니다.[Window] - [Preference] - [WebSquare] - [Engine Modification]을 클릭합니다.config.xml에서 <inherit> 부분을 아래와 같이 편집합니다.그림 13-15.confix.xml코드 13-10.UDC 일괄 등록 설정 (예)<WebSquare>
+           … 중략 ...
+    <udc>
+         <requires> 
+             <require src="/udc1.xml" />
+            <require src="/udc2.xml" />
+         </requires>
+     </udc>
+</WebSquare>UDC 뷰를 클릭하여 로딩한 UDC가 표시되는지 확인합니다.그림 13-16.UDC 뷰13.4.2개별 등록혹은 아래와 같이 UDC 뷰에서 개별적으로 UDC를 추가할 수도 있습니다.Palette 탭을 선택합니다. UDC를 우클릭하여 Import UDC를 클릭합니다.추가할 UDC를 선택합니다.UDC 뷰를 클리하여 로딩한 UDC가 표시되는지 확인합니다.13.5UDC 로딩WebSquare Engine 로딩 및 UDC 로딩 순서는 아래와 같습니다.표 13-10.WebSquare Engine 및 UDC 로딩 단계설명1WebSquare로 작성한 웹 페이지의 URL을 호출. (예: https://www.inswave.com/support/websquare/websquare.html?w2xPath=/index.xml)URL이 호출되는 즉시 websquare.html 파일이 로딩됨. 2bootloader(<script type="text/javascript"src="javascript.wq?q=/bootloader"/>)가 로딩됨. (websquare.html 파일에 정의됨.)3bootloader가 config.xml을 파일을 로딩. 프로젝트 단위로 자주 쓰이는 UDC들을 미리 일괄적으로 로딩 가능. (위의 일괄 등록 참조.)4bootloader에서 웹스퀘어 엔진 전체를 로딩.5window.onload 이벤트로부터 WebSquare.startApplication 함수가 호출됨. stylesheet.css (웹스퀘어의 기본 스타일시트 파일) 로딩. 6URL에서 w2xPath 인자로 지정된 XML 파일을 로딩. 헤딩 XML 파일에 포함된 UDC만 개별 로딩 로딩됨.  (위의 개별 등록 참조.)7WebSquare Engine이 리프레시되는 시점에 UDC도 같이 리프레시됨. 13.6UDC 사용위에 설명한 방법으로 UDC를 작성하고 등록합니다. Palette 탭의 UDC 항목을 선택합니다.기본 컴포넌트와 동일한 방법으로 Design 탭에 그리고 속성을 정의합니다.Component 탭에도 보통의 컴포넌트처럼 정보가 표시됩니다.UDC를 포함하는 WebSquare 페이지의 XML 파일 구조는 아래와 같습니다. 아래의 예와 같이 페이지에 포함된 UDC 파일의 위치와 UDC 정보가 포함됩니다.코드 13-11.UDC를 포함하는 WebSquare 페이지 구조<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+xmlns:xf="http://www.w3.org/2002/xforms">
+<head>
+<w2:type>DEFAULT</w2:type>    
+<w2:buildDate />
+<xf:model>
+         <w2:dataCollection/>
+         <w2:workflowCollection/>
+</xf:model>
+<script type=”text/javascript”><![CDATA[
+]]></script>
+    <w2:require src="/udc/test_udc.xml"></w2:require>
+</head>
+    <body>
+        <w2:udc_component id="udc1" style="" class=""></w2:udc_component>
+    </body>
+</html>
