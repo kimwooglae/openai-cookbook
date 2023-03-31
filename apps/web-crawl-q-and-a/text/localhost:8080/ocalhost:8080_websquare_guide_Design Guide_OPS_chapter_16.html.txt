@@ -1,2 +1,0 @@
-
-Audio16.AudioHTML5 에서 새로 추가된 태그 입니다. 플러그인없이 음악파일을 지원합니다16.1PropertyPropertyDescriptioncontrols브라우저가 제공하는 재생 도구를 표시합니다.id컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.16.2브라우저 캡쳐화면그림 16-1.0116.3CSS Overriding그림 16-2.02NoClassDescription1inlinewebsquare의 style 편집기에서 해당 style을 직접 수정합니다.16.4주의사항 및 Tip제공하는 컨트롤러는 브라우저마다 차이가 있습니다.

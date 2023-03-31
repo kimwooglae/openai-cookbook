@@ -1,2 +1,0 @@
-
-Gauge37.Gauge수정 일자 버전 (SP2)WebSquare5 Studio : 20180117_1349_x86_BWebSquare5 Engine : 5.0_2.2982B.20180223.154326_1.5숫자 계기판 배경에 바늘로 입력값을 나타내주는 컴포넌트37.1PropertyPropertyDescriptioncenterX게이지의 중심 축의 X 좌표 값centerY게이지의 중심 축의 Y 좌표 값backgroundImageSrc게이지의 배경 이미지 파일의 경로maxAngle게이지가 최대 값일때 바늘의 각도maxValue게이지의 최대 값minAngle게이지가 최소 값일때 바늘의 각도minValue게이지의 최소 값needleCenterX바늘의 중심 축의 X 좌표 값needleCenterY바늘의 중심 축의 Y 좌표 값needleImageSrc바늘 이미지 파일의 경로tabIndex SP2Tab Key를 이용 한 컴포넌트의 포커스 순서로 HTML의 tabindex속성과 동일한 기능을 제공한다.37.2브라우저 캡쳐화면그림 37-1.01지원하는 게이지 형태지원하지 않는 게이지 형태

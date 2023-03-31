@@ -1,8 +1,0 @@
-
-Upload80.UploadUpload는 Input타입으로 구현되어 제공 되고 있으며, 한개의 파일을 업로드 할 수 있는 컴포넌트 입니다.Upload컴포넌트는 image와 button의 두가지의 속성을 가지고 있습니다. Image는 input과 버튼이 결합된 형태로 만들어져 있으며, input Type=”text”을 사용하며 button은 브라우저의 형태이며, input Type=”file”을 사용한다.80.1PropertyPropertyDescriptionacceptIE10부터 지원되는 기능. <input type="file"/> 에서 accept 속성과 동일한 기능을 제공한다. 사용 방법은 http://www.w3schools.com/tags/att_input_accept.asp 참(ex) // jpg, png, xml, txt 파일만 선택할 수 있도록 OS fileManager에 요청한다. 주의사항 : file validation은 반드시 서버에서 별도로 체크할것. 즉 이 속성을 file vaildation목적으로 사용해선 안 된다.action업로드 서버 url(form태그 안쪽에 action속성에 들어갈 값)classupload의 class 속성disableddisabled 유무imageClassimage모드에서 image부분의 classNameimageStyleimage모드에서 image부분의 스타일inputClassimage모드에서 input부분의 classNameinputStyleimage모드에서 input부분의 스타일tabIndexupload의 tabIndex 속성title접근성 지원용 속성type출력 타입설정image : 찾아보기 버튼을 이미지로button : 찾아보기 버튼을 input type 버튼으로80.2브라우저 캡쳐화면그림 80-1.type="image"그림 80-2.type="button"80.3class 적용과 스타일 변경그림 80-3.Class 를 usersample 라고 지정한 경우.usersample .w2upload_input{
-    background-color:#505050;
-    height:18px;
-    font-size:11px;
-    color:#fff;
-    border:0;
-}80.4CSS Overriding그림 80-4.01NoClassDescription1w2uploadw2treeview는 웹스퀘어 엔진에서 정의된 클래스입니다, 기본적으로 html 로 렌더링되는 시점에서 자동으로 부여됩니다. 여기에 사용자 정의 클래스를 추가해서 overriding(덮어쓰기) 하여 디자인을 바꿀 수 있습니다.2w2upload_image업로드 버튼 영역 입니다.

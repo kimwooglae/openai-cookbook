@@ -1,2 +1,0 @@
-
-Canvas (HTML5)19.Canvas (HTML5)HTML5 에서 새로 추가된 태그 입니다. canvas는 그래픽을 담기위한 컨테이너 역활을 합니다. 그래픽을 담기위해 스트립트를 작성해야 합니다.19.1PropertyPropertyDescriptionid컴포넌트의 ID로 전역객체로 할당되며 script에서 본 id로 컴포넌트에 접근이 가능하다.19.2브라우저 캡쳐화면그림 19-1.0119.3CSS Overriding그림 19-2.02NoClassDescription1inlinewebsquare의 style 편집기에서 해당 style을 직접 수정합니다.19.4주의사항 및 Tiphtml5에 추가 요소로서 웹스퀘어 에서의 컴포넌트 로서는 따로 속성이 없으며 필요할경우 Attribute Add로 버튼으로 속성을 추가해준다.

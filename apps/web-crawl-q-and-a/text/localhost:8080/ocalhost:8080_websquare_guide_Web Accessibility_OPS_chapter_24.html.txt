@@ -1,4 +1,0 @@
-
-Secret (password)24.Secret (password)24.1Secret입력 받아야 할 정보의 주제를 title 속성에 기술하거나, 아래처럼 textbox 컴포넌트를 이용해 label을 명시해야 합니다. Label과 title은 중복으로 사용하지 않는다<Check Point>√ 컴포넌트의 id값과 textbox를 사용한 label의 for값이 서로 동일하게 연결이 되어있는가?√ Label을 사용 못하는 디자인일 때 input에 title 속성을 제공하였는가?√ 포커스 상태의 테두리(outline)가 명확하게 나타나는가?관련 지침 : 2.1.2. 초점 이동, 3.4.1. 레이블 제공<Xml source><w2:textbox id=" " label="패스워드" tagname="label" for="secret1"></w2:textbox>
-<xf:secret id="secret1" maxlength="6" title="패스워드" />
-<xf:secret id=" " maxlength="7" title="패스워드 확인" />

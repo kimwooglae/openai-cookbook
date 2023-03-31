@@ -1,4 +1,0 @@
-
-Tag30.Tag30.1TagHTML 태그를 자유롭게 사용할 수 있도록 개발된 컴포넌트입니다. 이 컴포넌트를 이용해 모든 HTML 태그를 생성할 수 있지만, 웹스퀘어가 제공하는 다른 컴포넌트들을 이용해 생성할 수 없는 경우에만 사용하는 것을 권장합니다. 태그를 사용하고 속성을 넣을 경우는 Property창에서 html attributes속성을 이용해서 넣어도 되고, Source창에서 직접 html attributes속성을 넣어도 무방하다.<Check Point>√ 다른 웹스퀘어 컴포넌트로 제공 가능한 태그인지 확인하였는가?√ 렌더링 된 태그 또는 태그 조합이 W3C 표준에 유효한가?관련 지침 : 사용 방식에 따른 점검<Xml source>a 태그 생성 예시
-<w2:tag tagname="a" style="width: 200px;height: 200px;" id="" herf="http://www.naver.com">
-</w2:tag>

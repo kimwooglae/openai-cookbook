@@ -1,4 +1,0 @@
-
-InputBox17.InputBox17.1InputBox논리적 입력 단위는 하나인데 두 개 이상의 inputBox 컴포넌트로 구성된다면 반드시 title 속성에 그 내용을 적절히 기술하고, 하나로 구성될 경우 <label> 태그와 함께 사용하거나 title 속성을 기술해야 합니다. 아래는 주민번호를 입력 받는 inputBox 컴포넌트의 예제입니다. Label과 title은 중복으로 사용하지 않는다.<Check Point>√ Input컴포넌트의 id값과 textbox를 사용한 label의 for값이 서로 동일하게 연결이 되어있는가?√ Label을 사용 못하는 디자인일 때 input에 title 속성을 제공하였는가?관련 지침 : 2.1.2. 초점 이동, 3.4.1. 레이블 제공<Xml source><w2:textbox id=" " label="주민번호" tagname="label" for="input1"></w2:textbox>
-<xf:input id=" input1" maxlength="6" title="주민번호 앞6자리" />
-<xf:input id=" " maxlength="7" title="주민번호 뒷7자리" />

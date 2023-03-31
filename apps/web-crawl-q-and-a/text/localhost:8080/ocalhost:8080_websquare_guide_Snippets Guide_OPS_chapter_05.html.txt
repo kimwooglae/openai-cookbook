@@ -1,2 +1,0 @@
-
-Snippets 내보내기5.Snippets 내보내기Snippets View 의 우측 상단의 Export Snippets 아이콘()을 클릭하여 내보냅니다.내보낼 Snippets를 체크하고, 내보낼 위치를 결정하면 해당 위치에 Snippets이 저장된 것을 확인할 수 있습니다.그림 5-1.Export Wizard그림 5-2.저장 위치에 Export Snippets 확인

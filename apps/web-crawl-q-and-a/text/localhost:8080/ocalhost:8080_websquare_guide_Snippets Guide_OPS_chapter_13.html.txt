@@ -1,2 +1,0 @@
-
-GridView13.GridView13.1GridView• GridView 기본 형태와 PageList Snippets를 제공한다.그림 13-1.snippets_12_10표 13-1.Snippets 구성요소 설명Snippets 명설명1.1. Gridview 기본기본 Gridview이고 thead가 1개일 떄 사용한다.2.1. PageList 영역기본 PageList로 사용한다.화면에서 표현된 결과1.1. GridView 기본그림 13-2.gridview_1GridView의 전체 높이는 th의 height + ( td의 height * visibleRowNum 속성값) + (border) 로 계산된다.예를 들어 th의 height 값이 25px, td의 height 값이 20px, visibleRowNum 속성값이 4일 경우, 25 + (20 * 4) + (th의 border-top:1px) + (td의 border-top:1px * 4 = 4px) = 110px 의 높이값을 가진다.2.1. PageList 영역그림 13-3.pagelist

@@ -1,2 +1,0 @@
-
-데이터 통신파트 V.데이터 통신22.DataCollection23.AliasDataCollection24.Submission

@@ -1,2 +1,0 @@
-
-Iframe15.Iframe15.1Iframe<iframe> 태그로 렌더링되는 컴포넌트이며, 프레임의 URL 주소의 페이지의 내용에 적합한 title 속성을 기술합니다.<Check Point>√ iframe 내부 콘텐츠에 초점이 논리적으로 이동하는가?√ Iframe에 적절한 타이틀을 제공하고 있는가?√ iframe에서 제공하는 내부 콘텐츠 html 문서에 기본언어가 명시되어 있는가?관련 지침 : 2.1.2. 초점 이동, 2.4.2. 제목 제공, 3.1.1. 기본 언어 표시<Xml source><w2:iframe src="" spa="false" style="width: 200px;height: 200px;" id="" title="iframe 타이틀"></w2:iframe>
