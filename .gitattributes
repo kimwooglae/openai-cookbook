@@ -7,3 +7,4 @@ apps/web-crawl-q-and-a/processed/scraped_en.csv filter=lfs diff=lfs merge=lfs -t
 apps/web-crawl-q-and-a/processed/scraped_ko.csv filter=lfs diff=lfs merge=lfs -text
 apps/web-crawl-q-and-a/processed/embeddings_api_ko.csv filter=lfs diff=lfs merge=lfs -text
 apps/web-crawl-q-and-a/processed/embeddings_cleaning_ko.csv filter=lfs diff=lfs merge=lfs -text
+apps/web-crawl-q-and-a/processed/embeddings_guide_ko.csv filter=lfs diff=lfs merge=lfs -text
