@@ -2,6 +2,7 @@ import openai
 import logging
 import sys
 import time
+import base64
 
 from config import *
 
@@ -15,7 +16,13 @@ logging.basicConfig(
 )
 
 def get_pinecone_id_for_file_chunk(session_id, filename, chunk_index):
-    return str(session_id+"-!"+filename+"-!"+str(chunk_index))
+
+    filename_bytes = filename.encode("utf-8")
+    
+    base64_bytes = base64.b64encode(filename_bytes)
+    base64_string = base64_bytes.decode("ascii")
+    print(str(session_id+"-!"+base64_string+"-!"+str(chunk_index)))
+    return str(session_id+"-!"+base64_string+"-!"+str(chunk_index))
 
 def get_embedding(text, engine):
     return openai.Engine(id=engine).embeddings(input=[text])["data"][0]["embedding"]

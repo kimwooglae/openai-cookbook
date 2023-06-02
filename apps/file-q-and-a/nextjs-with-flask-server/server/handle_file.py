@@ -83,6 +83,8 @@ def handle_file_string(filename, session_id, file_body_string, pinecone_index, t
         logging.info(
             "[handle_file_string] Created embedding for {}".format(filename))
     except Exception as e:
+        logging.info(
+            "[handle_file_string] Error creating embedding for {}".format(filename))
         logging.error(
             "[handle_file_string] Error creating embedding: {}".format(e))
         raise e
